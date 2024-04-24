@@ -1,0 +1,42 @@
+/* print setting */
+@media print {
+  .language-notice {
+    display: none;
+  }
+  #page-header.not-top-img {
+    display: none;
+  }
+  #page-header:not(.not-top-img).post-bg {
+    height: 270px;
+  }
+  #page-header:not(.not-top-img) #nav{
+    display: none;
+  }
+  html.hide-aside .layout {
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+  html.hide-aside .layout > .aside-content {
+    display: none;
+  }
+  html.hide-aside .layout > div:first-child {
+    width: 100%;
+  }
+  #rightside {
+    display: none;
+  }
+  #footer {
+    background-color: transparent !important;
+  }
+  #footer-wrap {
+    padding: 0;
+    color: var(--font-color) !important;
+  }
+  #footer-wrap .framework-info {
+    display: none;
+  }
+}

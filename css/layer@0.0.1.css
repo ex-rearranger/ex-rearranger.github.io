@@ -1,0 +1,45 @@
+/* footer */
+#footer:before{
+  opacity: 0;
+}
+#footer {
+  background: linear-gradient(-130deg, #f8547b20, #0009dc20);
+}
+#footer-wrap , #footer-wrap a{
+  color: var(--black50);
+}
+
+/* pagination */
+@media screen and (max-width: 768px) {
+  #pagination .prev-post, #pagination .next-post {
+  width: 50%;
+  }
+  #pagination .pagination-info {
+  padding: 0.5rem 1rem;
+  }
+}
+#pagination .page-number.current {
+  color: #FFF;
+}
+#pagination.pagination-post{
+  margin-top: 0.7rem;
+  margin-bottom: 0.3rem;
+}
+[data-theme=light] #pagination.pagination-post{
+  background: linear-gradient(-130deg, #e3949c, #8c96e2);
+}
+[data-theme=dark] #pagination.pagination-post {
+  background: linear-gradient(-130deg, #030b55, #450309);
+}
+#pagination .prev-post .label,
+#pagination .next-post .label {
+  color: var(--hr-border);
+}
+#pagination .prev-post a,
+#pagination .next-post a {
+  height: 100px;
+}
+
+.article-sort-item {
+  margin: 0 0 0rem 0.5rem;
+}

@@ -235,7 +235,7 @@ class LocalSearch {
 }
 
 window.addEventListener('load', () => {
-// Search
+  // Search
   const { path, top_n_per_article, unescape, languages } = GLOBAL_CONFIG.localSearch
   const localSearch = new LocalSearch({
     path,

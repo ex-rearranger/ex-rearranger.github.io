@@ -1,3 +1,4 @@
+
 /* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
 #content-inner.layout h1::before {
   color: rgba(252, 55, 117, 0.8);
@@ -94,3 +95,4 @@
     padding-left: calc(1rem + 1.6em);
   }
 }
+
