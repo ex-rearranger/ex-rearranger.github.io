@@ -1,0 +1,108 @@
+
+/* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
+#content-inner.layout h1::before {
+  color: rgba(252, 55, 117, 0.8);
+  font-size: 1.3rem;
+  /* margin-left: -1.55rem; */
+  /* margin-top: -0.33rem; */
+}
+#content-inner.layout h2::before {
+  color: rgba(252, 116, 29, 0.8);
+  font-size: 1.1rem;
+  /* margin-left: -1.35rem; */
+  /* margin-top: -0.18rem; */
+}
+#content-inner.layout h3::before {
+  color: rgba(255, 192, 0, 0.8);
+  font-size: 0.95rem;
+  /* margin-left: -1.22rem; */
+  /* margin-top: -0.14rem; */
+}
+#content-inner.layout h4::before {
+  color: rgba(175, 238, 0, 0.8);
+  font-size: 0.8rem;
+  /* margin-left: -1.05rem;
+  margin-top: -0.05rem; */
+}
+#content-inner.layout h5::before {
+  color: rgba(86, 210, 113, 0.8);
+  font-size: 0.7rem;
+  /* margin-left: -0.9rem; */
+  /* margin-top: 0.0rem; */
+}
+#content-inner.layout h6::before {
+  color: rgba(88, 195, 231, 0.8);
+  font-size: 0.66rem;
+  /* margin-left: -0.9rem; */
+  /* margin-top: 0.05rem; */
+}
+
+/* language notice */
+.language-notice {
+  background: #dae5f7e6 !important;
+  color: #7284a3ff !important;
+  /* color: var(--post-meta-color60) !important;
+  background: #eef7ffae !important; */
+}
+.read-mode .language-notice {
+  background-color: var(--font-color) !important;
+}
+
+/* language logo color */
+.language-logo {
+  height:1.2em; width:1.2em;
+  position:absolute; left:15px; top: 1.3em; pointer-events: none;
+  background-color: #7284a3ff;
+  -webkit-mask-position: 0 0;
+  -webkit-mask-size: 1.2em 1.2em;
+  -webkit-mask-image: url(/img/korean-english-icon.svg);
+  -mask-position: 0 0;
+  -size: 1.2em 1.2em;
+  mask-image: url(/img/korean-english-icon.svg);
+}
+.read-mode .language-logo {
+  background-color: var(--font-color);
+}
+.post > #article-container .language-notice {
+  width: calc(100% + 80px);
+  left: -40px;
+  border-radius: 0;
+  padding-left: calc(40px + 1.6em);
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  color: var(--post-meta-color);
+  background: var(--black10);
+  margin: 0 0 20px 0;
+  border-bottom: 1px dashed var(--post-meta-color60) !important;
+}
+@media screen and (max-width: 900px) {
+  .language-logo {
+    left: 1.5rem;
+  }
+  .post > #article-container .language-notice {
+    width: calc(100% + 3rem);
+    left: -1.5rem;
+    padding-left: calc(1.5rem + 1.6em);
+  }
+}
+@media screen and (max-width: 768px) {
+  .language-logo {
+    left: 1rem;
+  }
+  .post > #article-container .language-notice {
+    width: calc(100% + 2rem);
+    left: -1rem;
+    padding-left: calc(1rem + 1.6em);
+  }
+}
+
+
+/* recent post list */
+#recent-posts > .recent-post-item >.recent-post-info > .content {
+  -webkit-line-clamp: 2;
+  margin-top: 0.7em;
+
+}
+#recent-posts > .recent-post-item {
+  height: 14em;
+}
