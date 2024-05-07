@@ -1,3 +1,34 @@
+/* post contents into card widget */
+#post .card-widget {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 40px;
+}
+@media screen and (max-width: 768px) {
+  #post .card-widget {
+    padding: 30px 24px;
+  }
+}
+#post .card-widget:first-child {
+  margin-top: 0;
+  padding-top: 50px;
+}
+#post .card-widget {
+  border-radius: 8px;
+  background: var(--card-bg);
+  -webkit-box-shadow: var(--card-box-shadow);
+  box-shadow: var(--card-box-shadow);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#post .card-widget:hover {
+  -webkit-box-shadow: var(--card-hover-box-shadow);
+  box-shadow: var(--card-hover-box-shadow);
+}
 
 /* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
 #content-inner.layout h1::before {
@@ -96,13 +127,25 @@
   }
 }
 
-
-/* recent post list */
-#recent-posts > .recent-post-item >.recent-post-info > .content {
-  -webkit-line-clamp: 2;
-  margin-top: 0.7em;
-
+/* pagination */
+@media screen and (max-width: 768px) {
+  #pagination .prev-post, #pagination .next-post {
+  width: 50%;
+  }
 }
-#recent-posts > .recent-post-item {
-  height: 14em;
+#pagination .page-number.current {
+  color: #FFF;
+}
+[data-theme=light] #pagination.pagination-post{
+  background: linear-gradient(-130deg, #e3949c, #8c96e2);
+}
+[data-theme=dark] #pagination.pagination-post {
+  background: linear-gradient(-130deg, #030b55, #450309);
+}
+#pagination {
+  padding: 0 !important;
+}
+#pagination .prev-post a,
+#pagination .next-post a {
+  height: 120px;
 }
