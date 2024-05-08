@@ -71,3 +71,39 @@ body {
     display: none;
   }
 }
+
+/* card widget on post & page */
+/* post contents into card widget */
+body:not(.read-mode) {
+  .card-widget {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 40px;
+    height: fit-content;
+  }
+  @media screen and (max-width: 768px) {
+    .card-widget {
+      padding: 30px 24px;
+    }
+  }
+  .card-widget:first-child {
+    margin-top: 0;
+    padding-top: 50px;
+  }
+  .card-widget {
+    border-radius: 8px;
+    background: var(--card-bg);
+    -webkit-box-shadow: 0 3px 8px 6px var(--card-box-shadow);
+    box-shadow: 0 3px 8px 6px var(--card-box-shadow);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .card-widget:hover {
+    -webkit-box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+    box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+  }
+}

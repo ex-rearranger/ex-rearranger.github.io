@@ -1,0 +1,88 @@
+[data-theme='dark'] {
+  --theme-color: #6f92c3;
+  --theme-color-light20: #7ca4d0;
+  --theme-color-light30: #8aaedc;
+  --theme-color-light50: #a1c2e8;
+  --theme-color-light85: #d8e4f4;
+  /* --sub-theme-color: #6369de; */
+
+  --font-color: var(--white70);
+  /* --font-link: #99a9bf; */
+  /* --highlight-color: #FF7242; */
+
+  /* Global color & SVG */
+  --dark-grey: var(--white20);
+  --light-grey: var(--white70);
+
+  /* Background */
+  --web-bg: #2e2e2f;
+  --card-bg: #121212;
+  --global-bg: #0d0d0d;  /* darken(#121212, 2%) */
+  --sidebar-bg: #121212;
+
+  /* Text */
+  --text-highlight-color: var(--white90);
+  /* --text-hover: var(--sub-theme-color); */
+  --text-bg-hover: #525252; /* lighten(#121212, 25)*/
+
+  /* Page */
+  --hr-border: var(--white40);
+  --hr-before-color: var(--white70);
+
+  /* Search - same variables as light mode */
+
+  /* Button */
+  --btn-bg: #1f1f1f; /* lighten(#121212, 5) */
+  --btn-color: var(--white70);
+  --btn-hover-color: #787878; /* lighten(#121212, 40) */
+
+  /* ToC */
+  --toc-link-color: var(--white60);
+  /* --theme-toc-color: var(--theme-color); */
+  /* --toc-active-color: var(--white); */
+  /* --toc-link-hover: var(--sub-theme-color); */
+
+  /* List - same variables as light mode */
+
+  /* Blockquote */
+  --blockquote-color: var(--white70);
+  /* --blockquote-padding-color: var(--theme-color); */
+  --blockquote-bg: #1a1a1a; /* lighten(#121212, 10) */
+
+  /* Tag Plugins - Tab */
+  --tab-border-color: #2c2c2c;
+  --tab-botton-bg: #2c2c2c;
+  /* --tab-botton-color: var(--font-color); */
+  --tab-button-hover-bg: #383838; /* lighten(#121212, 15)*/
+  /* --tab-button-active-bg: var(--card-bg); */
+  /* --tab-button-active-color: var(--theme-color);
+  --tab-to-top-color: var(--font-link);
+  --tab-to-top-hover-color: var(--theme-color); */
+
+  /* ETC */
+  --scrollbar-color: #525252; /* lighten(#121212, 25)*/
+  --default-bg-color: var(--theme-color);
+  --zoom-bg: #121212;
+  --mask-bg: var(--dark-black60);
+
+  /* Preloader - Not Used in this site */
+  --preloader-bg: #0d0d0d;
+  --preloader-color : var(--white70);
+}
+
+
+
+
+/* post - readmode */
+:root .read-mode{
+  --theme-color: #5b77a6;
+  --theme-color-light20: #6f92c3;
+  --theme-color-light30: #7ca4d0;
+  --theme-color-light85: #d8e4f4;
+}
+[data-theme='dark'] .read-mode {
+  --theme-color: #6f92c3;
+  --theme-color-light20: #7ca4d0;
+  --theme-color-light30: #8aaedc;
+  --theme-color-light85: #d8e4f4;
+}
