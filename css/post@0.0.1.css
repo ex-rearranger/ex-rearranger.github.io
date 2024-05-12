@@ -37,14 +37,9 @@
 }
 
 /* language notice */
-.language-notice {
+body:not(.read-mode) .language-notice {
   background: #dae5f7e6 !important;
   color: #7284a3ff !important;
-  /* color: var(--post-meta-color60) !important;
-  background: #eef7ffae !important; */
-}
-.read-mode .language-notice {
-  background-color: var(--font-color) !important;
 }
 
 /* language logo color */

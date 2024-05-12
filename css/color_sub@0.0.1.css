@@ -1,45 +1,46 @@
 [data-theme='dark'] {
-  --theme-color: #6f92c3;
-  --theme-color-light20: #7ca4d0;
-  --theme-color-light30: #8aaedc;
-  --theme-color-light50: #a1c2e8;
-  --theme-color-light85: #d8e4f4;
-  /* --sub-theme-color: #6369de; */
+  --theme-color: #648fbb;
+  --theme-color10: #648fbb1A;  /* for --blockquote-bg */
+  --theme-color80: #648fbbCC;  /* for --btn-bg */
+  --theme-color-light20: #4672a0;
+  --theme-color-light30: var(--white70);  /* for --hr-before-color */
+  --theme-color-light50: var(--white40);  /* for --hr-border */
+  --theme-color-light85: #0d151e;  /* for --scrollbar-color */
+  --sub-theme-color: #e3618e;
+  --sub-theme-color-light30: #e3618ea6;  /* for nav underline */
+  --theme-color30: #e3618e4D;  /* for --text-bg-hover */
 
-  --font-color: var(--white70);
-  /* --font-link: #99a9bf; */
-  /* --highlight-color: #FF7242; */
+  --font-color: #afafaf;
+  --font-link: #a1a6ad;
+  --font-link90: #a1a6ade6;
+  --text-highlight-color: #d3d3d3;
 
   /* Global color & SVG */
-  --dark-grey: var(--white20);
-  --light-grey: var(--white70);
+  --dark-grey: #636363;  /* for toc border left */
+  --grey: #808186;  /* for meta-color */
+  --grey60: #80818699;
+  --light-grey: #cacaca;  /* for nav, post meta, ... */
+  --white: #ffffffd9;
 
   /* Background */
-  --web-bg: #2e2e2f;
-  --card-bg: #121212;
-  --global-bg: #0d0d0d;  /* darken(#121212, 2%) */
-  --sidebar-bg: #121212;
-
-  /* Text */
-  --text-highlight-color: var(--white90);
-  /* --text-hover: var(--sub-theme-color); */
-  --text-bg-hover: #525252; /* lighten(#121212, 25)*/
+  --web-bg: #202021;
+  --global-bg: #1f1f1f;
+  --card-bg: #121213;
+  --sidebar-bg: #181819;
+  /* --card-box-shadow: #07111b0d; */
+  /* --card-hover-box-shadow: #07111b17; */
 
   /* Page */
-  --hr-border: var(--white40);
-  --hr-before-color: var(--white70);
+  --title-border-color: #EEEEEE33;
 
   /* Search - same variables as light mode */
 
   /* Button */
-  --btn-bg: #1f1f1f; /* lighten(#121212, 5) */
-  --btn-color: var(--white70);
-  --btn-hover-color: #787878; /* lighten(#121212, 40) */
 
   /* ToC */
-  --toc-link-color: var(--white60);
+  --toc-link-color: var(--white80);
   /* --theme-toc-color: var(--theme-color); */
-  /* --toc-active-color: var(--white); */
+  --toc-active-color: var(--dark-black);
   /* --toc-link-hover: var(--sub-theme-color); */
 
   /* List - same variables as light mode */
@@ -64,25 +65,14 @@
   --default-bg-color: var(--theme-color);
   --zoom-bg: #121212;
   --mask-bg: var(--dark-black60);
+  --reward-pop-bg: #1a1a1a; /* lighten(#121212, 10) */
 
   /* Preloader - Not Used in this site */
   --preloader-bg: #0d0d0d;
   --preloader-color : var(--white70);
+
 }
 
-
-
-
-/* post - readmode */
-:root .read-mode{
-  --theme-color: #5b77a6;
-  --theme-color-light20: #6f92c3;
-  --theme-color-light30: #7ca4d0;
-  --theme-color-light85: #d8e4f4;
-}
-[data-theme='dark'] .read-mode {
-  --theme-color: #6f92c3;
-  --theme-color-light20: #7ca4d0;
-  --theme-color-light30: #8aaedc;
-  --theme-color-light85: #d8e4f4;
+body.read-mode #article-container .code-expand-btn {
+  background: none;
 }
