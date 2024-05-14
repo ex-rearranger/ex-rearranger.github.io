@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const hideMenuIndex = window.innerWidth <= 768 || headerContentWidth > $nav.offsetWidth - 120
-    console.log('hideMenuIndex', hideMenuIndex, window.innerWidth)
     $nav.classList.toggle('hide-menu', hideMenuIndex)
     $card_info.classList.toggle('hide-menu', hideMenuIndex)
   }
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const copy = ctx => {
-      const currentLanguage = document.documentElement.getAttribute('page-lang') === 'default' ? document.documentElement.getAttribute('site-lang') : document.documentElement.getAttribute('page-lang')
+      const currentLanguage = document.documentElement.getAttribute('page-lang') === 'default' ? document.documentElement.getAttribute('lang') : document.documentElement.getAttribute('page-lang')
       const copyLanguage = GLOBAL_CONFIG.copy.find(i => i.lang === currentLanguage)
       if (document.queryCommandSupported && document.queryCommandSupported('copy')) {
         document.execCommand('copy')
@@ -571,16 +570,18 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       newEle.addEventListener('click', clickFn)
-      GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.readmode_on)
+      const currentLanguage = document.documentElement.getAttribute('lang')
+      GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.readmode_on.find((item) => item[0] === currentLanguage)[1])
     },
     darkmode: () => { // switch between light and dark mode
       const willChangeMode = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      const currentLanguage = document.documentElement.getAttribute('lang')
       if (willChangeMode === 'dark') {
         btf.activateDarkMode()
-        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night)
+        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night.find((item) => item[0] === currentLanguage)[1])
       } else {
         btf.activateLightMode()
-        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day)
+        GLOBAL_CONFIG.Snackbar !== undefined && btf.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day.find((item) => item[0] === currentLanguage)[1])
       }
       btf.saveToLocal.set('theme', willChangeMode, 2)
       handleThemeChange(willChangeMode)
@@ -672,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let { limitCount, languages } = GLOBAL_CONFIG.copyright
 
     const currentLanguage = document.documentElement.getAttribute('page-lang') === 'default' 
-      ? document.documentElement.getAttribute('site-lang')
+      ? document.documentElement.getAttribute('lang')
       : document.documentElement.getAttribute('page-lang')
 
     languages = languages.find((item) => item.lang === currentLanguage)

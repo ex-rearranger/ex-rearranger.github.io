@@ -12,8 +12,8 @@
   --theme-color30: #e3618e4D;  /* for --text-bg-hover */
 
   --font-color: #484c48;
-  --font-link: #7c8798;
-  --font-link90: #7c8798e6;
+  --font-link: #6c7789;
+  --font-link90: #6c7789e6;
   --text-highlight-color: #323632;
 
   /* Global color & SVG */
@@ -24,8 +24,8 @@
   --dark-black30: #0000004d;
   --dark-black15: #00000026;
   --dark-grey: #cacaca;  /* for toc border left */
-  --grey: #85858d;  /* for meta-color */
-  --grey60: #85858d99;
+  --grey: #76767d;  /* for meta-color */
+  --grey60: #76767d99;
   --light-grey: #EEEEEE;  /* for nav, post meta, ... */
   --white: #FFFFFF;
   --white80: #FFFFFFCC;

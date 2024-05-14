@@ -443,7 +443,7 @@
     border: 2px solid #2196f3;
     pointer-events: none;
   }
-  .checkbox input[type="checkbox"]:before {
+  .checkbox input[type="checkbox"]::before {
     left: 1px;
     top: 5px;
     width: 0;
@@ -455,7 +455,7 @@
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
   }
-  .checkbox input[type="checkbox"]:after {
+  .checkbox input[type="checkbox"]::after {
     right: 7px;
     bottom: 3px;
     width: 2px;
@@ -471,91 +471,91 @@
   .checkbox input[type="checkbox"]:checked {
     background: #2196f3;
   }
-  .checkbox input[type="checkbox"]:checked:before {
+  .checkbox input[type="checkbox"]:checked::before {
     left: 0;
     top: 7px;
     width: 6px;
     height: 2px;
   }
-  .checkbox input[type="checkbox"]:checked:after {
+  .checkbox input[type="checkbox"]:checked::after {
     right: 3px;
     bottom: 1px;
     width: 2px;
     height: 10px;
   }
-  .checkbox.minus input[type="checkbox"]:before {
+  .checkbox.minus input[type="checkbox"]::before {
     transform: rotate(0);
     left: 1px;
     top: 5px;
     width: 0;
     height: 2px;
   }
-  .checkbox.minus input[type="checkbox"]:after {
+  .checkbox.minus input[type="checkbox"]::after {
     transform: rotate(0);
     left: 1px;
     top: 5px;
     width: 0;
     height: 2px;
   }
-  .checkbox.minus input[type="checkbox"]:checked:before {
+  .checkbox.minus input[type="checkbox"]:checked::before {
     left: 1px;
     top: 5px;
     width: 10px;
     height: 2px;
   }
-  .checkbox.minus input[type="checkbox"]:checked:after {
+  .checkbox.minus input[type="checkbox"]:checked::after {
     left: 1px;
     top: 5px;
     width: 10px;
     height: 2px;
   }
-  .checkbox.plus input[type="checkbox"]:before {
+  .checkbox.plus input[type="checkbox"]::before {
     transform: rotate(0);
     left: 1px;
     top: 5px;
     width: 0;
     height: 2px;
   }
-  .checkbox.plus input[type="checkbox"]:after {
+  .checkbox.plus input[type="checkbox"]::after {
     transform: rotate(0);
     left: 5px;
     top: 1px;
     width: 2px;
     height: 0;
   }
-  .checkbox.plus input[type="checkbox"]:checked:before {
+  .checkbox.plus input[type="checkbox"]:checked::before {
     left: 1px;
     top: 5px;
     width: 10px;
     height: 2px;
   }
-  .checkbox.plus input[type="checkbox"]:checked:after {
+  .checkbox.plus input[type="checkbox"]:checked::after {
     left: 5px;
     top: 1px;
     width: 2px;
     height: 10px;
   }
-  .checkbox.times input[type="checkbox"]:before {
+  .checkbox.times input[type="checkbox"]::before {
     transform: rotate(45deg);
     left: 3px;
     top: 1px;
     width: 0;
     height: 2px;
   }
-  .checkbox.times input[type="checkbox"]:after {
+  .checkbox.times input[type="checkbox"]::after {
     transform: rotate(135deg);
     right: 3px;
     top: 1px;
     width: 0;
     height: 2px;
   }
-  .checkbox.times input[type="checkbox"]:checked:before {
+  .checkbox.times input[type="checkbox"]:checked::before {
     left: 1px;
     top: 5px;
     width: 10px;
     height: 2px;
   }
-  .checkbox.times input[type="checkbox"]:checked:after {
+  .checkbox.times input[type="checkbox"]:checked::after {
     right: 1px;
     top: 5px;
     width: 10px;
@@ -564,7 +564,7 @@
   .checkbox input[type="radio"] {
     border-radius: 50%;
   }
-  .checkbox input[type="radio"]:before {
+  .checkbox input[type="radio"]::before {
     content: "";
     display: block;
     width: 8px;
@@ -574,7 +574,7 @@
     transform: scale(0);
     transition: all 0.25s ease-out;
   }
-  .checkbox input[type="radio"]:checked:before {
+  .checkbox input[type="radio"]:checked::before {
     transform: scale(1);
     background: var(--text-bg-hover);
   }
@@ -584,7 +584,7 @@
   .checkbox.red input[type="checkbox"]:checked {
     background: #fe5f58;
   }
-  .checkbox.red input[type="radio"]:checked:before {
+  .checkbox.red input[type="radio"]:checked::before {
     background: #fe5f58;
   }
   .checkbox.green input {
@@ -593,7 +593,7 @@
   .checkbox.green input[type="checkbox"]:checked {
     background: #3dc550;
   }
-  .checkbox.green input[type="radio"]:checked:before {
+  .checkbox.green input[type="radio"]:checked::before {
     background: #3dc550;
   }
   .checkbox.yellow input {
@@ -602,7 +602,7 @@
   .checkbox.yellow input[type="checkbox"]:checked {
     background: #ffbd2b;
   }
-  .checkbox.yellow input[type="radio"]:checked:before {
+  .checkbox.yellow input[type="radio"]:checked::before {
     background: #ffbd2b;
   }
   .checkbox.cyan input {
@@ -611,7 +611,7 @@
   .checkbox.cyan input[type="checkbox"]:checked {
     background: #1bcdfc;
   }
-  .checkbox.cyan input[type="radio"]:checked:before {
+  .checkbox.cyan input[type="radio"]:checked::before {
     background: #1bcdfc;
   }
   .checkbox.blue input {
@@ -620,7 +620,7 @@
   .checkbox.blue input[type="checkbox"]:checked {
     background: #2196f3;
   }
-  .checkbox.blue input[type="radio"]:checked:before {
+  .checkbox.blue input[type="radio"]:checked::before {
     background: #2196f3;
   }
   .checkbox p {
@@ -628,8 +628,8 @@
     margin-top: 2px !important;
     margin-bottom: 0 !important;
   }
-  .checkbox input[type="checkbox"]:before,
-  .checkbox input[type="checkbox"]:after {
+  .checkbox input[type="checkbox"]::before,
+  .checkbox input[type="checkbox"]::after {
     position: absolute;
     content: "";
     background: #fff;
@@ -674,7 +674,7 @@
   details.folding-tag summary:hover {
     color: #444;
   }
-  details.folding-tag summary:hover:after {
+  details.folding-tag summary:hover::after {
     position: absolute;
     content: '+';
     text-align: center;
@@ -781,7 +781,7 @@
     color: #444;
     margin-bottom: 0;
   }
-  details.folding-tag[open] >summary:hover:after {
+  details.folding-tag[open] >summary:hover::after {
     content: '-';
   }
   details.folding-tag[open] >div.content {
@@ -1050,7 +1050,7 @@
   span.nota:hover {
     color: var(--text-bg-hover);
   }
-  span.nota:hover:before {
+  span.nota:hover::before {
     position: fixed;
     width: fit-content;
     max-width: 80%;
@@ -1067,7 +1067,7 @@
     padding: 10px;
     background-color: var(--text-bg-hover);
   }
-  [data-theme=dark] span.nota:hover:before {
+  [data-theme=dark] span.nota:hover::before {
     background-color: rgba(18,18,18,0.8);
   }
   @media (min-width: 1200px) {
@@ -1555,7 +1555,7 @@
     margin: 0 !important;
     padding: 0.5rem 0;
   }
-  .tip:before {
+  .tip::before {
     background: #41363c;
     background: -webkit-gradient(linear, left bottom, left top, from(#41363c), to(#494648));
     background: -webkit-linear-gradient(bottom, #41363c, #494648);
@@ -1589,7 +1589,7 @@
     -webkit-box-shadow: 0 3px 5px rgba(32,160,255,0.5);
     box-shadow: 0 3px 5px rgba(32,160,255,0.5);
   }
-  .tip.info:before {
+  .tip.info::before {
     background: #20a0ff;
     background: -webkit-gradient(linear, left bottom, left top, from(#0092ff), to(#20b8ff));
     background: -webkit-linear-gradient(bottom, #0092ff, #20b8ff);
@@ -1606,7 +1606,7 @@
     -webkit-box-shadow: 0 3px 5px rgba(104,195,59,0.5);
     box-shadow: 0 3px 5px rgba(104,195,59,0.5);
   }
-  .tip.success:before {
+  .tip.success::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#52bb1d), to(#95d34b));
     background: -webkit-linear-gradient(bottom, #52bb1d, #95d34b);
     background: linear-gradient(0deg, #52bb1d, #95d34b);
@@ -1622,7 +1622,7 @@
     -webkit-box-shadow: 0 3px 5px rgba(255,154,73,0.5);
     box-shadow: 0 3px 5px rgba(255,154,73,0.5);
   }
-  .tip.warning:before {
+  .tip.warning::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#ff8f35), to(#ffc149));
     background: -webkit-linear-gradient(bottom, #ff8f35, #ffc149);
     background: linear-gradient(0deg, #ff8f35, #ffc149);
@@ -1638,7 +1638,7 @@
     -webkit-box-shadow: 0 3px 5px rgba(255,73,73,0.5);
     box-shadow: 0 3px 5px rgba(255,73,73,0.5);
   }
-  .tip.error:before {
+  .tip.error::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#ff3838), to(#ff7849));
     background: -webkit-linear-gradient(bottom, #ff3838, #ff7849);
     background: linear-gradient(0deg, #ff3838, #ff7849);
@@ -1652,7 +1652,7 @@
     content: "\f00d";
     text-shadow: 0 -1px #4cf706;
   }
-  .tip.bolt:before {
+  .tip.bolt::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#3c0), to(#3c0));
     background: -webkit-linear-gradient(bottom, #3c3, #459431);
     background: linear-gradient(776deg, #78ca33, #25822c);
@@ -1668,7 +1668,7 @@
     -webkit-box-shadow: 0 3px 5px rgba(255,73,73,0.5);
     box-shadow: 0 3px 5px rgba(255,73,73,0.5);
   }
-  .tip.ban:before {
+  .tip.ban::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#ff3838), to(#ce4617));
     background: -webkit-linear-gradient(bottom, #ff3838, #d23e49);
     background: linear-gradient(0deg, #ff3838, #ff1022);
@@ -1684,7 +1684,7 @@
     -webkit-box-shadow: 0 3px 5px #01caff;
     box-shadow: 0 3px 5px #01caff;
   }
-  .tip.home:before {
+  .tip.home::before {
     background: -webkit-gradient(linear, left bottom, left top, form(#0ec0ee) to(#0ee0cc));
     background: -webkit-linear-gradient(bottom, #0ec0ee, #0ec2ee);
     background: linear-gradient(0deg, #0ec0ee, #0ec0ea);
@@ -1700,7 +1700,7 @@
     -webkit-box-shadow: 0 3px 5px #1bcdfc;
     box-shadow: 0 3px 5px #20b1ad;
   }
-  .tip.sync:before {
+  .tip.sync::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#00c3f7), to(#88d3e6));
     background: -webkit-linear-gradient(bottom, #83e5ff, #0aa8d2);
     background: linear-gradient(270deg, #40c0e2, #3dc550);
@@ -1716,7 +1716,7 @@
     -webkit-box-shadow: 0 3px 5px #4037a7;
     box-shadow: 1 3px 5px #5e52ec;
   }
-  .tip.cogs:before {
+  .tip.cogs::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#3020f3), to(#b1abf5));
     background: -webkit-linear-gradient(bottom, #5246e2, #5246e2);
     background: linear-gradient(560deg, #40c0e2, #5246e2);
@@ -1732,7 +1732,7 @@
     -webkit-box-shadow: 0 3px 5px #d3d2de;
     box-shadow: 1 3px 5px #d5d4de;
   }
-  .tip.key:before {
+  .tip.key::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#dddce8), to(#b1abf5));
     background: -webkit-linear-gradient(bottom, #5246e2, #5246e2);
     background: linear-gradient(560deg, #bccdd2, #cfced4);
@@ -1748,7 +1748,7 @@
     -webkit-box-shadow: 0 3px 5px #d3d2de;
     box-shadow: 1 3px 5px #d5d4de;
   }
-  .tip.bell:before {
+  .tip.bell::before {
     background: -webkit-gradient(linear, left bottom, left top, from(#dddce8), to(#b1abf5));
     background: -webkit-linear-gradient(bottom, #5246e2, #5246e2);
     background: linear-gradient(560deg, #f9ae07, #ffb615);

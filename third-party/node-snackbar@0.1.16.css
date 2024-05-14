@@ -1,7 +1,7 @@
 .snackbar-container {
   transition: all 500ms ease;
   transition-property: top, right, bottom, left, opacity;
-  font-family: Roboto, sans-serif;
+  /* font-family: Roboto, sans-serif; */
   font-size: 14px;
   min-height: 14px;
   background-color: #070b0e;
@@ -15,18 +15,21 @@
   bottom: -100px;
   top: -100px;
   opacity: 0;
-  z-index: 9999; }
-  .snackbar-container .action {
-    background: inherit;
-    display: inline-block;
-    border: none;
-    font-size: inherit;
-    text-transform: uppercase;
-    color: #4caf50;
-    margin: 0 0 0 24px;
-    padding: 0;
-    min-width: min-content;
-    cursor: pointer; }
+  z-index: 9999; 
+}
+
+.snackbar-container .action {
+  background: inherit;
+  display: inline-block;
+  border: none;
+  font-size: inherit;
+  text-transform: uppercase;
+  color: #4caf50;
+  margin: 0 0 0 24px;
+  padding: 0;
+  min-width: min-content;
+  cursor: pointer; 
+}
 
 @media (min-width: 640px) {
   .snackbar-container {

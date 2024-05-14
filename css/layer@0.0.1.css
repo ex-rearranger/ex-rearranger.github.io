@@ -9,7 +9,7 @@ body {
 }
 
 /* footer */
-#footer:before{
+#footer::before{
   opacity: 0;
 }
 #footer {
