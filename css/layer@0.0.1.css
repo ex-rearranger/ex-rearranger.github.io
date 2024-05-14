@@ -108,6 +108,13 @@ body:not(.read-mode) {
   }
 }
 
+.card-widget.card-info.hide-menu {
+  display: none;
+}
+.card-widget.card-webinfo .webinfo {
+  font-size: 14px;
+}
+
 /* search */
 #search-mask {
   background: var(--mask-bg);
