@@ -2,15 +2,15 @@
   transition: all 500ms ease;
   transition-property: top, right, bottom, left, opacity;
   /* font-family: Roboto, sans-serif; */
-  font-size: 14px;
-  min-height: 14px;
+  font-size: 0.9rem;
+  min-height: 0.9rem;
   background-color: #070b0e;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  line-height: 22px;
+  line-height: 1.4rem;
   padding: 18px 24px;
   bottom: -100px;
   top: -100px;

@@ -92,6 +92,8 @@
       <categories>
         <category>JavaScript</category>
         <category>Node.js</category>
+        <category>Test Parent</category>
+        <category>Test Child</category>
       </categories>
       <tags>
         <tag>markdown</tag>
@@ -124,6 +126,8 @@ calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px,
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
         <category>Hexo</category>
       </categories>
       <tags>
@@ -150,10 +154,13 @@ calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px,
 <p>추가 정보: <a href="https://hexo.io/ko/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>test code</tag>
+        <tag>quick start</tag>
       </tags>
   </entry>
 </search>
