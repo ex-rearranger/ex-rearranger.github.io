@@ -76,14 +76,6 @@
 }
 
 /* post - pagination */
-@media screen and (max-width: 768px) {
-  #pagination .prev-post, #pagination .next-post {
-  width: 50%;
-  }
-}
-#pagination .page-number.current {
-  color: #FFF;
-}
 [data-theme=light] #pagination.pagination-post{
   background: linear-gradient(-130deg, #e3949c, #8c96e2);
 }
@@ -93,42 +85,45 @@
 #pagination {
   padding: 0 !important;
 }
-#pagination .prev-post a,
-#pagination .next-post a {
-  height: 7.5em;  /* 120px */
-}
 
 
 /* post meta - category list */
-.post #post-info > #post-meta > .meta-thirdline > .post-meta-categories {
-  vertical-align: top;
-}
-.post #post-info > #post-meta > .meta-secondline > span {
+.post #post-info > #post-meta > .meta-secondline > span,
+.post #post-info > #post-meta > .meta-thirdline > span,
+.post #post-info > #post-meta > .meta-thirdline a {
   text-wrap: nowrap;
 }
+.post #post-info > #post-meta > .meta-thirdline {
+  display: inline-flex;
+}
 .post #post-info > #post-meta .meta-thirdline > ul.category-list {
-  display: inline-block;
+  display: inline-grid;
+  word-break: break-word;
+}
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item {
+  margin-left: 0.8em;
+}
+.post #post-info > #post-meta .meta-thirdline ul,
+.post #post-info > #post-meta > .meta-thirdline  ul > li {
+  display: inline;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.post #post-info > #post-meta > .meta-thirdline ul.category-list-child {
-  list-style-type: none;
-  padding-left: 0;
-  display: inline-block;
-  /* vertical-align: top; */
-}
-.post #post-info > #post-meta > .meta-thirdline li:before {
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item::before {
   content: "\f0da";
   font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
+  margin-left: -0.8em;
+  padding-right: 0.3em;
 }
-.post #post-info > #post-meta > .meta-thirdline ul.category-list-child li:before {
-  content: "\f105";
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item:not(:last-child)::after {
+  content: ",";
   font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  padding-left: 0.4rem;
-  padding-right: 0.2rem;
+  padding-left: 0.4em;
+}
+.post #post-info > #post-meta > .meta-thirdline ul.category-list-child li::before {
+  content: "\f0da";
+  font-family: "Font Awesome 6 Free";
+  padding-left: 0.4em;
+  padding-right: 0.3em;
 }

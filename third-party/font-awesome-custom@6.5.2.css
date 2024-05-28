@@ -58,6 +58,9 @@
 .fa-folder-open::before {
   content: "\f07c"
 }
+.fa-folder-closed::before {
+    content: "\e185"
+}
 .fa-tags::before {
   content: "\f02c"
 }
@@ -104,8 +107,8 @@
 .fa-pencil-alt::before {  /* Edit */
   content: "\f303"
 }
-.fa-calendar-alt::before {  /* Publish Date */
-  content: "\f073"
+.fa-calendar-plus::before {  /* Publish Date */
+  content: "\f271"
 }
 .fa-history::before {  /* Update Date */
   content: "\f1da"

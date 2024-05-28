@@ -43,6 +43,7 @@
   --card-bg: var(--white);
   --card-box-shadow: #07111b0d;
   --card-hover-box-shadow: #07111b17;
+  --nav-bg: #FFFFFFE6;
 
   /* Text */
   --text-hover: var(--sub-theme-color);

@@ -205,7 +205,7 @@ body.read-mode #page > .card-widget {
     width: 100%;
     position: absolute;
     background-clip: text;
-    mix-blend-mode: plus-darker;
+    mix-blend-mode: multiply;
   }
   [data-theme='dark'] #recent-posts > .recent-post-item >.recent-post-info {
     mix-blend-mode: plus-lighter;
