@@ -2,6 +2,7 @@
   --theme-color: #648fbb;
   --theme-color10: #648fbb1A;  /* for --blockquote-bg */
   --theme-color80: #648fbbCC;  /* for --btn-bg */
+  --theme-color-dark5: #6d98c4;
   --theme-color-light20: #4672a0;
   --theme-color-light30: var(--white70);  /* for --hr-before-color */
   --theme-color-light50: var(--white40);  /* for --hr-border */
@@ -9,7 +10,7 @@
   --sub-theme-color: #e3618e;
   --sub-theme-color-light30: #e3618ea6;  /* for nav underline */
   --theme-color30: #e3618e4D;  /* for --text-bg-hover */
-
+  
   --font-color: #afafaf;
   --font-link: #a1a6ad;
   --font-link90: #a1a6ade6;
@@ -32,7 +33,7 @@
   --nav-bg: #121213e6;
 
   /* Page */
-  --title-border-color: #EEEEEE1A;
+  --title-border-color: #28282b;
 
   /* Search - same variables as light mode */
 
@@ -43,6 +44,9 @@
   /* --theme-toc-color: var(--theme-color); */
   --toc-active-color: var(--dark-black);
   /* --toc-link-hover: var(--sub-theme-color); */
+
+  /* Code */
+  --code-bg: #2a2a2a;
 
   /* List - same variables as light mode */
 

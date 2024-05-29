@@ -3,6 +3,7 @@
   --theme-color: #6699CC; 
   --theme-color10: #6699CC1A;
   --theme-color80: #6699CCCC;
+  --theme-color-dark5: #5a8dc0;
   --theme-color-light20: #85add6;
   --theme-color-light30: #94b8db;  /* for --hr-before-color */
   --theme-color-light50: #b3cce6;
@@ -14,6 +15,7 @@
   --font-color: #484c48;
   --font-link: #6c7789;
   --font-link90: #6c7789e6;
+  --font-link15: #6c778926;
   --text-highlight-color: #323632;
 
   /* Global color & SVG */
@@ -58,7 +60,7 @@
   --post-link-color: var(--theme-color);
   --hr-border: var(--theme-color-light50);
   --hr-before-color: var(--theme-color-light30);
-  --title-border-color: var(--light-grey);
+  --title-border-color: #efeffc;  /* title border & table border */
 
   /* Search */
   --search-bg: var(--sidebar-bg);
@@ -78,12 +80,16 @@
   --toc-active-color: var(--white);
   --toc-link-hover: var(--sub-theme-color);
 
+  /* Code */
+  --code-bg: rgba(179, 183, 201, 0.15);
+  --code-color: var(--theme-color-dark5);
+
   /* List */
   --pseudo-color: var(--theme-color);
   --pseudo-hover: var(--sub-theme-color);
 
   /* Table */
-  --table-thead-bg: var(--font-link90);
+  --table-thead-bg: var(--font-link15);
 
   /* Blockquote */
   --blockquote-color: #6a737d;

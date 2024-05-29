@@ -127,3 +127,10 @@
   padding-left: 0.4em;
   padding-right: 0.3em;
 }
+
+
+/* tags page */
+h1.page-title + .tag-cloud-list a:not(:hover) {
+  background-clip: text;
+  mix-blend-mode: difference;
+}

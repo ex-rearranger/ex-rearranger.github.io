@@ -3,6 +3,11 @@ body {
   font-weight: 350;
 }
 
+/* Lists */
+ol, ul {
+  padding-inline-start: 2.2rem;
+}
+
 /* navigation */
 #sidebar:not(.hide-menu) {
   display: none;
@@ -121,8 +126,12 @@ body.read-mode #page > .card-widget {
     padding-bottom: 1rem;
     
   }
-  #aside-content > .sticky_layout > .card-widget {
+  #aside-content > .sticky_layout > .card-widget.card-left,
+  #aside-content > .sticky_layout > .card-widget.card-right {
     width: calc(50% - 0.5rem);
+  }
+  #aside-content > .sticky_layout > .card-widget.card-full {
+    width: 100%;
   }
   #aside-content > .sticky_layout > .card-widget > :nth-child(2) {
     max-height: 180px;
@@ -134,7 +143,7 @@ body.read-mode #page > .card-widget {
   
 }
 .card-widget.card-webinfo .webinfo {
-  font-size: calc(1rem - 2.5px);
+  font-size: calc(1rem - 1.5px);
 }
 
 /* search */
@@ -155,10 +164,12 @@ body.read-mode #page > .card-widget {
 
 /* in iPhone - maxwidth600 */
 /* 크기 축소 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   :root {
     --global-font-size: 15px;
   }
+}
+@media screen and (max-width: 768px) {
   #post > .card-widget,
   #page > .card-widget {
     padding: 1.8rem 1.5rem  /* original: 30px 24px; */
@@ -171,17 +182,22 @@ body.read-mode #page > .card-widget {
 }
 @media screen and (max-width: 500px) {
   :root {
+    --global-font-size: 13.5px;
+  }
+}
+@media screen and (max-width: 450px) {
+  :root {
     --global-font-size: 13px;
   }
 }
 @media screen and (max-width: 400px) {
   :root {
-    --global-font-size: 12px;
+    --global-font-size: 12.5px;
   }
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 350px) {
   :root {
-    --global-font-size: 11px;
+    --global-font-size: 12px;
   }
 }
 
