@@ -1,0 +1,136 @@
+/* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
+#content-inner.layout h1::before,
+#content-inner.layout h1 i::before {
+  color: rgba(252, 55, 117, 0.8);
+  font-size: 1.3rem;
+  /* margin-left: -1.55rem; */
+  /* margin-top: -0.33rem; */
+}
+#content-inner.layout h2::before {
+  color: rgba(252, 116, 29, 0.8);
+  font-size: 1.1rem;
+  /* margin-left: -1.35rem; */
+  /* margin-top: -0.18rem; */
+}
+#content-inner.layout h3::before {
+  color: rgba(255, 192, 0, 0.8);
+  font-size: 0.95rem;
+  /* margin-left: -1.22rem; */
+  /* margin-top: -0.14rem; */
+}
+#content-inner.layout h4::before {
+  color: rgba(175, 238, 0, 0.8);
+  font-size: 0.8rem;
+  /* margin-left: -1.05rem;
+  margin-top: -0.05rem; */
+}
+#content-inner.layout h5::before {
+  color: rgba(86, 210, 113, 0.8);
+  font-size: 0.7rem;
+  /* margin-left: -0.9rem; */
+  /* margin-top: 0.0rem; */
+}
+#content-inner.layout h6::before {
+  color: rgba(88, 195, 231, 0.8);
+  font-size: 0.66rem;
+  /* margin-left: -0.9rem; */
+  /* margin-top: 0.05rem; */
+}
+
+[data-theme=dark] #content-inner.layout h1::before,
+[data-theme=dark] #content-inner.layout h1 i::before, 
+[data-theme=dark] #content-inner.layout h2::before,
+[data-theme=dark] #content-inner.layout h3::before,
+[data-theme=dark] #content-inner.layout h4::before,
+[data-theme=dark] #content-inner.layout h5::before,
+[data-theme=dark] #content-inner.layout h6::before {
+  filter: brightness(0.7);
+}
+
+/* link underline */
+#article-container a {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+#article-container a:hover {
+  text-decoration-style: solid;
+}
+#article-container a:active {
+  color: var(--sub-theme-color);
+}
+/* word break */
+#article-container {
+  word-break: keep-all;
+  text-align: start;
+}
+
+/* language notice */
+.language-notice {
+  background: #dae5f7e6 !important;
+  color: #7284a3ff !important;
+}
+.language-notice.language-all::before {
+  font-family: 'fontagon-icons' !important;
+  content: "\f105" !important;
+  color: #7284a3ff !important;
+}
+
+/* post - pagination */
+[data-theme=light] #pagination.pagination-post{
+  background: linear-gradient(-130deg, #e3949c, #8c96e2);
+}
+[data-theme=dark] #pagination.pagination-post {
+  background: linear-gradient(-130deg, #030b55, #450309);
+}
+#pagination {
+  padding: 0 !important;
+}
+
+
+/* post meta - category list */
+.post #post-info > #post-meta > .meta-secondline > span,
+.post #post-info > #post-meta > .meta-thirdline > span,
+.post #post-info > #post-meta > .meta-thirdline a {
+  text-wrap: nowrap;
+}
+.post #post-info > #post-meta > .meta-thirdline {
+  display: inline-flex;
+}
+.post #post-info > #post-meta .meta-thirdline > ul.category-list {
+  display: inline-grid;
+  word-break: break-word;
+}
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item {
+  margin-left: 0.8em;
+}
+.post #post-info > #post-meta .meta-thirdline ul,
+.post #post-info > #post-meta > .meta-thirdline  ul > li {
+  display: inline;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item::before {
+  content: "\f0da";
+  font-family: "Font Awesome 6 Free";
+  margin-left: -0.8em;
+  padding-right: 0.3em;
+}
+.post #post-info > #post-meta > .meta-thirdline > ul.category-list > li.category-list-item:not(:last-child)::after {
+  content: ",";
+  font-family: "Font Awesome 6 Free";
+  padding-left: 0.4em;
+}
+.post #post-info > #post-meta > .meta-thirdline ul.category-list-child li::before {
+  content: "\f0da";
+  font-family: "Font Awesome 6 Free";
+  padding-left: 0.4em;
+  padding-right: 0.3em;
+}
+
+
+/* tags page */
+h1.page-title + .tag-cloud-list a:not(:hover) {
+  background-clip: text;
+  mix-blend-mode: difference;
+}
