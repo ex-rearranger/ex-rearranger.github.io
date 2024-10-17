@@ -113,18 +113,16 @@
 </ul>
 <h2 id="Reference">Reference</h2>
 <ul>
-<li>
-<p>All the <a href="#Supported-Functions"><strong>#Supported Functions</strong></a> content is copied from upupming’s blog<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p>
-</li>
-<li>
-<p>The auther<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1]</a></sup> states that this is the revised version of the original content from KaTeX Supported Functions<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</p>
-</li>
-<li>
-<p>I made some changes to the original content<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2]</a></sup></p>
+<li>All the <a href="#Supported-Functions"><strong>#Supported Functions</strong></a> content is copied from upupming’s blog<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</li>
+<li>The auther<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup> states that this is the revised version of the original content from KaTeX Supported Functions<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</li>
+</ul>
+<h2 id="Note">Note</h2>
+<ul>
+<li>I made some changes to the original content<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>
 <ul>
 <li>Change <a href="#Macros"><strong>#Macros</strong></a>, <a href="#HTML"><strong>#HTML</strong></a>, and <a href="#Color"><strong>#Color</strong></a> section to avoid the conflict with markdown syntax. Read the note block for more information in each section.</li>
-<li>Change some expressions according to the KaTeX official site<sup class="footnote-ref"><a href="#fn3" id="fnref3:1">[3]</a></sup>.</li>
-<li>Add some expressions that is not included in the original content<sup class="footnote-ref"><a href="#fn2" id="fnref2:2">[2]</a></sup>.<br>Probably because the upgraded KaTex Documentation was not reflected.</li>
+<li>Change some expressions according to the KaTeX official site<sup class="footnote-ref"><a href="#fn3" id="fnref3:1">[3:1]</a></sup>.</li>
+<li>Add some expressions that is not included in the original content<sup class="footnote-ref"><a href="#fn2" id="fnref2:2">[2:2]</a></sup>.<br>Probably because the upgraded KaTex Documentation was not reflected.</li>
 </ul>
 </li>
 </ul>
