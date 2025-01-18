@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'fontagon-icons';
+  font-style: normal;
+  font-weight: 400;
+	font-display: block;
+  src: url("fontagon-icons.woff2") format("woff2");
+}
+
+.fontagon-icons, .ft-icons {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.ft-icons {
+  width: 1.2em;
+  height: 1.05em;
+  position: relative;
+  fill: currentColor;
+}
+
+.fontagon-icons {
+  font-family: 'fontagon-icons';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.ft-icon-eng-box::before { content: "\f101"; }
+.ft-icon-eng::before { content: "\f102"; }
+.ft-icon-kor-box::before { content: "\f103"; }
+.ft-icon-kor::before { content: "\f104"; }
+.ft-icon-language-box::before { content: "\f105"; }
+.ft-icon-language::before { content: "\f106"; }

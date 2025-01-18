@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hello Neuranger!</title>
+  <icon>https://ex-rearranger.github.io/icon.png</icon>
+  
+  <link href="https://ex-rearranger.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ex-rearranger.github.io/"/>
+  <updated>2024-10-16T15:00:00.000Z</updated>
+  <id>https://ex-rearranger.github.io/</id>
+  
+  <author>
+    <name>extreme-rearranger</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KaTeX Test Code</title>
+    <link href="https://ex-rearranger.github.io/posts/en/KaTeX-Test-Code/"/>
+    <id>https://ex-rearranger.github.io/posts/en/KaTeX-Test-Code/</id>
+    <published>2024-05-29T11:38:34.000Z</published>
+    <updated>2024-10-16T15:00:00.000Z</updated>
+    
+    
+    <summary type="html">A cheat sheet for testing and demonstrating the supported functions of KaTeX.</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://ex-rearranger.github.io/categories/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/"/>
+    
+    <category term="Hexo" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/Hexo/"/>
+    
+    
+    <category term="markdown" scheme="https://ex-rearranger.github.io/tags/markdown/"/>
+    
+    <category term="test code" scheme="https://ex-rearranger.github.io/tags/test-code/"/>
+    
+    <category term="katex" scheme="https://ex-rearranger.github.io/tags/katex/"/>
+    
+    <category term="latex" scheme="https://ex-rearranger.github.io/tags/latex/"/>
+    
+    <category term="markdown-it" scheme="https://ex-rearranger.github.io/tags/markdown-it/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Highlight.js Test Code</title>
+    <link href="https://ex-rearranger.github.io/posts/highlight-test-code/"/>
+    <id>https://ex-rearranger.github.io/posts/highlight-test-code/</id>
+    <published>2024-04-19T15:00:00.000Z</published>
+    <updated>2024-04-19T15:00:00.000Z</updated>
+    
+    
+    <summary type="html">This is a markdown code for demonstrating Highlight.js.&lt;br&gt;
+Highlight.js 테스트를 위한 마크다운 코드입니다.
+</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://ex-rearranger.github.io/categories/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/"/>
+    
+    
+    <category term="markdown" scheme="https://ex-rearranger.github.io/tags/markdown/"/>
+    
+    <category term="test code" scheme="https://ex-rearranger.github.io/tags/test-code/"/>
+    
+    <category term="highlight.js" scheme="https://ex-rearranger.github.io/tags/highlight-js/"/>
+    
+    <category term="syntax highlighting" scheme="https://ex-rearranger.github.io/tags/syntax-highlighting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ex-rearranger.github.io/posts/en/hello-world/"/>
+    <id>https://ex-rearranger.github.io/posts/en/hello-world/</id>
+    <published>2024-04-10T15:00:00.000Z</published>
+    <updated>2024-05-27T15:00:00.000Z</updated>
+    
+    
+    <summary type="html">This is the very first post of Hexo. Check documentation for more info.</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://ex-rearranger.github.io/categories/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/"/>
+    
+    <category term="Hexo" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/Hexo/"/>
+    
+    
+    <category term="test code" scheme="https://ex-rearranger.github.io/tags/test-code/"/>
+    
+    <category term="quick start" scheme="https://ex-rearranger.github.io/tags/quick-start/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ex-rearranger.github.io/posts/ko/hello-world/"/>
+    <id>https://ex-rearranger.github.io/posts/ko/hello-world/</id>
+    <published>2024-04-10T15:00:00.000Z</published>
+    <updated>2025-01-17T15:00:00.000Z</updated>
+    
+    
+    <summary type="html">이 글은 Hexo에서 제공하는 첫 게시물의 한글 번역본입니다. 자세한 내용은 Hexo 문서를 확인하세요.</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://ex-rearranger.github.io/categories/JavaScript/"/>
+    
+    <category term="Node.js" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/"/>
+    
+    <category term="Hexo" scheme="https://ex-rearranger.github.io/categories/JavaScript/Node-js/Hexo/"/>
+    
+    
+    <category term="test code" scheme="https://ex-rearranger.github.io/tags/test-code/"/>
+    
+    <category term="quick start" scheme="https://ex-rearranger.github.io/tags/quick-start/"/>
+    
+  </entry>
+  
+</feed>
