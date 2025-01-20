@@ -38,6 +38,9 @@
   html.hide-aside .layout > div:first-child {
     width: 100%;
   }
+  #aside-content {
+    padding-left: 15px;
+  }
   #rightside {
     display: none;
   }

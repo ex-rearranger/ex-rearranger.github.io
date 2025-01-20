@@ -1,0 +1,15 @@
+.container figure.highlight table td.gutter {
+    position: fixed;
+    width: 3em;
+    border-right-style: dashed;
+    border-right-width: 1px;
+    border-right-color: var(--hltools-bg);
+}
+
+.container figure.highlight table td.code {
+    padding-left: 2.8em;
+}
+
+.container figure.highlight table::-webkit-scrollbar-thumb {
+    display: none;
+}

@@ -1,0 +1,42 @@
+/* 404 */
+.error404 #error-wrap .error-content {
+    height: min(360px, 100vh - 120px);
+  }
+  .error404 #error-wrap .error-content .error-img {
+    background-color: #CBE3FF;
+    
+  }
+  .error404 #error-wrap .error-content .error-info .error_title {
+    margin: 0 0 2rem;
+  }
+  .error404 #error-wrap .error-content .error-info .error_subtitle {
+    margin: -3em 0 1.5em 0;
+  }
+  
+  .error404 #error-wrap .error-content .error-img img {
+    width: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  @media screen and (max-width: 768px) { 
+    .error404 #error-wrap {
+      top: 20px;
+      margin: 20px auto;
+      -webkit-transform: translate(0, -20px);
+      -moz-transform: translate(0, -20px);
+      -o-transform: translate(0, -20px);
+      -ms-transform: translate(0, -20px);
+      transform: translate(0, -20px);
+    }  
+    .error404 #error-wrap .error-content {
+      height: 110vw;
+    }
+    .error404 #error-wrap .error-content .error-img {
+      height: 60%
+    }
+  
+    .error404 #error-wrap .error-content .error-info {
+      height: 38%;
+    }
+  }
+  

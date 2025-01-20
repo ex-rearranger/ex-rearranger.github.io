@@ -1,0 +1,738 @@
+<!DOCTYPE html><html lang="ko" site-lang="[&quot;en&quot;,&quot;ko&quot;]" page-lang="ko" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Tag Plugins Plus 튜토리얼 [번역] - 3 | Hello Neuranger!</title><meta name="author" content="extreme-rearranger"><meta name="copyright" content="All content is licensed under a CC BY-SA 4.0 License unless otherwise specified."><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="keyword" content="markdown, hexo blog editing"><meta name="description" content="hexo-butterfly-tag-plugins-plus의 한글 번역본 마지막 파트입니다.  이 파트에서는 folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel 을 다룹니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tag Plugins Plus 튜토리얼 [번역] - 3">
+<meta property="og:url" content="https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/index.html">
+<meta property="og:site_name" content="Hello Neuranger!">
+<meta property="og:description" content="hexo-butterfly-tag-plugins-plus의 한글 번역본 마지막 파트입니다.  이 파트에서는 folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel 을 다룹니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://ex-rearranger.github.io/img/thumb-extreme-rearranger.webp">
+<meta property="article:published_time" content="2025-01-02T22:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-20T22:00:00.000Z">
+<meta property="article:author" content="extreme-rearranger">
+<meta property="article:tag" content="tutorial">
+<meta property="article:tag" content="hexo-butterfly-tag-plugins-plus">
+<meta property="article:tag" content="hexo-theme-butterfly">
+<meta property="article:tag" content="hexo-theme-volantis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ex-rearranger.github.io/img/thumb-extreme-rearranger.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tag Plugins Plus 튜토리얼 [번역] - 3",
+  "url": "https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/",
+  "image": "https://ex-rearranger.github.io/img/thumb-extreme-rearranger.webp",
+  "datePublished": "2025-01-02T22:00:00.000Z",
+  "dateModified": "2025-01-20T22:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "(역) extreme-rearranger",
+      "url": "https://ex-rearranger.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon-extreme-rearranger.ico"><link rel="canonical" href="https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="LytBIGheQ8y89CkhhUgwfOfBvnNCJd3zeKNB3NNObF0"><link rel="manifest" href="/img/favicon_io/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/img/favicon_io/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_io/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon_io/favicon-16x16.png"><link rel="mask-icon" href="/img/favicon-extreme-rearranger.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css?v=5.3.0-b3"><link rel="stylesheet" href="/third-party/font-awesome-custom@6.5.2.css"><link rel="stylesheet" href="/third-party/node-snackbar@0.1.16.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (ttl === 0) return
+        const now = Date.now()
+        const expiry = now + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+    
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+    
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4586447922835475" crossorigin="anonymous"></script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-FSXX9H0C9N"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-FSXX9H0C9N');
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-FSXX9H0C9N', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><link rel="stylesheet" href="/third-party/roboto-mono.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":[{"lang":"ko","input_placeholder":"검색 문장","hits_empty":"'${query}'에 대한 검색 결과를 찾을 수 없습니다.","hits_stats":"총 ${hits} 건의 결과를 찾았습니다."}]},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":[["ko","마지막 업데이트로부터 "]],"messageNext":[["ko","일이 지난 게시물입니다. 따라서, 최신 정보가 아닐 수 있습니다."]]},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: [{"lang":"ko","success":"복사 성공!","error":"복사 실패ㅜㅜ","noSupport":"이 브라우저는 해당 기능을 지원하지 않습니다"}],
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: [["ko","일"]],
+  dateSuffix: [{"lang":"ko","just":"방금 전","min":"분 전","hour":"시간 전","day":"일 전","month":"개월 전"}],
+  copyright: {"limitCount":100,"languages":[{"lang":"ko","author":"작성자: extreme-rearranger","link":"링크: ","source":"출처: Hello Neuranger!","info":"저작자표시-동일조건변경허락 (https://creativecommons.org/licenses/by-sa/4.0/deed.ko)"}]},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":[["ko","중국어(번체)로 전환되었습니다"]],"cht_to_chs":[["ko","중국어(간체)로 전환되었습니다"]],"day_to_night":[["ko","다크 모드로 전환되었습니다"]],"night_to_day":[["ko","라이트 모드로 전환되었습니다"]],"readmode_on":[["ko","읽기 모드가 활성화되었습니다<br>(나가기 버튼을 클릭하면 해제됩니다)"]],"bgLight":"#f5676f","bgDark":"#f5676f","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'ko,더 보기',
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: false,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Tag Plugins Plus 튜토리얼 [번역] - 3',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/color@0.0.2.css"><link rel="stylesheet" href="/css/color_sub@0.0.2.css"><link rel="stylesheet" href="/css/layer@0.0.3.css"><link rel="stylesheet" href="/css/print@0.0.1.css"><link rel="stylesheet" href="/css/fontagon-icons.css"><link rel="stylesheet" href="/css/pretendard_custom@1.3.9.min.css"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MFSTS7WS');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script async="" src="//at.alicdn.com/t/c/font_4814779_nyhonqavyya.js"></script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4814779_nyhonqavyya.css"><script src="https://cdn.jsdelivr.net/npm/wowjs@1.1.3/dist/wow.min.js"></script><script src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css"><link rel="stylesheet" href="/css/page/post@0.0.4.css"><link rel="stylesheet" href="/css/page/highlight@0.0.1.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/tag_plugins_custom@1.0.17/common@0.0.1.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hello Neuranger!" type="application/atom+xml">
+</head><body><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFSTS7WS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/third-party/pace_minimal@0.0.1.css"><script src="/third-party/pace@1.2.4.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/thumb-extreme-rearranger.webp" onerror="onerror=null;src='/img/gif2apng-friend_404.png'" alt="avatar"></div><div class="site-data text-center"><a href="/ko/archives/"><div class="headline" lang-type="relative" language="ko">게시물</div><div class="length-num">7</div></a><a href="/ko/tags/"><div class="headline" lang-type="relative" language="ko">태그</div><div class="length-num">14</div></a><a href="/ko/categories/"><div class="headline" lang-type="relative" language="ko">카테고리</div><div class="length-num">6</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ko/tags/" lang-type="relative"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/ko/categories/" lang-type="relative"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fontagon-icons ft-icons ft-icon-language-box"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-eng-box"></i><span> English</span></a></li><li><a class="site-page child" href="/ko/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-kor-box"></i><span> Korean</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> Others</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/ko/archives/" lang-type="relative"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/about/" lang-type="absolute"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/ko/" title="Hello Neuranger!" lang-type="relative"><img class="site-icon" src="/img/avatar-extreme-rearranger.webp" alt="Logo"><span class="site-name">Hello Neuranger!</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span lang-type="relative" language="ko"> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/ko/tags/" lang-type="relative"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/ko/categories/" lang-type="relative"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fontagon-icons ft-icons ft-icon-language-box"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-eng-box"></i><span> English</span></a></li><li><a class="site-page child" href="/ko/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-kor-box"></i><span> Korean</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> Others</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/ko/archives/" lang-type="relative"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/about/" lang-type="absolute"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div class="card-widget post-content"><div id="post-info"><div lang-type="relative" language="ko"><h1 class="post-title">Tag Plugins Plus 튜토리얼 [번역] - 3</h1></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date" lang-type="relative" language="ko"><i class="far fa-calendar-plus fa-fw post-meta-icon"></i><span class="post-meta-label">작성일</span><time class="post-meta-date-created" datetime="2025-01-02T22:00:00.000Z" title="작성일 25-01-03 07:00:00" language="ko">25-01-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">업데이트</span><time class="post-meta-date-updated" datetime="2025-01-20T22:00:00.000Z" title="업데이트 25-01-21 07:00:00" language="ko">25-01-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="ko">단어수</span><span class="word-count">3.6k</span></span><span class="post-meta-separator">|</span><span class="post-meta-min2read"><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="ko">독해시간</span><span lang-type="relative" language="ko">22분</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Tag Plugins Plus 튜토리얼 [번역] - 3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="ko">조회수</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span></div><div class="meta-thirdline"><span class="post-meta-categories" lang-type="relative" language="ko"><i class="far fa-folder-closed fa-fw post-meta-icon"></i><span class="post-meta-label">카테고리</span></span><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/ko/categories/JavaScript/" lang-type="relative">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/ko/categories/JavaScript/Node-js/" lang-type="relative">Node.js</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/ko/categories/JavaScript/Node-js/Hexo/" lang-type="relative">Hexo</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/ko/categories/JavaScript/Node-js/Hexo/Hexo-Tag-Plugins/" lang-type="relative">Hexo Tag Plugins</a></li></ul></li></ul></li></ul></li></ul></div></div></div><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been &quot;,&quot;messageNext&quot;:&quot; days since the last update. Thus, the information might be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-01-20T22:00:00.000Z&quot;}" hidden=""></div><div class="language-notice note modern language-kor">
+    <div class="language-logo"></div>
+    <p>This posting is written in Korean. English is not scheduled to be written.</p>
+</div>
+<div class="note info modern">
+<p>본 게시물은 <code>hexo-butterfly-tag-plugins-plus</code> 개발자가 작성한 튜토리얼<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>에 대한 한글 번역본입니다.<br>
+<del>Hexo가 Jekyll보다 더 마음에 들어 선택했는데, 참고할 만한 글들이 다 중국어로 적혀있어서 매우 곤란…</del></p>
+</div>
+<details class="folding-tag"><summary> 내용이 너무 길어져서 세 파트로 나누어서 업로드하였습니다. </summary>
+              <div class="content">
+              <p>참고로 일부 태그들은 별도의 라이브러리 없이 <a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/2df239ce/">butterfly 테마만으로도 사용 가능</a>합니다.<br><del>애초에 Butterfly 테마가 이 플러그인을 기반으로 여러 태그를 추가했기 때문ㅎㅎ</del></p><ol><li><a href="/posts/ko/tag-plugins-plus-tutorial-1">Tag Plugins Plus 튜토리얼 [번역] - 1</a><br>text / span / p / note / tip / animated / checkbox / radio / timeline</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-2">Tag Plugins Plus 튜토리얼 [번역] - 2</a><br>link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery</li><li><strong><span class="p blue">Tag Plugins Plus 튜토리얼 [번역] - 3</span></strong><br>folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel</li></ol>
+              </div>
+            </details>
+<hr>
+<h1 id="접이식-상자-folding">접이식 상자 (folding)</h1>
+<div class="note no-icon flat"><p>Butterfly에도 hideToggle이라는 접이식 상자 태그가 내장되어 있지만 원저자는 Volantis의 folding이 더 좋아 보여서 이를 사용한다고 합니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{% folding [인자 (선택사항)], [제목] %}</span><br><span class="line">[본문 내용]</span><br><span class="line">{ % endfolding % }</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li>색상: blue, cyan, green, yellow, red</li>
+<li>상태: (기본) 닫힘 / <code>open</code> 열린 상태</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">{% folding  이미지 보기 테스트 %}</span><br><span class="line">  ![](<span class="link">https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg</span>)</span><br><span class="line">{% endfolding %}</span><br><span class="line"></span><br><span class="line">{% folding cyan open, 기본적으로 열린기 접는 상자 보기 %}</span><br><span class="line">  기본적으로 열린 상태인 접히는 상자입니다.</span><br><span class="line">{% endfolding %}</span><br><span class="line"></span><br><span class="line">{% folding green, 코드 보기 테스트 %}</span><br><span class="line">  코드 블럭 있는 척 (코드 블럭은 중첩 불가)</span><br><span class="line">{% endfolding %}</span><br><span class="line"></span><br><span class="line">{% folding yellow, 목차 보기 테스트 %}</span><br><span class="line"><span class="bullet">  -</span> haha</span><br><span class="line"><span class="bullet">  -</span> hehe</span><br><span class="line">{% endfolding %}</span><br><span class="line"></span><br><span class="line">{% folding red, 중첩 테스트 (1/3) %}</span><br><span class="line">  {% folding blue, 중첩 테스트 (2/3) %}</span><br><span class="line"><span class="code">    {% folding 중첩 테스트 (3/3) %}</span></span><br><span class="line"><span class="code">      hahaha &lt;span&gt;&lt;img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/tieba/%E6%BB%91%E7%A8%BD.png' style='height:24px'&gt;&lt;/span&gt;</span></span><br><span class="line"><span class="code">    {% endfolding %}</span></span><br><span class="line"><span class="code">  {% endfolding %}</span></span><br><span class="line"><span class="code">{% endfolding %}</span></span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><details class="folding-tag"><summary> 이미지 보기 테스트 </summary>
+              <div class="content">
+              <p><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg" alt=""></p>
+              </div>
+            </details>
+<details class="folding-tag" cyan="" open=""><summary> 기본적으로 열린 상자 보기 </summary>
+              <div class="content">
+              <p>기본적으로 열린 상태인 접히는 상자입니다.</p>
+              </div>
+            </details>
+<details class="folding-tag" green=""><summary> 코드 보기 테스트 </summary>
+              <div class="content">
+              <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](<span class="link">https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg</span>)</span><br></pre></td></tr></tbody></table></figure>
+              </div>
+            </details>
+<details class="folding-tag" yellow=""><summary> 목차 보기 테스트 </summary>
+              <div class="content">
+              <ul><li>haha</li><li>hehe</li></ul>
+              </div>
+            </details>
+<details class="folding-tag" red=""><summary> 중첩 테스트 (1/3) </summary>
+              <div class="content">
+              <details class="folding-tag" blue=""><summary> 중첩 테스트 (2/3) </summary>            <div class="content">            <details class="folding-tag"><summary> 중첩 테스트 (3/3) </summary>          <div class="content">          <p>hahaha <span><img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/tieba/%E6%BB%91%E7%A8%BD.png" style="height:24px"></span></p>          </div>        </details>            </div>          </details>
+              </div>
+            </details></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="다중-탭-tab">다중 탭 (tab)</h1>
+<div class="note no-icon flat"><p>Butterfly와 Volantis의 tab은 모두 NexT 테마에서 가져온 것이기 때문에 형태와 스타일이 완전히 동일하다고 합니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% tabs [Unique name], [index] %}</span><br><span class="line">&lt;!-- tab [Tab caption] [@icon] --&gt;</span><br><span class="line">Any content (support inline tags too).</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">{% endtabs %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>Unique name</code>:
+<ul>
+<li>쉼표가 없는 탭 블록 레이블의 고유 이름입니다.</li>
+<li>#id에서 각 태그의 접두어와 색인 번호로 사용됩니다.</li>
+<li>이름에 공백이 포함된 경우 #id 생성을 위해 모든 공백이 대시로 바뀝니다.</li>
+<li>현재 게시물/페이지의 url 내에서만 고유하면 됩니다!</li>
+</ul>
+</li>
+<li><code>index</code> (선택사항):
+<ul>
+<li>활성할 탭의 인덱스 번호입니다.</li>
+<li>지정하지 않으면 첫 번째 레이블(1)이 선택됩니다.</li>
+<li>인덱스가 -1이면 탭이 선택되지 않습니다.</li>
+</ul>
+</li>
+<li><code>Tab caption</code> (선택사항):
+<ul>
+<li>각 탭의 제목입니다.</li>
+<li>제목을 지정하지 않으면 탭 제목(Unique name) 옆에 서수가 붙어서 이름이 지정됩니다.</li>
+<li>제목을 지정하지 않고 아이콘을 지정하면 제목이 비어 있습니다.</li>
+</ul>
+</li>
+<li><code>@icon</code> (선택사항):
+<ul>
+<li>FontAwesome 아이콘 이름 ("fa-fa-font"와 같은 전체 이름으로 지정)</li>
+<li>공백을 포함하거나 포함하지 않고 지정할 수 있습니다.</li>
+<li>가령, ’Tab caption @icon’ 및 ‘Tab caption@icon’ 모두 가능합니다.</li>
+</ul>
+</li>
+</ol></div><div class="tab-item-content"><details class="folding-tag" blue="" open=""><summary> 1. 첫 번째 항목을 기본으로 보여주기 【기본형】 </summary>
+              <div class="content">
+              <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{% tabs test1 %}</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 1.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 2.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 3.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">{% endtabs %}</span><br></pre></td></tr></tbody></table></figure>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 2. 선택한 항목 기본으로 보여주기 </summary>
+              <div class="content">
+              <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{% tabs test2, 3 %}</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 1.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 2.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 3.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">{% endtabs %}</span><br></pre></td></tr></tbody></table></figure>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 3. 프리셋 없음 </summary>
+              <div class="content">
+              <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{% tabs test3, -1 %}</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 1.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 2.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab --&gt;</span><br><span class="line">  <span class="strong">**This is Tab 3.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">{% endtabs %}</span><br></pre></td></tr></tbody></table></figure>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 4. 사용자 정의 탭 이름 / 아이콘 / 아이콘과 탭 이름 모두 있음 </summary>
+              <div class="content">
+              <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{% tabs test4 %}</span><br><span class="line">  &lt;!-- tab 첫 번째 탭 --&gt;</span><br><span class="line">  <span class="strong">**탭 이름은 "첫 번째 탭"입니다.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab @fab fa-apple-pay --&gt;</span><br><span class="line">  <span class="strong">**아이콘만 있고 탭 이름은 없는 경우.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">  &lt;!-- tab 폭탄@fas fa-bomb --&gt;</span><br><span class="line">  <span class="strong">**탭 이름과 아이콘이 모두 있는 경우.**</span></span><br><span class="line">  &lt;!-- endtab --&gt;</span><br><span class="line">{% endtabs %}</span><br></pre></td></tr></tbody></table></figure>
+              </div>
+            </details></div><div class="tab-item-content active"><details class="folding-tag" blue="" open=""><summary> 1. 첫 번째 항목을 기본으로 보여주기 【기본형】 </summary>
+              <div class="content">
+              <div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">test1 1</button><button type="button" class="tab">test1 2</button><button type="button" class="tab">test1 3</button></div><div class="tab-contents"><div class="tab-item-content active"><p><strong>This is Tab 1.</strong></p></div><div class="tab-item-content"><p><strong>This is Tab 2.</strong></p></div><div class="tab-item-content"><p><strong>This is Tab 3.</strong></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 2. 선택한 항목 기본으로 보여주기 </summary>
+              <div class="content">
+              <div class="tabs"><div class="nav-tabs"><button type="button" class="tab">test2 1</button><button type="button" class="tab">test2 2</button><button type="button" class="tab active">test2 3</button></div><div class="tab-contents"><div class="tab-item-content"><p><strong>This is Tab 1.</strong></p></div><div class="tab-item-content"><p><strong>This is Tab 2.</strong></p></div><div class="tab-item-content active"><p><strong>This is Tab 3.</strong></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 3. 프리셋 없음 </summary>
+              <div class="content">
+              <div class="tabs"><div class="nav-tabs no-default"><button type="button" class="tab">test3 1</button><button type="button" class="tab">test3 2</button><button type="button" class="tab">test3 3</button></div><div class="tab-contents"><div class="tab-item-content"><p><strong>This is Tab 1.</strong></p></div><div class="tab-item-content"><p><strong>This is Tab 2.</strong></p></div><div class="tab-item-content"><p><strong>This is Tab 3.</strong></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+              </div>
+            </details>
+  <details class="folding-tag" blue=""><summary> 4. 사용자 정의 탭 이름 / 아이콘 / 아이콘과 탭 이름 모두 있음 </summary>
+              <div class="content">
+              <div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">첫 번째 탭</button><button type="button" class="tab"><i class="fab fa-apple-pay"></i></button><button type="button" class="tab"><i class="fas fa-bomb"></i>폭탄</button></div><div class="tab-contents"><div class="tab-item-content active"><p><strong>탭 이름은 "첫 번째 탭"입니다.</strong></p></div><div class="tab-item-content"><p><strong>아이콘만 있고 탭 이름은 없는 경우.</strong></p></div><div class="tab-item-content"><p><strong>탭 이름과 아이콘이 모두 있는 경우.</strong></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+              </div>
+            </details></div><div class="tab-item-content"><ul>
+<li>탭의 크기를 줄이기 위해 아래와 같이 css를 수정하였습니다.  <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#article-container</span> <span class="selector-class">.tabs</span> &gt; <span class="selector-class">.nav-tabs</span> &gt; <span class="selector-class">.tab</span> <span class="selector-tag">button</span> {</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">}</span><br><span class="line"><span class="selector-id">#article-container</span> <span class="selector-class">.tabs</span> &gt; <span class="selector-class">.tab-contents</span> <span class="selector-class">.tab-item-content</span> {</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1.0rem</span> <span class="number">1.2rem</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="데이터 집합 (issues)">
+    <del>데이터 집합 (issues)</del>
+</h1>
+<div class="note no-icon flat"><p>현재 사용 불가능한 것으로 추정.</p>
+</div>
+<h1 id="시-poem">시 (poem)</h1>
+<div class="note no-icon flat"><p>기왕 한글로 번역하는 김에 내용을 훈민정음언해로 변경해보았습니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{% poem [title],[author] %}</span><br><span class="line">[시 내용]</span><br><span class="line">{% endpoem %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>title</code>: 제목</li>
+<li><code>author</code>: 저자</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{% poem 훈민정음언해, 1459년 - 세조 5년 - %}</span><br><span class="line">나랏말ᄊᆞ미</span><br><span class="line">中<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>듀ᇰ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>國<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>귁<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>에달아</span><br><span class="line">文<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>문<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>字<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>ᄍᆞᆼ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>와로서르ᄉᆞᄆᆞᆺ디아니ᄒᆞᆯᄊᆡ</span><br><span class="line">이런젼ᄎᆞ로어린百<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>ᄇᆡᆨ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>姓<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>셔ᇰ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>이니르고져호ᇙ배이셔도</span><br><span class="line">ᄆᆞᄎᆞᆷ내제ᄠᅳ들시러펴디몯ᄒᆞᇙ노미하니라</span><br><span class="line">내이ᄅᆞᆯ為<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>윙<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>ᄒᆞ야어엿비너겨</span><br><span class="line">새로스믈여듧字<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>ᄍᆞᆼ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>ᄅᆞᆯᄆᆡᇰᄀᆞ노니</span><br><span class="line">사ᄅᆞᆷ마다ᄒᆡᅇᅧ수ᄫᅵ니겨날로ᄡᅮ메</span><br><span class="line">便<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>뼌<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>安<span class="language-xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>ᅙᅡᆫ<span class="language-xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span>킈ᄒᆞ고져ᄒᆞᇙᄯᆞᄅᆞ미니라</span><br><span class="line">{% endpoem %}</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><div class="poem"><div class="poem-title">훈민정음언해</div><div class="poem-author"> 1459년 - 세조 5년 -</div><p>나랏말ᄊᆞ미<br>
+中<sub>듀ᇰ</sub>國<sub>귁</sub>에달아<br>
+文<sub>문</sub>字<sub>ᄍᆞᆼ</sub>와로서르ᄉᆞᄆᆞᆺ디아니ᄒᆞᆯᄊᆡ<br>
+이런젼ᄎᆞ로어린百<sub>ᄇᆡᆨ</sub>姓<sub>셔ᇰ</sub>이니르고져호ᇙ배이셔도<br>
+ᄆᆞᄎᆞᆷ내제ᄠᅳ들시러펴디몯ᄒᆞᇙ노미하니라<br>
+내이ᄅᆞᆯ為<sub>윙</sub>ᄒᆞ야어엿비너겨<br>
+새로스믈여듧字<sub>ᄍᆞᆼ</sub>ᄅᆞᆯᄆᆡᇰᄀᆞ노니<br>
+사ᄅᆞᆷ마다ᄒᆡᅇᅧ수ᄫᅵ니겨날로ᄡᅮ메<br>
+便<sub>뼌</sub>安<sub>ᅙᅡᆫ</sub>킈ᄒᆞ고져ᄒᆞᇙᄯᆞᄅᆞ미니라</p>
+</div></div><div class="tab-item-content"><ol>
+<li>
+<p>나눔명조 옛한글을 사용하기 위한 npm 라이브러리를 설치한 후, markdown 파일에서 해당 글꼴을 추가했습니다.</p>
+</li>
+<li>
+<p>덧붙여, 위로 정렬이 보기 좋은 것 같아 <code>text-align</code>과 더불어 <code>margin</code>과 <code>height</code>를 수정해주었습니다.</p>
+ <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @kfonts/nanum-myeongjo-yet-hangul</span><br></pre></td></tr></tbody></table></figure>
+ <p>
+ </p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@import</span> url(<span class="string">'https://unpkg.com/@kfonts/nanum-myeongjo-yet-hangul/index.css'</span>);</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.poem</span> <span class="selector-tag">p</span>, <span class="selector-class">.poem-title</span>, <span class="selector-class">.poem-author</span> {</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: left <span class="meta">!important</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-family</span>: <span class="string">'나눔명조 옛한글'</span>, serif <span class="meta">!important</span>;</span></span><br><span class="line"><span class="language-css">    }</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.poem</span> {</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">20px</span> auto;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">670px</span>;</span></span><br><span class="line"><span class="language-css">    }</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>해당 글꼴은 숫자 및 일부 문자를 회전하지 못하는 이슈가 있어, <code>text-orientation: upright;</code>를 추가하여 해결하였습니다.</p>
+</li>
+<li>
+<p>또한, 1200px 이상의 너비인 화면에 대해서만 세로로 표기해주고 있으므로 동일한 css를 모든 너비에 대해 추가해주었습니다.</p>
+ <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.poem</span> {</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">height</span>: auto;</span><br><span class="line">    <span class="attribute">text-orientation</span>: upright;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.poem</span> <span class="selector-tag">p</span> {</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">    <span class="attribute">text-decoration-color</span>: <span class="built_in">rgba</span>(<span class="number">193</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">0.72</span>);</span><br><span class="line">    <span class="attribute">text-decoration-style</span>: dashed;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>아래첨자의 스타일은 아래와 같이 css를 수정하였습니다.</p>
+ <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.poem</span> <span class="selector-tag">p</span> sub {</span><br><span class="line">    <span class="attribute">position</span>: sticky;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>마지막으로, 제목과 본문의 자간이 너무 좁아보여서 아래와 같이 늘려주었습니다.</p>
+ <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.poem-title</span> {</span><br><span class="line">    <span class="attribute">letter-spacing</span>: <span class="number">0.5em</span>;</span><br><span class="line">}</span><br><span class="line"><span class="selector-class">.poem</span> <span class="selector-tag">p</span> {</span><br><span class="line">    <span class="attribute">letter-spacing</span>: <span class="number">0.2em</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="IconFont-추가-icon">IconFont 추가 (icon)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% icon [icon-xxxx],[font-size] %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>icon-xxxx</code>: IconFont 아이콘의 font-class를 나타냅니다. 자신의 아이콘 라이브러리 항목에서 font-class 를 복사하여 참조하면 됩니다.</li>
+<li><code>font-size</code>: 아이콘의 크기를 나타냅니다. 단위는 em이며, 숫자만 입력하면 됩니다 (기본값: 1em).</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|size=1|size=2|size=3|size=4|size=5|size=6|</span><br><span class="line">|:---:|:---:|:---:|:---:|:---:|:---:|</span><br><span class="line">|{% icon icon-rat<span class="emphasis">_zi %}|{% icon icon-rat,2 %}|{% icon icon-ox_</span>chou,3 %}|{% icon icon-ox,4 %}|{% icon icon-tiger<span class="emphasis">_yin,5 %}|{% icon icon-tiger,6 %}|</span></span><br><span class="line"><span class="emphasis">|{% icon icon-rabbit_</span>mao,1 %}|{% icon icon-rabbit,2 %}|{% icon icon-dragon<span class="emphasis">_chen,3 %}|{% icon icon-dragon,4 %}|{% icon icon-snake_</span>si,5 %}|{% icon icon-snake,6 %}|</span><br><span class="line">|{% icon icon-horse<span class="emphasis">_wu %}|{% icon icon-horse,2 %}|{% icon icon-goat_</span>wei,3 %}|{% icon icon-goat,4 %}|{% icon icon-monkey<span class="emphasis">_shen,5 %}|{% icon icon-monkey,6 %}|</span></span><br><span class="line"><span class="emphasis">|{% icon icon-rooster_</span>you %}|{% icon icon-rooster,2 %}|{% icon icon-dog<span class="emphasis">_xu,3 %}|{% icon icon-dog,4 %}|{% icon icon-boar_</span>hai,5 %}|{% icon icon-boar,6 %}|</span><br><span class="line">&lt;!-- endtab --&gt;</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><table>
+<thead>
+<tr>
+<th style="text-align:center">size=1</th>
+<th style="text-align:center">size=2</th>
+<th style="text-align:center">size=3</th>
+<th style="text-align:center">size=4</th>
+<th style="text-align:center">size=5</th>
+<th style="text-align:center">size=6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-rat_zi"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:2em; height:2em" aria-hidden="true"><use xlink:href="#icon-rat"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:3em; height:3em" aria-hidden="true"><use xlink:href="#icon-ox_chou"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:4em; height:4em" aria-hidden="true"><use xlink:href="#icon-ox"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:5em; height:5em" aria-hidden="true"><use xlink:href="#icon-tiger_yin"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:6em; height:6em" aria-hidden="true"><use xlink:href="#icon-tiger"></use></svg></td>
+</tr>
+<tr>
+<td style="text-align:center"><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-rabbit_mao"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:2em; height:2em" aria-hidden="true"><use xlink:href="#icon-rabbit"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:3em; height:3em" aria-hidden="true"><use xlink:href="#icon-dragon_chen"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:4em; height:4em" aria-hidden="true"><use xlink:href="#icon-dragon"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:5em; height:5em" aria-hidden="true"><use xlink:href="#icon-snake_si"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:6em; height:6em" aria-hidden="true"><use xlink:href="#icon-snake"></use></svg></td>
+</tr>
+<tr>
+<td style="text-align:center"><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-horse_wu"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:2em; height:2em" aria-hidden="true"><use xlink:href="#icon-horse"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:3em; height:3em" aria-hidden="true"><use xlink:href="#icon-goat_wei"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:4em; height:4em" aria-hidden="true"><use xlink:href="#icon-goat"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:5em; height:5em" aria-hidden="true"><use xlink:href="#icon-monkey_shen"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:6em; height:6em" aria-hidden="true"><use xlink:href="#icon-monkey"></use></svg></td>
+</tr>
+<tr>
+<td style="text-align:center"><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-rooster_you"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:2em; height:2em" aria-hidden="true"><use xlink:href="#icon-rooster"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:3em; height:3em" aria-hidden="true"><use xlink:href="#icon-dog_xu"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:4em; height:4em" aria-hidden="true"><use xlink:href="#icon-dog"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:5em; height:5em" aria-hidden="true"><use xlink:href="#icon-boar_hai"></use></svg></td>
+<td style="text-align:center"><svg class="icon" style="width:6em; height:6em" aria-hidden="true"><use xlink:href="#icon-boar"></use></svg></td>
+</tr>
+</tbody>
+</table></div><div class="tab-item-content"><p>그 외의 아이콘을 사용하고 싶을 경우, <a target="_blank" rel="noopener" href="https://akilar.top/posts/d2ebecef/">이 블로그 포스팅</a>를 참고하시면 될 것 같습니다.</p>
+<details class="folding-tag" blue=""><summary> 대략 아래의 프로세스를 따른다고 보시면 됩니다. </summary>
+              <div class="content">
+              <ol><li><p><a target="_blank" rel="noopener" href="https://www.iconfont.cn">https://www.iconfont.cn</a>에 접속하여 원하는 아이콘들을 장바구니(?)에 추가</p></li><li><p>프로젝트를 새로 생성하거나 기존의 프로젝트에 장바구니에 담은 아이콘들을 옮김</p></li><li><p>프로젝트에 생성된 <code>Font Class</code> (예시: <code>//at.alicdn.com/t/c/font_4814779_nyhonqavyya.css</code>)를 복사하여 <code>_config.butterfly.yml</code>의 [inject]&gt;[head] 아래에 추가</p> <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel="stylesheet"</span> <span class="string">href="//at.alicdn.com/t/c/font_4814779_nyhonqavyya.css"</span>  <span class="string">media="defer"</span> <span class="string">onload="this.media='all'"&gt;</span></span><br></pre></td></tr></tbody></table></figure><p>혹은 간단하게 본인의 커스텀 css에 아래와 같이 삽입</p> <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(<span class="string">"//at.alicdn.com/t/c/font_4814779_nyhonqavyya.css"</span>);</span><br></pre></td></tr></tbody></table></figure></li><li><p>프로젝트에 생성된 <code>Symbol</code> (예시: <code>//at.alicdn.com/t/c/symbol_4814779_nyhonqavyya.js</code>)를 복사하여 <code>_config.yml</code>의 [tag_plugins]&gt;[CDN]&gt;[iconfont] 변경</p> <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tag_plugins:</span></span><br><span class="line">  <span class="attr">CDN:</span></span><br><span class="line">    <span class="attr">iconfont:</span> <span class="string">//at.alicdn.com/t/c/font_4814779_nyhonqavyya.js</span></span><br></pre></td></tr></tbody></table></figure></li><li><p>FontAwsome 쓰듯이 <code>&lt;i class="iconfont icon-xxx"&gt;&lt;/i&gt;</code>와 같은 형태로 활용</p></li></ol>
+              </div>
+            </details>
+<details class="folding-tag" red=""><summary> 라고 쓰여있긴 하나, 사실 그냥 <code>i</code> 태그 쓰면 js 없이 잘 작동하긴 합니다..ㅎㅎ </summary>
+              <div class="content">
+              <div class="tabs"><div class="nav-tabs"><button type="button" class="tab">기존 iconfont.js 코드</button><button type="button" class="tab active">수정된 iconfont.js 코드</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">iconFont</span>(<span class="params">args</span>) {</span><br><span class="line">  args = args.<span class="title function_">join</span>(<span class="string">' '</span>).<span class="title function_">split</span>(<span class="string">','</span>)</span><br><span class="line">  <span class="keyword">let</span> p0 = args[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> p1 = args[<span class="number">1</span>]?args[<span class="number">1</span>]:<span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;svg class="icon" style="width:<span class="subst">${p1}</span>em; height:<span class="subst">${p1}</span>em" aria-hidden="true"&gt;</span></span><br><span class="line"><span class="string">      &lt;use xlink:href="#<span class="subst">${p0}</span>"&gt;&lt;/use&gt;</span></span><br><span class="line"><span class="string">    &lt;/svg&gt;`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">'icon'</span>,iconFont);</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">iconFont</span>(<span class="params">args</span>) {</span><br><span class="line">  args = args.<span class="title function_">join</span>(<span class="string">' '</span>).<span class="title function_">split</span>(<span class="string">','</span>)</span><br><span class="line">  <span class="keyword">let</span> p0 = args[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> p1 = args[<span class="number">1</span>]?args[<span class="number">1</span>]:<span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;i class="iconfont <span class="subst">${p0}</span>" style="font-size:<span class="subst">${p1}</span>em" aria-hidden="true"&gt;&lt;/i&gt;`</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">'icon'</span>,iconFont);</span><br></pre></td></tr></tbody></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+              </div>
+            </details></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="특수효과-wow">특수효과 (wow)</h1>
+<div class="note warning modern">
+<p>추가 라이브러리의 설치가 필요합니다.<br>
+설치 방법은 원저자의 다른 블로그 포스팅<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> 또는 아래의 +a 탭을 참고하시면 될 것 같습니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">{% wow [animate],[duration],[delay],[offset],[iteration] %}</span><br><span class="line">[내용]</span><br><span class="line">{% endwow %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>animate</code>: 애니메이션 스타일. 효과에 대한 설명은 animate.css 문서를 참조</li>
+<li><code>duration</code>: «선택사항» 애니메이션 지속시간. 단위는 ms 또는 s 가능. (ex. 2s 700ms)</li>
+<li><code>delay</code>: «선택사항» 애니메이션 시작 지연시간. 단위는 ms 또는 s 가능. (ex. 2s 700ms)</li>
+<li><code>offset</code>: «선택사항» 애니메이션 시작 위치</li>
+<li><code>iteration</code>: «선택사항» 애니메이션 반복 횟수</li>
+</ol>
+<div class="note warning flat"><p>마지막 네 항목은 선택사항이지만, 위치를 벗어나서 채워야 할 때는 순서가 흐트러져서는 안 됩니다 (자세한 내용은 예시 참조). 또한, 다른 외부 태그의 사용이 가능합니다.</p>
+</div></div><div class="tab-item-content"><ol>
+<li>
+<p><code>flip</code> 애니메이션 효과</p>
+ <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% wow animate<span class="strong">__flip %}</span></span><br><span class="line"><span class="strong">{% note green 'fas fa-fan' modern %}</span></span><br><span class="line"><span class="strong">`flip` 애니메이션 효과.</span></span><br><span class="line"><span class="strong">{% endnote %}</span></span><br><span class="line"><span class="strong">{% endwow %}</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p><code>zoomIn</code> 애니메이션 효과. 5초 지속, 2초 지연, 바닥에서 100 거리에서 시작하여 2회 반복.</p>
+ <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% wow animate<span class="strong">__zoomIn,5s,2s100,2 %}</span></span><br><span class="line"><span class="strong">{% note blue 'fas fa-bullhorn' modern%}</span></span><br><span class="line"><span class="strong">`zoomIn` 애니메이션 효과. 5초 지속, 2초 지연, 바닥에서 100 거리에서 시작, 2회 반복.</span></span><br><span class="line"><span class="strong">{% endnote %}</span></span><br><span class="line"><span class="strong">{% endwow %}</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p><code>slideInRight</code> 애니메이션 효과. 3초 지속, 2초 지연.</p>
+ <figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% wow animate<span class="strong">__slideInRight,3s,2s %}</span></span><br><span class="line"><span class="strong">{% note orange 'fas fa-car' modern%}</span></span><br><span class="line"><span class="strong">`slideInRight` 애니메이션 효과. 3초 지속, 2초 지연.</span></span><br><span class="line"><span class="strong">{% endnote %}</span></span><br><span class="line"><span class="strong">{% endwow %}</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p><code>heartBeat</code> 애니메이션 효과. 2초 지연, 3회 반복.</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% wow animate__heartBeat,,2s,,3 %}</span><br><span class="line">{% note red 'fas fa-battery-half' modern%}</span><br><span class="line">`heartBeat` 애니메이션 효과. 2초 지연, 3회 반복.</span><br><span class="line">{% endnote %}</span><br><span class="line">{% endwow %}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li><code>flip</code> 애니메이션 효과
+<div class="wow animate__flip" data-wow-duration="" data-wow-delay="" data-wow-offset="" data-wow-iteration=""><div class="note green icon-padding modern"><i class="note-icon fas fa-fan"></i><p><code>flip</code> 애니메이션 효과.</p>
+</div></div>
+</li>
+<li><code>zoomIn</code> 애니메이션 효과. 5초 지속, 2초 지연, 바닥에서 100 거리에서 시작, 2회 반복.
+<div class="wow animate__zoomIn" data-wow-duration="5s" data-wow-delay="2s100" data-wow-offset="2" data-wow-iteration=""><div class="note blue icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p><code>zoomIn</code> 애니메이션 효과. 5초 지속, 2초 지연, 바닥에서 100 거리에서 시작, 2회 반복.</p>
+</div></div>
+</li>
+<li><code>slideInRight</code> 애니메이션 효과. 5초 지속, 2초 지연.
+<div class="wow animate__slideInRight" data-wow-duration="3s" data-wow-delay="2s" data-wow-offset="" data-wow-iteration=""><div class="note orange icon-padding modern"><i class="note-icon fas fa-car"></i><p><code>slideInRight</code> 애니메이션 효과. 3초 지속, 2초 지연.</p>
+</div></div>
+</li>
+<li><code>heartBeat</code> 애니메이션 효과. 2초 지연, 3회 반복.
+<div class="wow animate__heartBeat" data-wow-duration="" data-wow-delay="2s" data-wow-offset="" data-wow-iteration="3"><div class="note red icon-padding modern"><i class="note-icon fas fa-battery-half"></i><p><code>heartBeat</code> 애니메이션 효과. 2초 지연, 3회 반복.</p>
+</div></div>
+</li>
+</ol></div><div class="tab-item-content"><p><span class="p semi-large">wowjs 사용 방법</span></p>
+<ol>
+<li>터미널을 열고, 블로그의 루트 디렉토리로 이동하여 아래의 명령어를 실행합니다.<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-butterfly-wowjs --save</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>블로그 구성 파일(<code>_config.yml</code> 또는 <code>_config.butterfly.yml</code>)에 아래의 구문을 추가합니다. <figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wowjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># wow.js 활성화 여부</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">10</span>  <span class="comment"># wow.js 스크립트의 우선순위</span></span><br><span class="line">  <span class="attr">mobile:</span> <span class="literal">false</span> <span class="comment"># 모바일에서도 wow.js 사용 여부</span></span><br><span class="line">  <span class="attr">animateitem:</span></span><br><span class="line">    <span class="comment">#- 아래에 추가하고 싶은 항목을 추가.</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">class:</span> <span class="string">recent-post-item</span> <span class="comment"># 필수항목, 애니메이션을 추가하고 싶은 클래스명</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">animate__zoomIn</span>  <span class="comment"># 필수항목, 애니메이션 스타일. 효과에 대한 설명은 animate.css 문서를 참조</span></span><br><span class="line">      <span class="attr">duration:</span> <span class="string">2s</span>            <span class="comment"># 선택항목, 애니메이션 지속시간，단위: ms 또는 s. (예: 3s, 700ms)</span></span><br><span class="line">      <span class="attr">delay:</span> <span class="string">1s</span>               <span class="comment"># 선택항목, 애니메이션 시작 지연시간，단위: ms 또는 s. (예: 3s, 700ms)</span></span><br><span class="line">      <span class="attr">offset:</span> <span class="number">100</span>             <span class="comment"># 선택항목, 애니메이션 시작 위치 (브라우저 하단 기준)</span></span><br><span class="line">      <span class="attr">iteration:</span> <span class="number">2</span>            <span class="comment"># 선택항목, 애니메이션 반복 횟수</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">class:</span> <span class="string">card-widget</span></span><br><span class="line">      <span class="attr">style:</span> <span class="string">animate__zoomIn</span></span><br><span class="line">  <span class="attr">animate_css:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css</span></span><br><span class="line">  <span class="attr">wow_js:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js</span></span><br><span class="line">  <span class="attr">wow_init_js:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<ul>
+<li><code>animateitem</code>은 예시를 위해 추가된 항목이므로, 아래와 같이 비워두어도 무방합니다.<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">wowjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># wow.js 활성화 여부</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">10</span>  <span class="comment"># wow.js 스크립트의 우선순위</span></span><br><span class="line">  <span class="attr">mobile:</span> <span class="literal">false</span> <span class="comment"># 모바일에서도 wow.js 사용 여부</span></span><br><span class="line">  <span class="attr">animateitem:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">class:</span> </span><br><span class="line">  <span class="attr">animate_css:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css</span></span><br><span class="line">  <span class="attr">wow_js:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js</span></span><br><span class="line">  <span class="attr">wow_init_js:</span> <span class="string">https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="진행률-progress">진행률 (progress)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% progress [width] [color] [text] %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>width</code>: 0부터 100까지의 아라비아 숫자</li>
+<li><code>color</code>: 색상. 값은 red, yellow, green, cyan, blue, gray 로 표시</li>
+<li><code>text</code>: 진행 표시줄의 텍스트 내용</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{% progress 10 red '진행률 표시줄 미리보기' %}</span><br><span class="line">{% progress 30 yellow '진행률 표시줄 미리보기' %}</span><br><span class="line">{% progress 50 green '진행률 표시줄 미리보기' %}</span><br><span class="line">{% progress 70 cyan '진행률 표시줄 미리보기' %}</span><br><span class="line">{% progress 90 blue '진행률 표시줄 미리보기' %}기</span><br><span class="line">{% progress 100 gray '진행률 표시줄 미리보기' %}</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-red" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div>
+<div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-yellow" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div>
+<div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-green" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div>
+<div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-cyan" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div>
+<div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-blue" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div>
+<div class="progress"><div class="progress-bar-animated progress-bar progress-bar-striped bg-gray" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><p>진행률 표시줄 미리보기</p></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="주석-notation">주석 (notation)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% nota [label], [text] %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>label</code>: 주석을 달 단어</li>
+<li><code>text</code>: mouse over 시 표시되는 주석</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% nota '이 위로 마우스를 이동시켜 보십시오.', '맨 위 표시줄' %}</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><p><span class="nota" data-nota="맨 위 표시줄">이 위로 마우스를 이동시켜 보십시오.</span></p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="말풍선-주석-bubble">말풍선 주석 (bubble)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% bubble [content] , [notation] ,[background-color] %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>content</code>: 주석을 달 단어</li>
+<li><code>notation</code>: mouse over 시 표시되는 주석</li>
+<li><code>background-color</code>: «선택사항» 말풍선의 배경색. 기본값은 #71a4e3</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">저는 최근에 많은 새로운 것을 배웠습니다(비록 이것들이 많은 전문가에게는 오래된 기술일지라도요).</span><br><span class="line">가령, CSS {% bubble 인접 형제 선택자,"가령<span class="literal">&amp;comma;</span> h1 + p {margin-top:50px;}" %}, {% bubble flex 레이아웃,"Flex는 Flexible Box의 약자로<span class="literal">&amp;comma;</span> 박스 모델에 유연하고 강력한 레이아웃 설정을 가능하게 합니다.","#ec5830" %}, {% bubble transform 변환,"transform 속성은 요소에 2D 또는 3D 변형을 적용합니다. 이 속성을 사용하면 요소를 회전<span class="literal">&amp;comma;</span> 크기 조정<span class="literal">&amp;comma;</span> 이동<span class="literal">&amp;comma;</span> 또는 기울일 수 있습니다.","#1db675" %}, animation을 위한 {% bubble 베지에 곡선,"베지에 곡선(Bézier curve)은 베지어 곡선이라고 불리는<span class="literal">&amp;comma;</span> 2차원 그래픽 응용 프로그램에서 사용되는 매개변수 곡선입니다. 일반적인 벡터 그래픽 소프트웨어는 이를 통해 곡선을 정확하게 그립니다. 베지에 곡선은 선분과 노드로 구성되어 있는데<span class="literal">&amp;comma;</span> 노드는 끌 수 있는 지점이며 선분은 신축성 있는 고무줄과 같습니다.","#de4489" %} 작성법, 그리고 오늘 본 {% bubble clip-path,"clip-path 속성은 요소의 표시 가능 영역 주위에 클리핑 경로를 생성합니다. 해당 영역의 내부는 표시되고<span class="literal">&amp;comma;</span> 외부는 숨겨집니다.","#868fd7" %} 속성 등이 있습니다. 이러한 새로운 개념들은 제가 이전에 쌓아온 디자인 아이디어에 큰 영향을 주었습니다.</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><p>저는 최근에 많은 새로운 것을 배웠습니다(비록 이것들이 많은 전문가에게는 오래된 기술일지라도요).<br>
+가령, CSS <span class="bubble-content">인접 형제 선택자</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#71a4e3;">가령, h1 + p {margin-top:50px;}</span></span>, <span class="bubble-content">flex 레이아웃</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#ec5830;">Flex는 Flexible Box의 약자로, 박스 모델에 유연하고 강력한 레이아웃 설정을 가능하게 합니다.</span></span>, <span class="bubble-content">transform 변환</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#1db675;">transform 속성은 요소에 2D 또는 3D 변형을 적용합니다. 이 속성을 사용하면 요소를 회전, 크기 조정, 이동, 또는 기울일 수 있습니다.</span></span>, animation을 위한 <span class="bubble-content">베지에 곡선</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#de4489;">베지에 곡선(Bézier curve)은 베지어 곡선이라고 불리는, 2차원 그래픽 응용 프로그램에서 사용되는 매개변수 곡선입니다. 일반적인 벡터 그래픽 소프트웨어는 이를 통해 곡선을 정확하게 그립니다.<br>
+베지에 곡선은 선분과 노드로 구성되어 있는데, 노드는 끌 수 있는 지점이며 선분은 신축성 있는 고무줄과 같습니다.<br>
+<del>대충 피피티에서 곡선 그릴 때 쓰는 그거 말하는건가봄ㅎㅎ</del></span></span> 작성법, 그리고 오늘 본 <span class="bubble-content">clip-path</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#868fd7;">clip-path 속성은 요소의 표시 가능 영역 주위에 클리핑 경로를 생성합니다. 해당 영역의 내부는 표시되고, 외부는 숨겨집니다.</span></span> 속성 등이 있습니다. 이러한 새로운 개념들은 제가 이전에 쌓아온 디자인 아이디어에 큰 영향을 주었습니다.</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="참고문헌-reference">참고문헌 (reference)</h1>
+<div class="note no-icon flat"><p>본 블로그의 <code>참고 링크</code>는 markdown-it-footnote 플러그인을 기반으로 변형된 것이라, 하기의 태그와는 형식과 스타일에 차이가 있습니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">{% referto [id] , [literature] %}</span><br><span class="line">{% referfrom [id] , [literature] , [url] %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>referto</code>: 참조 위 첨자</li>
+</ol>
+<ul>
+<li><code>id</code>: 위 첨자의 순번 내용은 <code>referfrom</code> 탭의 <code>id</code>와 대응되어야 상호 이동 가능</li>
+<li><code>literature</code>: 인용된 참고 문헌 이름</li>
+</ul>
+<ol start="2">
+<li><code>referfrom</code> 참조 출처</li>
+</ol>
+<ul>
+<li><code>id</code>: 번호 내용, <code>referto</code> 태그의 <code>id</code>와 대응되어야 상호 이동 가능</li>
+<li><code>literature</code>: 인용된 참고 문헌 이름</li>
+<li><code>url</code>: 인용된 참조 링크, 생략 가능</li>
+</ul></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">이 블로그는 Hexo 프레임워크{% referto '[1]', 'Hexo Official Site' %}에 Butterfly 테마{% referto '[2]', 'Butterfly - A Simple and Card UI Design theme for Hexo' %}를 사용하고 있습니다. </span><br><span class="line">Butterfly 테마{% referto '[2]', 'Butterfly - A Simple and Card UI Design theme for Hexo' %}는 Melody 테마{% referto '[3]', 'Molunerfinn/hexo-theme-melody' %}{% referto '[4]', 'MARKSZのBlog' %}를 기반으로 제작되어 있어 이들과 관련된 여러 블로그들을 참고해볼 수 있습니다.</span><br><span class="line">{% referfrom '[1]', 'Hexo Official Site', 'https://hexo.io' %}</span><br><span class="line">{% referfrom '[2]', 'Butterfly - A Simple and Card UI Design theme for Hexo', 'https://butterfly.js.org' %}</span><br><span class="line">{% referfrom '[3]', 'Molunerfinn/hexo-theme-melody', 'https://github.com/Molunerfinn/hexo-theme-melody' %}</span><br><span class="line">{% referfrom '[4]', 'MARKSZのBlog', 'https://molunerfinn.com' %}</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><p>이 블로그는 Hexo 프레임워크<span class="hidden-anchor" id="referto_[1]"></span><sup class="reference"><a href="#referfrom_[1]">[1]</a></sup><span class="reference-bubble"><span class="reference-item"><span class="reference-literature"> Hexo Official Site</span><span class="reference-title">参考资料</span></span></span>에 Butterfly 테마<span class="hidden-anchor" id="referto_[2]"></span><sup class="reference"><a href="#referfrom_[2]">[2]</a></sup><span class="reference-bubble"><span class="reference-item"><span class="reference-literature"> Butterfly - A Simple and Card UI Design theme for Hexo</span><span class="reference-title">参考资料</span></span></span>를 사용하고 있습니다.<br>
+Butterfly 테마<span class="hidden-anchor" id="referto_[2]"></span><sup class="reference"><a href="#referfrom_[2]">[2]</a></sup><span class="reference-bubble"><span class="reference-item"><span class="reference-literature"> Butterfly - A Simple and Card UI Design theme for Hexo</span><span class="reference-title">参考资料</span></span></span>는 Melody 테마<span class="hidden-anchor" id="referto_[3]"></span><sup class="reference"><a href="#referfrom_[3]">[3]</a></sup><span class="reference-bubble"><span class="reference-item"><span class="reference-literature"> Molunerfinn/hexo-theme-melody</span><span class="reference-title">参考资料</span></span></span><span class="hidden-anchor" id="referto_[4]"></span><sup class="reference"><a href="#referfrom_[4]">[4]</a></sup><span class="reference-bubble"><span class="reference-item"><span class="reference-literature"> MARKSZのBlog</span><span class="reference-title">参考资料</span></span></span>를 기반으로 제작되어 있어 이들과 관련된 여러 블로그들을 참고해볼 수 있습니다.</p>
+<div class="reference-source"><span class="hidden-anchor" id="referfrom_[1]"></span><a class="reference-anchor" href="#referto_[1]">[1]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href=" https://hexo.io"> Hexo Official Site</a></div>
+<div class="reference-source"><span class="hidden-anchor" id="referfrom_[2]"></span><a class="reference-anchor" href="#referto_[2]">[2]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href=" https://butterfly.js.org"> Butterfly - A Simple and Card UI Design theme for Hexo</a></div>
+<div class="reference-source"><span class="hidden-anchor" id="referfrom_[3]"></span><a class="reference-anchor" href="#referto_[3]">[3]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href=" https://github.com/Molunerfinn/hexo-theme-melody"> Molunerfinn/hexo-theme-melody</a></div>
+<div class="reference-source"><span class="hidden-anchor" id="referfrom_[4]"></span><a class="reference-anchor" href="#referto_[4]">[4]<div class="reference-anchor-up fa-solid fa-angles-up"></div></a><a class="reference-link" href=" https://molunerfinn.com"> MARKSZのBlog</a></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="회전목마-앨범-carousel">회전목마 앨범 (carousel)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{% carousel [Id], [name] %}</span><br><span class="line">![](<span class="link">/img/1.jpg</span>)</span><br><span class="line">![](<span class="link">/img/2.jpg</span>)</span><br><span class="line">![](<span class="link">/img/3,jpg</span>)</span><br><span class="line">{% endcarousel %}</span><br></pre></td></tr></tbody></table></figure>
+<ol>
+<li><code>Id</code>: 앨범의 고유 ID로, 앨범의 마우스 움직임을 모니터링하는 데 사용됩니다. 중국어 사용을 금지합니다.<del>한국어도 해당될 듯</del> 동일한 ID를 가진 캐러셀 앨범은 동일한 페이지에 존재할 수 없습니다.</li>
+<li><code>name</code>: 앨범 중간에 표시되는 내용, 영문 작은따옴표로 감싸는 것을 권장합니다.</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">{% carousel 'SF','strike freedom' %}</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110444226.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110508327.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110525753.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110600751.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110621554.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110637459.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110654150.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110707916.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110719787.png</span>)</span><br><span class="line">![](<span class="link">https://cdn.jsdelivr.net/npm/akilar-candyassets/image/20200907110731118.png</span>)</span><br><span class="line">{% endcarousel %}</span><br></pre></td></tr></tbody></table></figure></div><div class="tab-item-content active"><div class="note warning flat"><p>carousel 탭은 markdown 플러그인으로 컴파일된 html 내용의 시작과 끝부분 <code>p</code> 태그를 삭제하는 코드가 존재하므로, 다른 태그와 함께 사용할 때 버그가 발생합니다. 따라서, <code>tab</code> 태그 내부에서 사용이 불가능하기 때문에 여기에서는 미리보기를 표시할 수 없습니다.<br>
+<strong>따라서, 미리보기는 <a target="_blank" rel="noopener" href="https://akilar.top/gallery/" style="color: var(--tag-plugin-yellow)">원 저자의 갤러리</a>에서 Gundam 페이지를 참고하시기 바랍니다.</strong></p>
+<p>덧붙여, 현재 최적의 레이아웃 세팅은 8-12개의 이미지를 사용하는 것입니다. 이 범위에 없으면 컴퓨터 상에서는 마우스 휠로 확대/축소할 수 있지만 휴대 전화에서는 휠을 사용할 수 없기 때문에 애니메이션 효과가 제대로 나타나지 않을 수 있습니다. 이는 <code>carousel-touch.js</code>의 시작 부분에서 매개변수를 수정하여 조정할 수 있습니다.</p>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<style>
+@import url('https://unpkg.com/@kfonts/nanum-myeongjo-yet-hangul/index.css');
+
+.poem p, .poem-title, .poem-author {
+  text-align: left !important;
+  font-family: '나눔명조 옛한글', serif !important;
+}
+.poem {
+  height: auto;
+  writing-mode: vertical-rl;
+  writing-mode: tb-rl;
+  padding: 1em 0;
+  margin: 0 auto;
+  height: 670px;
+  text-orientation: upright;
+}
+.poem p {
+  letter-spacing: 0.2em;
+  text-decoration: underline;
+  text-decoration-color: rgba(193,11,11,0.72);
+  text-decoration-style: dashed;
+}
+.poem-title {
+    letter-spacing: 0.6em;
+}
+.poem sub {
+  right: -4px;
+  bottom: 0;
+  text-decoration-thickness: 2px !important;
+}
+
+[data-theme='dark'] .tabs td svg {
+    filter: grayscale(0.3) contrast(0.3) saturate(10) brightness(1);
+}
+
+
+#folding.tabs .hljs-code {
+  color: var(--hl-color) !important;
+  font-style: normal;
+}
+#icon.tabs .hljs-emphasis {
+  color: var(--hl-color) !important;
+  font-style: normal;
+}
+#wow.tabs .hljs-strong {
+  color: var(--hl-color) !important;
+  font-weight: normal;
+}
+
+.reference-title {
+  display: none;
+}
+</style><hr class="footnotes-sep">
+<h1 id="References">참고 링크</h1><section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a target="_blank" rel="noopener" href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Add Blog Animation – Wowjs | Akilarの糖果屋 <a target="_blank" rel="noopener" href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright" lang-type="relative" language="ko"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>작성자 :</span><span class="post-copyright-info"><a href="https://ex-rearranger.github.io">(역) extreme-rearranger</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>링크 :</span><span class="post-copyright-info"><a href="https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/">https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>저작권 :</span><span class="post-copyright-info">본 게시물은 <a target="_blank" rel="noopener" href="https://akilar.top/posts/615e2dec/">Tag-Plugins-Plus 원문</a>과 동일한 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 라이센스를 준수합니다.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/ko/tags/tutorial/" lang-type="relative"># tutorial</a><a class="post-meta__tags" href="/ko/tags/hexo-butterfly-tag-plugins-plus/" lang-type="relative"># hexo-butterfly-tag-plugins-plus</a><a class="post-meta__tags" href="/ko/tags/hexo-theme-butterfly/" lang-type="relative"># hexo-theme-butterfly</a><a class="post-meta__tags" href="/ko/tags/hexo-theme-volantis/" lang-type="relative"># hexo-theme-volantis</a></div></div></div><nav class="pagination-post card-widget" id="pagination"><div lang-type="relative" language="ko"><a class="pagination-related  prev-post" href="/posts/ko/tag-plugins-plus-tutorial-2/" title="Tag Plugins Plus 튜토리얼 [번역] - 2"><div class="cover" style="background: none"></div><div class="info"><div class="info-1"><div class="info-item-1">이전 게시물</div><div class="info-item-2">Tag Plugins Plus 튜토리얼 [번역] - 2</div></div><div class="info-2"><div class="info-item-1">hexo-butterfly-tag-plugins-plus의 한글 번역본 두 번째 파트입니다.  이 파트에서는 link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery 을 다룹니다.</div></div></div></a></div></nav><div class="card-widget" id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span lang-type="relative" language="ko"> 댓글</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span lang-type="relative" language="ko">목차</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%A0%91%EC%9D%B4%EC%8B%9D-%EC%83%81%EC%9E%90-folding"><span class="toc-text">접이식 상자 (folding)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EB%8B%A4%EC%A4%91-%ED%83%AD-tab"><span class="toc-text">다중 탭 (tab)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A7%91%ED%95%A9%20(issues)"><span class="toc-text">
+    데이터 집합 (issues)
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%8B%9C-poem"><span class="toc-text">시 (poem)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IconFont-%EC%B6%94%EA%B0%80-icon"><span class="toc-text">IconFont 추가 (icon)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%ED%8A%B9%EC%88%98%ED%9A%A8%EA%B3%BC-wow"><span class="toc-text">특수효과 (wow)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%A7%84%ED%96%89%EB%A5%A0-progress"><span class="toc-text">진행률 (progress)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%A3%BC%EC%84%9D-notation"><span class="toc-text">주석 (notation)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EB%A7%90%ED%92%8D%EC%84%A0-%EC%A3%BC%EC%84%9D-bubble"><span class="toc-text">말풍선 주석 (bubble)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%B0%B8%EA%B3%A0%EB%AC%B8%ED%97%8C-reference"><span class="toc-text">참고문헌 (reference)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%ED%9A%8C%EC%A0%84%EB%AA%A9%EB%A7%88-%EC%95%A8%EB%B2%94-carousel"><span class="toc-text">회전목마 앨범 (carousel)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">참고 링크</span></a></li></ol></div></div><div class="card-widget card-post-series" lang-type="relative" language="ko"><div class="item-headline"><i class="fa-solid fa-layer-group"></i><span>Tag Plugins Series</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/ko/tag-plugins-plus-tutorial-1/" title="Tag Plugins Plus 튜토리얼 [번역] - 1"><img src="/img/no-image.webp" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="Tag Plugins Plus 튜토리얼 [번역] - 1"></a><div class="content"><a class="title" href="/posts/ko/tag-plugins-plus-tutorial-1/" title="Tag Plugins Plus 튜토리얼 [번역] - 1">1 ) Tag Plugins Plus 튜토리얼 [번역] - 1</a><time datetime="2025-01-02T20:00:00.000Z" title="작성일 25-01-03 05:00:00">25-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ko/tag-plugins-plus-tutorial-2/" title="Tag Plugins Plus 튜토리얼 [번역] - 2"><img src="/img/no-image.webp" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="Tag Plugins Plus 튜토리얼 [번역] - 2"></a><div class="content"><a class="title" href="/posts/ko/tag-plugins-plus-tutorial-2/" title="Tag Plugins Plus 튜토리얼 [번역] - 2">2 ) Tag Plugins Plus 튜토리얼 [번역] - 2</a><time datetime="2025-01-02T21:00:00.000Z" title="작성일 25-01-03 06:00:00">25-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ko/tag-plugins-plus-tutorial-3/" title="Tag Plugins Plus 튜토리얼 [번역] - 3"><img src="/img/no-image.webp" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="Tag Plugins Plus 튜토리얼 [번역] - 3"></a><div class="content"><a class="title" href="/posts/ko/tag-plugins-plus-tutorial-3/" title="Tag Plugins Plus 튜토리얼 [번역] - 3">3 ) Tag Plugins Plus 튜토리얼 [번역] - 3</a><time datetime="2025-01-02T22:00:00.000Z" title="작성일 25-01-03 07:00:00">25-01-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(-130deg, #f8547b20, #0009dc20)"><div id="footer-wrap"><div class="copyright">©2022 - 2025 By extreme-rearranger</div><div class="framework-info"><span lang-type="relative" language="ko">Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span lang-type="relative" language="ko">Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div class="rightside-show" id="rightside"><div id="rightside-config-hide"><button id="langmode" type="button" title="한/영 사이트 전환"><i class="fontagon-icons ft-icons ft-icon-language"></i></button><button id="darkmode" type="button" title="라이트 모드 / 다크 모드"><i class="fas fa-adjust"></i></button><button id="readmode" type="button" title="읽기 모드"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="화면 설정 (다크 모드 등)"><i class="fas fa-cog slow-spin"></i></button><button id="hide-aside-btn" type="button" title="1단 / 2단 전환"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="목차"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="맨위로"><span class="scroll-percent" style="font-size: 0.85rem;"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="맨아래로"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js?v=5.3.0-b3"></script><script src="/js/main.js?v=5.3.0-b3"></script><script src="/js/change_lang.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="/third-party/node-snackbar@0.1.16.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/posts/ko/tag-plugins-plus-tutorial-3/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = 'Tag Plugins Plus 튜토리얼 [번역] - 3'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://exreg-blog.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=exreg-blog&api_key=coHvt9gfgl8oTxGjflGO8asrKXrLjI548DXeQFJhkz4bXirYxBXYeLhBQ3nQPDUP&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script id="click-heart" src="/third-party/click-heart.js" async="async" mobile="false"></script><script>(() => {
+  const option = null
+  const config = {"site_uv":false,"site_pv":false,"page_pv":false,"token":"XBC4GiXHFs1T4tLZ0R6mmTczMGQob9wp"}
+
+  const runTrack = () => {
+    umami.track(props => ({ ...props, url: window.location.pathname, title: GLOBAL_CONFIG_SITE.title }))
+  }
+
+  const loadUmamiJS = () => {
+    btf.getScript('https://cloud.umami.is/script.js', {
+      'defer': '',
+      'data-website-id': '600e0742-4227-4672-a4e0-893cb7742065',
+      'data-auto-track': 'true',
+      'data-tag': GLOBAL_CONFIG_SITE.pageType,
+      ...option
+    }).then(runTrack)
+  }
+
+  const getData = async (isPost) => {
+    const now = Date.now()
+    const keyUrl = isPost ? `&url=${window.location.pathname}` : ''
+    const headerList = { 'Accept': 'application/json' }
+    if (!'false') headerList['Authorization'] = `Bearer ${config.token}`
+    else headerList['x-umami-api-key'] = config.token
+    
+    const res = await fetch(
+      `https://api.umami.is/v1/websites/600e0742-4227-4672-a4e0-893cb7742065/stats?startAt=0000000000&endAt=${now}${keyUrl}`, 
+      {
+        method: "GET",
+        headers: headerList
+      })
+
+    return await res.json()
+  }
+
+  const insertData = async () => {
+    try {
+      if (GLOBAL_CONFIG_SITE.pageType === 'post' && config.page_pv) {
+        const pagePV = document.getElementById('umamiPV')
+        if (pagePV) {
+          const data = await getData(true)
+          pagePV.textContent = data.pageviews.value
+        }
+      } else {
+        const data = (config.site_uv || config.site_pv) && await getData()
+        if (config.site_uv) {
+          const siteUV = document.getElementById('umami-site-uv')
+          if (siteUV) siteUV.textContent = data.visitors.value
+        }
+        if (config.site_pv) {
+          const sitePV = document.getElementById('umami-site-pv')
+          if (sitePV) sitePV.textContent = data.pageviews.value
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load Umami Analytics:', e)
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', runTrack, 'umami_analytics_run_track')
+  btf.addGlobalFn('pjaxComplete', insertData, 'umami_analytics_insert')
+
+  loadUmamiJS()
+  insertData()
+})()</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title" lang-type="relative" language="ko">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span lang-type="relative" language="ko">  search.loading_data</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="검색 문장" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/hexo-generator-searchdb-custom/dist/local-search.js"></script></div></div></body></html>

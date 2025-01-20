@@ -20,7 +20,7 @@
   --dark-grey: #636363;  /* for toc border left */
   --grey: #7D7D82;  /* for meta-color */
   --grey60: #7D7D8299;
-  --light-grey: #cacaca;  /* for nav, post meta, ... */
+  --light-grey: #a4a4ad;  /* for nav, post meta, ... */
   --white: #ffffffd9;
 
   /* Background */
@@ -46,7 +46,7 @@
   /* --toc-link-hover: var(--sub-theme-color); */
 
   /* Code */
-  --code-bg: #2a2a2a;
+  --code-bg: rgba(255, 255, 255, 0.1);
 
   /* List - same variables as light mode */
 
@@ -80,4 +80,8 @@
 
 body.read-mode #article-container .code-expand-btn {
   background: none;
+}
+body.read-mode {
+  --theme-color: var(--font-color);
+  --pseudo-color: var(--grey);
 }
