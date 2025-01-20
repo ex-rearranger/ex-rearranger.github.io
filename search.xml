@@ -2676,11 +2676,11 @@ KaTeX units are different than CSS units.</p>
         <category>KaTeX</category>
       </categories>
       <tags>
-        <tag>markdown-it</tag>
         <tag>markdown</tag>
         <tag>test code</tag>
         <tag>katex</tag>
         <tag>latex</tag>
+        <tag>markdown-it</tag>
       </tags>
   </entry>
   <entry>
