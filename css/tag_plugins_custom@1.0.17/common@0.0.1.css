@@ -338,10 +338,13 @@ details.folding-tag[purple] > summary {
   background: #fae7fd;
 }
 details.folding-tag[blue] {
-  border-color: #e8f4fd;
+  border-color: var(--tag-blue30);
 }
 details.folding-tag[blue] > summary {
   background: #e8f4fd;
+}
+[data-theme="dark"] details.folding-tag[blue] > summary {
+  background: #576d80;
 }
 details.folding-tag[cyan] {
   border-color: #e8fafe;
@@ -474,8 +477,8 @@ p .img-alt {
 }
 s,
 del {
-  color: #808080cc;
-  text-decoration-color: #808080cc;
+  color: #636363cc;
+  text-decoration-color: #636363cc;
   mix-blend-mode: multiply;
 }
 u {
@@ -485,7 +488,7 @@ u {
 }
 emp {
   /* color: #444; */
-  border-bottom: 3px dotted var(--tag-red);
+  border-bottom: 2px dotted var(--tag-red);
 }
 wavy {
   /* color: #444; */

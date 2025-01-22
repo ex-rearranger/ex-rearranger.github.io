@@ -32,9 +32,5 @@
     "url": "https://github.com/next-theme/hexo-generator-searchdb/issues"
   },
   "homepage": "https://github.com/next-theme/hexo-generator-searchdb#readme",
-  "repository": "next-theme/hexo-generator-searchdb",
-  "devDependencies": {
-    "@next-theme/eslint-config": "^0.0.4",
-    "eslint": "^9.18.0"
-  }
+  "repository": "next-theme/hexo-generator-searchdb"
 }

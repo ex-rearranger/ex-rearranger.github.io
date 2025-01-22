@@ -4,6 +4,76 @@
  * Copyright 2023 Fonticons, Inc.
  */
 
+.fa {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+  font-weight: var(--fa-style, 900); 
+}
+
+.fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+.fa::before, .fas::before, .far::before, .fab::before,
+.fa-solid::before, .fa-regular::before, .fa-brands::before {
+  content: var(--fa);
+}
+
+.fa-classic, .fas, .fa-solid, .far, .fa-regular {
+  font-family: 'Font Awesome 6 Free';
+}
+
+.fa-brands, .fab {
+  font-family: 'Font Awesome 6 Brands';
+  font-weight: 400;
+}
+.fa-regular, .far {
+	font-weight: 400;
+}
+.fa-solid, .fas {
+	font-weight:900
+}
+
+:host, :root {
+	--fa-style-family-classic: "Font Awesome 6 Free";
+	--fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+	--fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-style-family-brands: 'Font Awesome 6 Brands';
+  --fa-font-brands: normal 400 1em/1 'Font Awesome 6 Brands';
+}
+@font-face {
+	font-family: "Font Awesome 6 Free";
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url("./webfonts/fa-regular-400.woff2") format("woff2"), url("./webfonts/fa-regular-400.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("./webfonts/fa-solid-900.woff2") format("woff2"), url("./webfonts/fa-solid-900.ttf") format("truetype"); 
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./webfonts/fa-brands-400.woff2") format("woff2"), url("./webfonts/fa-brands-400.ttf") format("truetype"); 
+}
+
+
+
+
+
 /* Arrows */
 .fa-angle-down::before {  /* Scroll Down */
   content: "\f107"
@@ -134,6 +204,9 @@
 .fa-sign-out-alt::before {
     content: "\f2f5"
 }
+.fa-caret-right::before {
+    content: "\f0da"
+}
 
 /* Copyright */
 .fa-circle-user::before {  /* Author */
@@ -188,28 +261,7 @@
 
 
 
-.fa {
-  font-family: var(--fa-style-family, "Font Awesome 6 Free");
-  font-weight:var(--fa-style, 900)
-}
 
-.fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: var(--fa-display, inline-block);
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1;
-  text-rendering:auto
-}
-
-.fa-classic, .fa-regular, .fa-solid, .far, .fas {
-  font-family: "Font Awesome 6 Free"
-}
-
-.fa-brands, .fab {
-  font-family: "Font Awesome 5 Brands"
-}
 
 .fa-1x {
   font-size:1em
@@ -731,38 +783,5 @@
 }
 .fa-inverse {
 	color: var(--fa-inverse, #fff)
-}
-:host, :root {
-	--fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free"
-}
-@font-face {
-	font-family: "Font Awesome 6 Free";
-	font-style: normal;
-	font-weight: 400;
-	font-display: block;
-	src: url(./webfonts/fa-regular-400.woff2) format("woff2")
-}
-.fa-regular, .far {
-	font-weight:400
-}
-:host, :root {
-	--fa-style-family-classic: "Font Awesome 6 Free";
-	--fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free"
-}
-@font-face {
-	font-family: "Font Awesome 6 Free";
-	font-style: normal;
-	font-weight: 900;
-	font-display: block;
-	src: url(./webfonts/fa-solid-900.woff2) format("woff2")
-}
-.fa-solid, .fas {
-	font-weight:900
-}
-@font-face {
-    font-family: "Font Awesome 5 Brands";
-    font-display: block;
-    font-weight: 400;
-    src: url(./webfonts/fa-brands-400.woff2) format("woff2")
 }
 

@@ -1,0 +1,247 @@
+/*
+  Theme: one dark theme
+*/
+
+[data-theme=light] {
+  --base00 : #fdfdff; /* --hl-bg, --hlnumber-bg */
+  --base005 : #f4f6f8; /*  */
+  --base01 : #e6ebf1; /* --hltools-bg, --hlscrollbar-bg */
+  --base02 : #b0b9c4; /* --hltools-color */
+  --base03 : #9aa3bd; /* box-shadow */
+  --base04 : #898ea4;
+  --base05 : #6b7394;
+  --base06 : #5e6687;
+  --base07 : #4b5068; /* --hl-color */
+  --base08 : #c94922;
+  --base09 : #c76b29;
+  --base0A : #c08b30;
+  --base0B : #529030;
+  --base0C : #22a2c9;
+  --base0D : #3d8fd1;
+  --base0E : #6966cc;
+  --base0F : #9c637a;
+  --highlight-deletion: #BF42BF;
+  --highlight-addition: #105EDE;
+  --hlnumber-color: rgba(137, 142, 164, 0.5);
+  --hlexpand-bg: linear-gradient(rgba(230, 235, 241, 0), rgba(230, 235, 241, 0.5));
+}
+[data-theme=dark] {
+  --base00: #101012; /* --hl-bg, --hlnumber-bg */
+  --base005: #1e1e21;
+  --base01: #26272a; /* --hltools-bg, --hlscrollbar-bg */
+  --base02: #595d63; /* --hltools-color */
+  --base03: #74787d; /* box-shadow */
+  --base04: #898ea4; /**/
+  --base05: #9ca1b4; /**/
+  --base06: #abb2bf; /**/
+  --base07: #c3c7ce;
+  --base08: #e06c75;
+  --base09: #f99157;
+  --base0A: #e5c07b;
+  --base0B: #98c379;
+  --base0C: #56b6c2;
+  --base0D: #61afef;
+  --base0E : #c678dd;
+  --base0F : #9c637a;
+  --hlnumber-color: rgba(151, 157, 180, 0.5);
+  --hlexpand-bg: linear-gradient(#23242800, #2324287F);
+}
+:root {
+  --hl-bg: var(--base00);
+  --hlnumber-bg: var(--base00);
+  --hltools-bg: var(--base01);
+  --hlscrollbar-bg: var(--base01);
+  --hltools-color: var(--base02);
+  --hl-color: var(--base07);
+}
+#article-container figure.highlight {
+  box-shadow: 0px 0px 5px -2px var(--base03) !important;
+}
+#article-container figure.highlight .gutter pre {
+  border-right: 1px solid var(--base005);
+}
+#article-container figure.highlight .code {
+  /* padding-left: 3em; */
+  background-color: var(--base00);
+}
+.hljs {
+  color: var(--base07);
+  background: var(--base01);
+}
+
+code.hljs ::selection {
+  color: var(--hl-color);
+}
+
+.hljs-comment ,
+.hljs-operator,
+.hljs-punctuation,
+.hljs-subst {
+  color: var(--base03);
+}
+
+.hljs-tag {
+  color: var(--base05);
+}
+
+
+.hljs-operator {
+  opacity: .7
+}
+
+.hljs-bullet,
+.hljs-deletion,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-template-variable,
+.hljs-variable {
+  color: var(--base08);
+}
+
+.hljs-attr,
+.hljs-link,
+.hljs-literal,
+.hljs-number,
+.hljs-symbol,
+.hljs-variable.constant_ {
+  color: var(--base09);
+}
+
+.hljs-class .hljs-title,
+.hljs-title,
+.hljs-title.class_ {
+  color: var(--base0A);
+}
+
+.hljs-strong {
+  font-weight: 700;
+  color: var(--base0A);
+}
+
+.hljs-addition,
+.hljs-code,
+.hljs-string,
+.hljs-title.class_.inherited__ {
+  color: var(--base0B);
+}
+
+.hljs-built_in,
+.hljs-doctag,
+.hljs-keyword.hljs-atrule,
+.hljs-quote,
+.hljs-regexp {
+  color: var(--base0C);
+}
+
+.hljs-attribute,
+.hljs-function .hljs-title,
+.hljs-section,
+.hljs-title.function_,
+.ruby .hljs-property {
+  color: var(--base0D);
+}
+
+.diff .hljs-meta,
+.hljs-keyword,
+.hljs-template-tag,
+.hljs-type,
+.hljs-emphasis {
+  color: var(--base0E);
+}
+
+
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-meta .hljs-string {
+  color: var(--base0F);
+}
+.hljs-comment,
+.hljs-quote,
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-meta .hljs-keyword,
+.hljs-meta-keyword {
+  font-weight: 700
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+
+figure.highlight pre .deletion {
+  color: var(--highlight-deletion);
+}
+figure.highlight pre .addition {
+  color: var(--highlight-addition);
+}
+figure.highlight pre .variable,
+figure.highlight pre .attribute,
+figure.highlight pre .regexp,
+figure.highlight pre .ruby .constant,
+figure.highlight pre .xml .tag .title,
+figure.highlight pre .xml .pi,
+figure.highlight pre .xml .doctype,
+figure.highlight pre .html .doctype,
+figure.highlight pre .css .id,
+figure.highlight pre .tag .name,
+figure.highlight pre .css .class,
+figure.highlight pre .css .pseudo {
+  color: var(--base08);
+}
+figure.highlight pre .number,
+figure.highlight pre .preprocessor,
+figure.highlight pre .literal,
+figure.highlight pre .params,
+figure.highlight pre .constant,
+figure.highlight pre .command {
+  color: var(--base09);
+}
+figure.highlight pre .built_in {
+  color: var(--base0A);
+}
+figure.highlight pre .ruby .class .title,
+figure.highlight pre .css .rules .attribute,
+figure.highlight pre .string,
+figure.highlight pre .value,
+figure.highlight pre .inheritance,
+figure.highlight pre .header,
+figure.highlight pre .ruby .symbol,
+figure.highlight pre .xml .cdata,
+figure.highlight pre .special,
+figure.highlight pre .number,
+figure.highlight pre .formula {
+  color: var(--base0B);
+}
+figure.highlight pre .keyword,
+figure.highlight pre .title,
+figure.highlight pre .css .hexcolor,
+figure.highlight pre .tag {
+  color: var(--base0C);
+}
+figure.highlight pre .function,
+figure.highlight pre .python .decorator,
+figure.highlight pre .python .title,
+figure.highlight pre .ruby .function .title,
+figure.highlight pre .ruby .title .keyword,
+figure.highlight pre .perl .sub,
+figure.highlight pre .javascript .title,
+figure.highlight pre .coffeescript .title {
+  color: var(--base0D);
+}
+figure.highlight pre .tag .attr,
+figure.highlight pre .javascript .function,
+figure.highlight pre .meta {
+  color: var(--base0E);
+}
+figure.highlight pre .comment {
+  color: var(--base03);
+}
+
+#article-container figure.highlight .line.marked {
+  background-color: var(--base01);
+}
