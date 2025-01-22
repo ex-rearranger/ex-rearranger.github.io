@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 #post-meta .meta-thirdline > ul.category-list {
-  display: flex;
+  display: inline-table;
   word-break: break-word;
   margin-left: -0.3em;
 }
@@ -140,6 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 #post-meta > .meta-thirdline > ul.category-list > li.category-list-item:not(:last-child)::after {
   content: ",";
   font-family: 'Roboto Mono';
+  align-content: flex-end;
 }
 
 
