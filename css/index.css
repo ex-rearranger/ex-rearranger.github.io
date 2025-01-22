@@ -280,9 +280,9 @@ template {
 .postImgHover:hover .cover,
 .pagination-related:hover .cover,
 .relatedPosts > .relatedPosts-list > a:hover .cover {
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -312,7 +312,7 @@ template {
 .list-beauty li,
 .category-lists ul li {
   position: relative;
-  padding: 0.12em 0.4em 0.12em 1.4em;
+  padding: 0.12em 0.4em 0 1.4em;
 }
 .list-beauty li:hover::before,
 .category-lists ul li:hover::before {
@@ -321,7 +321,7 @@ template {
 .list-beauty li::before,
 .category-lists ul li::before {
   position: absolute;
-  top: 0.67em;
+  top: 0.43em;
   left: 0;
   width: 0.43em;
   height: 0.43em;
@@ -2131,7 +2131,7 @@ blockquote > :last-child {
 .category-lists ul li {
   position: relative;
   margin: 6px 0;
-  padding: 0.12em 0.4em 0.12em 1.4em;
+  padding: 0.12em 0.4em 0 1.4em;
 }
 #body-wrap {
   display: -webkit-box;
@@ -2361,7 +2361,7 @@ blockquote > :last-child {
 }
 #recent-posts .recent-post-item .post_cover {
   overflow: hidden;
-  width: calc(max(16em, 35%));
+  width: calc(max(14rem, 30%));
   height: 100%;
 }
 @media screen and (max-width: 600px) {
@@ -2392,7 +2392,7 @@ blockquote > :last-child {
 }
 #recent-posts .recent-post-item >.recent-post-info {
   padding: 0 40px;
-  width: calc(min(100% - 16em, 65%));
+  width: calc(min(100% - 14rem, 70%));
 }
 @media screen and (max-width: 768px) {
   #recent-posts .recent-post-item >.recent-post-info {
@@ -2417,7 +2417,7 @@ blockquote > :last-child {
 }
 #recent-posts .recent-post-item >.recent-post-info > .article-title {
   color: var(--text-highlight-color);
-  font-size: 1.55em;
+  font-size: 1.45em;
   line-height: 1.4;
   -webkit-transition: color 0.2s ease-in-out;
   -moz-transition: color 0.2s ease-in-out;
@@ -2439,7 +2439,7 @@ blockquote > :last-child {
 }
 @media screen and (max-width: 768px) {
   #recent-posts .recent-post-item >.recent-post-info > .article-title {
-    font-size: 1.43em;
+    font-size: 1.3em;
   }
 }
 #recent-posts .recent-post-item >.recent-post-info > .article-title:hover {
@@ -2659,6 +2659,7 @@ h1.page-title + .tag-cloud-list {
   padding: 0.3rem;
   border-radius: 0.2rem;
   line-height: 1;
+  color: var(--font-color);
 }
 #aside-content .card-tag-cloud a:hover {
   background: var(--sub-theme-color-light30);
@@ -2830,7 +2831,7 @@ h1.page-title + .tag-cloud-list {
   -webkit-align-items: center;
   align-items: center;
   padding: 2px 0.5rem 0;
-  font-size: calc(1rem - 1.5px);
+  font-size: calc(var(--global-font-size) - 1.5px);
 }
 #aside-content .card-webinfo .webinfo .webinfo-item div:not(:last-child) {
   -webkit-box-flex: 1;
@@ -3823,6 +3824,18 @@ h1.page-title + .tag-cloud-list {
 }
 #pagination a.pagination-related.next-post {
   float: right;
+}
+@media screen and (max-width: 768px) {
+  #pagination a.pagination-related {
+    width: 100%;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
 }
 #pagination a.pagination-related .info-1 .info-item-2 {
   -webkit-line-clamp: 1;

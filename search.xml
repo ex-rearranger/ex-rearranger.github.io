@@ -2573,6 +2573,52 @@ KaTeX units are different than CSS units.</p>
   </entry>
   <entry>
     <title>Hello World</title>
+    <language>en</language>
+    <url>/posts/en/hello-world/</url>
+    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
+<div class="note info modern">
+<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
+You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</div>
+<h2 id="Introduction">Introduction</h2>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
+calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
+100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
+5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>test code</tag>
+        <tag>quick start</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
     <language>ko</language>
     <url>/posts/ko/hello-world/</url>
     <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
@@ -2726,37 +2772,185 @@ KaTeX units are different than CSS units.</p>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <language>en</language>
-    <url>/posts/en/hello-world/</url>
-    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
-<div class="note info modern">
-<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
-You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+    <title>Hexo에서 `punycode` DeprecationWarning 해결하기</title>
+    <language>ko</language>
+    <url>/posts/ko/Solving-DeprecationWarning-in-Hexo/</url>
+    <content><![CDATA[<h1 id="Introduction">Introduction</h1>
+<p>언젠가부터 Hexo 블로그를 서빙 또는 배포할 때마다 아래와 같은 DeprecationWarning이 뜨기 시작했다.</p>
+<div class="note warning no-icon modern"><p><span style="font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important; font-size: 0.95em;">(node:39714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.<br>
+</span></p>
 </div>
-<h2 id="Introduction">Introduction</h2>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
-calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
-100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
-5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<hr class="footnotes-sep">
+<p>찾아보니 Node 버전이 21로 올라가면 발생하는 문제로 보였는데, 버전을 낮추는 방식은 마음에 들지 않아 어케저케 비벼서 해결해보았다.</p>
+<h1 id="Conclusion">Conclusion</h1>
+<p>결론부터 말하자면, hexo에 적용한 추가적인 플러그인 중 일부에서 발생하는 패키지 없뎃 이슈였다.</p>
+<ul>
+<li>
+<p><strong>[상황1]</strong> 수동으로 만든 패키지의 <emp>devDependency가 오래되어 이슈 발생</emp></p>
+<ul>
+<li><strong>[해결방법1-1]</strong> 해당 패키지의 <code>package.json</code>에서 의존성 정보를 직접 업데이트</li>
+<li><strong>[해결방법1-2]</strong> 만일 devDependency가 불필요하다면 일괄 삭제</li>
+</ul>
+<details class="folding-tag" blue><summary> 예시) 커스텀한 <code>hexo-generator-searchdb</code> 플러그인 </summary>
+              <div class='content'>
+              <p><strong>[상황]</strong></p><ul><li>이 블로그에서는 다언어(한/영) 환경에 맞게 코드를 많이 수정했는데, <br>그 중 하나가 search.xml 생성 시에 해당 포스팅의 언어를 함께 저장하여 검색에 활용하는 것이었음 <br><del>현재 사이트가 한글이라면, 한글로 작성된 포스팅이 최우선으로 검색되게 함</del></li><li>이를 위해 <code>source/js/</code> 하단에 <code>hexo-generator-searchdb</code> 소스 코드를 복제해서 <code>hexo-generator-searchdb-custom</code>이라는 이름의 로컬 패키지를 만들어 아래와 같이 사용했음<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul><br><p><strong>[문제]</strong></p><ul><li>문제는, 이 상태에서 <code>npm install</code>을 실행하면 <emp>해당 로컬 패키지의 devDependency도 함께 설치</emp>됨<ul><li><code>--production</code> 옵션이 디폴트라서 외부 패키지를 사용할 때는 devDependency가 설치되지 않는데, 로컬 패키지를 사용할 때는 왜 이 옵션이 적용되지 않는지 잘 모르겠음</li><li>암튼 이 devDependency에 <code>eslint@7.32.0</code>가 포함되어 있었는데, 이게 <emp>punycode를 예전 방식으로 사용</emp>하고 있는 것<br><br></li></ul></li></ul><p><strong>[해결]</strong></p><ul><li>근데 사실 본인은 devDependency에 있는 패키지를 사용할 일이 없으므로 그냥 쿨하게 <emp>devDependency를 일괄 삭제</emp>함</li><li>아님 아래와 같이 <code>hexo-generator-searchdb-custom/package.json</code>를 직접 수정해서 사용했을 듯<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> <span class="comment">// 현시점 최신 버전으로 설정해서 잘 되는지 확인</span></span><br><span class="line">  <span class="attr">&quot;eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^9.18.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;@next-theme/eslint-config&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.0.4&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul>
+              </div>
+            </details>
+</li>
+<li>
+<p><strong>[상황2]</strong> 불러온 패키지의 <emp>dependencies 중 오래된 버전이 존재하여 이슈 발생</emp></p>
+<ul>
+<li><strong>[해결방법2-1]</strong> <code>override</code> 활용하여 의존성 정보를 최신으로 덮어씌우기</li>
+<li><strong>[해결방법2-2]</strong> <code>node_modules</code> 내에서 직접 punycode 관련 코드를 수정<br><del>권장되지 않는다는 건 알지만, 달리 방법이 없을 땐 어쩔 수 없으니까..</del></li>
+</ul>
+<details class="folding-tag" blue>
+<summary>
+예시) <code>hexo-renderer-markdown-it</code> 플러그인
+</summary>
+<div class="content">
+<p><strong>[상황]</strong></p>
+<ul>
+<li>본인 블로그에서는 <code>hexo-renderer-markdown-it</code> 플러그인을 통해 마크다운을 렌더링하고 있음
+<ul>
+<li>이 블로그에서는 KaTex로 수식을 렌더링하고 있는데,<br>
+KaTex 사용 시에는 <code>hexo-renderer-markdown-it</code>을 권장한다<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>고 하여<br>
+Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러그인 대신 사용 중</li>
+</ul>
+</li>
+<li>그리고 이 <emp><code>hexo-renderer-markdown-it</code> 플러그인에서 <code>markdown-it@13.0.2</code>를 사용</emp>하고 있음<br>
+<br></li>
+</ul>
+<p><strong>[문제]</strong></p>
+<ul>
+<li>문제는 이 <emp><code>markdown-it@13.0.2</code>에서 punycode를 예전 방식으로 불러오고 있음</emp>
+<ul>
+<li><code>const punycode = require('punycode')</code>가 아닌 <br><code>const punycode = require('punycode<emp>/</emp>')</code>로 불러와야 함<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></li>
+</ul>
+</li>
+<li>따라서 버전을 오버라이딩하거나 직접 해당 코드를 수정해야 함</li>
+<li>진짜 문제는 <code>markdown-it</code>을 14.0.0 이상으로 올리면 그냥 <code>hexo-renderer-markdown-it</code> 자체가 돌아가지 않아 <emp>오버라이딩이 불가능</emp>하다는 것… <del>그거까지 해결하고 싶진 않았음.. 난 Node.js 공부해본 적 없는 걸..</del><br>
+<br></li>
+</ul>
+<p><strong>[해결]</strong></p>
+<ul>
+<li>따라서, 어쩔 수 없이 <code>node_modules/hexo-renderer-markdown-it/</code> 안에 있는 <code>node_modules/markdown-it/lib/index.js</code>을 아래와 같이 수정함<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // 기존 코드</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// 수정 코드</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>슬래시 하나 추가했을 뿐인데 문제가 해결되었을 때의 기분을 서술하시오. (1000점)</li>
+<li>이렇게 되면, node에 설치된 punycode를 사용하게 되므로<br>
+만일 <code>punycode</code>가 설치되어 있지 않다면 추가적으로 <code>npm install punycode --save</code>를 실행</li>
+</ul>
+</li>
+<li>매번 수정하기 귀찮다면 <code>postinstall</code> 스크립트를 활용하여 자동화하면 됨 (아래 설명 참고)</li>
+</ul>
+</div>
+</details>
+</li>
+</ul>
+<h1 id="How-I-Got-Here">How I Got Here</h1>
+<p>결론은 결론이고, 모두가 위에서 언급한 패키지에 대해 문제가 생긴 것은 아닐 것이다.<br>
+따라서 내가 어떻게 문제를 해결했는지에 대한 과정을 의식의 흐름대로 적어보았다.</p>
+<h2 id="Check-Status">Check Status</h2>
+<p>일단 사용 중인 Node 버전을 확인해보았던 걸로 기억한다.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br><span class="line">v21.7.3</span><br></pre></td></tr></table></figure>
+<p>Node 버전을 20으로 낮춰도 아마 해결은 되겠지만, 낮추는 건 왠지 자존심이 허락 안하는걸~<br>
+(은 아니고 그냥 Node에 관한 지식이 없어서 버전별 차이를 모르기 때문에 최신이 최선이라고 생각했음)</p>
+<h2 id="punycode-vs-punycode">punycode vs. punycode/</h2>
+<p>구글에 “npm punycode deprication” 따위로 검색해서 이것저것 살펴보니, 결국 punycode를 사용하는 패키지에서 punycode를 불러오는 코드를 최신화하지 않아서 발생하는 문제였다.</p>
+<p>그니까, 대충 뭐 punycode 깃헙 리드미<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>를 읽어보면</p>
+<ol>
+<li>punycode를 설치하고</li>
+<li><emp><code>require('punycode')</code>가 아닌 <code>require('punycode/')</code>로 불러와야 한다</emp>는 것 같다.</li>
+</ol>
+<p><del> 대체 둘이 뭐가 다른지 모르겠지만, 뭐 그냥 파이썬에 비유하면 <code>from .utils import *</code> 랑 <code>from utils import *</code> 사이의 간극 정도 아닐까하고 적당히 합리화했다.^^</del></p>
+<h2 id="punycode-dependency">punycode dependency</h2>
+<p>아무튼 그러한 이유로 <emp>punycode를 사용하는 모듈을 모두 찾기</emp>로 한다.<br>
+블로그 루트 디렉토리로 가서 아래와 같이 punycode의 상속 여부를 찾아보자.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /루트/디렉토리/절대/경로</span><br><span class="line">├─┬ hexo-generator-searchdb@1.4.1 -&gt; /루트/디렉토리/절대/경로/node_modules/hexo-generator-searchdb</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@기억.안남.0</span><br><span class="line">│     └─┬ uri-js@기억.안남.0</span><br><span class="line">│       └── punycode@기억.안남.0</span><br></pre></td></tr></table></figure>
+<p>대충 이런 결과가 뜬다. (기억이 가물가물해서 버전은 유추해서 적은 것)</p>
+<p>안 그래도 구글링할 때 eslint, ajv, uri-js 깃헙 이슈가 자주 나왔던 것이 생각나서, 이 세 개의 패키지도 마찬가지로 <code>$ npm ls [패키지명]</code> 명령어로 확인해보았다.</p>
+<p>결과적으로 두 개의 패키지에서 eslint를 사용하는 걸로 확인되었다.</p>
+<ul>
+<li><code>hexo-generator-searchdb-custom</code></li>
+<li><code>hexo-generator-sitemap-custom</code></li>
+</ul>
+<h2 id="Fix-1">Fix (1)</h2>
+<p>처음에는 이 패키지들의 버전을 최신으로 업데이트하면 되겠지 싶어서 각 패키지의 <code>package.json</code>을 열어보았는데, 둘 다 <code>devDependencies</code>로 설정된 케이스였다.</p>
+<p>두 패키지 이름에서 짐작되겠지만, 둘 다 <emp>기존의 플러그인을 로컬에서 커스텀한 플러그인</emp>이었다. 거의 파일을 전체적으로 다 고쳐야 해서 그냥 로컬 패키지로 만든 뒤 아래와 같이 사용했는데 이게 문제였다.<br>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-sitemap-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>이유는 모르겠으나 이렇게 <emp>직접 만든 패키지를 사용할 때는 <code>devDependencies</code>까지 함께 설치되었다.</emp></p>
+<ul>
+<li><code>npm install</code>의 <code>--production</code> 옵션이 적용되지 않는 것 같음</li>
+<li>구글링해도 이유를 못 찾아서 포기</li>
+</ul>
+<p>어짜피 개발의 편의를 위해 기존 패키지를 수정한 것에 불과해서 <code>devDependencies</code>가 필요 없었다.<br>
+그래서 그냥 <emp><code>devDependencies</code> 부분을 <code>package.json</code>에서 모두 삭제</emp>하고 아래의 코드로 패키지들을 재설치했다.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> package-lock.json</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
+<h2 id="Fix-2">Fix (2)</h2>
+<p>그 때는 해결될 줄 알았는데… Warning 또 뜨는 걸 보고 진심… 노트북 던져버릴 뻔</p>
+<p>그래서 그냥 마음을 비우고 <emp>find 명령어로 punycode를 사용하는 js 파일을 모두 찾기</emp>로 했다.<br>
+<del>좀 무식하긴 한데, 별다른 방법을 모르겠어서 그냥 이렇게 했음ㅎㅎ</del></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.js&quot;</span> -<span class="built_in">exec</span> grep -H <span class="string">&quot;punycode&quot;</span> &#123;&#125; \;</span></span><br></pre></td></tr></table></figure>
+<p>결과가 굉장히 많이 나오는데, 그 중에 이런 게 있었다:<br>
+<code style="word-break: break-all">./hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js: <emp>var punycode = require('punycode');</emp></code></p>
+<p>일단 하나라도 찾았으니, 이 파일부터 하나씩 수정해보자는 마음으로 해당 파일을 열어보았다.</p>
+<p>보니깐, <code>hexo-renderer-markdown-it</code> 플러그인에서 <code>markdown-it@13.0.2</code>를 사용하고 있는데, 이 버전의 <code>lib/index.js</code>에서 punycode를 예전 방식으로 불러오고 있었다.</p>
+<p>그래서 그냥 슬래시 하나 추가해주고 저장하기만 했다.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // 기존 코드</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// 수정 코드</span></span><br></pre></td></tr></table></figure>
+<p>그리고 다시 한 번 <code>hexo server -o</code>를 실행해보니 DeprecationWarning이 뜨지 않았다.</p>
+<p>와! 다행! 이제 노트북을 던지지 않아도 된다!</p>
+<h3 id="Postinstall-Script">Postinstall Script</h3>
+<p>그런데, 이렇게 매번 수정하기 귀찮기도 하고 node_modules를 직접 건드리는 게 맞나 싶기도 해서 좀 검색해보니까 바로 <code>postinstall</code> 스크립트를 활용법이 나오더라.</p>
+<p>방법은 상당히 간단하더라.</p>
+<ol>
+<li>
+<p>patch-package 패키지 설치</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install patch-package --save-dev</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>node_modules 안에서 수정하고 싶은 파일을 찾아서 수정</p>
+<ul>
+<li><span style="margin-bottom: 1em">이미 수정되어 있으니 생략</span></li>
+</ul>
+</li>
+<li>
+<p><code>package.json</code>에 <code>postinstall</code> 스크립트 추가</p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;postinstall&quot;</span><span class="punctuation">:</span> <span class="string">&quot;patch-package&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>수정된 파일을 패치로 저장</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx patch-package [패키지명]</span></span><br></pre></td></tr></table></figure>
+<p>여기서는 패키지 안의 패키지를 수정했기 때문에<br>
+<code>npx patch-package hexo-renderer-markdown-it</code>으로 실행하면<br>
+hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지가 뜬다.</p>
+ <!-- (⁉️  There don't appear to be any changes.) -->
+<p>따라서 <emp><code>npx patch-package hexo-renderer-markdown-it/markdown-it</code>으로 실행</emp>해야 한다.</p>
+</li>
+<li>
+<p>끝!</p>
+<ul>
+<li><code>/patches</code> 디렉토리가 생성되고 그 안에 패치 파일이 생성된다.</li>
+<li><code>npm install</code> 시 자동으로 패치가 적용되므로 더 이상 직접 수정할 필요가 없다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="P-S">P.S.</h2>
+<p>고작 DeprecationWarning 하나 때문에 이렇게 고생을 하다니 ㅠㅠ 나 진짜 Node.js 쪽은 파지 말아야지🫠</p>
+<style>
+  details.folding-tag summary code {
+    font-size: 1em;
+    font-weight: 400;
+  }
+  details.folding-tag .content figure {
+    margin: 0.5em 0 0.75em;
+  }
+  #article-container ol li figure.highlight {
+    margin: 0.5em 0 0.75em;
+  }
+</style><hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+<li id="fn1" class="footnote-item"><p>Butterfly document - Theme Configuration # Math<a href="https://butterfly.js.org/en/posts/butterfly-docs-en-theme-config/#Math">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Github - mathiasbynens/punycode.js <a href="https://github.com/mathiasbynens/punycode.js?#installation">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -2765,10 +2959,14 @@ calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px,
         <category>JavaScript</category>
         <category>Node.js</category>
         <category>Hexo</category>
+        <category>Package Manager</category>
+        <category>npm</category>
       </categories>
       <tags>
-        <tag>test code</tag>
-        <tag>quick start</tag>
+        <tag>hexo-renderer-markdown-it</tag>
+        <tag>punycode</tag>
+        <tag>npm update</tag>
+        <tag>patch-package</tag>
       </tags>
   </entry>
   <entry>

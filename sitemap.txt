@@ -1,3 +1,4 @@
+https://ex-rearranger.github.io/posts/ko/Solving-DeprecationWarning-in-Hexo/
 https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/
 https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-2/
 https://ex-rearranger.github.io/about/index.html

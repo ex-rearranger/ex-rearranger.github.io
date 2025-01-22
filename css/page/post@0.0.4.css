@@ -1,7 +1,7 @@
 /* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
-h1, h2, h3, h4, h5, h6 {
+#content-inner.layout h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
-  margin-top: 0.4rem;
+  margin-top: 2rem;
 }
 #content-inner.layout h1::before,
 #content-inner.layout h1 i::before {
@@ -161,6 +161,7 @@ h1.page-title + .tag-cloud-list a:not(:hover) {
 /* Code */
 code {
   border-radius: 3px;
+  word-break: break-word;
 }
 
 

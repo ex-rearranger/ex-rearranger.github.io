@@ -18,9 +18,9 @@
 
   /* Global color & SVG */
   --dark-grey: #636363;  /* for toc border left */
-  --grey: #7D7D82;  /* for meta-color */
+  --grey: #8a8a8e;  /* for meta-color */
   --grey60: #7D7D8299;
-  --light-grey: #a4a4ad;  /* for nav, post meta, ... */
+  /* --light-grey: #a4a4ad; */
   --white: #ffffffd9;
 
   /* Background */
