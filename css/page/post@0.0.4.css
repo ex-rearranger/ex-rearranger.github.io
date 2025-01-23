@@ -1,57 +1,72 @@
 /* H1-H6 아이콘 색상 및 크기 조정 및 위치 조정 */
-#content-inner.layout h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
+  margin: 1.2em 0 0.3em 0;
+}
+#article-container h1 {
+  font-size: 1.7em;
   font-weight: 500;
-  margin-top: 2rem;
 }
-#content-inner.layout h1::before,
-#content-inner.layout h1 i::before {
+#article-container h1::before,
+#article-container h1 i::before {
+  font-size: 0.9em;
+  margin-top: -0.2em;
   color: rgba(252, 55, 117, 0.8);
-  font-size: 1.1rem;
-  /* margin-left: -1.55rem; */
-  /* margin-top: -0.33rem; */
 }
-#content-inner.layout h1.page-title::before,
-#content-inner.layout h1.page-title i::before {
-  font-size: 1.5rem;
+h1.page-title::before,
+h1.page-title i::before {
+  font-size: 1.1em;
 }
-#content-inner.layout h2::before {
+#article-container h2 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+#article-container h2::before {
+  font-size: 0.9em;
+  margin-top: -0.16em;
   color: rgba(252, 116, 29, 0.8);
-  font-size: 1rem;
-  /* margin-left: -1.35rem; */
-  /* margin-top: -0.18rem; */
 }
-#content-inner.layout h3::before {
+#article-container h3 {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+#article-container h3::before {
+  font-size: 0.9em;
+  margin-top: -0.1em;
   color: rgba(255, 192, 0, 0.8);
-  font-size: 0.95rem;
-  /* margin-left: -1.22rem; */
-  /* margin-top: -0.14rem; */
 }
-#content-inner.layout h4::before {
+#article-container h4 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+#article-container h4::before {
+  font-size: 0.9em;
+  margin-top: -0.05em;
   color: rgba(175, 238, 0, 0.8);
-  font-size: 0.8rem;
-  /* margin-left: -1.05rem;
-  margin-top: -0.05rem; */
 }
-#content-inner.layout h5::before {
+#article-container h5 {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+#article-container h5::before {
+  font-size: 0.9em;
   color: rgba(86, 210, 113, 0.8);
-  font-size: 0.7rem;
-  /* margin-left: -0.9rem; */
-  /* margin-top: 0.0rem; */
 }
-#content-inner.layout h6::before {
+#article-container h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+#article-container h6::before {
+  font-size: 0.9em;
   color: rgba(88, 195, 231, 0.8);
-  font-size: 0.66rem;
-  /* margin-left: -0.9rem; */
-  /* margin-top: 0.05rem; */
 }
 
-[data-theme=dark] #content-inner.layout h1::before,
-[data-theme=dark] #content-inner.layout h1 i::before, 
-[data-theme=dark] #content-inner.layout h2::before,
-[data-theme=dark] #content-inner.layout h3::before,
-[data-theme=dark] #content-inner.layout h4::before,
-[data-theme=dark] #content-inner.layout h5::before,
-[data-theme=dark] #content-inner.layout h6::before {
+[data-theme=dark] #article-container h1::before,
+[data-theme=dark] #article-container h1 i::before, 
+[data-theme=dark] #article-container h2::before,
+[data-theme=dark] #article-container h3::before,
+[data-theme=dark] #article-container h4::before,
+[data-theme=dark] #article-container h5::before,
+[data-theme=dark] #article-container h6::before {
   filter: brightness(0.7);
 }
 
@@ -84,6 +99,24 @@
 .language-notice.language-kor::before {
   font-family: 'fontagon-icons' !important;
   content: "\f103" !important;
+}
+
+/* post - tag list */
+#post-info #post-meta .post-meta__tags {
+  display: inline-block;
+  font-size: 0.9em !important;
+  padding: 0.15em 0.5em;
+  width: fit-content;
+  border-radius: 0.2em;
+}
+#post-info #post-meta .post-meta__tags:hover {
+  background: var(--theme-color80) !important;
+  color: var(--white) !important;
+}
+#post-info #post-meta a.category-list-link:hover {
+  background-color: var(--theme-color80) !important;
+  color: var(--white) !important;
+  padding: 0 0.5em;
 }
 
 /* post - pagination */
@@ -153,8 +186,8 @@ h1.page-title + .tag-cloud-list a:not(:hover) {
 
 /* Toc */
 #card-toc .toc-content .toc-link {
-  margin: 0.1rem 0;
-  padding: 0.1rem 0.6rem;
+  margin: 0.1em 0;
+  padding: 0.1em 0.6em;
 }
 
 
@@ -169,7 +202,7 @@ code {
 
 /* horizontal line */
 hr {
-  margin: 1.5rem auto;
+  margin: 1.5em auto;
 }
 hr:before,
 .custom-hr::before,
@@ -202,10 +235,6 @@ hr:hover::before,
   background: var(--card-bg);
   margin: 0.5em;
   top: -1em;
-}
-#article-container section.footnotes {
-  padding-right: 0.3em;
-  font-size: 0.95em;
 }
 #article-container section.footnotes ol p,
 #article-container section.footnotes ul p {

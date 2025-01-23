@@ -2,15 +2,15 @@
   transition: all 500ms ease;
   transition-property: top, right, bottom, left, opacity;
   /* font-family: Roboto, sans-serif; */
-  font-size: 0.9rem;
-  min-height: 0.9rem;
+  font-size: 0.9em;
+  min-height: 0.9em;
   background-color: #070b0e;
   position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  line-height: 1rem;
+  line-height: 1em;
   padding: 18px 24px;
   bottom: -100px;
   top: -100px;
@@ -45,7 +45,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    margin: 1.2rem 1rem; } }
+    margin: 1.2em 1em; } }
 
 .snackbar-pos.bottom-center {
   top: auto !important;

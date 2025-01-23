@@ -48,7 +48,7 @@ u, emp, wavy, psw:hover {
 }
 span.image-caption {
   display: table;
-  margin: -0.4rem auto 0.4rem;
+  margin: -0.4em auto 0.4em;
 }
 span.image-caption::before,
 .jg-caption-visible::before,
@@ -286,19 +286,19 @@ img.medium-zoom-image.entered.loaded.medium-zoom-image--opened {
 
 details.folding-tag {
   display: block;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 1em;
+  margin: 1em 0;
   font-size: var(--global-font-size);
   border: 1px solid var(--grey60);
   border-radius: 4px;
 }
 details.folding-tag summary {
   cursor: pointer;
-  padding: 1rem;
-  margin: -1rem;
+  padding: 1em;
+  margin: -1em;
   border-radius: 3px;
   color: var(--dark-black50);
-  font-size: 0.9rem !important;
+  font-size: 0.9em !important;
   font-weight: 600;
   position: relative;
   line-height: normal;
@@ -619,7 +619,7 @@ span.nota:hover {
 span.nota:hover::before {
   position: fixed;
   width: fit-content;
-  max-width: 90%;
+  max-width: 80%;
   margin: auto;
   left: 0;
   right: 0;
@@ -674,9 +674,9 @@ span.nota:hover::before {
   display: flex;
   font-size: var(--global-font-size);
   background-color: #58585899;
-  border-radius: 0.25rem;
-  margin: 1rem 0;
-  height: 2rem;
+  border-radius: 0.25em;
+  margin: 1em 0;
+  height: 2em;
   overflow: hidden;
 }
 .progress p {
@@ -688,7 +688,7 @@ span.nota:hover::before {
 }
 .progress .progress-bar-striped {
   background-image: linear-gradient(45deg, #ffffff26 25%, transparent 25%, transparent 50%, #ffffff26 50%, #ffffff26 75%, transparent 75%, transparent);
-  background-size: 1rem 1rem;
+  background-size: 1em 1em;
 }
 .progress .progress-bar {
   display: flex;
@@ -726,22 +726,22 @@ span.nota:hover::before {
 }
 @-moz-keyframes progress-bar-stripes {
   0% {
-  background-position-x: 1rem;
+  background-position-x: 1em;
   }
 }
 @-webkit-keyframes progress-bar-stripes {
   0% {
-  background-position-x: 1rem;
+  background-position-x: 1em;
   }
 }
 @-o-keyframes progress-bar-stripes {
   0% {
-  background-position-x: 1rem;
+  background-position-x: 1em;
   }
 }
 @keyframes progress-bar-stripes {
   0% {
-  background-position-x: 1rem;
+  background-position-x: 1em;
   }
 }
 :root {
@@ -835,7 +835,7 @@ span.nota:hover::before {
   line-height: 26px;
   width: fit-content;
   margin: 5px 0;
-  max-width: 90%;
+  /* max-width: 90%; */
   background: var(--referfrom-background-color);
   box-shadow: 1px 1px 1px var(--referfrom-text-shadow);
   border-radius: 8px;
@@ -884,11 +884,11 @@ a.reference-link:hover {
 p.p.subtitle {
   font-weight: 600;
   color: #44b299;
-  font-size: 1.25rem !important;
-  padding-top: 1.5rem;
+  font-size: 1.25em !important;
+  padding-top: 1.5em;
 }
 p.p.subtitle:first-child {
-  padding-top: 1rem;
+  padding-top: 1em;
 }
 span.p.left,
 p.p.left {
@@ -911,22 +911,22 @@ p.p.small {
 }
 span.p.semi-large,
 p.p.semi-large {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   line-height: 1.4;
 }
 span.p.large,
 p.p.large {
-  font-size: 2.5rem;
+  font-size: 2.5em;
   line-height: 1.4;
 }
 span.p.huge,
 p.p.huge {
-  font-size: 4rem;
+  font-size: 4em;
   line-height: 1.4;
 }
 span.p.ultra,
 p.p.ultra {
-  font-size: 6rem;
+  font-size: 6em;
   line-height: 1.4;
 }
 span.p.small,
@@ -948,37 +948,37 @@ span.p.h1,
 p.p.h1,
 span.p.h2,
 p.p.h2 {
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.2em;
   font-weight: 500;
 }
 span.p.h1,
 p.p.h1 {
-  font-size: 1.625rem;
+  font-size: 1.625em;
   color: var(--color-h1);
   padding-top: 2em;
 }
 span.p.h2,
 p.p.h2 {
-  font-size: 1.625rem;
+  font-size: 1.625em;
   color: var(--color-h2);
   padding-top: 2em;
   border-bottom: 1px solid #4444441a;
 }
 span.p.h3,
 p.p.h3 {
-  font-size: 1.375rem;
+  font-size: 1.375em;
   color: var(--color-h3);
   padding-top: 2em;
 }
 span.p.h4,
 p.p.h4 {
-  font-size: 1.125rem;
+  font-size: 1.125em;
   color: var(--color-h4);
   padding-top: 2em;
 }
 span.p.h5,
 p.p.h5 {
-  font-size: 1rem;
+  font-size: 1em;
   color: var(--color-h5);
   padding-top: 1.5em;
 }

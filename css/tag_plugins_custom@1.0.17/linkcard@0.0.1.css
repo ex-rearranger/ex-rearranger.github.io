@@ -1,5 +1,5 @@
 #article-container a.link-card {
-  margin: 0.25rem auto;
+  margin: 0.25em auto;
   background: var(--light-grey);
   display: inline-flex;
   align-items: center;

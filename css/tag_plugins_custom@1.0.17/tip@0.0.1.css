@@ -15,7 +15,7 @@
 }
 .tip p {
   margin: 0 !important;
-  padding: 0.5rem 0;
+  padding: 0.5em 0;
 }
 .tip::before {
   background: #41363c;
