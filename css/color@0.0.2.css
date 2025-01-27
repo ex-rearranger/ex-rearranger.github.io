@@ -1,0 +1,121 @@
+
+:root {
+  --theme-color: #6699CC; 
+  --theme-color10: #6699CC1A;
+  --theme-color80: #6699CCCC;
+  --theme-color-dark5: #5a8dc0;
+  --theme-color-light20: #85add6;
+  --theme-color-light30: #94b8db;  /* for --hr-before-color */
+  --theme-color-light50: #b3cce6;
+  --theme-color-light85: #e8f0f7;
+  --sub-theme-color: #e3618e;
+  --sub-theme-color-light30: #eb90b0;  /* for nav underline */
+  --theme-color30: #e3618e4D;  /* for --text-bg-hover */
+
+  --font-color: #484c48;
+  --font-link: #6a6b71;
+  --font-link90: #6a6b71e6;
+  --font-link15: #6a6b7126;
+  --text-highlight-color: #3e423e;
+
+  /* Global color & SVG */
+  --dark-black: #000000;
+  --dark-black80: #000000cc;
+  --dark-black60: #00000099;
+  --dark-black50: #00000080;
+  --dark-black30: #0000004d;
+  --dark-black15: #00000026;
+  --dark-grey: #cacaca;  /* for toc border left */
+  --grey: #76767d;  /* for meta-color */
+  --grey60: #76767d99;
+  --light-grey: #EEEEEE;  /* for nav, post meta, ... */
+  --white: #FFFFFF;
+  --white80: #FFFFFFCC;
+  --white70: #FFFFFFB3;
+  --white60: #FFFFFF99;
+  --white40: #FFFFFF66;
+  --white30: #FFFFFF4D;
+  --white20: #FFFFFF33;
+  --whitesmoke: #f5f5f5;
+
+  /* Background */
+  --web-bg: #fbfcfc;
+  --global-bg: var(--white);
+  --sidebar-bg: #f6f8fa;
+  --card-bg: var(--white);
+  --card-box-shadow: #07111b0d;
+  --card-hover-box-shadow: #07111b17;
+  --nav-bg: #FFFFFFE6;
+
+  /* Text */
+  --text-hover: var(--sub-theme-color);
+  --text-bg-hover: var(--theme-color30);
+  --text-select-bg: var(--theme-color30);
+  --text-select-color: initial;
+
+  /* Page */
+  --a-link-color: var(--font-link);
+  --sticky-color: var(--sub-theme-color);
+  --meta-color: var(--grey);
+  --post-link-color: var(--theme-color);
+  --hr-border: var(--theme-color-light50);
+  --hr-before-color: var(--theme-color-light30);
+  --title-border-color: #efeffc;  /* title border & table border */
+
+  /* Search */
+  --search-bg: var(--sidebar-bg);
+  --search-input-color: var(--font-color);
+  --search-a-color: var(--font-color);
+  --search-color: var(--theme-color);
+  --search-keyword-highlight: var(--sub-theme-color);
+
+  /* Button */
+  --btn-bg: var(--theme-color80);
+  --btn-color: var(--white);
+  --btn-hover-color: var(--sub-theme-color);
+
+  /* ToC */
+  --toc-link-color: #666261;
+  --theme-toc-color: var(--theme-color);
+  --toc-active-color: var(--white);
+  --toc-link-hover: var(--sub-theme-color);
+
+  /* Code */
+  --code-bg: rgba(179, 183, 201, 0.15);
+  --code-color: var(--theme-color-dark5);
+
+  /* List */
+  --pseudo-color: var(--theme-color);
+  --pseudo-hover: var(--sub-theme-color);
+
+  /* Table */
+  --table-thead-bg: var(--font-link15);
+
+  /* Blockquote */
+  --blockquote-color: #6a737d;
+  --blockquote-padding-color: var(--theme-color);
+  --blockquote-bg: var(--theme-color10);
+
+  /* Tag Plugins - Tab */
+  --tab-border-color: #f0f0f0;
+  --tab-botton-bg: #f0f0f0;
+  --tab-botton-color: var(--font-color);
+  --tab-button-hover-bg: #e1e1e1; /* darken #f0f0f0 8; */
+  --tab-button-active-bg: var(--card-bg);
+  --tab-button-active-color: var(--sub-theme-color);
+  --tab-to-top-color: var(--font-link);
+  --tab-to-top-hover-color: var(--sub-theme-color);
+
+  /* ETC */
+  --scrollbar-color: var(--theme-color-light85);
+  --default-bg-color: var(--theme-color);
+  --zoom-bg: var(--white);
+  --mask-bg: var(--dark-black60);
+  --mask-bg-sub: #ffffff77;
+  --reward-pop-bg: var(--whitesmoke);
+  --reward-pop-color: var(--grey);
+
+  /* Preloader - Not Used in this site */
+  --preloader-bg: var(--whitesmoke); /* original: #37474f; */
+  --preloader-color : var(--dark-black80);  /* original: #fff; */
+}

@@ -1,0 +1,97 @@
+/* Lists */
+ol, ul {
+  padding-inline-start: 2.2em;
+}
+
+/* post cover layout */
+[data-theme="dark"] img.thumbnail-cover {
+  opacity: 0.7;
+}
+@media screen and (min-width: 769px) {
+  [data-theme="dark"] #recent-posts .recent-post-item .post-cover {
+    opacity: 0.7;
+  }
+}
+
+
+/* card widget on post & page */
+/* post contents into card widget */
+#post > .card-widget,
+#page > .card-widget {
+  background-color: var(--card-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+  height: fit-content;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 3px 8px 6px var(--card-box-shadow);
+  box-shadow: 0 3px 8px 6px var(--card-box-shadow);
+  -webkit-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  -moz-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  -o-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  -ms-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+}
+#page > .card-widget:not(:first-child),
+#post > .card-widget:not(:first-child){
+  margin-top: 20px;
+}
+#page .card-widget:hover,
+#post .card-widget:hover,
+.cardHover:hover,
+.error404 #error-wrap .error-content:hover,
+#recent-posts .recent-post-item:hover,
+#aside-content .card-widget:hover,
+.layout > .recent-posts .pagination > *:not(.space):hover {
+  -webkit-box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+  box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+}
+
+body.read-mode #post > .card-widget,
+body.read-mode #page > .card-widget {
+  padding: 0.5em;
+  border-radius: 8px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#aside-content > .card-widget:nth-last-of-type(2) {
+  margin-bottom: 1.2em;
+}
+#aside-content > .sticky_layout > .card-widget:nth-child(1 of :not(.lang-hidden)) {
+  margin-top: 0px;
+}
+
+/* language hidden */
+.lang-hidden {
+  display: none !important;
+}
+
+/* in iPhone - maxwidth600 */
+/* 크기 축소 */
+@media screen and (max-width: 900px) {
+  :root {
+    --global-font-size: 15.5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #post > .card-widget,
+  #page > .card-widget {
+    padding: 1.8em 1.5em  /* original: 30px 24px; */
+  }
+}
+@media screen and (max-width: 600px) {
+  :root {
+    --global-font-size: 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  :root {
+    --global-font-size: 14.5px;
+  }
+}
+
+#page > div > h1 > i::before {
+  color: var(--sub-theme-color);
+  font-size: 0.75em;
+}
