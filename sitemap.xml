@@ -188,14 +188,14 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/</loc>
+    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Hexo/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Hexo/</loc>
+    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -213,7 +213,7 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/Hexo-Tag-Plugins/</loc>
+    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -222,7 +222,7 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/</loc>
+    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/Hexo-Tag-Plugins/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -306,6 +306,22 @@
   
   
   <url>
+    <loc>https://ex-rearranger.github.io/en/tags/quick-start/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/ko/tags/quick-start/</loc>
+    <lastmod>2025-01-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
     <loc>https://ex-rearranger.github.io/en/tags/katex/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -361,22 +377,6 @@
   
   <url>
     <loc>https://ex-rearranger.github.io/ko/tags/patch-package/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://ex-rearranger.github.io/ko/tags/quick-start/</loc>
-    <lastmod>2025-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://ex-rearranger.github.io/en/tags/quick-start/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
