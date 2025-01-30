@@ -33,14 +33,56 @@ module.exports = function(locals) {
     return;
   }
 
+  function mapDefaultLang(post) {
+    if (post.lang === undefined || post.lang === 'default') {
+      return ['ko', 'en'];
+  } else {
+      return [post.lang];
+    }
+  }
+
+  function filterLang(lang, idx, arr) {
+    return arr.indexOf(lang) === idx;
+  }
+
+  const tags = locals.tags.toArray().map(tag => {
+    return {
+      name: tag.name,
+      slug: tag.slug, 
+      length: tag.length, 
+      langs: tag.posts.map(mapDefaultLang).reduce((acc, val) => acc.concat(val), []).filter(filterLang),
+      path: tag.path,
+      paths: tag.posts.map(mapDefaultLang).reduce((acc, val) => acc.concat(val), []).filter(filterLang).map(lang => {
+        return `${config.url}/${lang}/${tag.path}`;
+      }),
+      permalink: tag.permalink
+    };
+  });
+  // console.log(tags);
+
+  const categories = locals.categories.toArray().map(category => {
+    return {
+      name: category.name,
+      slug: category.slug,
+      length: category.length,
+      langs: category.posts.map(mapDefaultLang).reduce((acc, val) => acc.concat(val), []).filter(filterLang),
+      path: category.path,
+      paths: category.posts.map(mapDefaultLang).reduce((acc, val) => acc.concat(val), []).filter(filterLang).map(lang => {
+        return `${config.url}/${lang}/${category.path}`;
+      }),
+      permalink: category.permalink
+    };
+  });
+  // console.log(categories);
+
   const res = template(config);
   for (const i in res) {
     res[i].data = res[i].data.render({
       config,
       posts,
       sNow: new Date(),
-      tags: tagsCfg ? locals.tags.toArray() : [],
-      categories: catsCfg ? locals.categories.toArray() : []
+      tags: tagsCfg ? tags : [],
+      categories: catsCfg ? categories : []
     });
   }
   return res;

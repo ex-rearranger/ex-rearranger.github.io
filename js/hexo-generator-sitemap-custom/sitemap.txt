@@ -1,5 +1,5 @@
+{{ config.url | uriencode }}
 {% for post in posts %}{{ post.permalink | uriencode }}
-{% endfor %}{{ config.url | uriencode }}
-{% for tag in tags %}{{ tag.permalink | uriencode }}
-{% endfor %}{% for cat in categories %}{{ cat.permalink | uriencode }}
+{% endfor %}{% for cat in categories %}{% for path in cat.paths %}{{ path | uriencode }}{% endfor %}
+{% endfor %}{% for tag in tags %}{% for path in tag.paths %}{{ path | uriencode }}{% endfor %}
 {% endfor %}
