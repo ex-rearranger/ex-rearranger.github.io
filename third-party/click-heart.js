@@ -22,7 +22,7 @@
         a.styleSheet.cssText = e
       }
       t.getElementsByTagName("head")[0].appendChild(a)
-    }(".heart{width: 10px;height: 10px;position: fixed;background: #f00;z-index: 99999999;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart::after,.heart::before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart::after{top: -5px;}.heart::before{left: -5px;}"),
+    }(".heart{width: 10px;height: 10px;position: fixed;background: #f00;z-index: 99999999;transform: rotate(45deg);}.heart::after,.heart::before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;position: absolute;}.heart::after{top: -5px;}.heart::before{left: -5px;}"),
     function() {
       const n = "function" == typeof e.onclick && e.onclick;
       e.onclick = function(e) {

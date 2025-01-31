@@ -1,4 +1,5 @@
 https://ex-rearranger.github.io/
+https://ex-rearranger.github.io/about/index.html
 https://ex-rearranger.github.io/ko/tags/index.html
 https://ex-rearranger.github.io/ko/categories/index.html
 https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-3/
@@ -7,7 +8,6 @@ https://ex-rearranger.github.io/en/categories/index.html
 https://ex-rearranger.github.io/en/tags/index.html
 https://ex-rearranger.github.io/posts/ko/Solving-DeprecationWarning-in-Hexo/
 https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-2/
-https://ex-rearranger.github.io/about/index.html
 https://ex-rearranger.github.io/posts/ko/tag-plugins-plus-tutorial-1/
 https://ex-rearranger.github.io/posts/ko/hello-world/
 https://ex-rearranger.github.io/posts/en/KaTeX-Test-Code/
@@ -20,8 +20,8 @@ https://ex-rearranger.github.io/en/categories/JavaScript/TeX/
 https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Hexo/https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/
 https://ex-rearranger.github.io/en/categories/JavaScript/TeX/KaTeX/
 https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/
-https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/npm/
 https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/Hexo-Tag-Plugins/
+https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/npm/
 https://ex-rearranger.github.io/ko/tags/markdown/https://ex-rearranger.github.io/en/tags/markdown/
 https://ex-rearranger.github.io/ko/tags/test-code/https://ex-rearranger.github.io/en/tags/test-code/
 https://ex-rearranger.github.io/ko/tags/highlight-js/https://ex-rearranger.github.io/en/tags/highlight-js/

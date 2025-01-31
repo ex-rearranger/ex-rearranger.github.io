@@ -10,6 +10,9 @@
     padding-left: 2.8em;
 }
 
+.container figure.highlight table {
+    scrollbar-width: none;
+}
 .container figure.highlight table::-webkit-scrollbar-thumb {
     display: none;
 }

@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 #article-container h1 i::before {
   font-size: 0.9em;
   margin-top: -0.2em;
-  color: rgba(252, 55, 117, 0.8);
+  color: #fc3775cc;
 }
 h1.page-title {
   margin-top: .67em;
@@ -29,7 +29,7 @@ h1.page-title i::before {
 #article-container h2::before {
   font-size: 0.9em;
   margin-top: -0.16em;
-  color: rgba(252, 116, 29, 0.8);
+  color: #fc741dcc;
 }
 #article-container h3 {
   font-size: 1.35em;
@@ -38,7 +38,7 @@ h1.page-title i::before {
 #article-container h3::before {
   font-size: 0.9em;
   margin-top: -0.1em;
-  color: rgba(255, 192, 0, 0.8);
+  color: #ffc000cc;
 }
 #article-container h4 {
   font-size: 1.25em;
@@ -47,7 +47,7 @@ h1.page-title i::before {
 #article-container h4::before {
   font-size: 0.9em;
   margin-top: -0.05em;
-  color: rgba(175, 238, 0, 0.8);
+  color: #afee00cc;
 }
 #article-container h5 {
   font-size: 1.1em;
@@ -55,7 +55,7 @@ h1.page-title i::before {
 }
 #article-container h5::before {
   font-size: 0.9em;
-  color: rgba(86, 210, 113, 0.8);
+  color: #56d271cc;
 }
 #article-container h6 {
   font-size: 1em;
@@ -63,7 +63,7 @@ h1.page-title i::before {
 }
 #article-container h6::before {
   font-size: 0.9em;
-  color: rgba(88, 195, 231, 0.8);
+  color: #58c3e7cc;
 }
 
 [data-theme=dark] #article-container h1::before,
@@ -267,10 +267,6 @@ hr:before,
 .custom-hr::before,
 #article-container hr:before,
 .search-dialog hr:before {
-  -webkit-transition: left 3s ease-in-out, background-color 0s;
-  -moz-transition: left 3s ease-in-out, background-color 0s;
-  -o-transition: left 3s ease-in-out, background-color 0s;
-  -ms-transition: left 3s ease-in-out, background-color 0s;
   transition: left 3s ease-in-out, background-color 0s;
 }
 .read-mode #article-container hr.footnotes-sep:before,
@@ -315,74 +311,6 @@ hr:hover::before,
 
 
 /* WRENCHING */
-@-moz-keyframes wrench {
-	0%{-moz-transform:rotate(-12deg)}
-	8%{-moz-transform:rotate(12deg)}
-	10%{-moz-transform:rotate(24deg)}
-	18%{-moz-transform:rotate(-24deg)}
-	20%{-moz-transform:rotate(-24deg)}
-	28%{-moz-transform:rotate(24deg)}
-	30%{-moz-transform:rotate(24deg)}
-	38%{-moz-transform:rotate(-24deg)}
-	40%{-moz-transform:rotate(-24deg)}
-	48%{-moz-transform:rotate(24deg)}
-	50%{-moz-transform:rotate(24deg)}
-	58%{-moz-transform:rotate(-24deg)}
-	60%{-moz-transform:rotate(-24deg)}
-	68%{-moz-transform:rotate(24deg)}
-	75%{-moz-transform:rotate(0deg)}
-}
-@-webkit-keyframes wrench {
-	0%{-webkit-transform:rotate(-12deg)}
-	8%{-webkit-transform:rotate(12deg)}
-	10%{-webkit-transform:rotate(24deg)}
-	18%{-webkit-transform:rotate(-24deg)}
-	20%{-webkit-transform:rotate(-24deg)}
-	28%{-webkit-transform:rotate(24deg)}
-	30%{-webkit-transform:rotate(24deg)}
-	38%{-webkit-transform:rotate(-24deg)}
-	40%{-webkit-transform:rotate(-24deg)}
-	48%{-webkit-transform:rotate(24deg)}
-	50%{-webkit-transform:rotate(24deg)}
-	58%{-webkit-transform:rotate(-24deg)}
-	60%{-webkit-transform:rotate(-24deg)}
-	68%{-webkit-transform:rotate(24deg)}
-	75%{-webkit-transform:rotate(0deg)}
-}
-@-o-keyframes wrench {
-	0%{-o-transform:rotate(-12deg)}
-	8%{-o-transform:rotate(12deg)}
-	10%{-o-transform:rotate(24deg)}
-	18%{-o-transform:rotate(-24deg)}
-	20%{-o-transform:rotate(-24deg)}
-	28%{-o-transform:rotate(24deg)}
-	30%{-o-transform:rotate(24deg)}
-	38%{-o-transform:rotate(-24deg)}
-	40%{-o-transform:rotate(-24deg)}
-	48%{-o-transform:rotate(24deg)}
-	50%{-o-transform:rotate(24deg)}
-	58%{-o-transform:rotate(-24deg)}
-	60%{-o-transform:rotate(-24deg)}
-	68%{-o-transform:rotate(24deg)}
-	75%{-o-transform:rotate(0deg)}
-}
-@-ms-keyframes wrench {
-	0%{-ms-transform:rotate(-12deg)}
-	8%{-ms-transform:rotate(12deg)}
-	10%{-ms-transform:rotate(24deg)}
-	18%{-ms-transform:rotate(-24deg)}
-	20%{-ms-transform:rotate(-24deg)}
-	28%{-ms-transform:rotate(24deg)}
-	30%{-ms-transform:rotate(24deg)}
-	38%{-ms-transform:rotate(-24deg)}
-	40%{-ms-transform:rotate(-24deg)}
-	48%{-ms-transform:rotate(24deg)}
-	50%{-ms-transform:rotate(24deg)}
-	58%{-ms-transform:rotate(-24deg)}
-	60%{-ms-transform:rotate(-24deg)}
-	68%{-ms-transform:rotate(24deg)}
-	75%{-ms-transform:rotate(0deg)}
-}
 @keyframes wrench {
 	0%{transform:rotate(-12deg)}
 	8%{transform:rotate(12deg)}

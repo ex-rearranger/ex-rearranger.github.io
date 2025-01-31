@@ -81,7 +81,7 @@
   --toc-link-hover: var(--sub-theme-color);
 
   /* Code */
-  --code-bg: rgba(179, 183, 201, 0.15);
+  --code-bg: #b3b7c926;
   --code-color: var(--theme-color-dark5);
 
   /* List */

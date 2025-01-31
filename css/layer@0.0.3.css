@@ -8,7 +8,7 @@ ol, ul {
   opacity: 0.7;
 }
 @media screen and (min-width: 769px) {
-  [data-theme="dark"] #recent-posts .recent-post-item .post-cover {
+  [data-theme="dark"] #recent-posts .post-cover {
     opacity: 0.7;
   }
 }
@@ -24,26 +24,15 @@ ol, ul {
   padding: 40px;
   height: fit-content;
   border-radius: 8px;
-  -webkit-box-shadow: 0 3px 8px 6px var(--card-box-shadow);
   box-shadow: 0 3px 8px 6px var(--card-box-shadow);
-  -webkit-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
-  -moz-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
-  -o-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
-  -ms-transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  transition: box-shadow 0.3s;
 }
 #page > .card-widget:not(:first-child),
 #post > .card-widget:not(:first-child){
   margin-top: 20px;
 }
 #page .card-widget:hover,
-#post .card-widget:hover,
-.cardHover:hover,
-.error404 #error-wrap .error-content:hover,
-#recent-posts .recent-post-item:hover,
-#aside-content .card-widget:hover,
-.layout > .recent-posts .pagination > *:not(.space):hover {
-  -webkit-box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+#post .card-widget:hover {
   box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
 }
 
@@ -51,7 +40,6 @@ body.read-mode #post > .card-widget,
 body.read-mode #page > .card-widget {
   padding: 0.5em;
   border-radius: 8px;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
@@ -91,7 +79,8 @@ body.read-mode #page > .card-widget {
   }
 }
 
-#page > div > h1 > i::before {
+#page h1.page-title::before,
+#page h1.page-title > i::before {
   color: var(--sub-theme-color);
   font-size: 0.75em;
   vertical-align: middle;

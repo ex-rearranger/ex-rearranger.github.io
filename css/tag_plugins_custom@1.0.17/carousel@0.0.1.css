@@ -36,7 +36,6 @@
     line-height: 200px;
     font-size: 50px;
     text-align: center;
-    -webkit-box-shadow: 0 0 8px var(--white);
     box-shadow: 0 0 8px var(--white);
     -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #00000055);
   }
@@ -59,7 +58,6 @@
   }
   .drag-container img:hover,
   .drag-container video:hover {
-    -webkit-box-shadow: 0 0 15px #ffffffdd;
     box-shadow: 0 0 15px #ffffffdd;
     -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #00000077);
   }

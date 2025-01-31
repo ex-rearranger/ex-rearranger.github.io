@@ -3,10 +3,6 @@
   align-items: center;
 }
 .checkbox input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
   appearance: none;
   position: relative;
   height: 16px;
@@ -28,10 +24,6 @@
   height: 2px;
   transition: all 0.2s ease-in;
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
 }
 .checkbox input[type="checkbox"]::after {
   right: 7px;
@@ -40,10 +32,6 @@
   height: 0;
   transition: all 0.2s ease-out;
   transform: rotate(40deg);
-  -webkit-transform: rotate(40deg);
-  -moz-transform: rotate(40deg);
-  -ms-transform: rotate(40deg);
-  -o-transform: rotate(40deg);
   transition-delay: 0.25s;
 }
 .checkbox input[type="checkbox"]:checked {

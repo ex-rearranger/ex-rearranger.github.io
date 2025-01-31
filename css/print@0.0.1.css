@@ -29,7 +29,6 @@
     -moz-box-pack: center;
     -o-box-pack: center;
     -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
   }
   html.hide-aside .layout > .aside-content {

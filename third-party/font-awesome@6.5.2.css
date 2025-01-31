@@ -261,15 +261,10 @@
 
 @media (prefers-reduced-motion: reduce) {
     .fa-beat, .fa-beat-fade, .fa-bounce, .fa-fade, .fa-flip, .fa-pulse, .fa-shake, .fa-spin, .fa-spin-pulse {
-        -webkit-animation-delay: -1ms;
         animation-delay: -1ms;
-        -webkit-animation-duration: 1ms;
         animation-duration: 1ms;
-        -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;
-        -webkit-transition-delay: 0s;
         transition-delay: 0s;
-        -webkit-transition-duration: 0s;
         transition-duration:0s
     }
 }

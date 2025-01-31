@@ -34,8 +34,7 @@ a {
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted
+  text-decoration: underline dotted;
 }
 
 b,
@@ -99,7 +98,7 @@ select {
 [type=reset],
 [type=submit],
 button {
-  -webkit-appearance: button
+  appearance: button
 }
 
 [type=button]::-moz-focus-inner,
@@ -108,13 +107,6 @@ button {
 button::-moz-focus-inner {
   border-style: none;
   padding: 0
-}
-
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring,
-button:-moz-focusring {
-  outline: 1px dotted ButtonText
 }
 
 fieldset {
@@ -250,7 +242,8 @@ template {
 #recent-posts .recent-post-item:hover,
 #aside-content .card-widget:hover,
 .layout .pagination > *:not(.space):hover {
-  box-shadow-color: var(--card-hover-box-shadow);
+  -webkit-box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
+  box-shadow: 0 3px 8px 6px var(--card-hover-box-shadow);
 }
 .imgHover,
 .error404 #error-wrap .error-content .error-img img,
@@ -1607,7 +1600,6 @@ blockquote > :last-child {
   -moz-user-select: all;
   -ms-user-select: all;
   user-select: all;
-  -webkit-user-select: all;
 }
 .container figure.highlight.copy-true > table,
 .container figure.highlight.copy-true > pre {
@@ -1676,7 +1668,6 @@ blockquote > :last-child {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-user-select: none;
   padding: 2px;
 }
 .container .highlight-tools .copy-notice {
@@ -1704,7 +1695,6 @@ blockquote > :last-child {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-user-select: none;
 }
 .container .gist table {
   width: auto;
@@ -4194,7 +4184,6 @@ blockquote > :last-child {
 .post-copyright #post-outdate-notice {
   position: relative;
   margin: 0 0 20px;
-  padding: 0.5em 1.2em;
   background-color: #ffe6e6;
   color: #f66;
   border-radius: 3px;
@@ -4468,7 +4457,6 @@ blockquote > :last-child {
   background-color: var(--btn-hover-color);
 }
 #rightside .slow-spin {
-  -webkit-animation: fa-spin 8s infinite linear;
   -webkit-animation: fa-spin 8s infinite linear;
   -moz-animation: fa-spin 8s infinite linear;
   -o-animation: fa-spin 8s infinite linear;
@@ -4779,7 +4767,6 @@ mjx-assistive-mml {
   display: block;
   margin: 0 0 20px;
   width: fit-content;
-  width: -moz-fit-content;
 }
 #article-container .btn-beautify.block.center {
   margin: 0 auto 20px;

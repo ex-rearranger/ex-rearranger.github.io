@@ -46,7 +46,7 @@
   /* --toc-link-hover: var(--sub-theme-color); */
 
   /* Code */
-  --code-bg: rgba(255, 255, 255, 0.1);
+  --code-bg: #ffffff1a;
 
   /* List - same variables as light mode */
 
@@ -68,7 +68,7 @@
   /* ETC */
   --scrollbar-color: #525252; /* lighten(#121212, 25)*/
   --default-bg-color: var(--theme-color);
-  --zoom-bg: #121212;
+  --zoom-bg: var(--card-bg);
   /* --mask-bg: var(--dark-black60); */
   --mask-bg-sub: #00000077;
   --reward-pop-bg: #1a1a1a; /* lighten(#121212, 10) */

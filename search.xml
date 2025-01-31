@@ -2730,6 +2730,48 @@ KaTeX units are different than CSS units.</p>
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <language>ko</language>
+    <url>/posts/ko/hello-world/</url>
+    <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
+<div class="note info modern">
+<p>이 게시물은 <code>$ hexo init</code> 커맨드 실행 시 처음으로 생성되는 게시물입니다.<br>
+원본 소스 코드는 <code>hexojs/hexo-starter</code>에서 확인할 수 있습니다.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</div>
+<h2 id="소개">소개</h2>
+<p><a href="https://hexo.io/ko/">Hexo</a>에 오신 것을 환영합니다! 이 게시물은 Hexo 기본 템플릿에서 제공하는 첫 게시물에 대한 한글 번역본입니다. 자세한 내용은 <a href="https://hexo.io/ko/docs/index.html">Hexo 문서</a>에서 확인하세요. Hexo 사용 시 문제가 발생하면 <a href="https://hexo.io/ko/docs/troubleshooting.html">troubleshooting</a> 에서 답을 찾거나 <a href="https://github.com/hexojs/hexo/issues">GitHub</a>를 통해 문의할 수 있습니다.</p>
+<h2 id="빠른-시작">빠른 시작</h2>
+<h3 id="새-게시물-만들기">새 게시물 만들기</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/writing.html">Writing</a></p>
+<h3 id="서버-실행">서버 실행</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/server.html">Server</a></p>
+<h3 id="정적-파일-생성">정적 파일 생성</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/generating.html">Generating</a></p>
+<h3 id="원격-사이트로-배포">원격 사이트로 배포</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/one-command-deployment.html">Deployment</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>test code</tag>
+        <tag>quick start</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo에서 `punycode` DeprecationWarning 해결하기</title>
     <language>ko</language>
     <url>/posts/ko/Solving-DeprecationWarning-in-Hexo/</url>
@@ -2803,14 +2845,14 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 </details>
 </li>
 </ul>
-<h1 id="How-I-Got-Here">How I Got Here</h1>
-<p>결론은 결론이고, 모두가 위에서 언급한 패키지에 대해 문제가 생긴 것은 아닐 것이다.<br>
+<h1 id="How-I-Got-Resolved">How I Got Resolved</h1>
+<p>결론은 결론이고, 모두가 위에서 언급한 패키지에 대해 문제가 생기지는 않을 것이다.<br>
 따라서 내가 어떻게 문제를 해결했는지에 대한 과정을 의식의 흐름대로 적어보았다.</p>
 <h2 id="Check-Status">Check Status</h2>
 <p>일단 사용 중인 Node 버전을 확인해보았던 걸로 기억한다.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br><span class="line">v21.7.3</span><br></pre></td></tr></table></figure>
-<p>Node 버전을 20으로 낮춰도 아마 해결은 되겠지만, 낮추는 건 왠지 자존심이 허락 안하는걸~<br>
-(은 아니고 그냥 Node에 관한 지식이 없어서 버전별 차이를 모르기 때문에 최신이 최선이라고 생각했음)</p>
+<p>버전을 20으로 낮춰도 아마 해결은 되겠지만, 낮추는 건 왠지 자존심이 허락 안하는걸~<br>
+(은 아니고 그냥 Node.js에 관한 지식이 없어서 버전별 차이를 모르기 때문에 최신이 최선이라고 생각했음)</p>
 <h2 id="punycode-vs-punycode">punycode vs. punycode/</h2>
 <p>구글에 “npm punycode deprication” 따위로 검색해서 이것저것 살펴보니, 결국 punycode를 사용하는 패키지에서 punycode를 불러오는 코드를 최신화하지 않아서 발생하는 문제였다.</p>
 <p>그니까, 대충 뭐 punycode 깃헙 리드미<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>를 읽어보면</p>
@@ -2818,29 +2860,30 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 <li>punycode를 설치하고</li>
 <li><emp><code>require('punycode')</code>가 아닌 <code>require('punycode/')</code>로 불러와야 한다</emp>는 것 같다.</li>
 </ol>
-<p><del> 대체 둘이 뭐가 다른지 모르겠지만, 뭐 그냥 파이썬에 비유하면 <code>from .utils import *</code> 랑 <code>from utils import *</code> 사이의 간극 정도 아닐까하고 적당히 합리화했다.^^</del></p>
+<p><del> 대체 둘이 뭐가 다른지 모르겠지만, 뭐 그냥 파이썬에 비유하면 <code>from .utils import *</code> 랑 <code>from utils import *</code> 사이의 간극 정도 아닐까하고 적당히 넘어감.^^</del></p>
 <h2 id="punycode-dependency">punycode dependency</h2>
 <p>아무튼 그러한 이유로 <emp>punycode를 사용하는 모듈을 모두 찾기</emp>로 한다.<br>
-블로그 루트 디렉토리로 가서 아래와 같이 punycode의 상속 여부를 찾아보자.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /루트/디렉토리/절대/경로</span><br><span class="line">├─┬ hexo-generator-searchdb@1.4.1 -&gt; /루트/디렉토리/절대/경로/node_modules/hexo-generator-searchdb</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@기억.안남.0</span><br><span class="line">│     └─┬ uri-js@기억.안남.0</span><br><span class="line">│       └── punycode@기억.안남.0</span><br></pre></td></tr></table></figure>
+블로그 루트 디렉토리로 가서 <code>$ npm ls punycode</code>로 punycode의 상속 여부를 찾아보자.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /루트/디렉토리/</span><br><span class="line">├─┬ hexo-generator-searchdb-custom@1.4.1 -&gt; /루트/디렉토리/node_modules/hexo-generator-searchdb-custom</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@기억.안남.0</span><br><span class="line">│     └─┬ uri-js@기억.안남.0</span><br><span class="line">│       └── punycode@기억.안남.0</span><br></pre></td></tr></table></figure>
 <p>대충 이런 결과가 뜬다. (기억이 가물가물해서 버전은 유추해서 적은 것)</p>
-<p>안 그래도 구글링할 때 eslint, ajv, uri-js 깃헙 이슈가 자주 나왔던 것이 생각나서, 이 세 개의 패키지도 마찬가지로 <code>$ npm ls [패키지명]</code> 명령어로 확인해보았다.</p>
-<p>결과적으로 두 개의 패키지에서 eslint를 사용하는 걸로 확인되었다.</p>
+<p>보다시피 punycode를 쓰는 uri-js를 쓰는 ajv를 쓰는 eslint를 쓰는 hexo-generator-searchdb-custom이 문제인 걸로 확인되었다. ㅋㅋ</p>
+<p>안 그래도 구글링할 때 <code>eslint</code>, <code>ajv</code>, <code>uri-js</code> 패키지 관련 이슈가 자주 나왔던 것이 생각나서, 이 세 개의 패키지도 마찬가지로 <code>$ npm ls [패키지명]</code> 명령어로 확인해보았다.</p>
+<p>결과적으로 두 패키지에서 구버전 eslint를 사용하는 걸로 확인되었다.</p>
 <ul>
 <li><code>hexo-generator-searchdb-custom</code></li>
 <li><code>hexo-generator-sitemap-custom</code></li>
 </ul>
 <h2 id="Fix-1">Fix (1)</h2>
-<p>처음에는 이 패키지들의 버전을 최신으로 업데이트하면 되겠지 싶어서 각 패키지의 <code>package.json</code>을 열어보았는데, 둘 다 <code>devDependencies</code>로 설정된 케이스였다.</p>
-<p>두 패키지 이름에서 짐작되겠지만, 둘 다 <emp>기존의 플러그인을 로컬에서 커스텀한 플러그인</emp>이었다. 거의 파일을 전체적으로 다 고쳐야 해서 그냥 로컬 패키지로 만든 뒤 아래와 같이 사용했는데 이게 문제였다.<br>
+<p>처음에는 이 패키지들의 버전을 최신으로 업데이트하면 되겠지 싶어서 각 패키지의 <code>package.json</code>을 열어보았는데, 둘 다 <code>eslint</code>가 <code>devDependencies</code>로 설정된 케이스였다.</p>
+<p>두 패키지 이름에서 짐작되겠지만, 둘 다 <emp>기존의 플러그인을 로컬에서 커스텀한 플러그인</emp>이었다. 기존 패키지를 전체적으로 거의 다 고쳐야 해서 그냥 로컬로 복제한 뒤 수정하여 아래와 같이 사용했는데 이게 문제였다.<br>
 <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-sitemap-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>이유는 모르겠으나 이렇게 <emp>직접 만든 패키지를 사용할 때는 <code>devDependencies</code>까지 함께 설치되었다.</emp></p>
+<p>이유는 모르겠으나 이렇게 <emp>직접 만든 로컬 패키지를 사용할 때는 <code>devDependencies</code>까지 함께 설치되었다.</emp></p>
 <ul>
-<li><code>npm install</code>의 <code>--production</code> 옵션이 적용되지 않는 것 같음</li>
+<li><code>npm install</code>의 <code>--production</code> 옵션이 적용되지 않는 것으로 추정</li>
 <li>구글링해도 이유를 못 찾아서 포기</li>
 </ul>
 <p>어짜피 개발의 편의를 위해 기존 패키지를 수정한 것에 불과해서 <code>devDependencies</code>가 필요 없었다.<br>
-그래서 그냥 <emp><code>devDependencies</code> 부분을 <code>package.json</code>에서 모두 삭제</emp>하고 아래의 코드로 패키지들을 재설치했다.</p>
+그래서 그냥 두 패키지의 <emp><code>package.json</code>에서 <code>devDependencies</code> 부분을 모두 삭제</emp>하고 아래의 코드로 패키지들을 재설치했다.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> package-lock.json</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
 <h2 id="Fix-2">Fix (2)</h2>
 <p>그 때는 해결될 줄 알았는데… Warning 또 뜨는 걸 보고 진심… 노트북 던져버릴 뻔</p>
@@ -2853,11 +2896,13 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 <p>보니깐, <code>hexo-renderer-markdown-it</code> 플러그인에서 <code>markdown-it@13.0.2</code>를 사용하고 있는데, 이 버전의 <code>lib/index.js</code>에서 punycode를 예전 방식으로 불러오고 있었다.</p>
 <p>그래서 그냥 슬래시 하나 추가해주고 저장하기만 했다.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // 기존 코드</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// 수정 코드</span></span><br></pre></td></tr></table></figure>
-<p>그리고 다시 한 번 <code>hexo server -o</code>를 실행해보니 DeprecationWarning이 뜨지 않았다.</p>
+<p>그리고 다시 한 번 <code>hexo server -o</code>를 실행해보니 이번엔 <code>punycode</code>가 설치되어 있지 않다는 문구가 떴다.<br>
+이는 <code>punycode/</code>로 불러오는 방식이 node_modules에 설치된 punycode를 사용하게 되기 때문인 걸로 보인다.</p>
+<p>가볍게 <code>$ npm i punycode --save</code>로 블로그 루트에 <code>punycode</code>를 설치한 후 다시 서버를 실행해보니 드디어 DeprecationWarning이 뜨지 않았다.</p>
 <p>와! 다행! 이제 노트북을 던지지 않아도 된다!</p>
 <h3 id="Postinstall-Script">Postinstall Script</h3>
 <p>그런데, 이렇게 매번 수정하기 귀찮기도 하고 node_modules를 직접 건드리는 게 맞나 싶기도 해서 좀 검색해보니까 바로 <code>postinstall</code> 스크립트를 활용법이 나오더라.</p>
-<p>방법은 상당히 간단하더라.</p>
+<p>방법은 상당히 간단하다.</p>
 <ol>
 <li>
 <p>patch-package 패키지 설치</p>
@@ -2866,7 +2911,7 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 <li>
 <p>node_modules 안에서 수정하고 싶은 파일을 찾아서 수정</p>
 <ul>
-<li><span style="margin-bottom: 1em">이미 수정되어 있으니 생략</span></li>
+<li><span style="margin-bottom: 1.1em">이미 수정되어 있으니 생략</span></li>
 </ul>
 </li>
 <li>
@@ -2876,9 +2921,8 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 <li>
 <p>수정된 파일을 패치로 저장</p>
  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx patch-package [패키지명]</span></span><br></pre></td></tr></table></figure>
-<p>여기서는 패키지 안의 패키지를 수정했기 때문에<br>
-<code>npx patch-package hexo-renderer-markdown-it</code>으로 실행하면<br>
-hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지가 뜬다.</p>
+<p><strong>주의)</strong> 여기서는 패키지 속 패키지를 수정했기 때문에<br>
+<code>npx patch-package hexo-renderer-markdown-it</code>으로 실행하면 해당 패키지에서 바뀐 게 아무 것도 없다는 메시지가 뜬다.</p>
  <!-- (⁉️  There don't appear to be any changes.) -->
 <p>따라서 <emp><code>npx patch-package hexo-renderer-markdown-it/markdown-it</code>으로 실행</emp>해야 한다.</p>
 </li>
@@ -2886,7 +2930,7 @@ hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지
 <p>끝!</p>
 <ul>
 <li><code>/patches</code> 디렉토리가 생성되고 그 안에 패치 파일이 생성된다.</li>
-<li><code>npm install</code> 시 자동으로 패치가 적용되므로 더 이상 직접 수정할 필요가 없다.</li>
+<li><code>npm install</code> 시 자동으로 해당 폴더의 패치들이 적용되므로 더 이상 직접 수정할 필요가 없다.</li>
 </ul>
 </li>
 </ol>
@@ -2925,48 +2969,6 @@ hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지
         <tag>punycode</tag>
         <tag>npm update</tag>
         <tag>patch-package</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <language>ko</language>
-    <url>/posts/ko/hello-world/</url>
-    <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
-<div class="note info modern">
-<p>이 게시물은 <code>$ hexo init</code> 커맨드 실행 시 처음으로 생성되는 게시물입니다.<br>
-원본 소스 코드는 <code>hexojs/hexo-starter</code>에서 확인할 수 있습니다.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-</div>
-<h2 id="소개">소개</h2>
-<p><a href="https://hexo.io/ko/">Hexo</a>에 오신 것을 환영합니다! 이 게시물은 Hexo 기본 템플릿에서 제공하는 첫 게시물에 대한 한글 번역본입니다. 자세한 내용은 <a href="https://hexo.io/ko/docs/index.html">Hexo 문서</a>에서 확인하세요. Hexo 사용 시 문제가 발생하면 <a href="https://hexo.io/ko/docs/troubleshooting.html">troubleshooting</a> 에서 답을 찾거나 <a href="https://github.com/hexojs/hexo/issues">GitHub</a>를 통해 문의할 수 있습니다.</p>
-<h2 id="빠른-시작">빠른 시작</h2>
-<h3 id="새-게시물-만들기">새 게시물 만들기</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/writing.html">Writing</a></p>
-<h3 id="서버-실행">서버 실행</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/server.html">Server</a></p>
-<h3 id="정적-파일-생성">정적 파일 생성</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/generating.html">Generating</a></p>
-<h3 id="원격-사이트로-배포">원격 사이트로 배포</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/one-command-deployment.html">Deployment</a></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>test code</tag>
-        <tag>quick start</tag>
       </tags>
   </entry>
   <entry>
@@ -3945,9 +3947,9 @@ hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지
 (이미지 캡션 앞뒤에 &quot;⊙︎&quot;를 붙이는 방법은 Butterfly 테마 공식 튜토리얼을 참고하여 수정한 것으로 기억하고 있습니다.)</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">margin</span>: -<span class="number">0.4em</span> auto <span class="number">0.4em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot; ⊙&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
 <h1 id="오디오-audio">오디오 (audio)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio [오디오(.mp3) 링크] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3 %&#125;</span><br><span class="line">&#123;% audio /sample/music/long<span class="emphasis">_sample.mp3 %&#125;</span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div oncontextmenu='return false'>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio [오디오(.mp3) 링크] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3 %&#125;</span><br><span class="line">&#123;% audio /sample/tag-plugins-plus/long<span class="emphasis">_sample.mp3 %&#125;</span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div oncontextmenu='return false'>
 <div class="audio"><audio controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
-<div class="audio"><audio controls preload><source src='/sample/music/long_sample.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
+<div class="audio"><audio controls preload><source src='/sample/tag-plugins-plus/long_sample.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
 </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
 <h1 id="비디오-video">비디오 (video)</h1>
 <div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos [정렬 방향 (선택사항)], [열 수] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
@@ -4211,7 +4213,7 @@ hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지
 </li>
 <li>
 <p>또한, 1200px 이상의 너비인 화면에 대해서만 세로로 표기해주고 있으므로 동일한 css를 모든 너비에 대해 추가해주었습니다.</p>
- <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.poem</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1em</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">writing-mode</span>: vertical-rl;</span><br><span class="line">  <span class="attribute">writing-mode</span>: tb-rl;  </span><br><span class="line">  <span class="attribute">text-orientation</span>: upright;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.poem</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">  <span class="attribute">text-decoration-color</span>: <span class="built_in">rgba</span>(<span class="number">193</span>,<span class="number">11</span>,<span class="number">11</span>,<span class="number">0.72</span>);</span><br><span class="line">  <span class="attribute">text-decoration-style</span>: dashed;</span><br><span class="line">  <span class="attribute">text-decoration-thickness</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.poem</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1em</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">writing-mode</span>: vertical-rl;</span><br><span class="line">  <span class="attribute">writing-mode</span>: tb-rl;  </span><br><span class="line">  <span class="attribute">text-orientation</span>: upright;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.poem</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">  <span class="attribute">text-decoration-color</span>: <span class="number">#c10b0b</span>;</span><br><span class="line">  <span class="attribute">text-decoration-style</span>: dashed;</span><br><span class="line">  <span class="attribute">text-decoration-thickness</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>아래첨자의 스타일은 아래와 같이 css를 수정하였습니다.</p>
@@ -4375,9 +4377,9 @@ hexo-renderer-markdown-it 내에서 아무 것도 바뀐 게 없다는 메시지
 </ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">저는 최근에 많은 새로운 것을 배웠습니다(비록 이것들이 많은 전문가에게는 오래된 기술일지라도요).</span><br><span class="line">가령, CSS &#123;% bubble 인접 형제 선택자,&quot;가령<span class="literal">&amp;comma;</span> h1 + p &#123;margin-top:50px;&#125;&quot; %&#125;, &#123;% bubble flex 레이아웃,&quot;Flex는 Flexible Box의 약자로<span class="literal">&amp;comma;</span> 박스 모델에 유연하고 강력한 레이아웃 설정을 가능하게 합니다.&quot;,&quot;#ec5830&quot; %&#125;, &#123;% bubble transform 변환,&quot;transform 속성은 요소에 2D 또는 3D 변형을 적용합니다. 이 속성을 사용하면 요소를 회전<span class="literal">&amp;comma;</span> 크기 조정<span class="literal">&amp;comma;</span> 이동<span class="literal">&amp;comma;</span> 또는 기울일 수 있습니다.&quot;,&quot;#1db675&quot; %&#125;, animation을 위한 &#123;% bubble 베지에 곡선,&quot;베지에 곡선(Bézier curve)은 베지어 곡선이라고 불리는<span class="literal">&amp;comma;</span> 2차원 그래픽 응용 프로그램에서 사용되는 매개변수 곡선입니다. 일반적인 벡터 그래픽 소프트웨어는 이를 통해 곡선을 정확하게 그립니다. 베지에 곡선은 선분과 노드로 구성되어 있는데<span class="literal">&amp;comma;</span> 노드는 끌 수 있는 지점이며 선분은 신축성 있는 고무줄과 같습니다.&quot;,&quot;#de4489&quot; %&#125; 작성법, 그리고 오늘 본 &#123;% bubble clip-path,&quot;clip-path 속성은 요소의 표시 가능 영역 주위에 클리핑 경로를 생성합니다. 해당 영역의 내부는 표시되고<span class="literal">&amp;comma;</span> 외부는 숨겨집니다.&quot;,&quot;#868fd7&quot; %&#125; 속성 등이 있습니다. 이러한 새로운 개념들은 제가 이전에 쌓아온 디자인 아이디어에 큰 영향을 주었습니다.</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><p>저는 최근에 많은 새로운 것을 배웠습니다(비록 이것들이 많은 전문가에게는 오래된 기술일지라도요).<br>
 가령, CSS <span class="bubble"><span class="bubble-content">인접 형제 선택자</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#71a4e3;">가령, h1 + p {margin-top:50px;}</span></span></span>, <span class="bubble"><span class="bubble-content">flex 레이아웃</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#ec5830;">Flex는 Flexible Box의 약자로, 박스 모델에 유연하고 강력한 레이아웃 설정을 가능하게 합니다.</span></span></span>, <span class="bubble"><span class="bubble-content">transform 변환</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#1db675;">transform 속성은 요소에 2D 또는 3D 변형을 적용합니다. 이 속성을 사용하면 요소를 회전, 크기 조정, 이동, 또는 기울일 수 있습니다.</span></span></span>, animation을 위한 <span class="bubble"><span class="bubble-content">베지에 곡선</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#de4489;">베지에 곡선(Bézier curve)은 베지어 곡선이라고 불리는, 2차원 그래픽 응용 프로그램에서 사용되는 매개변수 곡선입니다. 일반적인 벡터 그래픽 소프트웨어는 이를 통해 곡선을 정확하게 그립니다.<br>
 베지에 곡선은 선분과 노드로 구성되어 있는데, 노드는 끌 수 있는 지점이며 선분은 신축성 있는 고무줄과 같습니다.</span></span></span> 작성법, 그리고 오늘 본 <span class="bubble"><span class="bubble-content">clip-path</span><span class="bubble-notation"><span class="bubble-item" style="background-color:#868fd7;">clip-path 속성은 요소의 표시 가능 영역 주위에 클리핑 경로를 생성합니다. 해당 영역의 내부는 표시되고, 외부는 숨겨집니다.</span></span></span> 속성 등이 있습니다. 이러한 새로운 개념들은 제가 이전에 쌓아온 디자인 아이디어에 큰 영향을 주었습니다.</p></div><div class="tab-item-content"><ul>
-<li><del>프리뷰에 적힌 내용 중 8할은 무슨 말인지 모르겠는 부분… 베지어 곡선은 일러에서 곡선 그릴 때 접점에서 드래그하는 그거 말하는 거 같긴 한데… </del></li>
 <li>기존에는 버블의 위치가 우측에 있을 경우 폭이 너무 좁아 보이는 문제가 있었습니다.<br>
 이를 해결하기 위해 window 크기가 바뀔 때마다 bubble의 위치 및 방향을 수정하는 js 코드를 추가해봤습니다만 주먹구구식이라 속도가 느린 것 같습니다.</li>
+<li><del>그나저나 프리뷰에 적힌 내용 중 8할은 무슨 말인지 모르겠는 부분… 베지어 곡선은 일러에서 곡선 그릴 때 접점에서 드래그하는 그거 말하는 거 같긴 한데… </del></li>
 </ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
 <h1 id="참고문헌-reference">참고문헌 (reference)</h1>
 <div class="note no-icon flat"><p>본 블로그는 <code>markdown-it-footnote</code> 플러그인을 사용하기 때문에, 하기의 태그와는 형식과 스타일에 차이가 있습니다.</p>
@@ -4439,7 +4441,7 @@ Butterfly 테마<span class="hidden-anchor" id="referto_[2]"></span><sup class="
 .poem p {
   letter-spacing: 0.2em;
   text-decoration: underline;
-  text-decoration-color: rgba(193,11,11,0.72);
+  text-decoration-color: #c10b0b;
   text-decoration-style: dashed;
   text-decoration-thickness: 2px;
 }
