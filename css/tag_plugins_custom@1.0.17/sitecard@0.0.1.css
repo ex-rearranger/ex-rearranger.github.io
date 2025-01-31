@@ -70,10 +70,8 @@
   font-weight: 600;
   font-size: var(--global-font-size);
   color: var(--font-color);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  display: block;
   overflow: hidden;
-  -webkit-line-clamp: 1;
   line-clamp: 1;
   transition: all 0.28s ease;
   -moz-transition: all 0.28s ease;
@@ -85,17 +83,15 @@
   word-wrap: break-word;
   line-height: 1.2;
   color: var(--meta-color);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  display: block;
   overflow: hidden;
-  -webkit-line-clamp: 2;
   line-clamp: 2;
 }
 .site-card .img {
-  transition: all 0.28s ease;
-  -moz-transition: all 0.28s ease;
-  -webkit-transition: all 0.28s ease;
-  -o-transition: all 0.28s ease;
+  transition: color 0.28s ease;
+  -moz-transition: color 0.28s ease;
+  -webkit-transition: color 0.28s ease;
+  -o-transition: color 0.28s ease;
 }
 .site-card:hover .img {
   box-shadow: 0 4px 8px 0px #0000001a, 0 2px 4px 0px #0000001a, 0 4px 8px 0px #0000001a, 0 8px 16px 0px #0000001a;

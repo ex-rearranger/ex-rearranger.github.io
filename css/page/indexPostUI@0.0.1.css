@@ -1,0 +1,12 @@
+span.post-meta-lang {
+  margin-right: -4px;
+}
+span.post-meta-lang i {
+  padding-bottom: 0.125em;
+}
+
+@media screen and (max-width: 600px) {
+  span.article-meta.tags {
+    display: none;
+  }
+}

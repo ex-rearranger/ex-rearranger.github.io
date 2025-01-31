@@ -48,9 +48,9 @@
   font-feature-settings: 'liga';
 }
 
-.ft-icon-eng-box::before { content: "\f101"; }
-.ft-icon-eng::before { content: "\f102"; }
-.ft-icon-kor-box::before { content: "\f103"; }
-.ft-icon-kor::before { content: "\f104"; }
+.ft-icon-en-box::before { content: "\f101"; }
+.ft-icon-en::before { content: "\f102"; }
+.ft-icon-ko-box::before { content: "\f103"; }
+.ft-icon-ko::before { content: "\f104"; }
 .ft-icon-language-box::before { content: "\f105"; }
 .ft-icon-language::before { content: "\f106"; }

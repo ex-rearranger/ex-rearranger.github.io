@@ -1,0 +1,75 @@
+.carousel {
+    touch-action: none;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    background: transparent;
+    height: fit-content;
+    min-height: 480px;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .drag-container,
+  .spin-container {
+    position: relative;
+    display: block;
+    display: -webkit-box;
+    margin: auto;
+    top: calc(480px / 2 - 170px);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-13deg);
+    transform: rotateX(-13deg);
+  }
+  .drag-container img,
+  .drag-container video {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    line-height: 200px;
+    font-size: 50px;
+    text-align: center;
+    -webkit-box-shadow: 0 0 8px var(--white);
+    box-shadow: 0 0 8px var(--white);
+    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #00000055);
+  }
+  .drag-container .img-alt.text-center {
+    display: none;
+  }
+  .drag-container br {
+    display: none;
+  }
+  .drag-container p {
+    font-family: Serif;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+    transform: translate(-50%, -50%) rotateX(90deg);
+    color: var(--white);
+    font-size: 1.5em;
+    line-height: 1.3;
+  }
+  .drag-container img:hover,
+  .drag-container video:hover {
+    -webkit-box-shadow: 0 0 15px #ffffffdd;
+    box-shadow: 0 0 15px #ffffffdd;
+    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #00000077);
+  }
+  .carousel-ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+    transform: translate(-50%, -50%) rotateX(90deg);
+    background: -webkit-radial-gradient(center center, farthest-side, #99999933, transparent);
+  }

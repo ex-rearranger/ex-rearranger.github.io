@@ -94,4 +94,5 @@ body.read-mode #page > .card-widget {
 #page > div > h1 > i::before {
   color: var(--sub-theme-color);
   font-size: 0.75em;
+  vertical-align: middle;
 }

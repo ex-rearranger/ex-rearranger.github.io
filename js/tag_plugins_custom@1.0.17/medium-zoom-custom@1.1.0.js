@@ -60,13 +60,15 @@
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
     clone.removeAttribute("id");
     clone.style.position = "absolute";
-    left = left + (width - template.naturalWidth) / 2;
-    top = top + (height - template.naturalHeight) / 2;
     clone.style.top = top + scrollTop + "px";
     clone.style.left = left + scrollLeft + "px";
     clone.style.width = template.naturalWidth + "px";
     clone.style.height = template.naturalHeight + "px";
     clone.style.transform = "";
+    clone.style.transformOrigin = 'top left';
+    var r = document.querySelector(':root');
+    r.style.setProperty('--mz-scale-start-x', width / template.naturalWidth);
+    r.style.setProperty('--mz-scale-start-y', height / template.naturalHeight);
     return clone;
   };
   var createCustomEvent = function createCustomEvent(type, params) {
@@ -244,19 +246,22 @@
         var naturalWidth = isSvg(zoomTarget) ? viewportWidth : zoomTarget.naturalWidth || viewportWidth;
         var naturalHeight = isSvg(zoomTarget) ? viewportHeight : zoomTarget.naturalHeight || viewportHeight;
         var _zoomTarget$getBoundi = zoomTarget.getBoundingClientRect(), top = _zoomTarget$getBoundi.top, left = _zoomTarget$getBoundi.left, width = _zoomTarget$getBoundi.width, height = _zoomTarget$getBoundi.height;
-        left = left + (width - naturalWidth) / 2;
-        top = top + (height - naturalHeight) / 2;
-        var scaleX = Math.min(Math.max(width, naturalWidth), viewportWidth) / Math.max(width, naturalWidth);
-        var scaleY = Math.min(Math.max(height, naturalHeight), viewportHeight) / Math.max(height, naturalHeight);
+        var scaleX = Math.min(naturalWidth, viewportWidth) / naturalWidth;
+        var scaleY = Math.min(naturalHeight, viewportHeight) / naturalHeight;
         var scale = Math.min(scaleX, scaleY);
-        var translateX = (-left + (viewportWidth - Math.max(width, naturalWidth)) / 2 + zoomOptions.margin + container.left) / scale;
-        var translateY = (-top + (viewportHeight - Math.max(height, naturalHeight)) / 2 + zoomOptions.margin + container.top) / scale;
-        var transform = `scale(${scale}) translate3d(${translateX}px, ${translateY}px, 0)`;
+        console.log(left, width, naturalWidth, viewportWidth, container.left);
+        console.log(top, height, naturalHeight, viewportHeight, container.top);
+        var translateX = (-left + (viewportWidth - naturalWidth * scale) / 2 + zoomOptions.margin + container.left) / scale;
+        var translateY = (-top + (viewportHeight - naturalHeight * scale) / 2 + zoomOptions.margin + container.top) / scale;
+        var r = document.querySelector(':root');
+        r.style.setProperty('--mz-scale-end', scale);
+        r.style.setProperty('--mz-translate-x', `${translateX}px`);
+        r.style.setProperty('--mz-translate-y', `${translateY}px`);
         active.zoomed.style.width = `${naturalWidth}px`;
         active.zoomed.style.height = `${naturalHeight}px`;
-        active.zoomed.style.transform = transform;
+        active.zoomed.style.animation = '300ms forwards zoom-in';
         if (active.zoomedHd) {
-          active.zoomedHd.style.transform = transform;
+          active.zoomedHd.style.animation = '300ms forwards zoom-in';
         }
       };
       return new Promise(function(resolve) {
@@ -266,7 +271,7 @@
         }
         var _handleOpenEnd = function _handleOpenEnd() {
           isAnimating = false;
-          active.zoomed.removeEventListener("transitionend", _handleOpenEnd);
+          active.zoomed.removeEventListener("animationend", _handleOpenEnd);
           active.original.dispatchEvent(createCustomEvent("medium-zoom:opened", {
             detail: {
               zoom: zoom
@@ -312,7 +317,7 @@
         active.original.classList.add("medium-zoom-image--hidden");
         active.zoomed.classList.add("medium-zoom-image--opened");
         active.zoomed.addEventListener("click", close);
-        active.zoomed.addEventListener("transitionend", _handleOpenEnd);
+        active.zoomed.addEventListener("animationend", _handleOpenEnd);
         if (active.original.getAttribute("data-zoom-src")) {
           active.zoomedHd = active.zoomed.cloneNode();
           active.zoomedHd.removeAttribute("srcset");
@@ -368,7 +373,7 @@
             document.body.removeChild(active.template);
           }
           isAnimating = false;
-          active.zoomed.removeEventListener("transitionend", _handleCloseEnd);
+          active.zoomed.removeEventListener("animationend", _handleCloseEnd);
           active.original.dispatchEvent(createCustomEvent("medium-zoom:closed", {
             detail: {
               zoom: zoom
@@ -381,10 +386,13 @@
           resolve(zoom);
         };
         isAnimating = true;
+        active.zoomed.style.removeProperty('animation');
+        active.zoomed.addEventListener("animationend", _handleCloseEnd);
         document.body.classList.remove("medium-zoom--opened");
-        active.zoomed.style.transform = "";
+        active.zoomed.style.animation = "300ms zoom-out";
         if (active.zoomedHd) {
-          active.zoomedHd.style.transform = "";
+          active.zoomedHd.style.removeProperty('animation');
+          active.zoomedHd.style.animation = "300ms zoom-out";
         }
         if (active.template) {
           active.template.style.transition = "opacity 150ms";
@@ -395,7 +403,6 @@
             zoom: zoom
           }
         }));
-        active.zoomed.addEventListener("transitionend", _handleCloseEnd);
       });
     };
     var toggle = function toggle() {
@@ -458,6 +465,16 @@
       getImages: getImages,
       getZoomedImage: getZoomedImage
     };
+    
+    var transform_0 = `scale(var(--mz-scale-start-x), var(--mz-scale-start-y)) translate3d(0, 0, 0)`;
+    var transform_100 = `scale(var(--mz-scale-end)) translate3d(var(--mz-translate-x), var(--mz-translate-y), 0)`;
+    var transform_animation = `:root { --mz-scale-start-x: 1; --mz-scale-start-y: 1; --mz-scale-end: 1; --mz-translate-x: 0; --mz-translate-y: 0; } 
+    @keyframes zoom-in { from { transform: ${transform_0}; } to { transform: ${transform_100}; } } 
+    @keyframes zoom-out { from { transform: ${transform_100}; } to { transform: ${transform_0}; } }`;
+    var style = document.createElement('style');
+    style.innerHTML = transform_animation;
+    document.head.appendChild(style);
+    
     return zoom;
   };
   return mediumZoom;
