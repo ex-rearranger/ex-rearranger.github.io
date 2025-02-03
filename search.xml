@@ -113,6 +113,52 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <language>en</language>
+    <url>/posts/en/hello-world/</url>
+    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
+<div class="note info modern">
+<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
+You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</div>
+<h2 id="Introduction">Introduction</h2>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
+calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
+100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
+5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>test code</tag>
+        <tag>quick start</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>KaTeX Test Code</title>
     <language>en</language>
     <url>/posts/en/KaTeX-Test-Code/</url>
@@ -2684,94 +2730,6 @@ KaTeX units are different than CSS units.</p>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <language>en</language>
-    <url>/posts/en/hello-world/</url>
-    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
-<div class="note info modern">
-<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
-You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-</div>
-<h2 id="Introduction">Introduction</h2>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
-calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
-100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
-5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>test code</tag>
-        <tag>quick start</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <language>ko</language>
-    <url>/posts/ko/hello-world/</url>
-    <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
-<div class="note info modern">
-<p>이 게시물은 <code>$ hexo init</code> 커맨드 실행 시 처음으로 생성되는 게시물입니다.<br>
-원본 소스 코드는 <code>hexojs/hexo-starter</code>에서 확인할 수 있습니다.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-</div>
-<h2 id="소개">소개</h2>
-<p><a href="https://hexo.io/ko/">Hexo</a>에 오신 것을 환영합니다! 이 게시물은 Hexo 기본 템플릿에서 제공하는 첫 게시물에 대한 한글 번역본입니다. 자세한 내용은 <a href="https://hexo.io/ko/docs/index.html">Hexo 문서</a>에서 확인하세요. Hexo 사용 시 문제가 발생하면 <a href="https://hexo.io/ko/docs/troubleshooting.html">troubleshooting</a> 에서 답을 찾거나 <a href="https://github.com/hexojs/hexo/issues">GitHub</a>를 통해 문의할 수 있습니다.</p>
-<h2 id="빠른-시작">빠른 시작</h2>
-<h3 id="새-게시물-만들기">새 게시물 만들기</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/writing.html">Writing</a></p>
-<h3 id="서버-실행">서버 실행</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/server.html">Server</a></p>
-<h3 id="정적-파일-생성">정적 파일 생성</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/generating.html">Generating</a></p>
-<h3 id="원격-사이트로-배포">원격 사이트로 배포</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>추가 정보: <a href="https://hexo.io/ko/docs/one-command-deployment.html">Deployment</a></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>test code</tag>
-        <tag>quick start</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo에서 `punycode` DeprecationWarning 해결하기</title>
     <language>ko</language>
     <url>/posts/ko/Solving-DeprecationWarning-in-Hexo/</url>
@@ -2969,6 +2927,48 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
         <tag>punycode</tag>
         <tag>npm update</tag>
         <tag>patch-package</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <language>ko</language>
+    <url>/posts/ko/hello-world/</url>
+    <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
+<div class="note info modern">
+<p>이 게시물은 <code>$ hexo init</code> 커맨드 실행 시 처음으로 생성되는 게시물입니다.<br>
+원본 소스 코드는 <code>hexojs/hexo-starter</code>에서 확인할 수 있습니다.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</div>
+<h2 id="소개">소개</h2>
+<p><a href="https://hexo.io/ko/">Hexo</a>에 오신 것을 환영합니다! 이 게시물은 Hexo 기본 템플릿에서 제공하는 첫 게시물에 대한 한글 번역본입니다. 자세한 내용은 <a href="https://hexo.io/ko/docs/index.html">Hexo 문서</a>에서 확인하세요. Hexo 사용 시 문제가 발생하면 <a href="https://hexo.io/ko/docs/troubleshooting.html">troubleshooting</a> 에서 답을 찾거나 <a href="https://github.com/hexojs/hexo/issues">GitHub</a>를 통해 문의할 수 있습니다.</p>
+<h2 id="빠른-시작">빠른 시작</h2>
+<h3 id="새-게시물-만들기">새 게시물 만들기</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/writing.html">Writing</a></p>
+<h3 id="서버-실행">서버 실행</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/server.html">Server</a></p>
+<h3 id="정적-파일-생성">정적 파일 생성</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/generating.html">Generating</a></p>
+<h3 id="원격-사이트로-배포">원격 사이트로 배포</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>추가 정보: <a href="https://hexo.io/ko/docs/one-command-deployment.html">Deployment</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>test code</tag>
+        <tag>quick start</tag>
       </tags>
   </entry>
   <entry>

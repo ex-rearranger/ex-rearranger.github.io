@@ -25,10 +25,6 @@
     display: none;
   }
   html.hide-aside .layout {
-    -webkit-box-pack: center;
-    -moz-box-pack: center;
-    -o-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
   html.hide-aside .layout > .aside-content {

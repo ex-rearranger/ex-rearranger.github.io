@@ -26,10 +26,10 @@ https://ex-rearranger.github.io/ko/tags/markdown/https://ex-rearranger.github.io
 https://ex-rearranger.github.io/ko/tags/test-code/https://ex-rearranger.github.io/en/tags/test-code/
 https://ex-rearranger.github.io/ko/tags/highlight-js/https://ex-rearranger.github.io/en/tags/highlight-js/
 https://ex-rearranger.github.io/ko/tags/syntax-highlighting/https://ex-rearranger.github.io/en/tags/syntax-highlighting/
+https://ex-rearranger.github.io/en/tags/quick-start/https://ex-rearranger.github.io/ko/tags/quick-start/
 https://ex-rearranger.github.io/en/tags/katex/
 https://ex-rearranger.github.io/en/tags/latex/
 https://ex-rearranger.github.io/en/tags/markdown-it/
-https://ex-rearranger.github.io/en/tags/quick-start/https://ex-rearranger.github.io/ko/tags/quick-start/
 https://ex-rearranger.github.io/ko/tags/hexo-renderer-markdown-it/
 https://ex-rearranger.github.io/ko/tags/punycode/
 https://ex-rearranger.github.io/ko/tags/npm-update/

@@ -5,8 +5,6 @@
   color: #fff;
   margin-bottom: 20px;
   background: #41363c;
-  background: -webkit-gradient(linear, left top, right top, from(#41363c), to(#494648));
-  background: -webkit-linear-gradient(left, #41363c, #494648);
   background: linear-gradient(90deg, #41363c, #494648);
   padding: 6px 20px;
   border-radius: 10px;
@@ -18,8 +16,6 @@
 }
 .tip::before {
   background: #41363c;
-  background: -webkit-gradient(linear, left bottom, left top, from(#41363c), to(#494648));
-  background: -webkit-linear-gradient(bottom, #41363c, #494648);
   background: linear-gradient(0deg, #41363c, #494648);
   text-shadow: 0 -1px #41363c;
   border-radius: 50%;

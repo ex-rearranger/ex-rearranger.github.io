@@ -277,7 +277,6 @@ hr:hover::before,
 .custom-hr:hover::before,
 #article-container hr:hover::before,
 .search-dialog hr:hover::before {
-  -webkit-animation: wrench 5s ease;
   animation: wrench 5s ease;
   left: calc(95% - 30px)
 }
