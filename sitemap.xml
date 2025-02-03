@@ -9,6 +9,24 @@
 
   
   <url>
+    <loc>https://ex-rearranger.github.io/posts/ko/Solving-DeprecationWarning-in-Hexo/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ex-rearranger.github.io/about/index.html</loc>
     
     <lastmod>2025-01-31</lastmod>
@@ -66,15 +84,6 @@
     <loc>https://ex-rearranger.github.io/en/tags/index.html</loc>
     
     <lastmod>2025-01-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ex-rearranger.github.io/posts/ko/Solving-DeprecationWarning-in-Hexo/</loc>
-    
-    <lastmod>2025-01-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -179,15 +188,6 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/TeX/</loc>
-    <lastmod>2025-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  
-  
-  <url>
     <loc>https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Hexo/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -204,16 +204,14 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/TeX/KaTeX/</loc>
+    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
-  
-  
   <url>
-    <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Package-Manager/</loc>
+    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Package-Manager/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -228,10 +226,35 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/Node-js/Package-Manager/npm/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
   
   
   <url>
     <loc>https://ex-rearranger.github.io/ko/categories/JavaScript/Node-js/Hexo/Hexo-Tag-Plugins/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/TeX/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/categories/JavaScript/TeX/KaTeX/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -322,34 +345,14 @@
   
   
   <url>
-    <loc>https://ex-rearranger.github.io/en/tags/katex/</loc>
-    <lastmod>2025-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://ex-rearranger.github.io/en/tags/latex/</loc>
-    <lastmod>2025-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://ex-rearranger.github.io/en/tags/markdown-it/</loc>
-    <lastmod>2025-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  
-  
-  <url>
     <loc>https://ex-rearranger.github.io/ko/tags/hexo-renderer-markdown-it/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/hexo-renderer-markdown-it/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -364,6 +367,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/punycode/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
   
   
   <url>
@@ -373,10 +383,24 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/npm-update/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
   
   
   <url>
     <loc>https://ex-rearranger.github.io/ko/tags/patch-package/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/patch-package/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -413,6 +437,33 @@
   
   <url>
     <loc>https://ex-rearranger.github.io/ko/tags/hexo-theme-volantis/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/katex/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/latex/</loc>
+    <lastmod>2025-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://ex-rearranger.github.io/en/tags/markdown-it/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

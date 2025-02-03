@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="en" site-lang="[&quot;en&quot;,&quot;ko&quot;]" page-lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Solving `punycode` DeprecationWarning in Hexo (en) | Hello Neuranger</title><meta name="author" content="extreme-rearranger"><meta name="copyright" content="All content is licensed under a CC BY-SA 4.0 License unless otherwise specified."><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="keyword" content="punycode, eslint, markdown-it, devDependency, hexo-renderer-markdown-it, postinstall, patch-package"><meta name="description" content="I started seeing `punycode` DeprecationWarnings whenever I served my Hexo blog from some time. Here’s a log of my struggles to fix it without downgrading Node.js version.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solving `punycode` DeprecationWarning in Hexo">
+<meta property="og:url" content="https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/index.html">
+<meta property="og:site_name" content="Hello Neuranger">
+<meta property="og:description" content="I started seeing `punycode` DeprecationWarnings whenever I served my Hexo blog from some time. Here’s a log of my struggles to fix it without downgrading Node.js version.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ex-rearranger.github.io/img/posts/punycode-deprecation-wide.png">
+<meta property="article:published_time" content="2025-02-03T11:17:16.000Z">
+<meta property="article:modified_time" content="2025-02-03T13:47:16.000Z">
+<meta property="article:author" content="extreme-rearranger">
+<meta property="article:tag" content="hexo-renderer-markdown-it">
+<meta property="article:tag" content="punycode">
+<meta property="article:tag" content="npm update">
+<meta property="article:tag" content="patch-package">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ex-rearranger.github.io/img/posts/punycode-deprecation-wide.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Solving `punycode` DeprecationWarning in Hexo",
+  "url": "https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/",
+  "image": "https://ex-rearranger.github.io/img/posts/punycode-deprecation-wide.png",
+  "datePublished": "2025-02-03T11:17:16.000Z",
+  "dateModified": "2025-02-03T13:47:16.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "extreme-rearranger",
+      "url": "https://ex-rearranger.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon-extreme-rearranger.ico"><link rel="canonical" href="https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="LytBIGheQ8y89CkhhUgwfOfBvnNCJd3zeKNB3NNObF0"><link rel="manifest" href="/img/favicon_io/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/img/favicon_io/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_io/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon_io/favicon-16x16.png"><link rel="mask-icon" href="/img/favicon-extreme-rearranger.svg" color="#5bbad5"><link rel="stylesheet" href="/css/index.css?v=5.3.2"><link rel="stylesheet" href="/third-party/font-awesome-custom@6.7.2.css"><link rel="stylesheet" href="/third-party/node-snackbar@0.1.16.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/third-party/fancybox@5.0.36.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (ttl === 0) return
+        const now = Date.now()
+        const expiry = now + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+    
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+    
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4586447922835475" crossorigin="anonymous"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":[{"lang":"en","input_placeholder":"Search for Posts","hits_empty":"No results found for: ${query}","hits_stats":"${hits} results found"}]},
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":[["en","It has been "]],"messageNext":[["en"," days since the last update. Thus, the information might be outdated."]]},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":270,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: [{"lang":"en","success":"Copy Successful","error":"Copy Failed","noSupport":"Browser Not Supported"}],
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: [["en","days"]],
+  dateSuffix: [{"lang":"en","just":"Just now","min":" minutes ago","hour":" hours ago","day":" days ago","month":" months ago"}],
+  copyright: {"limitCount":100,"languages":[{"lang":"en","author":"Author: extreme-rearranger","link":"Link: ","source":"Source: Hello Neuranger","info":"License under Attribution-ShareAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)"}]},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":[["en","You have switched to Traditional Chinese"]],"cht_to_chs":[["en","You have switched to Simplified Chinese"]],"day_to_night":[["en","You have switched to Dark Mode"]],"night_to_day":[["en","You have switched to Light Mode"]],"readmode_on":[["en","Read Mode On (Click exit button to turn off)"]],"bgLight":"#f5676f","bgDark":"#f5676f","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'en,Load More',
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: false,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Solving `punycode` DeprecationWarning in Hexo',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post',
+  pageSubType: '',
+}</script><link rel="stylesheet" href="/css/color@0.0.2.css"><link rel="stylesheet" href="/css/color_sub@0.0.2.css"><link rel="stylesheet" href="/css/layer@0.0.3.css"><link rel="stylesheet" href="/css/print@0.0.1.css"><link rel="stylesheet" href="/css/fontagon-icons.css"><link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MFSTS7WS');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="/css/page/post@0.0.4.css"><link rel="stylesheet" href="/css/page/highlight@0.0.1.css"><link rel="stylesheet" href="/css/page/highlight_one_dark@0.0.1.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/tag_plugins_custom@1.0.17/common@0.0.1.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body style="min-width: 350px;"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFSTS7WS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/third-party/pace_minimal@0.0.1.css"><script src="/third-party/pace@1.2.4.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/thumb-extreme-rearranger.webp" onerror="onerror=null;src='/img/gif2apng-friend_404.png'" alt="avatar"></div><div class="site-data text-center"><a href="/en/archives/"><div class="headline" lang-type="relative" language="en">Articles</div><div class="length-num">9</div></a><a href="/en/tags/"><div class="headline" lang-type="relative" language="en">Tags</div><div class="length-num">16</div></a><a href="/en/categories/"><div class="headline" lang-type="relative" language="en">Categories</div><div class="length-num">8</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/en/tags/" lang-type="relative"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/en/categories/" lang-type="relative"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fontagon-icons ft-icons ft-icon-language-box"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-en-box"></i><span> English</span></a></li><li><a class="site-page child" href="/ko/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-ko-box"></i><span> Korean</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> Others</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/archives/" lang-type="relative"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/about/" lang-type="absolute"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/posts/punycode-deprecation.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/en/" title="Hello Neuranger" lang-type="relative"><img class="site-icon" src="/img/avatar-extreme-rearranger.webp" alt="Logo"><span class="site-name">Hello Neuranger</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span lang-type="relative" language="en"> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/en/tags/" lang-type="relative"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/en/categories/" lang-type="relative"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fontagon-icons ft-icons ft-icon-language-box"></i><span> Language</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-en-box"></i><span> English</span></a></li><li><a class="site-page child" href="/ko/" lang-type="absolute"><i class="fa-fw fontagon-icons ft-icons ft-icon-ko-box"></i><span> Korean</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> Others</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/en/archives/" lang-type="relative"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></li><li><a class="site-page child" href="/about/" lang-type="absolute"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><div lang-type="relative" language="en"><h1 class="post-title">Solving `punycode` DeprecationWarning in Hexo</h1></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date" lang-type="relative" language="en"><i class="far fa-calendar-plus post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-02-03T11:17:16.000Z" title="Created 25-02-03 20:17:16" language="en">25-02-03</time><span class="post-meta-separator">|</span><i class="fas fa-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-02-03T13:47:16.000Z" title="Updated 25-02-03 22:47:16" language="en">25-02-03</time></span><span class="post-meta-separator">|</span></div><div class="meta-secondline"><span class="post-meta-wordcount"><i class="far fa-file-word post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="en">Words</span><span class="word-count">1.7k</span></span><span class="post-meta-separator">|</span><span class="post-meta-min2read"><i class="far fa-clock post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="en">Reading</span><span lang-type="relative" language="en">10 mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Solving `punycode` DeprecationWarning in Hexo"><i class="far fa-eye post-meta-icon"></i><span class="post-meta-label" lang-type="relative" language="en">Views</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div><div class="meta-thirdline"><span class="post-meta-categories" lang-type="relative" language="en"><i class="far fa-folder-closed post-meta-icon"></i><span class="post-meta-label">Category</span></span><ul class="category-list"><li class="category-list-item"><i class="fa-solid fa-caret-right"></i><a class="category-list-link" href="/en/categories/JavaScript/" lang-type="relative">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><i class="fa-solid fa-caret-right"></i><a class="category-list-link" href="/en/categories/JavaScript/Node-js/" lang-type="relative">Node.js</a><ul class="category-list-child"><li class="category-list-item"><i class="fa-solid fa-caret-right"></i><a class="category-list-link" href="/en/categories/JavaScript/Node-js/Hexo/" lang-type="relative">Hexo</a></li><li class="category-list-item"><i class="fa-solid fa-caret-right"></i><a class="category-list-link" href="/en/categories/JavaScript/Node-js/Package-Manager/" lang-type="relative">Package Manager</a><ul class="category-list-child"><li class="category-list-item"><i class="fa-solid fa-caret-right"></i><a class="category-list-link" href="/en/categories/JavaScript/Node-js/Package-Manager/npm/" lang-type="relative">npm</a></li></ul></li></ul></li></ul></li></ul><div class="category-list sticky"><a class="category-list-link" href="/en/categories/JavaScript/Node-js/Hexo/" lang-type="relative">Hexo</a><span>•</span><a class="category-list-link" href="/en/categories/JavaScript/Node-js/Package-Manager/npm/" lang-type="relative">npm</a><span class="post-meta-separator">|</span></div></div><div class="tag_share"><span class="post-meta-tags" lang-type="relative" language="en"><i class="fas fa-hashtag post-meta-icon"></i><span class="post-meta-label">Tag</span></span><div class="post-meta__tag-list"><a class="not-sticky post-meta__tags" href="/en/tags/hexo-renderer-markdown-it/" lang-type="relative">hexo-renderer-markdown-it</a><span class="tag-separator not-sticky">•</span><a class="sticky post-meta__tags" href="/en/tags/punycode/" lang-type="relative">punycode</a><span class="tag-separator sticky">•</span><a class="sticky post-meta__tags" href="/en/tags/npm-update/" lang-type="relative">npm update</a><span class="tag-separator sticky">•</span><a class="not-sticky post-meta__tags" href="/en/tags/patch-package/" lang-type="relative">patch-package</a><span class="tag-separator not-sticky">•</span></div></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="card-widget post-content"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:500,&quot;messagePrev&quot;:&quot;It has been &quot;,&quot;messageNext&quot;:&quot; days since the last update. Thus, the information might be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-02-03T13:47:16.000Z&quot;}" hidden=""></div><h1 id="Introduction">Introduction</h1>
+<p>I started seeing <code>punycode</code> DeprecationWarnings whenever I served or deployed my Hexo blog from some time:</p>
+<div class="note warning no-icon modern"><p><span style="font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important; font-size: 0.95em;">(node:39714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.<br>
+</span></p>
+</div>
+<p>After some digging, I found that this issue occurs when using Node.js version 21. I wasn’t keen on downgrading, so I fought my way through and managed to resolve it.</p>
+<h1 id="Conclusion">Conclusion</h1>
+<p>Long story short, the issue was caused by outdated dependencies in some plugins used in my Hexo.</p>
+<ul>
+<li>
+<p><strong>[Case 1]</strong> A manually created package had an <emp>outdated devDependency</emp></p>
+<ul>
+<li><strong>[Solution 1-1]</strong> Update the dependencies manually in the package’s <code>package.json</code></li>
+<li><strong>[Solution 1-2]</strong> If devDependencies are unnecessary, remove them entirely</li>
+</ul>
+<details class="folding-tag" blue=""><summary> EX) A customized <code>hexo-generator-searchdb</code> plugin </summary>
+              <div class="content">
+              <p><strong>[Case]</strong></p><ul><li><p>I had made several modifications to my blog’s setup to support a bilingual (English/Korean) environment. One of these tweaks was modifying the search.xml generation to store the post’s language, and use it for search. <br><del>If the current site language is Korean, Korean-written posts have highest search priority.</del></p></li><li><p>To achieve this, I copied the entire <code>hexo-generator-searchdb</code> source code into <code>source/js/</code> and used it as a local package under the name <code>hexo-generator-searchdb-custom</code>.<br>Then change the package setting like this:</p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"dependencies"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"hexo-generator-searchdb"</span><span class="punctuation">:</span> <span class="string">"file:source/js/hexo-generator-searchdb-custom"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure></li></ul><p><strong>[Problem]</strong></p><ul><li>The problem was that running <code>npm install</code> <emp>also installed devDependencies</emp> of the local package.<ul><li>IDK why, but the default <code>--production</code> flag which prevents devDependencies from being installed when using external packages didn’t seem to apply to local packages.</li><li>Anywhy, this package included <code>eslint@7.32.0</code>, which still used <code>punycode</code> in the old fashion.</li></ul></li></ul><p><strong>[Solution]</strong></p><ul><li><p>Since I didn’t actually need the devDependencies, I simply <emp>deleted them all from the local package.</emp></p></li><li><p>Alternatively, I could have updated <code>hexo-generator-searchdb-custom/package.json</code> as follows:</p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"devDependencies"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"eslint"</span><span class="punctuation">:</span> <span class="string">"^9.18.0"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"@next-theme/eslint-config"</span><span class="punctuation">:</span> <span class="string">"^0.0.4"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure></li></ul>
+              </div>
+            </details>
+</li>
+<li>
+<p><strong>[Case 2]</strong> An <emp>outdated package in dependencies</emp> within installed package</p>
+<ul>
+<li><strong>[Solution 2-1]</strong> Use <code>override</code> to enforce a newer dependency version</li>
+<li><strong>[Solution 2-2]</strong> Modify the punycode-related code in <code>node_modules</code><br><del>Not ideal, but sometimes there's no other way...</del></li>
+</ul>
+<details class="folding-tag" blue="">
+<summary>
+EX) <code>hexo-renderer-markdown-it</code> plugin
+</summary>
+<div class="content">
+<p><strong>[Case]</strong></p>
+<ul>
+<li>Right now, my blog renders Markdown using the <code>hexo-renderer-markdown-it</code> plugin.
+<ul>
+<li>Since I use KaTex for math rendering, this plugin is recommended over the default <code>hexo-renderer-markdown</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</li>
+</ul>
+</li>
+<li>And <emp>the <code>hexo-renderer-markdown-it</code> plugin uses <code>markdown-it@13.0.2</code></emp>.</li>
+</ul>
+<p><strong>[Problem]</strong></p>
+<ul>
+<li>
+<p><code>markdown-it@13.0.2</code> loads punycode in old way:</p>
+<ul>
+<li>Instead of <code>const punycode = require('punycode')</code>, it should use <br><code>const punycode = require('punycode/')</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</li>
+</ul>
+</li>
+<li>
+<p>Thus I should override the dependency to a newer version, or update the punycode-related code in <code>node_modules</code> by myself.</p>
+</li>
+<li>
+<p>The real problem was that updating <code>markdown-it</code> to version 14.0.0+ broke <code>hexo-renderer-markdown-it</code>… <del>I didn't want to spend time fixing it.. bc I've never studied Node.js...;-;</del><br>
+<br><br>
+<strong>[Solution]</strong></p>
+</li>
+<li>
+<p>So I manually edited <code>node_modules/hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js</code>:</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const punycode = require('punycode');  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">'punycode/'</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><del>What is the authors feeling when the problem solved only with a single slash? (1000)</del></li>
+<li>Since the above code use punycode in node_modules, you’ll need to run <code>npm install punycode --save</code> if you haven’t already.</li>
+</ul>
+</li>
+<li>
+<p>To avoid manually editing it every time, you can automate it using a <code>postinstall</code> script (see <a href="#postinstall-script">below</a>).</p>
+</li>
+</ul>
+</div>
+</details>
+</li>
+</ul>
+<h1 id="How-I-Got-Resolved">How I Got Resolved</h1>
+<p>The conclusion is just a conclusion, and I’m sure that most will get the deprecation issue from the other packages. Therefore, I wrote down the process of how I solved the problem in the stream of consciousness.</p>
+<h2 id="Check-Status">Check Status</h2>
+<p>If I remember correctly, the first thing I did was to check the version of Node.js.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br><span class="line">v21.7.3</span><br></pre></td></tr></tbody></table></figure>
+<p>Downgrading might have fixed it, but my pride wouldn’t allow it.<br>
+(Not at all actually. I just thought the latter will be better since I don’t have any knowledge about the difference between v20 and v21 in Node.js)</p>
+<h2 id="punycode-vs-punycode">punycode vs. punycode/</h2>
+<p>Googling “npm punycode deprecation” and so on led me to realize that some packages that use punycode cause the warning due to the old way of importing it.</p>
+<p>So, if you read the punycode GitHub readme<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>, it roughly says:</p>
+<ol>
+<li>Install <code>punycode</code></li>
+<li><emp>Use <code>require('punycode/')</code>, not <code>require('punycode')</code></emp></li>
+</ol>
+<p>to avoid the warning.<br>
+<del>Honestly, the two lines aren’t that different in my eyes. I just thought as they’re similar to a gap between <code>from.utils import *</code> and <code>from.utils import *</code> in python. Then I skipped it. haha</del></p>
+<h2 id="punycode-dependency">punycode dependency</h2>
+<p>Anyway, for that reason, I tried to <emp>find all modules that use punycode</emp> in my project. Let’s go to the root directory and look for the inheritance of the punycode with <code>npm ls punycode</code>.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /root/directory/</span><br><span class="line">├─┬ hexo-generator-searchdb-custom@1.4.1 -&gt; /root/directory/node_modules/hexo-generator-searchdb-custom</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@cant.remember.0</span><br><span class="line">│     └─┬ uri-js@cant.remember.0</span><br><span class="line">│       └── punycode@cant.remember.0</span><br></pre></td></tr></tbody></table></figure>
+<p>I roughly got those results. (I don’t remember the exact version numbers)</p>
+<p>As you can see, hexo-generator-searchdb-custom that uses eslint that uses uri-js that uses punycode was the problem. lol</p>
+<p>Since I already had found lots of googling results about <code>eslint</code>, <code>ajv</code>, or <code>uri-js</code> packages, I also runned <code>npm ls [package-name]</code> for them to find the punycode dependency.</p>
+<p>In sum, I found the old-versioned eslint dependency in two packages:</p>
+<ul>
+<li><code>hexo-generator-searchdb-custom</code></li>
+<li><code>hexo-generator-sitemap-custom</code></li>
+</ul>
+<h2 id="Fix-1">Fix (1)</h2>
+<p>At first, I opened the <code>package.json</code> of each package because I thought I could update the versions of these packages to the latest. But what I found was that both of them had <code>eslint</code> as a <code>devDependencies</code>, not <code>dependencies</code>.</p>
+<p>As you can imagine from its name, both packages are the <emp>local packages that I customized from the original plugins</emp>. I had to fix almost all of the existing packages overall, so I just replicated them locally, modified them, and used them as below, and that caused the problem.<br>
+</p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"dependencies"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"hexo-generator-searchdb"</span><span class="punctuation">:</span> <span class="string">"file:source/js/hexo-generator-searchdb-custom"</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"hexo-generator-sitemap"</span><span class="punctuation">:</span> <span class="string">"file:source/js/hexo-generator-sitemap-custom"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>IDK why but when I run <code>npm install</code>, it <emp>also installed the <code>devDependencies</code> of the local package</emp>.</p>
+<ul>
+<li>I guess the <code>--production</code> option of <code>npm install</code> doesn’t work for local packages.</li>
+<li>Gave up on finding the exact reason nor the proper solution</li>
+</ul>
+<p>I didn’t actually need the devDependencies since I just copied the original package for convenience. So I just <emp>deleted <code>devDependencies</code> inside <code>package.json</code> from each local package</emp>.</p>
+<p>Then run below commands to reinstall whole packages:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> package-lock.json</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Fix-2">Fix (2)</h2>
+<p>I thought it would be solved then… but Warning appeared again, and I was about to throw my laptop away for real <del>since it took me two days until here…</del></p>
+<p>So I just emptied my mind and decided to <emp>find all js files that use punycode with find command</emp>.<br>
+<del>its quite ignorant, but I didn’t have any other ideas:D</del></p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find . -<span class="built_in">type</span> f -name <span class="string">"*.js"</span> -<span class="built_in">exec</span> grep -H <span class="string">"punycode"</span> {} \;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>In the middle of bunch of results, there was a code like this:<br>
+<code style="word-break: break-all">./hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js: <emp>var punycode = require('punycode');</emp></code><br>
+x<br>
+Since I found one, I opened the file with the intention of modifying it one by one from here.</p>
+<p>The file <code>lib/index.js</code> of <code>markdown-it@13.0.2</code> installed inside <code>hexo-renderer-markdown-it</code> seemed to use punycode the old way.</p>
+<p>So I just add a slash to the end and saved it:</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const punycode = require('punycode');  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">'punycode/'</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Then I ran <code>hexo server -o</code> again, and this time, it said <code>punycode</code> is not installed.<br>
+This is because <code>punycode/</code> implies the punycode in the node_modules, so I installed it with <code>npm i punycode --save</code>.</p>
+<p>Finally, I ran the server again, and the DeprecationWarning didn’t appear anymore.</p>
+<p>Phew! I don’t have to throw my laptop away anymore!</p>
+<h2 id="Postinstall-Script">Postinstall Script</h2>
+<p>By the way, modifying the code in <code>node_modules</code> was a bit annoying, and also was not seem to be a good practice. So I searched a little and soon found the usage of <code>postinstall</code> script.</p>
+<p>It is reallllllly simple.</p>
+<ol>
+<li>
+<p>Install the <code>patch-package</code> package.</p>
+ <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install patch-package --save-dev</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>Find the code that you want to fix in <code>node_modules</code> and fix it.</p>
+<ul>
+<li><span style="margin-bottom: 1.1em">Already fixed, so skip</span></li>
+</ul>
+</li>
+<li>
+<p>Add the <code>postinstall</code> script to <code>package.json</code>.</p>
+ <figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"scripts"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"postinstall"</span><span class="punctuation">:</span> <span class="string">"patch-package"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>Save the modified file as a patch</p>
+ <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx patch-package [package-name]</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>Caution)</strong> Since I modified the package inside the package, if I run <code>npx patch-package hexo-renderer-markdown-it</code>, a message saying that <code>⁉️  There don't appear to be any changes.</code> will appear.<br>
+In this case, you should run something like <emp><code>npx patch-package hexo-renderer-markdown-it/markdown-it</code></emp> instead.</p>
+</li>
+<li>
+<p>Done!</p>
+<ul>
+<li>During the 4, the patch file will be created in <code>patches</code> directory.</li>
+<li>Now you don’t need to manually modify it anymore since the patches in that folder will be applied automatically when you run <code>npm install</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="P-S">P.S.</h2>
+<ul>
+<li>Can’t believe to had such a long and hard time just for a single warning message… I really shouldn’t dig up Node.js. No talent.🫠</li>
+<li>I also tried the “overrides” method to update the markdown-it version later, but it didn’t work. It’ll be good to try overriding since the method is really easy<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</li>
+</ul>
+<hr class="footnotes-sep">
+<h1 id="References">References</h1><section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Butterfly document - Theme Configuration # Math <a target="_blank" rel="noopener" href="https://butterfly.js.org/en/posts/butterfly-docs-en-theme-config/#Math">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Github - mathiasbynens/punycode.js <a target="_blank" rel="noopener" href="https://github.com/mathiasbynens/punycode.js?#installation">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>npm Docs - package.json <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides">(link)</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright" lang-type="relative" language="en"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author :</span><span class="post-copyright-info"><a href="https://ex-rearranger.github.io">extreme-rearranger</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link :</span><span class="post-copyright-info"><a href="https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/">https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright :</span><span class="post-copyright-info">All articles are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> unless otherwise stated.</span></div></div></div><nav class="pagination-post card-widget" id="pagination"><div lang-type="relative" language="en"><a class="pagination-related  prev-post" href="/posts/en/KaTeX-Test-Code/" title="KaTeX Test Code"><div class="cover" style="background: none"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">KaTeX Test Code</div></div><div class="info-2"><div class="info-item-1">A cheat sheet for testing and demonstrating the supported functions of KaTeX.</div></div></div></a></div></nav><div class="card-widget" id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span lang-type="relative" language="en"> Comments</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="text-center"><div class="avatar-img"><img src="/img/thumb-extreme-rearranger.webp" onerror="this.onerror=null;this.src='/img/gif2apng-friend_404.png'" alt="avatar"></div><div class="author-info__description">⊂(▀¯▀⊂) (づ▀¯▀)づ ⊂(▀¯▀⊂)</div></div><div class="card-info-data site-data text-center" lang-type="relative" language="en"><a href="/en/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/en/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/en/categories/"><div class="headline">Categories</div><div class="length-num">8</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span lang-type="relative" language="en">Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#How-I-Got-Resolved"><span class="toc-number">3.</span> <span class="toc-text">How I Got Resolved</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Check-Status"><span class="toc-number">3.1.</span> <span class="toc-text">Check Status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#punycode-vs-punycode"><span class="toc-number">3.2.</span> <span class="toc-text">punycode vs. punycode/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#punycode-dependency"><span class="toc-number">3.3.</span> <span class="toc-text">punycode dependency</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-1"><span class="toc-number">3.4.</span> <span class="toc-text">Fix (1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fix-2"><span class="toc-number">3.5.</span> <span class="toc-text">Fix (2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Postinstall-Script"><span class="toc-number">3.6.</span> <span class="toc-text">Postinstall Script</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P-S"><span class="toc-number">3.7.</span> <span class="toc-text">P.S.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post" lang-type="relative" language="en"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/en/Solving-DeprecationWarning-in-Hexo/" title="Solving `punycode` DeprecationWarning in Hexo"><img class="thumbnail-cover" src="/img/posts/punycode-deprecation-wide.png" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="Solving `punycode` DeprecationWarning in Hexo"></a><div class="content"><a class="title" href="/posts/en/Solving-DeprecationWarning-in-Hexo/" title="Solving `punycode` DeprecationWarning in Hexo">Solving `punycode` DeprecationWarning in Hexo</a><time datetime="2025-02-03T11:17:16.000Z" title="Created 25-02-03 20:17:16" language="en">25-02-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/en/KaTeX-Test-Code/" title="KaTeX Test Code"><img src="/img/no-image.webp" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="KaTeX Test Code"></a><div class="content"><a class="title" href="/posts/en/KaTeX-Test-Code/" title="KaTeX Test Code">KaTeX Test Code</a><time datetime="2024-05-29T11:38:34.000Z" title="Created 24-05-29 20:38:34" language="en">24-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/highlight-test-code/" title="Highlight.js Test Code"><img src="/img/no-image.webp" onerror="this.onerror=null;this.src='/img/image-not-found.webp'" alt="Highlight.js Test Code"></a><div class="content"><a class="title" href="/posts/highlight-test-code/" title="Highlight.js Test Code">Highlight.js Test Code</a><time datetime="2024-04-19T15:00:00.000Z" title="Created 24-04-20 00:00:00" language="en">24-04-20</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(-130deg, #f8547b20, #0009dc20)"><div id="footer-wrap"><div class="copyright">©2022 - 2025 By extreme-rearranger</div><div class="framework-info"><span lang-type="relative" language="en">Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span lang-type="relative" language="en">Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div class="rightside-show" id="rightside"><div id="rightside-config-hide"><button id="langmode" type="button" title="Change Site Language (Kor/Eng)"><i class="fontagon-icons ft-icons ft-icon-language"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog slow-spin"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent" style="font-size: 0.85em;"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="Move To Bottom"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js?v=5.3.2"></script><script src="/js/main.js?v=5.3.2"></script><script src="/js/change_lang.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="/third-party/node-snackbar@0.1.16.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+
+  const disqusReset = conf => {
+    window.DISQUS && window.DISQUS.reset({
+      reload: true,
+      config: conf
+    })
+  }
+
+  const loadDisqus = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyDisqus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    window.disqus_identifier = isShuoshuo ? path : '/posts/en/Solving-DeprecationWarning-in-Hexo/'
+    window.disqus_url = isShuoshuo ? location.origin + path : 'https://ex-rearranger.github.io/posts/en/Solving-DeprecationWarning-in-Hexo/'
+
+    const disqus_config = function () {
+      this.page.url = disqus_url
+      this.page.identifier = disqus_identifier
+      this.page.title = 'Solving `punycode` DeprecationWarning in Hexo'
+    }
+
+    if (window.DISQUS) disqusReset(disqus_config)
+    else {
+      const script = document.createElement('script')
+      script.src = 'https://exreg-blog.disqus.com/embed.js'
+      script.setAttribute('data-timestamp', +new Date())
+      document.head.appendChild(script)
+    }
+
+    btf.addGlobalFn('themeChange', () => disqusReset(disqus_config), 'disqus')
+  }
+
+  const getCount = async() => {
+    try {
+      const eleGroup = document.querySelector('#post-meta .disqus-comment-count')
+      if (!eleGroup) return
+      const cleanedLinks = eleGroup.href.replace(/#post-comment$/, '')
+
+      const res = await fetch(`https://disqus.com/api/3.0/threads/set.json?forum=exreg-blog&api_key=coHvt9gfgl8oTxGjflGO8asrKXrLjI548DXeQFJhkz4bXirYxBXYeLhBQ3nQPDUP&thread:link=${cleanedLinks}`,{
+        method: 'GET'
+      })
+      const result = await res.json()
+
+      const count = result.response.length ? result.response[0].posts : 0
+      eleGroup.textContent = count
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Disqus' === 'Disqus'
+      ? window.shuoshuoComment = { loadComment: loadDisqus }
+      : window.loadOtherComment = loadDisqus
+    return
+  }
+
+  if ('Disqus' === 'Disqus' || !false) {
+    if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+    else {
+      loadDisqus()
+      
+    }
+  } else {
+    window.loadOtherComment = loadDisqus
+  }
+})()</script></div><script id="click-heart" src="/third-party/click-heart.js" async="async" mobile="false"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title" lang-type="relative" language="en">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span lang-type="relative" language="en">  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/hexo-generator-searchdb-custom/dist/local-search.js"></script></div></div></body></html>
