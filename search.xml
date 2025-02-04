@@ -2684,6 +2684,52 @@ KaTeX units are different than CSS units.</p>
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <language>en</language>
+    <url>/posts/en/hello-world/</url>
+    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
+<div class="note info modern">
+<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
+You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+</div>
+<h2 id="Introduction">Introduction</h2>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
+calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
+100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
+5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>test code</tag>
+        <tag>quick start</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Solving `punycode` DeprecationWarning in Hexo</title>
     <language>en</language>
     <url>/posts/en/Solving-DeprecationWarning-in-Hexo/</url>
@@ -2876,52 +2922,6 @@ In this case, you should run something like <emp><code>npx patch-package hexo-re
         <tag>punycode</tag>
         <tag>npm update</tag>
         <tag>patch-package</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <language>en</language>
-    <url>/posts/en/hello-world/</url>
-    <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
-<div class="note info modern">
-<p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
-You can find the original source code from <code>hexojs/hexo-starter</code>.<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
-</div>
-<h2 id="Introduction">Introduction</h2>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<!-- polygon(5px 10px, 20px 10px, 30px 0, 40px 10px, 
-calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px, 
-100% calc(100% - 5px), calc(100% - 1px) calc(100% - 3px), calc(100% - 3px) calc(100% - 1px), calc(100% - 5px) 100%, 
-5px 100%, 3px calc(100% - 1px), 1px calc(100% - 3px), 0 calc(100% - 5px), 0 15px, 1px 13px, 3px 11px, 5px 10px) -->
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>GitHub - hexojs/hexo-starter: Hexo Starter site. <a href="https://github.com/hexojs/hexo-starter">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>test code</tag>
-        <tag>quick start</tag>
       </tags>
   </entry>
   <entry>
@@ -3173,703 +3173,6 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
       <tags>
         <tag>test code</tag>
         <tag>quick start</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Tag Plugins Plus 튜토리얼 - 1</title>
-    <language>ko</language>
-    <url>/posts/ko/tag-plugins-plus-tutorial-1/</url>
-    <content><![CDATA[<div class="language-notice note modern language-kor">
-    <div class="language-logo"></div>
-    <p>This posting is written in Korean. English is not scheduled to be written.</p>
-</div>
-<div class='note info modern'>
-<p>본 게시물은 <code>hexo-butterfly-tag-plugins-plus</code> 개발자가 작성한 튜토리얼<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>에 대한 한글 번역본입니다.<br>
-<del>Hexo가 Jekyll보다 더 마음에 들어 선택했는데, 참고할 만한 글들이 다 중국어로 적혀있어서 매우 곤란…</del></p>
-</div>
-<details class="folding-tag" ><summary> 내용이 너무 길어져서 세 파트로 나누어서 업로드하였습니다. </summary>
-              <div class='content'>
-              <p>참고로 일부 태그들은 별도의 라이브러리 없이 <a href="https://butterfly.js.org/posts/2df239ce/">butterfly 테마만으로도 사용 가능</a>합니다.<br><del>애초에 Butterfly 테마가 이 플러그인을 기반으로 여러 태그를 추가했기 때문ㅎㅎ</del></p><ol><li><strong><span class='p blue'>Tag Plugins Plus 튜토리얼 - 1</span></strong><br>text / span / p / note / tip / animated / checkbox / radio / timeline</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-2">Tag Plugins Plus 튜토리얼 - 2</a><br>link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-3">Tag Plugins Plus 튜토리얼 - 3</a><br>folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel</li></ol>
-              </div>
-            </details>
-<hr>
-<h1 id="라이브러리-설치-npm-이용">라이브러리 설치 (npm 이용)</h1>
-<ol>
-<li>
-<p>터미널을 열고, 본인의 블로그 루트 디렉토리로 가서 아래의 설치 명령어를 실행합니다.</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-butterfly-tag-plugins-plus --save</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Hexo에서 기본으로 제공하는 <code>hexo-renderer-marked</code> 라이브러리는 외부 태그와 호환성이 그리 좋지 못하므로 <code>hexo-renderer-kramed</code>로 바꿔주는 것이 좋습니다.</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
- <details class="toggle" ><summary class="toggle-button" style="">라고 쓰여있지만 저는 <code>hexo-renderer-markdown-it</code>을 대신 설치하였습니다.</summary><div class="toggle-content"><ul>
-<li>
-<p>Butterfly 테마 공식 블로그에서는 kaTeX 사용 시 <code>hexo-renderer-markdown-it</code>(권장) 또는 <code>hexo-renderer-markdown-it-plus</code>을 설치해야 함을 명시하고 있습니다.</p>
-</li>
-<li>
-<p><code>hexo-renderer-markdown-it</code>는 Hexo에서 제공하는 렌더러이기 때문에 비교적 꾸준한 업데이트가 이루어지고 있어, 이를 설치하였습니다.</p>
-</li>
-<li>
-<p>아래와 같이 터미널에서 명령어를 실행한 뒤, <code>_config.yml</code>에 내용을 추가하면 됩니다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm un hexo-renderer-kramed --save</span><br><span class="line">npm i hexo-renderer-markdown-it --save</span><br><span class="line">npm install @neilsustc/markdown-it-katex --save</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><code>plugins</code>는 옵션으로 추가할 플러그인을 지정하는 변수이며, 자신이 사용하고자 하는 옵션만 추가하면 됩니다 (<a href="https://github.com/hexojs/hexo-renderer-markdown-it">참고</a>).</p>
-</li>
-<li>
-<p><code>anchors</code>는 목차(ToC) 및 헤드라인(h1…h6)을 어떻게 만들지에 관련된 변수입니다. <code>level</code>의 기본값이 2이기 때문에, <code>level: 1</code>로 변경하지 않으면 목차에서 h1에 대한 하이퍼링크가 만들어지지 않습니다.</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-abbr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-container</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-deflist</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-footnote</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-ins</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-mark</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sub</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">&#x27;@neilsustc/markdown-it-katex&#x27;</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">options:</span></span><br><span class="line">        <span class="attr">strict:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</div></details>
-</li>
-<li>
-<p>사이트 구성 파일(<code>_config.yml</code> 또는 <code>_config.butterfly.yml</code>)에 아래의 내용을 추가합니다.</p>
- <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tag-plugins-plus</span></span><br><span class="line"><span class="comment"># see https://akilar.top/posts/615e2dec/</span></span><br><span class="line"><span class="attr">tag_plugins:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 플러그인 활성 여부</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">5</span> <span class="comment"># 필터 우선순위</span></span><br><span class="line">  <span class="attr">issues:</span> <span class="literal">false</span> <span class="comment"># issues 태그 활성 여부</span></span><br><span class="line">  <span class="attr">link:</span></span><br><span class="line">    <span class="attr">placeholder:</span> <span class="string">/img/link.png</span> <span class="comment"># link_card 태그 기본 아이콘 이미지</span></span><br><span class="line">  <span class="attr">CDN:</span></span><br><span class="line">    <span class="attr">anima:</span> <span class="string">https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css</span> <span class="comment"># animated 태그 종속성</span></span><br><span class="line">    <span class="attr">jquery:</span> <span class="string">https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js</span> <span class="comment"># issues 태그 종속성</span></span><br><span class="line">    <span class="attr">issues:</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js</span> <span class="comment"># issues 종속성</span></span><br><span class="line">    <span class="attr">iconfont:</span> <span class="string">//at.alicdn.com/t/font_2032782_8d5kxvn09md.js</span> <span class="comment"># icon 태그 종속성 (https://akilar.top/posts/d2ebecef/ 참조)</span></span><br><span class="line">    <span class="attr">carousel:</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js</span> <span class="comment"># carousel 태그 마우스 이벤트 종속성</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="텍스트-기본-효과">텍스트 기본 효과</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% u [본문 내용] %&#125;</span><br><span class="line">&#123;% emp [본문 내용] %&#125;</span><br><span class="line">&#123;% wavy [본문 내용] %&#125;</span><br><span class="line">&#123;% del [본문 내용] %&#125;</span><br><span class="line">&#123;% kbd [본문 내용] %&#125;</span><br><span class="line">&#123;% psw [본문 내용] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> &#123;% u 밑줄 %&#125;이 있는 텍스트, </span><br><span class="line"><span class="bullet">2.</span> &#123;% emp 강조 %&#125;가 있는 텍스트, </span><br><span class="line"><span class="bullet">3.</span> &#123;% wavy 물결선 %&#125;이 있는 텍스트, </span><br><span class="line"><span class="bullet">4.</span> &#123;% del 취소선 %&#125;이 있는 텍스트,</span><br><span class="line"><span class="bullet">5.</span> 키보드 스타일 텍스트: &#123;% kbd ⌘ %&#125; + &#123;% kbd D %&#125;,</span><br><span class="line"><span class="bullet">6.</span> 비밀번호 스타일 텍스트: &#123;% psw 여기에는 인증 코드가 없습니다.%&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><ol>
-<li><u>밑줄</u>이 있는 텍스트,</li>
-<li><emp>강조</emp>가 있는 텍스트,</li>
-<li><wavy>물결선</wavy>이 있는 텍스트,</li>
-<li><del>취소선</del>이 있는 텍스트,</li>
-<li>키보드 스타일 텍스트: <kbd>⌘</kbd> + <kbd>D</kbd>,</li>
-<li>비밀번호 스타일 텍스트: <psw>여기에는 인증 코드가 없습니다.</psw></li>
-</ol></div><div class="tab-item-content"><ul>
-<li>
-<p>밑줄(<code>u</code>), 강조(<code>emp</code>), 취소선(<code>del</code>), 물결선(<code>wavy</code>), 비밀번호(<code>psw:hover</code>) 등 일부 스타일은 기본 색상이 회색으로 지정되어 있습니다.</p>
-</li>
-<li>
-<p>이를 원하지 않을 경우 본인의 커스텀 CSS 파일에서 수정하시면 됩니다.</p>
-</li>
-<li>
-<p>제 블로그에서는 이를 모두 본래 글꼴색으로 수정했습니다.<br>
-<del>(취소선은 회색인 편이 보다 의미 전달을 명확하게 해주는 것 같아 그대로 둠ㅎㅎ)</del></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">u, emp, wavy, psw<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: unset <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="글자색-글자크기-span">글자색/글자크기 (span)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% span [스타일 인자 (띄어쓰기로 구분)], [본문 내용] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>글꼴 : logo, code</li>
-<li>색상 : red, yellow, green, cyan, blue, gray, #000000 ~ #ffffff</li>
-<li>크기 : small, h4, h3, h2, h1, large, huge, ultra</li>
-<li>정렬 : left, center, right</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> 컬러 텍스트</span><br><span class="line">&#123;% span red, 빨간색 %&#125;, &#123;% span yellow, 노란색 %&#125;, &#123;% span green, 녹색 %&#125;, &#123;% span cyan, 청록색 %&#125;, &#123;% span blue, 파란색 %&#125;, 그리고</span><br><span class="line">&#123;% span gray, 회색%&#125; 등의 태그를 이용해 다양한 색상을 편리하게 삽입할 수 있습니다.</span><br><span class="line"><span class="bullet">-</span> 대형 텍스트</span><br><span class="line">문서의 &#x27;시작&#x27; 페이지의 제목 부분은 아래의 대형 텍스트로 표현됩니다.</span><br><span class="line">&#123;% span center logo large , Butterfly &amp; Volantis %&#125;</span><br><span class="line">&#123;% span center small , Wonderful Themes for Hexo %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><ul>
-<li>컬러 텍스트<br>
-<span class='p red'>빨간색</span>, <span class='p yellow'>노란색</span>, <span class='p green'>녹색</span>, <span class='p cyan'>청록색</span>, <span class='p blue'>파란색</span>, 그리고 <span class='p gray'>회색</span> 등의 태그를 이용해 다양한 색상을 편리하게 삽입할 수 있습니다.</li>
-<li>대형 텍스트<br>
-문서의 ‘시작’ 페이지의 제목 부분은 아래의 대형 텍스트로 표현됩니다.<br><br>
-<span class='p center logo large'>Butterfly &amp; Volantis</span><br>
-<span class='p center small'>Wonderful Themes for Hexo</span></li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="단락-스타일-p">단락 스타일 (p)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% p [스타일 인자 (띄어쓰기로 구분)], [본문 내용] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>글꼴 : logo, code</li>
-<li>색상 : red, yellow, green, cyan, blue, gray, #000000 ~ #ffffff</li>
-<li>크기 : small, h4, h3, h2, h1, large, huge, ultra</li>
-<li>정렬 : left, center, right</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% p red, 빨간색 %&#125;</span><br><span class="line">&#123;% p yellow, 노란색 %&#125;</span><br><span class="line">&#123;% p green, 녹색 %&#125;</span><br><span class="line">&#123;% p cyan, 청록색 %&#125;</span><br><span class="line">&#123;% p blue, 파란색 %&#125;</span><br><span class="line">&#123;% p gray, 회색 %&#125;</span><br><span class="line">&#123;% p center logo large , Butterfly &amp; Volantis %&#125;</span><br><span class="line">&#123;% p center small , Wonderful Themes for Hexo %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><p class='p red'>빨간색</p>
-<p class='p yellow'>노란색</p>
-<p class='p green'>녹색</p>
-<p class='p cyan'>청록색</p>
-<p class='p blue'>파란색</p>
-<p class='p gray'>회색</p>
-<p class='p center logo large'>Butterfly & Volantis</p>
-<p class='p center small'>Wonderful Themes for Hexo</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="인용문-note">인용문 (note)</h1>
-<details class="toggle" ><summary class="toggle-button" style=""><code>_config.butterfly.yml</code> 을 통해 기본값 수정 가능</summary><div class="toggle-content"><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bs-callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">modern</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">border_radius:</span> <span class="number">3</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></div></details>
-<h2 id="방법-1">방법-1</h2>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note [class] [no-icon] [style] %&#125;</span><br><span class="line">Any content (support inline tags too.io).</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>매개 변수</th>
-<th>사용 방법</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>class</code></td>
-<td>«선택사항» 로고 （default / primary / success / info / warning / danger）<br>로고마다 지정된 색상이 다릅니다.</td>
-</tr>
-<tr>
-<td><code>no-icon</code></td>
-<td>«선택사항» 아이콘을 표시하지 않음</td>
-</tr>
-<tr>
-<td><code>style</code></td>
-<td>«선택사항» 스타일 （simple / modern / flat / disabled）</td>
-</tr>
-</tbody>
-</table></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note simple %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default simple %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary simple %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success simple %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info simple %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning simple %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger simple %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note modern %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default modern %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary modern %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success modern %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info modern %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning modern %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger modern %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note flat %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default flat %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary flat %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success flat %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info flat %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning flat %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger flat %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note disabled %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default disabled %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary disabled %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success disabled %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info disabled %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning disabled %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger disabled %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note no-icon %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default no-icon %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary no-icon %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success no-icon %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info no-icon %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning no-icon %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger no-icon %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><div class="note simple"><p>기본 알림 블록 태그</p>
-</div>
-  <div class="note default simple"><p>default 알림 블록 태그</p>
-</div>
-  <div class="note primary simple"><p>primary 알림 블록 태그</p>
-</div>
-  <div class="note success simple"><p>success 알림 블록 태그</p>
-</div>
-  <div class="note info simple"><p>info 알림 블록 태그</p>
-</div>
-  <div class="note warning simple"><p>warning 알림 블록 태그</p>
-</div>
-  <div class="note danger simple"><p>danger 알림 블록 태그</p>
-</div></div><div class="tab-item-content"><div class="note modern"><p>기본 알림 블록 태그</p>
-</div>
-  <div class="note default modern"><p>default 알림 블록 태그</p>
-</div>
-  <div class="note primary modern"><p>primary 알림 블록 태그</p>
-</div>
-  <div class="note success modern"><p>success 알림 블록 태그</p>
-</div>
-  <div class="note info modern"><p>info 알림 블록 태그</p>
-</div>
-  <div class="note warning modern"><p>warning 알림 블록 태그</p>
-</div>
-  <div class="note danger modern"><p>danger 알림 블록 태그</p>
-</div></div><div class="tab-item-content"><div class="note flat"><p>기본 알림 블록 태그</p>
-</div>
-  <div class="note default flat"><p>default 알림 블록 태그</p>
-</div>
-  <div class="note primary flat"><p>primary 알림 블록 태그</p>
-</div>
-  <div class="note success flat"><p>success 알림 블록 태그</p>
-</div>
-  <div class="note info flat"><p>info 알림 블록 태그</p>
-</div>
-  <div class="note warning flat"><p>warning 알림 블록 태그</p>
-</div>
-  <div class="note danger flat"><p>danger 알림 블록 태그</p>
-</div></div><div class="tab-item-content"><div class="note disabled"><p>기본 알림 블록 태그</p>
-</div>
-  <div class="note default disabled"><p>default 알림 블록 태그</p>
-</div>
-  <div class="note primary disabled"><p>primary 알림 블록 태그</p>
-</div>
-  <div class="note success disabled"><p>success 알림 블록 태그</p>
-</div>
-  <div class="note info disabled"><p>info 알림 블록 태그</p>
-</div>
-  <div class="note warning disabled"><p>warning 알림 블록 태그</p>
-</div>
-  <div class="note danger disabled"><p>danger 알림 블록 태그</p>
-</div></div><div class="tab-item-content"><div class="note no-icon modern"><p>기본 알림 블록 태그</p>
-</div>
-  <div class="note default no-icon modern"><p>default 알림 블록 태그</p>
-</div>
-  <div class="note primary no-icon modern"><p>primary 알림 블록 태그</p>
-</div>
-  <div class="note success no-icon modern"><p>success 알림 블록 태그</p>
-</div>
-  <div class="note info no-icon modern"><p>info 알림 블록 태그</p>
-</div>
-  <div class="note warning no-icon modern"><p>warning 알림 블록 태그</p>
-</div>
-  <div class="note danger no-icon modern"><p>danger 알림 블록 태그</p>
-</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><ul>
-<li>
-<p>제 블로그에서는 [방법-1]의 아이콘의 위치가 글자의 중심보다 위로 올라와 있어 해당 위치를 조정했습니다.</p>
-  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#article-container</span> <span class="selector-class">.note</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.no-icon</span>)<span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">0.7em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h2 id="방법-2">방법-2</h2>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note [color] [icon] [style] %&#125;</span><br><span class="line">Any content (support inline tags too.io).</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>매개 변수</th>
-<th>사용 방법</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>class</code></td>
-<td>«선택사항» 로고 색상 （default / blue / pink / red / purple / orange / green）</td>
-</tr>
-<tr>
-<td><code>icon</code></td>
-<td>«선택사항» 커스텀 아이콘. 단, Font Awsome만 지원되며, 아이콘이 없는 설정도 가능.</td>
-</tr>
-<tr>
-<td><code>style</code></td>
-<td>«선택사항» 스타일 （simple / modern / flat / disabled）</td>
-</tr>
-</tbody>
-</table></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; simple %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; simple %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; simple %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; simple %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; simple %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; simple %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; simple %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; modern %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; modern %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; modern %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; modern %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; modern %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; modern %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; modern %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; flat %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; flat %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; flat %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; flat %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; flat %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; flat %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; flat %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; disabled %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; disabled %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; disabled %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; disabled %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; disabled %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; disabled %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; disabled %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note no-icon %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue no-icon %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink no-icon %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red no-icon %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange no-icon %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple no-icon %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green no-icon %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><div class="note icon-padding simple"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note blue icon-padding simple"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
-</div>
-  <div class="note pink icon-padding simple"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
-</div>
-  <div class="note red icon-padding simple"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
-</div>
-  <div class="note orange icon-padding simple"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note purple icon-padding simple"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
-</div>
-  <div class="note green icon-padding simple"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
-</div></div><div class="tab-item-content"><div class="note icon-padding modern"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note blue icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
-</div>
-  <div class="note pink icon-padding modern"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
-</div>
-  <div class="note red icon-padding modern"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
-</div>
-  <div class="note orange icon-padding modern"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note purple icon-padding modern"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
-</div>
-  <div class="note green icon-padding modern"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
-</div></div><div class="tab-item-content"><div class="note icon-padding flat"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note blue icon-padding flat"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
-</div>
-  <div class="note pink icon-padding flat"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
-</div>
-  <div class="note red icon-padding flat"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
-</div>
-  <div class="note orange icon-padding flat"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note purple icon-padding flat"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
-</div>
-  <div class="note green icon-padding flat"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
-</div></div><div class="tab-item-content"><div class="note icon-padding disabled"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note blue icon-padding disabled"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
-</div>
-  <div class="note pink icon-padding disabled"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
-</div>
-  <div class="note red icon-padding disabled"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
-</div>
-  <div class="note orange icon-padding disabled"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note purple icon-padding disabled"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
-</div>
-  <div class="note green icon-padding disabled"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
-</div></div><div class="tab-item-content"><div class="note no-icon modern"><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note blue no-icon modern"><p>2021년이 곧 다가옵니다…</p>
-</div>
-  <div class="note pink no-icon modern"><p>조심해서 운전하고 안전이 가장 중요합니다</p>
-</div>
-  <div class="note red no-icon modern"><p>이 세 조각인가요? 네 조각?</p>
-</div>
-  <div class="note orange no-icon modern"><p>Visa 또는 UnionPay를 사용하십니까</p>
-</div>
-  <div class="note purple no-icon modern"><p>가위바위보</p>
-</div>
-  <div class="note green no-icon modern"><p>프론트엔드에서 가장 싫어하는 브라우저</p>
-</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="위-첨자-라벨-tip">위 첨자 라벨 (tip)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip [스타일 인자] %&#125;본문 내용&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>스타일 : success, error, warning, bolt, ban, home, sync, cogs, key, bell</li>
-<li>사용자 정의 아이콘 : FontAwsome을 지원합니다.</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip %&#125;기본 스타일&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip success %&#125;success&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip error %&#125;error&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip warning %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip bolt %&#125;bolt&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban %&#125;ban&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip home %&#125;home&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip sync %&#125;sync&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip cogs %&#125;cogs&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip key %&#125;key&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip bell %&#125;bell&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip fa-cog %&#125;커스텀 변경 (FontAwsome 사용)&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="tip "><p>기본 스타일</p>
-</div>
-<div class="tip success"><p>success</p>
-</div>
-<div class="tip error"><p>error</p>
-</div>
-<div class="tip warning"><p>warning</p>
-</div>
-<div class="tip bolt"><p>bolt</p>
-</div>
-<div class="tip ban"><p>ban</p>
-</div>
-<div class="tip home"><p>home</p>
-</div>
-<div class="tip sync"><p>sync</p>
-</div>
-<div class="tip cogs"><p>cogs</p>
-</div>
-<div class="tip key"><p>key</p>
-</div>
-<div class="tip bell"><p>bell</p>
-</div>
-<div class="tip fa-cog"><p>커스텀 변경 (FontAwsome 사용)</p>
-</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="애니메이션-추가-tip-animated">애니메이션 추가 (tip + animated)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><div class="note blue icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>보다 자세한 내용은 <a href='https://l-lin.github.io/font-awesome-animation/'>font-awesome-animation</a> 문서를 참고하십시오.</p>
-<ol>
-<li>필요한 CSS 클래스를 아이콘(또는 DOM의 모든 요소)에 추가합니다.</li>
-<li>parent hover 스타일의 경우, 대상 요소에 CSS 클래스를 지정하고 <code>faa-parent animated-hover</code> CSS 클래스를 동시에 추가해야 합니다. (자세한 사항은 예시 및 예시 소스코드 참조)</li>
-<li>대상 요소에 CSS 클래스 <code>faa-fast</code> 또는 <code>faa-slow</code>를 추가함으로써 애니메이션 속도를 조정할 수 있습니다.</li>
-</ol>
-</div>
-<ol>
-<li>
-<p>On DOM load : 페이지가 로드될 때 애니메이션이 표시됩니다.</p>
- <table>
- <tr>
- <td style="text-align:left"><span><i class="fas fa-wrench faa-wrench animated"></i>&nbsp;faa-wrench animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-bell faa-ring animated"></i>&nbsp;faa-ring animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-envelope faa-horizontal animated"></i>&nbsp;faa-horizontal animated</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-vertical animated"></i>&nbsp;faa-vertical animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-exclamation-triangle faa-flash animated"></i>&nbsp;faa-flash animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-bounce animated"></i>&nbsp;faa-bounce animated</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-spinner faa-spin animated"></i>&nbsp;faa-spin animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-plane faa-tada animated"></i>&nbsp;faa-tada animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-heart faa-pulse animated"></i>&nbsp;faa-pulse animated</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-envelope faa-shake animated"></i>&nbsp;faa-shake animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-trophy faa-tada animated"></i>&nbsp;faa-tada animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing animated"></i>&nbsp;faa-passing animated</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing-reverse animated"></i>&nbsp;faa-passing-reverse animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-circle faa-burst animated"></i>&nbsp;faa-burst animated</span></td>
- <td style="text-align:left"><span><i class="fas fa-star faa-falling animated"></i>&nbsp;faa-falling animated</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-rocket faa-rising animated"></i>&nbsp;faa-rising animated</span></td>
- </tr>
- </table>
-</li>
-<li>
-<p>On mouse hover : 마우스를 아이콘 위에 위치시킬 때 애니메이션이 표시됩니다.</p>
- <table>
- <tr>
- <td style="text-align:left"><span><i class="fas fa-wrench faa-wrench animated-hover"></i>&nbsp;faa-wrench animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-bell faa-ring animated-hover"></i>&nbsp;faa-ring animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-envelope faa-horizontal animated-hover"></i>&nbsp;faa-horizontal animated-hover</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-vertical animated-hover"></i>&nbsp;faa-vertical animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-exclamation-triangle faa-flash animated-hover"></i>&nbsp;faa-flash animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-bounce animated-hover"></i>&nbsp;faa-bounce animated-hover</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-spinner faa-spin animated-hover"></i>&nbsp;faa-spin animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-plane faa-tada animated-hover"></i>&nbsp;faa-tada animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-heart faa-pulse animated-hover"></i>&nbsp;faa-pulse animated-hover</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-envelope faa-shake animated-hover"></i>&nbsp;faa-shake animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-trophy faa-tada animated-hover"></i>&nbsp;faa-tada animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing animated-hover"></i>&nbsp;faa-passing animated-hover</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing-reverse animated-hover"></i>&nbsp;faa-passing-reverse animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-circle faa-burst animated-hover"></i>&nbsp;faa-burst animated-hover</span></td>
- <td style="text-align:left"><span><i class="fas fa-star faa-falling animated-hover"></i>&nbsp;faa-falling animated-hover</span></td>
- </tr><tr>
- <td style="text-align:left"><span><i class="fas fa-rocket faa-rising animated-hover"></i>&nbsp;faa-rising animated-hover</span></td>
- </tr>
- </table>
-</li>
-<li>
-<p>On parent hover : 마우스가 부모 요소 위에 있을 때 애니메이션이 표시됩니다.</p>
- <table>
- <tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-wrench faa-wrench"></i>&nbsp;faa-wrench</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-bell faa-ring"></i>&nbsp;faa-ring</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-envelope faa-horizontal"></i>&nbsp;faa-horizontal</span></td>
- </tr><tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-thumbs-up faa-vertical"></i>&nbsp;faa-vertical</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-exclamation-triangle faa-flash"></i>&nbsp;faa-flash</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-thumbs-up faa-bounce"></i>&nbsp;faa-bounce</span></td>
- </tr><tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-spinner faa-spin"></i>&nbsp;faa-spin</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-plane faa-tada"></i>&nbsp;faa-tada</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-heart faa-pulse"></i>&nbsp;faa-pulse</span></td>
- </tr><tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-envelope faa-shake"></i>&nbsp;faa-shake</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-trophy faa-tada"></i>&nbsp;faa-tada</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-space-shuttle faa-passing"></i>&nbsp;faa-passing</span></td>
- </tr><tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-space-shuttle faa-passing-reverse"></i>&nbsp;faa-passing-reverse</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-circle faa-burst"></i>&nbsp;faa-burst</span></td>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-star faa-falling"></i>&nbsp;faa-falling</span></td>
- </tr><tr>
- <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-rocket faa-rising"></i>&nbsp;faa-rising</span></td>
- </tr>
- </table>
-</li>
-</ol></div><div class="tab-item-content"><ol>
-<li>On DOM load (페이지 로드 시) <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>애니메이션 속도 조정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated faa-fast %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated faa-slow %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>On mouse hover <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated-hover %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated-hover %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>On parent hover <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-parent animated-hover %&#125;<span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;faa-horizontal&quot;</span>&gt;</span></span>warning<span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-parent animated-hover %&#125;<span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;faa-flash&quot;</span>&gt;</span></span>ban<span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>On DOM load (페이지 로드 시)<br><br>
-<div class="tip warning faa-horizontal animated"><p>warning</p>
-</div>
-<div class="tip ban faa-flash animated"><p>ban</p>
-</div>
-</li>
-<li>애니메이션 속도 조정<br><br>
-<div class="tip warning faa-horizontal animated faa-fast"><p>warning</p>
-</div>
-<div class="tip ban faa-flash animated faa-slow"><p>ban</p>
-</div>
-</li>
-<li>On mouse hover<br><br>
-<div class="tip warning faa-horizontal animated-hover"><p>warning</p>
-</div>
-<div class="tip ban faa-flash animated-hover"><p>ban</p>
-</div>
-</li>
-<li>On parent hover<br><br>
-<div class="tip warning faa-parent animated-hover"><p class="faa-horizontal">warning</p></div>
-<div class="tip ban faa-parent animated-hover"><p class="faa-flash">ban</p></div>
-</li>
-</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="다중-선택-리스트-checkbox">다중 선택 리스트 (checkbox)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% checkbox [스타일 인자], [본문 (간단한 markdown 문법 지원)] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>스타일 : plus, minus, times</li>
-<li>색상 : <span class='p red'>red</span>, <span class='p yellow'>yellow</span>, <span class='p green'>green</span>, <span class='p cyan'>cyan</span>, <span class='p blue'>blue</span>, <span class='p gray'>gray</span></li>
-<li>확인 상태 : checked</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% checkbox 일반 텍스트 테스트 %&#125;</span><br><span class="line">&#123;% checkbox checked , 간단한 [<span class="string">markdown</span>](<span class="link">https://guides.github.com/features/mastering-markdown/</span>) 지원 %&#125;</span><br><span class="line">&#123;% checkbox red, 사용자 정의 지원정의 색상 %&#125;</span><br><span class="line">&#123;% checkbox green checked, 초록색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox yellow checked, 노란색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox cyan checked, 청록색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox blue checked, 파란색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox plus green checked, plus 선택 %&#125;</span><br><span class="line">&#123;% checkbox minus yellow checked, minus 선택 %&#125;</span><br><span class="line">&#123;% checkbox times red checked , times 선택 %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class='checkbox'><input type="checkbox" />
-            <p>일반 텍스트 테스트</p>
-            </div>
-<div class='checkbox checked'><input type="checkbox" checked="checked"/>
-            <p>간단한 <a href="https://guides.github.com/features/mastering-markdown/">markdown</a> 지원</p>
-            </div>
-<div class='checkbox red'><input type="checkbox" />
-            <p>빨간색</p>
-            </div>
-<div class='checkbox green checked'><input type="checkbox" checked="checked"/>
-            <p>초록색 + 기본 선택</p>
-            </div>
-<div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>
-            <p>노란색 + 기본 선택</p>
-            </div>
-<div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>
-            <p>청록색 + 기본 선택</p>
-            </div>
-<div class='checkbox blue checked'><input type="checkbox" checked="checked"/>
-            <p>파란색 + 기본 선택</p>
-            </div>
-<div class='checkbox plus green checked'><input type="checkbox" checked="checked"/>
-            <p>초록색 + plus 선택</p>
-            </div>
-<div class='checkbox minus yellow checked'><input type="checkbox" checked="checked"/>
-            <p>노란색 + minus 선택</p>
-            </div>
-<div class='checkbox times red checked'><input type="checkbox" checked="checked"/>
-            <p>빨간색 + times 선택</p>
-            </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="단일-선택-리스트-radio">단일 선택 리스트 (radio)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% radio [스타일 인자], [본문 (간단한 markdown 문법 지원)] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>색상 : <span class='p red'>red</span>, <span class='p yellow'>yellow</span>, <span class='p green'>green</span>, <span class='p cyan'>cyan</span>, <span class='p blue'>blue</span>, <span class='p gray'>gray</span></li>
-<li>확인 상태 : checked</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% radio 일반 텍스트 테스트 %&#125;</span><br><span class="line">&#123;% radio checked, 간단한 [<span class="string">markdown</span>](<span class="link">https://guides.github.com/features/mastering-markdown/</span>) 지원 %&#125;</span><br><span class="line">&#123;% radio red, 빨간색 %&#125;</span><br><span class="line">&#123;% radio green, 초록색 %&#125;</span><br><span class="line">&#123;% radio yellow, 노란색 %&#125;</span><br><span class="line">&#123;% radio cyan, 청록색 %&#125;</span><br><span class="line">&#123;% radio blue, 파란색 %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class='checkbox'><input type="radio" />
-            <p>일반 텍스트 테스트</p>
-            </div>
-<div class='checkbox checked'><input type="radio" checked="checked"/>
-            <p>간단한 <a href="https://guides.github.com/features/mastering-markdown/">markdown</a> 지원</p>
-            </div>
-<div class='checkbox red'><input type="radio" />
-            <p>빨간색</p>
-            </div>
-<div class='checkbox green'><input type="radio" />
-            <p>초록색</p>
-            </div>
-<div class='checkbox yellow'><input type="radio" />
-            <p>노란색</p>
-            </div>
-<div class='checkbox cyan'><input type="radio" />
-            <p>청록색</p>
-            </div>
-<div class='checkbox blue'><input type="radio" />
-            <p>파란색</p>
-            </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="타임라인-timeline">타임라인 (timeline)</h1>
-<div class="note warning modern"><p>사용자의 요청에 따라, <a href="https://butterfly.js.org/posts/ceeb73f/#Timeline">Butterfly 테마의 <code>4.0.0</code> 버전부터 timeline 태그가 지원</a>되고 있습니다. 따라서, <code>4.0.0-b9</code> 버전을 이용하고 있는 제 블로그에서는 본 플러그인의 timeline 태그가 제대로 작동하지 않습니다.</p>
-<p>내장된 timeline 태그보다 이 플러그인의 timeline 태그가 더 마음에 드신다면, <code>{root}/themes/butterfly/scripts/tag/timeline.js</code>와 <code>{root}/themes/butterfly/source/css/_tags/timeline.styl</code>을 모두 삭제하면 됩니다.</p>
-</div>
-<span class='p center semi-large'><code>hexo-butterfly-tag-plugins-plus</code> 제공</span>
-<br>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline [타임라인 제목 (선택사항)] %&#125;</span><br><span class="line">&#123;% timenode [시간 노드 (제목)] %&#125;</span><br><span class="line">[본문 내용]</span><br><span class="line">&#123; % endtimenode % &#125;</span><br><span class="line">&#123;% timenode [시간 노드 (제목)] %&#125;</span><br><span class="line">[본문 내용]</span><br><span class="line">&#123; % endtimenode % &#125;</span><br><span class="line">&#123; % endtimeline % &#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) %&#125;</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> <span class="code">`hexo-lazyload-image`</span> 플러그인이 있는 경우, 최신 버전 삭제 후 새로 설치해야 하며，<span class="code">`lazyload.isSPA: true`</span>를 설정해야 합니다.</span><br><span class="line"><span class="bullet">2.</span> 2.x 버전의 css 맟 js는 3.x 버전에 적용되지 않으며, <span class="code">`use_cdn: true`</span>를 사용했다면 이를 삭제해야 합니다.</span><br><span class="line"><span class="bullet">3.</span> 2.x 버전의 fancybox 라벨은 3.x 버전에서 gallery로 이름이 변경되었습니다.</span><br><span class="line"><span class="bullet">4.</span> 2.x 버전의 헤드업 <span class="code">`top: true`</span>를 <span class="code">`pin: true`</span>로 수정하였으며, <span class="code">`layout: page`</span> 페이지에도 동일하게 적용됩니다.</span><br><span class="line"><span class="bullet">5.</span> <span class="code">`hexo-offline`</span> 플러그인의 경우 제거하는 것이 좋습니다. 기본적으로, 3.0 버전은 pjax 서비스가 활성화되어 있습니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-05-15 [<span class="string">2.6.3 -&gt; 2.6.6</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.6</span>) %&#125;</span><br><span class="line"></span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) %&#125;</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">2.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">2.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/posts/tag-plugins-plus/timeline.png"/></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<span class='p center semi-large'>Hexo Butterfly 테마 제공</span>
-<br>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline [타임라인 제목],[색상] %&#125;</span><br><span class="line">&lt;!-- timeline [시간 노드 (제목)] --&gt;</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline [시간 노드 (제목)] --&gt;</span><br><span class="line">[본문 내용]</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab">none</button><button type="button" class="tab active">blue</button><button type="button" class="tab">pink</button><button type="button" class="tab">red</button><button type="button" class="tab">purple</button><button type="button" class="tab">orange</button><button type="button" class="tab">green</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020 %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,blue %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,pink %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,red %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,purple %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,orange %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,green %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab">none</button><button type="button" class="tab active">blue</button><button type="button" class="tab">pink</button><button type="button" class="tab">red</button><button type="button" class="tab">purple</button><button type="button" class="tab">orange</button><button type="button" class="tab">green</button></div><div class="tab-contents"><div class="tab-item-content"><div class="timeline "><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content active"><div class="timeline blue"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content"><div class="timeline pink"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content"><div class="timeline red"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content"><div class="timeline purple"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content"><div class="timeline orange"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div><div class="tab-item-content"><div class="timeline green"><div class='timeline-item headline'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020</p>
-</div>
-        </div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
-</div>
-      </div><div class='timeline-item'>
-        <div class='timeline-item-title'>
-          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
-</div>
-        </div>
-        <div class='timeline-item-content'><ol>
-<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
-<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
-<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
-</ol>
-</div>
-      </div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-        <category>Hexo Tag Plugins</category>
-      </categories>
-      <tags>
-        <tag>tutorial</tag>
-        <tag>hexo-butterfly-tag-plugins-plus</tag>
-        <tag>hexo-theme-butterfly</tag>
-        <tag>hexo-theme-volantis</tag>
       </tags>
   </entry>
   <entry>
@@ -4684,6 +3987,703 @@ Butterfly 테마<span class="hidden-anchor" id="referto_[2]"></span><sup class="
 <li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn2" class="footnote-item"><p>Add Blog Animation – Wowjs | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+        <category>Hexo Tag Plugins</category>
+      </categories>
+      <tags>
+        <tag>tutorial</tag>
+        <tag>hexo-butterfly-tag-plugins-plus</tag>
+        <tag>hexo-theme-butterfly</tag>
+        <tag>hexo-theme-volantis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tag Plugins Plus 튜토리얼 - 1</title>
+    <language>ko</language>
+    <url>/posts/ko/tag-plugins-plus-tutorial-1/</url>
+    <content><![CDATA[<div class="language-notice note modern language-kor">
+    <div class="language-logo"></div>
+    <p>This posting is written in Korean. English is not scheduled to be written.</p>
+</div>
+<div class='note info modern'>
+<p>본 게시물은 <code>hexo-butterfly-tag-plugins-plus</code> 개발자가 작성한 튜토리얼<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>에 대한 한글 번역본입니다.<br>
+<del>Hexo가 Jekyll보다 더 마음에 들어 선택했는데, 참고할 만한 글들이 다 중국어로 적혀있어서 매우 곤란…</del></p>
+</div>
+<details class="folding-tag" ><summary> 내용이 너무 길어져서 세 파트로 나누어서 업로드하였습니다. </summary>
+              <div class='content'>
+              <p>참고로 일부 태그들은 별도의 라이브러리 없이 <a href="https://butterfly.js.org/posts/2df239ce/">butterfly 테마만으로도 사용 가능</a>합니다.<br><del>애초에 Butterfly 테마가 이 플러그인을 기반으로 여러 태그를 추가했기 때문ㅎㅎ</del></p><ol><li><strong><span class='p blue'>Tag Plugins Plus 튜토리얼 - 1</span></strong><br>text / span / p / note / tip / animated / checkbox / radio / timeline</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-2">Tag Plugins Plus 튜토리얼 - 2</a><br>link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-3">Tag Plugins Plus 튜토리얼 - 3</a><br>folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel</li></ol>
+              </div>
+            </details>
+<hr>
+<h1 id="라이브러리-설치-npm-이용">라이브러리 설치 (npm 이용)</h1>
+<ol>
+<li>
+<p>터미널을 열고, 본인의 블로그 루트 디렉토리로 가서 아래의 설치 명령어를 실행합니다.</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-butterfly-tag-plugins-plus --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Hexo에서 기본으로 제공하는 <code>hexo-renderer-marked</code> 라이브러리는 외부 태그와 호환성이 그리 좋지 못하므로 <code>hexo-renderer-kramed</code>로 바꿔주는 것이 좋습니다.</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+ <details class="toggle" ><summary class="toggle-button" style="">라고 쓰여있지만 저는 <code>hexo-renderer-markdown-it</code>을 대신 설치하였습니다.</summary><div class="toggle-content"><ul>
+<li>
+<p>Butterfly 테마 공식 블로그에서는 kaTeX 사용 시 <code>hexo-renderer-markdown-it</code>(권장) 또는 <code>hexo-renderer-markdown-it-plus</code>을 설치해야 함을 명시하고 있습니다.</p>
+</li>
+<li>
+<p><code>hexo-renderer-markdown-it</code>는 Hexo에서 제공하는 렌더러이기 때문에 비교적 꾸준한 업데이트가 이루어지고 있어, 이를 설치하였습니다.</p>
+</li>
+<li>
+<p>아래와 같이 터미널에서 명령어를 실행한 뒤, <code>_config.yml</code>에 내용을 추가하면 됩니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm un hexo-renderer-kramed --save</span><br><span class="line">npm i hexo-renderer-markdown-it --save</span><br><span class="line">npm install @neilsustc/markdown-it-katex --save</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>plugins</code>는 옵션으로 추가할 플러그인을 지정하는 변수이며, 자신이 사용하고자 하는 옵션만 추가하면 됩니다 (<a href="https://github.com/hexojs/hexo-renderer-markdown-it">참고</a>).</p>
+</li>
+<li>
+<p><code>anchors</code>는 목차(ToC) 및 헤드라인(h1…h6)을 어떻게 만들지에 관련된 변수입니다. <code>level</code>의 기본값이 2이기 때문에, <code>level: 1</code>로 변경하지 않으면 목차에서 h1에 대한 하이퍼링크가 만들어지지 않습니다.</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-abbr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-container</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-deflist</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-footnote</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-ins</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-mark</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sub</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">&#x27;@neilsustc/markdown-it-katex&#x27;</span></span><br><span class="line">      <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">options:</span></span><br><span class="line">        <span class="attr">strict:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</div></details>
+</li>
+<li>
+<p>사이트 구성 파일(<code>_config.yml</code> 또는 <code>_config.butterfly.yml</code>)에 아래의 내용을 추가합니다.</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tag-plugins-plus</span></span><br><span class="line"><span class="comment"># see https://akilar.top/posts/615e2dec/</span></span><br><span class="line"><span class="attr">tag_plugins:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 플러그인 활성 여부</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">5</span> <span class="comment"># 필터 우선순위</span></span><br><span class="line">  <span class="attr">issues:</span> <span class="literal">false</span> <span class="comment"># issues 태그 활성 여부</span></span><br><span class="line">  <span class="attr">link:</span></span><br><span class="line">    <span class="attr">placeholder:</span> <span class="string">/img/link.png</span> <span class="comment"># link_card 태그 기본 아이콘 이미지</span></span><br><span class="line">  <span class="attr">CDN:</span></span><br><span class="line">    <span class="attr">anima:</span> <span class="string">https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css</span> <span class="comment"># animated 태그 종속성</span></span><br><span class="line">    <span class="attr">jquery:</span> <span class="string">https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js</span> <span class="comment"># issues 태그 종속성</span></span><br><span class="line">    <span class="attr">issues:</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-theme-volantis@latest/source/js/issues.min.js</span> <span class="comment"># issues 종속성</span></span><br><span class="line">    <span class="attr">iconfont:</span> <span class="string">//at.alicdn.com/t/font_2032782_8d5kxvn09md.js</span> <span class="comment"># icon 태그 종속성 (https://akilar.top/posts/d2ebecef/ 참조)</span></span><br><span class="line">    <span class="attr">carousel:</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js</span> <span class="comment"># carousel 태그 마우스 이벤트 종속성</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="텍스트-기본-효과">텍스트 기본 효과</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% u [본문 내용] %&#125;</span><br><span class="line">&#123;% emp [본문 내용] %&#125;</span><br><span class="line">&#123;% wavy [본문 내용] %&#125;</span><br><span class="line">&#123;% del [본문 내용] %&#125;</span><br><span class="line">&#123;% kbd [본문 내용] %&#125;</span><br><span class="line">&#123;% psw [본문 내용] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> &#123;% u 밑줄 %&#125;이 있는 텍스트, </span><br><span class="line"><span class="bullet">2.</span> &#123;% emp 강조 %&#125;가 있는 텍스트, </span><br><span class="line"><span class="bullet">3.</span> &#123;% wavy 물결선 %&#125;이 있는 텍스트, </span><br><span class="line"><span class="bullet">4.</span> &#123;% del 취소선 %&#125;이 있는 텍스트,</span><br><span class="line"><span class="bullet">5.</span> 키보드 스타일 텍스트: &#123;% kbd ⌘ %&#125; + &#123;% kbd D %&#125;,</span><br><span class="line"><span class="bullet">6.</span> 비밀번호 스타일 텍스트: &#123;% psw 여기에는 인증 코드가 없습니다.%&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><ol>
+<li><u>밑줄</u>이 있는 텍스트,</li>
+<li><emp>강조</emp>가 있는 텍스트,</li>
+<li><wavy>물결선</wavy>이 있는 텍스트,</li>
+<li><del>취소선</del>이 있는 텍스트,</li>
+<li>키보드 스타일 텍스트: <kbd>⌘</kbd> + <kbd>D</kbd>,</li>
+<li>비밀번호 스타일 텍스트: <psw>여기에는 인증 코드가 없습니다.</psw></li>
+</ol></div><div class="tab-item-content"><ul>
+<li>
+<p>밑줄(<code>u</code>), 강조(<code>emp</code>), 취소선(<code>del</code>), 물결선(<code>wavy</code>), 비밀번호(<code>psw:hover</code>) 등 일부 스타일은 기본 색상이 회색으로 지정되어 있습니다.</p>
+</li>
+<li>
+<p>이를 원하지 않을 경우 본인의 커스텀 CSS 파일에서 수정하시면 됩니다.</p>
+</li>
+<li>
+<p>제 블로그에서는 이를 모두 본래 글꼴색으로 수정했습니다.<br>
+<del>(취소선은 회색인 편이 보다 의미 전달을 명확하게 해주는 것 같아 그대로 둠ㅎㅎ)</del></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">u, emp, wavy, psw<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: unset <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="글자색-글자크기-span">글자색/글자크기 (span)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% span [스타일 인자 (띄어쓰기로 구분)], [본문 내용] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>글꼴 : logo, code</li>
+<li>색상 : red, yellow, green, cyan, blue, gray, #000000 ~ #ffffff</li>
+<li>크기 : small, h4, h3, h2, h1, large, huge, ultra</li>
+<li>정렬 : left, center, right</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> 컬러 텍스트</span><br><span class="line">&#123;% span red, 빨간색 %&#125;, &#123;% span yellow, 노란색 %&#125;, &#123;% span green, 녹색 %&#125;, &#123;% span cyan, 청록색 %&#125;, &#123;% span blue, 파란색 %&#125;, 그리고</span><br><span class="line">&#123;% span gray, 회색%&#125; 등의 태그를 이용해 다양한 색상을 편리하게 삽입할 수 있습니다.</span><br><span class="line"><span class="bullet">-</span> 대형 텍스트</span><br><span class="line">문서의 &#x27;시작&#x27; 페이지의 제목 부분은 아래의 대형 텍스트로 표현됩니다.</span><br><span class="line">&#123;% span center logo large , Butterfly &amp; Volantis %&#125;</span><br><span class="line">&#123;% span center small , Wonderful Themes for Hexo %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><ul>
+<li>컬러 텍스트<br>
+<span class='p red'>빨간색</span>, <span class='p yellow'>노란색</span>, <span class='p green'>녹색</span>, <span class='p cyan'>청록색</span>, <span class='p blue'>파란색</span>, 그리고 <span class='p gray'>회색</span> 등의 태그를 이용해 다양한 색상을 편리하게 삽입할 수 있습니다.</li>
+<li>대형 텍스트<br>
+문서의 ‘시작’ 페이지의 제목 부분은 아래의 대형 텍스트로 표현됩니다.<br><br>
+<span class='p center logo large'>Butterfly &amp; Volantis</span><br>
+<span class='p center small'>Wonderful Themes for Hexo</span></li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="단락-스타일-p">단락 스타일 (p)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% p [스타일 인자 (띄어쓰기로 구분)], [본문 내용] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>글꼴 : logo, code</li>
+<li>색상 : red, yellow, green, cyan, blue, gray, #000000 ~ #ffffff</li>
+<li>크기 : small, h4, h3, h2, h1, large, huge, ultra</li>
+<li>정렬 : left, center, right</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% p red, 빨간색 %&#125;</span><br><span class="line">&#123;% p yellow, 노란색 %&#125;</span><br><span class="line">&#123;% p green, 녹색 %&#125;</span><br><span class="line">&#123;% p cyan, 청록색 %&#125;</span><br><span class="line">&#123;% p blue, 파란색 %&#125;</span><br><span class="line">&#123;% p gray, 회색 %&#125;</span><br><span class="line">&#123;% p center logo large , Butterfly &amp; Volantis %&#125;</span><br><span class="line">&#123;% p center small , Wonderful Themes for Hexo %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><p class='p red'>빨간색</p>
+<p class='p yellow'>노란색</p>
+<p class='p green'>녹색</p>
+<p class='p cyan'>청록색</p>
+<p class='p blue'>파란색</p>
+<p class='p gray'>회색</p>
+<p class='p center logo large'>Butterfly & Volantis</p>
+<p class='p center small'>Wonderful Themes for Hexo</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="인용문-note">인용문 (note)</h1>
+<details class="toggle" ><summary class="toggle-button" style=""><code>_config.butterfly.yml</code> 을 통해 기본값 수정 가능</summary><div class="toggle-content"><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bs-callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">modern</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">border_radius:</span> <span class="number">3</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></div></details>
+<h2 id="방법-1">방법-1</h2>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note [class] [no-icon] [style] %&#125;</span><br><span class="line">Any content (support inline tags too.io).</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>매개 변수</th>
+<th>사용 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class</code></td>
+<td>«선택사항» 로고 （default / primary / success / info / warning / danger）<br>로고마다 지정된 색상이 다릅니다.</td>
+</tr>
+<tr>
+<td><code>no-icon</code></td>
+<td>«선택사항» 아이콘을 표시하지 않음</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>«선택사항» 스타일 （simple / modern / flat / disabled）</td>
+</tr>
+</tbody>
+</table></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note simple %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default simple %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary simple %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success simple %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info simple %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning simple %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger simple %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note modern %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default modern %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary modern %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success modern %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info modern %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning modern %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger modern %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note flat %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default flat %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary flat %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success flat %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info flat %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning flat %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger flat %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note disabled %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default disabled %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary disabled %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success disabled %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info disabled %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning disabled %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger disabled %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note no-icon %&#125;기본 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note default no-icon %&#125;default 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note primary no-icon %&#125;primary 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note success no-icon %&#125;success 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note info no-icon %&#125;info 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note warning no-icon %&#125;warning 알림 블록 태그&#123;% endnote %&#125;</span><br><span class="line">&#123;% note danger no-icon %&#125;danger 알림 블록 태그&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><div class="note simple"><p>기본 알림 블록 태그</p>
+</div>
+  <div class="note default simple"><p>default 알림 블록 태그</p>
+</div>
+  <div class="note primary simple"><p>primary 알림 블록 태그</p>
+</div>
+  <div class="note success simple"><p>success 알림 블록 태그</p>
+</div>
+  <div class="note info simple"><p>info 알림 블록 태그</p>
+</div>
+  <div class="note warning simple"><p>warning 알림 블록 태그</p>
+</div>
+  <div class="note danger simple"><p>danger 알림 블록 태그</p>
+</div></div><div class="tab-item-content"><div class="note modern"><p>기본 알림 블록 태그</p>
+</div>
+  <div class="note default modern"><p>default 알림 블록 태그</p>
+</div>
+  <div class="note primary modern"><p>primary 알림 블록 태그</p>
+</div>
+  <div class="note success modern"><p>success 알림 블록 태그</p>
+</div>
+  <div class="note info modern"><p>info 알림 블록 태그</p>
+</div>
+  <div class="note warning modern"><p>warning 알림 블록 태그</p>
+</div>
+  <div class="note danger modern"><p>danger 알림 블록 태그</p>
+</div></div><div class="tab-item-content"><div class="note flat"><p>기본 알림 블록 태그</p>
+</div>
+  <div class="note default flat"><p>default 알림 블록 태그</p>
+</div>
+  <div class="note primary flat"><p>primary 알림 블록 태그</p>
+</div>
+  <div class="note success flat"><p>success 알림 블록 태그</p>
+</div>
+  <div class="note info flat"><p>info 알림 블록 태그</p>
+</div>
+  <div class="note warning flat"><p>warning 알림 블록 태그</p>
+</div>
+  <div class="note danger flat"><p>danger 알림 블록 태그</p>
+</div></div><div class="tab-item-content"><div class="note disabled"><p>기본 알림 블록 태그</p>
+</div>
+  <div class="note default disabled"><p>default 알림 블록 태그</p>
+</div>
+  <div class="note primary disabled"><p>primary 알림 블록 태그</p>
+</div>
+  <div class="note success disabled"><p>success 알림 블록 태그</p>
+</div>
+  <div class="note info disabled"><p>info 알림 블록 태그</p>
+</div>
+  <div class="note warning disabled"><p>warning 알림 블록 태그</p>
+</div>
+  <div class="note danger disabled"><p>danger 알림 블록 태그</p>
+</div></div><div class="tab-item-content"><div class="note no-icon modern"><p>기본 알림 블록 태그</p>
+</div>
+  <div class="note default no-icon modern"><p>default 알림 블록 태그</p>
+</div>
+  <div class="note primary no-icon modern"><p>primary 알림 블록 태그</p>
+</div>
+  <div class="note success no-icon modern"><p>success 알림 블록 태그</p>
+</div>
+  <div class="note info no-icon modern"><p>info 알림 블록 태그</p>
+</div>
+  <div class="note warning no-icon modern"><p>warning 알림 블록 태그</p>
+</div>
+  <div class="note danger no-icon modern"><p>danger 알림 블록 태그</p>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content"><ul>
+<li>
+<p>제 블로그에서는 [방법-1]의 아이콘의 위치가 글자의 중심보다 위로 올라와 있어 해당 위치를 조정했습니다.</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#article-container</span> <span class="selector-class">.note</span><span class="selector-pseudo">:not</span>(<span class="selector-class">.no-icon</span>)<span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">top</span>: <span class="built_in">calc</span>(<span class="number">50%</span> - <span class="number">0.7em</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h2 id="방법-2">방법-2</h2>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note [color] [icon] [style] %&#125;</span><br><span class="line">Any content (support inline tags too.io).</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>매개 변수</th>
+<th>사용 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>class</code></td>
+<td>«선택사항» 로고 색상 （default / blue / pink / red / purple / orange / green）</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>«선택사항» 커스텀 아이콘. 단, Font Awsome만 지원되며, 아이콘이 없는 설정도 가능.</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td>«선택사항» 스타일 （simple / modern / flat / disabled）</td>
+</tr>
+</tbody>
+</table></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; simple %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; simple %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; simple %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; simple %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; simple %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; simple %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; simple %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; modern %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; modern %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; modern %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; modern %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; modern %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; modern %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; modern %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; flat %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; flat %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; flat %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; flat %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; flat %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; flat %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; flat %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note &#x27;fab fa-cc-visa&#x27; disabled %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue &#x27;fas fa-bullhorn&#x27; disabled %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink &#x27;fas fa-car-crash&#x27; disabled %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red &#x27;fas fa-fan&#x27; disabled %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange &#x27;fas fa-battery-half&#x27; disabled %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple &#x27;far fa-hand-scissors&#x27; disabled %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green &#x27;fab fa-internet-explorer&#x27; disabled %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% note no-icon %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note blue no-icon %&#125;2021년이 곧 다가옵니다...&#123;% endnote %&#125;</span><br><span class="line">&#123;% note pink no-icon %&#125;조심해서 운전하고 안전이 가장 중요합니다&#123;% endnote %&#125;</span><br><span class="line">&#123;% note red no-icon %&#125; 이 세 조각인가요? 네 조각?&#123;% endnote %&#125;</span><br><span class="line">&#123;% note orange no-icon %&#125;Visa 또는 UnionPay를 사용하십니까&#123;% endnote %&#125;</span><br><span class="line">&#123;% note purple no-icon %&#125;가위바위보&#123;% endnote %&#125;</span><br><span class="line">&#123;% note green no-icon %&#125;프론트엔드에서 가장 싫어하는 브라우저&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active">simple</button><button type="button" class="tab">modern</button><button type="button" class="tab">flat</button><button type="button" class="tab">disabled</button><button type="button" class="tab">no-icon</button></div><div class="tab-contents"><div class="tab-item-content active"><div class="note icon-padding simple"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note blue icon-padding simple"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
+</div>
+  <div class="note pink icon-padding simple"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
+</div>
+  <div class="note red icon-padding simple"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
+</div>
+  <div class="note orange icon-padding simple"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note purple icon-padding simple"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
+</div>
+  <div class="note green icon-padding simple"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
+</div></div><div class="tab-item-content"><div class="note icon-padding modern"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note blue icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
+</div>
+  <div class="note pink icon-padding modern"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
+</div>
+  <div class="note red icon-padding modern"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
+</div>
+  <div class="note orange icon-padding modern"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note purple icon-padding modern"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
+</div>
+  <div class="note green icon-padding modern"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
+</div></div><div class="tab-item-content"><div class="note icon-padding flat"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note blue icon-padding flat"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
+</div>
+  <div class="note pink icon-padding flat"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
+</div>
+  <div class="note red icon-padding flat"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
+</div>
+  <div class="note orange icon-padding flat"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note purple icon-padding flat"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
+</div>
+  <div class="note green icon-padding flat"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
+</div></div><div class="tab-item-content"><div class="note icon-padding disabled"><i class="note-icon fab fa-cc-visa"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note blue icon-padding disabled"><i class="note-icon fas fa-bullhorn"></i><p>2021년이 곧 다가옵니다…</p>
+</div>
+  <div class="note pink icon-padding disabled"><i class="note-icon fas fa-car-crash"></i><p>조심해서 운전하고 안전이 가장 중요합니다</p>
+</div>
+  <div class="note red icon-padding disabled"><i class="note-icon fas fa-fan"></i><p>이 세 조각인가요? 네 조각?</p>
+</div>
+  <div class="note orange icon-padding disabled"><i class="note-icon fas fa-battery-half"></i><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note purple icon-padding disabled"><i class="note-icon far fa-hand-scissors"></i><p>가위바위보</p>
+</div>
+  <div class="note green icon-padding disabled"><i class="note-icon fab fa-internet-explorer"></i><p>프론트엔드에서 가장 싫어하는 브라우저</p>
+</div></div><div class="tab-item-content"><div class="note no-icon modern"><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note blue no-icon modern"><p>2021년이 곧 다가옵니다…</p>
+</div>
+  <div class="note pink no-icon modern"><p>조심해서 운전하고 안전이 가장 중요합니다</p>
+</div>
+  <div class="note red no-icon modern"><p>이 세 조각인가요? 네 조각?</p>
+</div>
+  <div class="note orange no-icon modern"><p>Visa 또는 UnionPay를 사용하십니까</p>
+</div>
+  <div class="note purple no-icon modern"><p>가위바위보</p>
+</div>
+  <div class="note green no-icon modern"><p>프론트엔드에서 가장 싫어하는 브라우저</p>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="위-첨자-라벨-tip">위 첨자 라벨 (tip)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip [스타일 인자] %&#125;본문 내용&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>스타일 : success, error, warning, bolt, ban, home, sync, cogs, key, bell</li>
+<li>사용자 정의 아이콘 : FontAwsome을 지원합니다.</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip %&#125;기본 스타일&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip success %&#125;success&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip error %&#125;error&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip warning %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip bolt %&#125;bolt&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban %&#125;ban&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip home %&#125;home&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip sync %&#125;sync&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip cogs %&#125;cogs&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip key %&#125;key&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip bell %&#125;bell&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip fa-cog %&#125;커스텀 변경 (FontAwsome 사용)&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="tip "><p>기본 스타일</p>
+</div>
+<div class="tip success"><p>success</p>
+</div>
+<div class="tip error"><p>error</p>
+</div>
+<div class="tip warning"><p>warning</p>
+</div>
+<div class="tip bolt"><p>bolt</p>
+</div>
+<div class="tip ban"><p>ban</p>
+</div>
+<div class="tip home"><p>home</p>
+</div>
+<div class="tip sync"><p>sync</p>
+</div>
+<div class="tip cogs"><p>cogs</p>
+</div>
+<div class="tip key"><p>key</p>
+</div>
+<div class="tip bell"><p>bell</p>
+</div>
+<div class="tip fa-cog"><p>커스텀 변경 (FontAwsome 사용)</p>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="애니메이션-추가-tip-animated">애니메이션 추가 (tip + animated)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><div class="note blue icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>보다 자세한 내용은 <a href='https://l-lin.github.io/font-awesome-animation/'>font-awesome-animation</a> 문서를 참고하십시오.</p>
+<ol>
+<li>필요한 CSS 클래스를 아이콘(또는 DOM의 모든 요소)에 추가합니다.</li>
+<li>parent hover 스타일의 경우, 대상 요소에 CSS 클래스를 지정하고 <code>faa-parent animated-hover</code> CSS 클래스를 동시에 추가해야 합니다. (자세한 사항은 예시 및 예시 소스코드 참조)</li>
+<li>대상 요소에 CSS 클래스 <code>faa-fast</code> 또는 <code>faa-slow</code>를 추가함으로써 애니메이션 속도를 조정할 수 있습니다.</li>
+</ol>
+</div>
+<ol>
+<li>
+<p>On DOM load : 페이지가 로드될 때 애니메이션이 표시됩니다.</p>
+ <table>
+ <tr>
+ <td style="text-align:left"><span><i class="fas fa-wrench faa-wrench animated"></i>&nbsp;faa-wrench animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-bell faa-ring animated"></i>&nbsp;faa-ring animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-envelope faa-horizontal animated"></i>&nbsp;faa-horizontal animated</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-vertical animated"></i>&nbsp;faa-vertical animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-exclamation-triangle faa-flash animated"></i>&nbsp;faa-flash animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-bounce animated"></i>&nbsp;faa-bounce animated</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-spinner faa-spin animated"></i>&nbsp;faa-spin animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-plane faa-tada animated"></i>&nbsp;faa-tada animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-heart faa-pulse animated"></i>&nbsp;faa-pulse animated</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-envelope faa-shake animated"></i>&nbsp;faa-shake animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-trophy faa-tada animated"></i>&nbsp;faa-tada animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing animated"></i>&nbsp;faa-passing animated</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing-reverse animated"></i>&nbsp;faa-passing-reverse animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-circle faa-burst animated"></i>&nbsp;faa-burst animated</span></td>
+ <td style="text-align:left"><span><i class="fas fa-star faa-falling animated"></i>&nbsp;faa-falling animated</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-rocket faa-rising animated"></i>&nbsp;faa-rising animated</span></td>
+ </tr>
+ </table>
+</li>
+<li>
+<p>On mouse hover : 마우스를 아이콘 위에 위치시킬 때 애니메이션이 표시됩니다.</p>
+ <table>
+ <tr>
+ <td style="text-align:left"><span><i class="fas fa-wrench faa-wrench animated-hover"></i>&nbsp;faa-wrench animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-bell faa-ring animated-hover"></i>&nbsp;faa-ring animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-envelope faa-horizontal animated-hover"></i>&nbsp;faa-horizontal animated-hover</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-vertical animated-hover"></i>&nbsp;faa-vertical animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-exclamation-triangle faa-flash animated-hover"></i>&nbsp;faa-flash animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-thumbs-up faa-bounce animated-hover"></i>&nbsp;faa-bounce animated-hover</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-spinner faa-spin animated-hover"></i>&nbsp;faa-spin animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-plane faa-tada animated-hover"></i>&nbsp;faa-tada animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-heart faa-pulse animated-hover"></i>&nbsp;faa-pulse animated-hover</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-envelope faa-shake animated-hover"></i>&nbsp;faa-shake animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-trophy faa-tada animated-hover"></i>&nbsp;faa-tada animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing animated-hover"></i>&nbsp;faa-passing animated-hover</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-space-shuttle faa-passing-reverse animated-hover"></i>&nbsp;faa-passing-reverse animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-circle faa-burst animated-hover"></i>&nbsp;faa-burst animated-hover</span></td>
+ <td style="text-align:left"><span><i class="fas fa-star faa-falling animated-hover"></i>&nbsp;faa-falling animated-hover</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span><i class="fas fa-rocket faa-rising animated-hover"></i>&nbsp;faa-rising animated-hover</span></td>
+ </tr>
+ </table>
+</li>
+<li>
+<p>On parent hover : 마우스가 부모 요소 위에 있을 때 애니메이션이 표시됩니다.</p>
+ <table>
+ <tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-wrench faa-wrench"></i>&nbsp;faa-wrench</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-bell faa-ring"></i>&nbsp;faa-ring</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-envelope faa-horizontal"></i>&nbsp;faa-horizontal</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-thumbs-up faa-vertical"></i>&nbsp;faa-vertical</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-exclamation-triangle faa-flash"></i>&nbsp;faa-flash</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-thumbs-up faa-bounce"></i>&nbsp;faa-bounce</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-spinner faa-spin"></i>&nbsp;faa-spin</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-plane faa-tada"></i>&nbsp;faa-tada</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-heart faa-pulse"></i>&nbsp;faa-pulse</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-envelope faa-shake"></i>&nbsp;faa-shake</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-trophy faa-tada"></i>&nbsp;faa-tada</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-space-shuttle faa-passing"></i>&nbsp;faa-passing</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-space-shuttle faa-passing-reverse"></i>&nbsp;faa-passing-reverse</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-circle faa-burst"></i>&nbsp;faa-burst</span></td>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-star faa-falling"></i>&nbsp;faa-falling</span></td>
+ </tr><tr>
+ <td style="text-align:left"><span class="faa-parent animated-hover"><i class="fas fa-rocket faa-rising"></i>&nbsp;faa-rising</span></td>
+ </tr>
+ </table>
+</li>
+</ol></div><div class="tab-item-content"><ol>
+<li>On DOM load (페이지 로드 시) <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>애니메이션 속도 조정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated faa-fast %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated faa-slow %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>On mouse hover <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-horizontal animated-hover %&#125;warning&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-flash animated-hover %&#125;ban&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>On parent hover <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% tip warning faa-parent animated-hover %&#125;<span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;faa-horizontal&quot;</span>&gt;</span></span>warning<span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#123;% endtip %&#125;</span><br><span class="line">&#123;% tip ban faa-parent animated-hover %&#125;<span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;faa-flash&quot;</span>&gt;</span></span>ban<span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#123;% endtip %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>On DOM load (페이지 로드 시)<br><br>
+<div class="tip warning faa-horizontal animated"><p>warning</p>
+</div>
+<div class="tip ban faa-flash animated"><p>ban</p>
+</div>
+</li>
+<li>애니메이션 속도 조정<br><br>
+<div class="tip warning faa-horizontal animated faa-fast"><p>warning</p>
+</div>
+<div class="tip ban faa-flash animated faa-slow"><p>ban</p>
+</div>
+</li>
+<li>On mouse hover<br><br>
+<div class="tip warning faa-horizontal animated-hover"><p>warning</p>
+</div>
+<div class="tip ban faa-flash animated-hover"><p>ban</p>
+</div>
+</li>
+<li>On parent hover<br><br>
+<div class="tip warning faa-parent animated-hover"><p class="faa-horizontal">warning</p></div>
+<div class="tip ban faa-parent animated-hover"><p class="faa-flash">ban</p></div>
+</li>
+</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="다중-선택-리스트-checkbox">다중 선택 리스트 (checkbox)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% checkbox [스타일 인자], [본문 (간단한 markdown 문법 지원)] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>스타일 : plus, minus, times</li>
+<li>색상 : <span class='p red'>red</span>, <span class='p yellow'>yellow</span>, <span class='p green'>green</span>, <span class='p cyan'>cyan</span>, <span class='p blue'>blue</span>, <span class='p gray'>gray</span></li>
+<li>확인 상태 : checked</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% checkbox 일반 텍스트 테스트 %&#125;</span><br><span class="line">&#123;% checkbox checked , 간단한 [<span class="string">markdown</span>](<span class="link">https://guides.github.com/features/mastering-markdown/</span>) 지원 %&#125;</span><br><span class="line">&#123;% checkbox red, 사용자 정의 지원정의 색상 %&#125;</span><br><span class="line">&#123;% checkbox green checked, 초록색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox yellow checked, 노란색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox cyan checked, 청록색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox blue checked, 파란색 + 기본 선택 %&#125;</span><br><span class="line">&#123;% checkbox plus green checked, plus 선택 %&#125;</span><br><span class="line">&#123;% checkbox minus yellow checked, minus 선택 %&#125;</span><br><span class="line">&#123;% checkbox times red checked , times 선택 %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class='checkbox'><input type="checkbox" />
+            <p>일반 텍스트 테스트</p>
+            </div>
+<div class='checkbox checked'><input type="checkbox" checked="checked"/>
+            <p>간단한 <a href="https://guides.github.com/features/mastering-markdown/">markdown</a> 지원</p>
+            </div>
+<div class='checkbox red'><input type="checkbox" />
+            <p>빨간색</p>
+            </div>
+<div class='checkbox green checked'><input type="checkbox" checked="checked"/>
+            <p>초록색 + 기본 선택</p>
+            </div>
+<div class='checkbox yellow checked'><input type="checkbox" checked="checked"/>
+            <p>노란색 + 기본 선택</p>
+            </div>
+<div class='checkbox cyan checked'><input type="checkbox" checked="checked"/>
+            <p>청록색 + 기본 선택</p>
+            </div>
+<div class='checkbox blue checked'><input type="checkbox" checked="checked"/>
+            <p>파란색 + 기본 선택</p>
+            </div>
+<div class='checkbox plus green checked'><input type="checkbox" checked="checked"/>
+            <p>초록색 + plus 선택</p>
+            </div>
+<div class='checkbox minus yellow checked'><input type="checkbox" checked="checked"/>
+            <p>노란색 + minus 선택</p>
+            </div>
+<div class='checkbox times red checked'><input type="checkbox" checked="checked"/>
+            <p>빨간색 + times 선택</p>
+            </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="단일-선택-리스트-radio">단일 선택 리스트 (radio)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% radio [스타일 인자], [본문 (간단한 markdown 문법 지원)] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>색상 : <span class='p red'>red</span>, <span class='p yellow'>yellow</span>, <span class='p green'>green</span>, <span class='p cyan'>cyan</span>, <span class='p blue'>blue</span>, <span class='p gray'>gray</span></li>
+<li>확인 상태 : checked</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% radio 일반 텍스트 테스트 %&#125;</span><br><span class="line">&#123;% radio checked, 간단한 [<span class="string">markdown</span>](<span class="link">https://guides.github.com/features/mastering-markdown/</span>) 지원 %&#125;</span><br><span class="line">&#123;% radio red, 빨간색 %&#125;</span><br><span class="line">&#123;% radio green, 초록색 %&#125;</span><br><span class="line">&#123;% radio yellow, 노란색 %&#125;</span><br><span class="line">&#123;% radio cyan, 청록색 %&#125;</span><br><span class="line">&#123;% radio blue, 파란색 %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class='checkbox'><input type="radio" />
+            <p>일반 텍스트 테스트</p>
+            </div>
+<div class='checkbox checked'><input type="radio" checked="checked"/>
+            <p>간단한 <a href="https://guides.github.com/features/mastering-markdown/">markdown</a> 지원</p>
+            </div>
+<div class='checkbox red'><input type="radio" />
+            <p>빨간색</p>
+            </div>
+<div class='checkbox green'><input type="radio" />
+            <p>초록색</p>
+            </div>
+<div class='checkbox yellow'><input type="radio" />
+            <p>노란색</p>
+            </div>
+<div class='checkbox cyan'><input type="radio" />
+            <p>청록색</p>
+            </div>
+<div class='checkbox blue'><input type="radio" />
+            <p>파란색</p>
+            </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="타임라인-timeline">타임라인 (timeline)</h1>
+<div class="note warning modern"><p>사용자의 요청에 따라, <a href="https://butterfly.js.org/posts/ceeb73f/#Timeline">Butterfly 테마의 <code>4.0.0</code> 버전부터 timeline 태그가 지원</a>되고 있습니다. 따라서, <code>4.0.0-b9</code> 버전을 이용하고 있는 제 블로그에서는 본 플러그인의 timeline 태그가 제대로 작동하지 않습니다.</p>
+<p>내장된 timeline 태그보다 이 플러그인의 timeline 태그가 더 마음에 드신다면, <code>{root}/themes/butterfly/scripts/tag/timeline.js</code>와 <code>{root}/themes/butterfly/source/css/_tags/timeline.styl</code>을 모두 삭제하면 됩니다.</p>
+</div>
+<span class='p center semi-large'><code>hexo-butterfly-tag-plugins-plus</code> 제공</span>
+<br>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline [타임라인 제목 (선택사항)] %&#125;</span><br><span class="line">&#123;% timenode [시간 노드 (제목)] %&#125;</span><br><span class="line">[본문 내용]</span><br><span class="line">&#123; % endtimenode % &#125;</span><br><span class="line">&#123;% timenode [시간 노드 (제목)] %&#125;</span><br><span class="line">[본문 내용]</span><br><span class="line">&#123; % endtimenode % &#125;</span><br><span class="line">&#123; % endtimeline % &#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) %&#125;</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> <span class="code">`hexo-lazyload-image`</span> 플러그인이 있는 경우, 최신 버전 삭제 후 새로 설치해야 하며，<span class="code">`lazyload.isSPA: true`</span>를 설정해야 합니다.</span><br><span class="line"><span class="bullet">2.</span> 2.x 버전의 css 맟 js는 3.x 버전에 적용되지 않으며, <span class="code">`use_cdn: true`</span>를 사용했다면 이를 삭제해야 합니다.</span><br><span class="line"><span class="bullet">3.</span> 2.x 버전의 fancybox 라벨은 3.x 버전에서 gallery로 이름이 변경되었습니다.</span><br><span class="line"><span class="bullet">4.</span> 2.x 버전의 헤드업 <span class="code">`top: true`</span>를 <span class="code">`pin: true`</span>로 수정하였으며, <span class="code">`layout: page`</span> 페이지에도 동일하게 적용됩니다.</span><br><span class="line"><span class="bullet">5.</span> <span class="code">`hexo-offline`</span> 플러그인의 경우 제거하는 것이 좋습니다. 기본적으로, 3.0 버전은 pjax 서비스가 활성화되어 있습니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-05-15 [<span class="string">2.6.3 -&gt; 2.6.6</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.6</span>) %&#125;</span><br><span class="line"></span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% timenode 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) %&#125;</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">2.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">2.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line"></span><br><span class="line">&#123;% endtimenode %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="img-wrap"><div class="img-bg"><img class="img" src="/img/posts/tag-plugins-plus/timeline.png"/></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<span class='p center semi-large'>Hexo Butterfly 테마 제공</span>
+<br>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline [타임라인 제목],[색상] %&#125;</span><br><span class="line">&lt;!-- timeline [시간 노드 (제목)] --&gt;</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline [시간 노드 (제목)] --&gt;</span><br><span class="line">[본문 내용]</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab">none</button><button type="button" class="tab active">blue</button><button type="button" class="tab">pink</button><button type="button" class="tab">red</button><button type="button" class="tab">purple</button><button type="button" class="tab">orange</button><button type="button" class="tab">green</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020 %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,blue %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,pink %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,red %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,purple %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,orange %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% timeline 2020,green %&#125;</span><br><span class="line">&lt;!-- timeline 2020-07-24 [<span class="string">2.6.6 -&gt; 3.0</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases</span>) --&gt;</span><br><span class="line">별도의 처리가 필요하지 않습니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&lt;!-- timeline 2020-04-20 [<span class="string">2.6.2 -&gt; 2.6.3</span>](<span class="link">https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3</span>) --&gt;</span><br><span class="line"><span class="bullet">1.</span> 전역검색에서 <span class="code">`seotitle`</span>를 <span class="code">`seo_title`</span>로 변경합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<span class="code">`group: group_name`</span>에 대응하는 컴포넌트명은 <span class="code">`group_name`</span>이어야 합니다.</span><br><span class="line"><span class="bullet">1.</span> group 컴포넌트 아티클의 표시명 우선 순위는 <span class="code">`short_title`</span> 다음이 <span class="code">`title`</span>입니다.</span><br><span class="line">&lt;!-- endtimeline --&gt;</span><br><span class="line">&#123;% endtimeline %&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div><div class="tab-item-content active"><div class="tabs"><div class="nav-tabs"><button type="button" class="tab">none</button><button type="button" class="tab active">blue</button><button type="button" class="tab">pink</button><button type="button" class="tab">red</button><button type="button" class="tab">purple</button><button type="button" class="tab">orange</button><button type="button" class="tab">green</button></div><div class="tab-contents"><div class="tab-item-content"><div class="timeline "><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content active"><div class="timeline blue"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content"><div class="timeline pink"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content"><div class="timeline red"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content"><div class="timeline purple"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content"><div class="timeline orange"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div><div class="tab-item-content"><div class="timeline green"><div class='timeline-item headline'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020</p>
+</div>
+        </div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-07-24 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases">2.6.6 -&gt; 3.0</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><p>별도의 처리가 필요하지 않습니다.</p>
+</div>
+      </div><div class='timeline-item'>
+        <div class='timeline-item-title'>
+          <div class='item-circle'><p>2020-04-20 <a href="https://github.com/volantis-x/hexo-theme-volantis/releases/tag/2.6.3">2.6.2 -&gt; 2.6.3</a></p>
+</div>
+        </div>
+        <div class='timeline-item-content'><ol>
+<li>전역검색에서 <code>seotitle</code>를 <code>seo_title</code>로 변경합니다.</li>
+<li>group 컴포넌트의 색인 규칙이 변경되었습니다. group 컴포넌트를 사용하는 아티클에서,<code>group: group_name</code>에 대응하는 컴포넌트명은 <code>group_name</code>이어야 합니다.</li>
+<li>group 컴포넌트 아티클의 표시명 우선 순위는 <code>short_title</code> 다음이 <code>title</code>입니다.</li>
+</ol>
+</div>
+      </div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
