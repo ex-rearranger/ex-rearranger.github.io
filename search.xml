@@ -3,7 +3,7 @@
   <entry>
     <title>Highlight.js Test Code</title>
     <language>default</language>
-    <url>/posts/highlight-test-code/</url>
+    <url>/posts/en-ko/highlight-test-code/</url>
     <content><![CDATA[<div class="language-notice note modern language-all">
   <p>
     <span lang-type="relative" language="ko">이 게시물은 한글과 영어로 동시에 작성되어 있습니다.</span>
@@ -113,9 +113,204 @@
       </tags>
   </entry>
   <entry>
+    <title>Solving `punycode` DeprecationWarning in Hexo</title>
+    <language>en</language>
+    <url>/posts/en/Solving-DeprecationWarning-in-Hexo/</url>
+    <content><![CDATA[<h1 id="Introduction">Introduction</h1>
+<p>I started seeing <code>punycode</code> DeprecationWarnings whenever I served or deployed my Hexo blog from some time:</p>
+<div class="note warning no-icon modern"><p><span style="font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important; font-size: 0.95em;">(node:39714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.<br>
+</span></p>
+</div>
+<p>After some digging, I found that this issue occurs when using Node.js version 21. I wasn’t keen on downgrading, so I fought my way through and managed to resolve it.</p>
+<h1 id="Conclusion">Conclusion</h1>
+<p>Long story short, the issue was caused by outdated dependencies in some plugins used in my Hexo.</p>
+<ul>
+<li>
+<p><strong>[Case 1]</strong> A manually created package had an <emp>outdated devDependency</emp></p>
+<ul>
+<li><strong>[Solution 1-1]</strong> Update the dependencies manually in the package’s <code>package.json</code></li>
+<li><strong>[Solution 1-2]</strong> If devDependencies are unnecessary, remove them entirely</li>
+</ul>
+<details class="folding-tag" blue><summary> EX) A customized <code>hexo-generator-searchdb</code> plugin </summary>
+              <div class='content'>
+              <p><strong>[Case]</strong></p><ul><li><p>I had made several modifications to my blog’s setup to support a bilingual (English/Korean) environment. One of these tweaks was modifying the search.xml generation to store the post’s language, and use it for search. <br><del>If the current site language is Korean, Korean-written posts have highest search priority.</del></p></li><li><p>To achieve this, I copied the entire <code>hexo-generator-searchdb</code> source code into <code>source/js/</code> and used it as a local package under the name <code>hexo-generator-searchdb-custom</code>.<br>Then change the package setting like this:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul><p><strong>[Problem]</strong></p><ul><li>The problem was that running <code>npm install</code> <emp>also installed devDependencies</emp> of the local package.<ul><li>IDK why, but the default <code>--production</code> flag which prevents devDependencies from being installed when using external packages didn’t seem to apply to local packages.</li><li>Anywhy, this package included <code>eslint@7.32.0</code>, which still used <code>punycode</code> in the old fashion.</li></ul></li></ul><p><strong>[Solution]</strong></p><ul><li><p>Since I didn’t actually need the devDependencies, I simply <emp>deleted them all from the local package.</emp></p></li><li><p>Alternatively, I could have updated <code>hexo-generator-searchdb-custom/package.json</code> as follows:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^9.18.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;@next-theme/eslint-config&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.0.4&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul>
+              </div>
+            </details>
+</li>
+<li>
+<p><strong>[Case 2]</strong> An <emp>outdated package in dependencies</emp> within installed package</p>
+<ul>
+<li><strong>[Solution 2-1]</strong> Use <code>override</code> to enforce a newer dependency version</li>
+<li><strong>[Solution 2-2]</strong> Modify the punycode-related code in <code>node_modules</code><br><del>Not ideal, but sometimes there's no other way...</del></li>
+</ul>
+<details class="folding-tag" blue>
+<summary>
+EX) <code>hexo-renderer-markdown-it</code> plugin
+</summary>
+<div class="content">
+<p><strong>[Case]</strong></p>
+<ul>
+<li>Right now, my blog renders Markdown using the <code>hexo-renderer-markdown-it</code> plugin.
+<ul>
+<li>Since I use KaTex for math rendering, this plugin is recommended over the default <code>hexo-renderer-markdown</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</li>
+</ul>
+</li>
+<li>And <emp>the <code>hexo-renderer-markdown-it</code> plugin uses <code>markdown-it@13.0.2</code></emp>.</li>
+</ul>
+<p><strong>[Problem]</strong></p>
+<ul>
+<li>
+<p><code>markdown-it@13.0.2</code> loads punycode in old way:</p>
+<ul>
+<li>Instead of <code>const punycode = require('punycode')</code>, it should use <br><code>const punycode = require('punycode/')</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</li>
+</ul>
+</li>
+<li>
+<p>Thus I should override the dependency to a newer version, or update the punycode-related code in <code>node_modules</code> by myself.</p>
+</li>
+<li>
+<p>The real problem was that updating <code>markdown-it</code> to version 14.0.0+ broke <code>hexo-renderer-markdown-it</code>… <del>I didn't want to spend time fixing it.. bc I've never studied Node.js...;-;</del><br>
+<br><br>
+<strong>[Solution]</strong></p>
+</li>
+<li>
+<p>So I manually edited <code>node_modules/hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><del>What is the authors feeling when the problem solved only with a single slash? (1000)</del></li>
+<li>Since the above code use punycode in node_modules, you’ll need to run <code>npm install punycode --save</code> if you haven’t already.</li>
+</ul>
+</li>
+<li>
+<p>To avoid manually editing it every time, you can automate it using a <code>postinstall</code> script (see <a href="#postinstall-script">below</a>).</p>
+</li>
+</ul>
+</div>
+</details>
+</li>
+</ul>
+<h1 id="How-I-Got-Resolved">How I Got Resolved</h1>
+<p>The conclusion is just a conclusion, and I’m sure that most will get the deprecation issue from the other packages. Therefore, I wrote down the process of how I solved the problem in the stream of consciousness.</p>
+<h2 id="Check-Status">Check Status</h2>
+<p>If I remember correctly, the first thing I did was to check the version of Node.js.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br><span class="line">v21.7.3</span><br></pre></td></tr></table></figure>
+<p>Downgrading might have fixed it, but my pride wouldn’t allow it.<br>
+(Not at all actually. I just thought the latter will be better since I don’t have any knowledge about the difference between v20 and v21 in Node.js)</p>
+<h2 id="punycode-vs-punycode">punycode vs. punycode/</h2>
+<p>Googling “npm punycode deprecation” and so on led me to realize that some packages that use punycode cause the warning due to the old way of importing it.</p>
+<p>So, if you read the punycode GitHub readme<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>, it roughly says:</p>
+<ol>
+<li>Install <code>punycode</code></li>
+<li><emp>Use <code>require('punycode/')</code>, not <code>require('punycode')</code></emp></li>
+</ol>
+<p>to avoid the warning.<br>
+<del>Honestly, the two lines aren’t that different in my eyes. I just thought as they’re similar to a gap between <code>from.utils import *</code> and <code>from.utils import *</code> in python. Then I skipped it. haha</del></p>
+<h2 id="punycode-dependency">punycode dependency</h2>
+<p>Anyway, for that reason, I tried to <emp>find all modules that use punycode</emp> in my project. Let’s go to the root directory and look for the inheritance of the punycode with <code>npm ls punycode</code>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /root/directory/</span><br><span class="line">├─┬ hexo-generator-searchdb-custom@1.4.1 -&gt; /root/directory/node_modules/hexo-generator-searchdb-custom</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@cant.remember.0</span><br><span class="line">│     └─┬ uri-js@cant.remember.0</span><br><span class="line">│       └── punycode@cant.remember.0</span><br></pre></td></tr></table></figure>
+<p>I roughly got those results. (I don’t remember the exact version numbers)</p>
+<p>As you can see, hexo-generator-searchdb-custom that uses eslint that uses uri-js that uses punycode was the problem. lol</p>
+<p>Since I already had found lots of googling results about <code>eslint</code>, <code>ajv</code>, or <code>uri-js</code> packages, I also runned <code>npm ls [package-name]</code> for them to find the punycode dependency.</p>
+<p>In sum, I found the old-versioned eslint dependency in two packages:</p>
+<ul>
+<li><code>hexo-generator-searchdb-custom</code></li>
+<li><code>hexo-generator-sitemap-custom</code></li>
+</ul>
+<h2 id="Fix-1">Fix (1)</h2>
+<p>At first, I opened the <code>package.json</code> of each package because I thought I could update the versions of these packages to the latest. But what I found was that both of them had <code>eslint</code> as a <code>devDependencies</code>, not <code>dependencies</code>.</p>
+<p>As you can imagine from its name, both packages are the <emp>local packages that I customized from the original plugins</emp>. I had to fix almost all of the existing packages overall, so I just replicated them locally, modified them, and used them as below, and that caused the problem.<br>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-sitemap-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>IDK why but when I run <code>npm install</code>, it <emp>also installed the <code>devDependencies</code> of the local package</emp>.</p>
+<ul>
+<li>I guess the <code>--production</code> option of <code>npm install</code> doesn’t work for local packages.</li>
+<li>Gave up on finding the exact reason nor the proper solution</li>
+</ul>
+<p>I didn’t actually need the devDependencies since I just copied the original package for convenience. So I just <emp>deleted <code>devDependencies</code> inside <code>package.json</code> from each local package</emp>.</p>
+<p>Then run below commands to reinstall whole packages:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> package-lock.json</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
+<h2 id="Fix-2">Fix (2)</h2>
+<p>I thought it would be solved then… but Warning appeared again, and I was about to throw my laptop away for real <del>since it took me two days until here…</del></p>
+<p>So I just emptied my mind and decided to <emp>find all js files that use punycode with find command</emp>.<br>
+<del>its quite ignorant, but I didn’t have any other ideas:D</del></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.js&quot;</span> -<span class="built_in">exec</span> grep -H <span class="string">&quot;punycode&quot;</span> &#123;&#125; \;</span></span><br></pre></td></tr></table></figure>
+<p>In the middle of bunch of results, there was a code like this:<br>
+<code style="word-break: break-all">./hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js: <emp>var punycode = require('punycode');</emp></code><br>
+x<br>
+Since I found one, I opened the file with the intention of modifying it one by one from here.</p>
+<p>The file <code>lib/index.js</code> of <code>markdown-it@13.0.2</code> installed inside <code>hexo-renderer-markdown-it</code> seemed to use punycode the old way.</p>
+<p>So I just add a slash to the end and saved it:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></table></figure>
+<p>Then I ran <code>hexo server -o</code> again, and this time, it said <code>punycode</code> is not installed.<br>
+This is because <code>punycode/</code> implies the punycode in the node_modules, so I installed it with <code>npm i punycode --save</code>.</p>
+<p>Finally, I ran the server again, and the DeprecationWarning didn’t appear anymore.</p>
+<p>Phew! I don’t have to throw my laptop away anymore!</p>
+<h2 id="Postinstall-Script">Postinstall Script</h2>
+<p>By the way, modifying the code in <code>node_modules</code> was a bit annoying, and also was not seem to be a good practice. So I searched a little and soon found the usage of <code>postinstall</code> script.</p>
+<p>It is reallllllly simple.</p>
+<ol>
+<li>
+<p>Install the <code>patch-package</code> package.</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install patch-package --save-dev</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Find the code that you want to fix in <code>node_modules</code> and fix it.</p>
+<ul>
+<li><span style="margin-bottom: 1.1em">Already fixed, so skip</span></li>
+</ul>
+</li>
+<li>
+<p>Add the <code>postinstall</code> script to <code>package.json</code>.</p>
+ <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;postinstall&quot;</span><span class="punctuation">:</span> <span class="string">&quot;patch-package&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Save the modified file as a patch</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx patch-package [package-name]</span></span><br></pre></td></tr></table></figure>
+<p><strong>Caution)</strong> Since I modified the package inside the package, if I run <code>npx patch-package hexo-renderer-markdown-it</code>, a message saying that <code>⁉️  There don't appear to be any changes.</code> will appear.<br>
+In this case, you should run something like <emp><code>npx patch-package hexo-renderer-markdown-it/markdown-it</code></emp> instead.</p>
+</li>
+<li>
+<p>Done!</p>
+<ul>
+<li>During the 4, the patch file will be created in <code>patches</code> directory.</li>
+<li>Now you don’t need to manually modify it anymore since the patches in that folder will be applied automatically when you run <code>npm install</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="P-S">P.S.</h2>
+<ul>
+<li>Can’t believe to had such a long and hard time just for a single warning message… I really shouldn’t dig up Node.js. No talent.🫠</li>
+<li>I also tried the “overrides” method to update the markdown-it version later, but it didn’t work. It’ll be good to try overriding since the method is really easy<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Butterfly document - Theme Configuration # Math <a href="https://butterfly.js.org/en/posts/butterfly-docs-en-theme-config/#Math">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Github - mathiasbynens/punycode.js <a href="https://github.com/mathiasbynens/punycode.js?#installation">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>npm Docs - package.json <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides">(link)</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+        <category>Package Manager</category>
+        <category>npm</category>
+      </categories>
+      <tags>
+        <tag>hexo-renderer-markdown-it</tag>
+        <tag>punycode</tag>
+        <tag>npm update</tag>
+        <tag>patch-package</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>KaTeX Test Code</title>
     <language>en</language>
-    <url>/posts/en-KaTeX-Test-Code/</url>
+    <url>/posts/en/KaTeX-Test-Code/</url>
     <content><![CDATA[<h1 id="Introduction">Introduction</h1>
 <h2 id="Why-KaTeX">Why KaTeX</h2>
 <ul>
@@ -2684,204 +2879,9 @@ KaTeX units are different than CSS units.</p>
       </tags>
   </entry>
   <entry>
-    <title>Solving `punycode` DeprecationWarning in Hexo</title>
-    <language>en</language>
-    <url>/posts/en-Solving-DeprecationWarning-in-Hexo/</url>
-    <content><![CDATA[<h1 id="Introduction">Introduction</h1>
-<p>I started seeing <code>punycode</code> DeprecationWarnings whenever I served or deployed my Hexo blog from some time:</p>
-<div class="note warning no-icon modern"><p><span style="font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important; font-size: 0.95em;">(node:39714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.<br>
-</span></p>
-</div>
-<p>After some digging, I found that this issue occurs when using Node.js version 21. I wasn’t keen on downgrading, so I fought my way through and managed to resolve it.</p>
-<h1 id="Conclusion">Conclusion</h1>
-<p>Long story short, the issue was caused by outdated dependencies in some plugins used in my Hexo.</p>
-<ul>
-<li>
-<p><strong>[Case 1]</strong> A manually created package had an <emp>outdated devDependency</emp></p>
-<ul>
-<li><strong>[Solution 1-1]</strong> Update the dependencies manually in the package’s <code>package.json</code></li>
-<li><strong>[Solution 1-2]</strong> If devDependencies are unnecessary, remove them entirely</li>
-</ul>
-<details class="folding-tag" blue><summary> EX) A customized <code>hexo-generator-searchdb</code> plugin </summary>
-              <div class='content'>
-              <p><strong>[Case]</strong></p><ul><li><p>I had made several modifications to my blog’s setup to support a bilingual (English/Korean) environment. One of these tweaks was modifying the search.xml generation to store the post’s language, and use it for search. <br><del>If the current site language is Korean, Korean-written posts have highest search priority.</del></p></li><li><p>To achieve this, I copied the entire <code>hexo-generator-searchdb</code> source code into <code>source/js/</code> and used it as a local package under the name <code>hexo-generator-searchdb-custom</code>.<br>Then change the package setting like this:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul><p><strong>[Problem]</strong></p><ul><li>The problem was that running <code>npm install</code> <emp>also installed devDependencies</emp> of the local package.<ul><li>IDK why, but the default <code>--production</code> flag which prevents devDependencies from being installed when using external packages didn’t seem to apply to local packages.</li><li>Anywhy, this package included <code>eslint@7.32.0</code>, which still used <code>punycode</code> in the old fashion.</li></ul></li></ul><p><strong>[Solution]</strong></p><ul><li><p>Since I didn’t actually need the devDependencies, I simply <emp>deleted them all from the local package.</emp></p></li><li><p>Alternatively, I could have updated <code>hexo-generator-searchdb-custom/package.json</code> as follows:</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^9.18.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;@next-theme/eslint-config&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^0.0.4&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li></ul>
-              </div>
-            </details>
-</li>
-<li>
-<p><strong>[Case 2]</strong> An <emp>outdated package in dependencies</emp> within installed package</p>
-<ul>
-<li><strong>[Solution 2-1]</strong> Use <code>override</code> to enforce a newer dependency version</li>
-<li><strong>[Solution 2-2]</strong> Modify the punycode-related code in <code>node_modules</code><br><del>Not ideal, but sometimes there's no other way...</del></li>
-</ul>
-<details class="folding-tag" blue>
-<summary>
-EX) <code>hexo-renderer-markdown-it</code> plugin
-</summary>
-<div class="content">
-<p><strong>[Case]</strong></p>
-<ul>
-<li>Right now, my blog renders Markdown using the <code>hexo-renderer-markdown-it</code> plugin.
-<ul>
-<li>Since I use KaTex for math rendering, this plugin is recommended over the default <code>hexo-renderer-markdown</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</li>
-</ul>
-</li>
-<li>And <emp>the <code>hexo-renderer-markdown-it</code> plugin uses <code>markdown-it@13.0.2</code></emp>.</li>
-</ul>
-<p><strong>[Problem]</strong></p>
-<ul>
-<li>
-<p><code>markdown-it@13.0.2</code> loads punycode in old way:</p>
-<ul>
-<li>Instead of <code>const punycode = require('punycode')</code>, it should use <br><code>const punycode = require('punycode/')</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</li>
-</ul>
-</li>
-<li>
-<p>Thus I should override the dependency to a newer version, or update the punycode-related code in <code>node_modules</code> by myself.</p>
-</li>
-<li>
-<p>The real problem was that updating <code>markdown-it</code> to version 14.0.0+ broke <code>hexo-renderer-markdown-it</code>… <del>I didn't want to spend time fixing it.. bc I've never studied Node.js...;-;</del><br>
-<br><br>
-<strong>[Solution]</strong></p>
-</li>
-<li>
-<p>So I manually edited <code>node_modules/hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js</code>:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><del>What is the authors feeling when the problem solved only with a single slash? (1000)</del></li>
-<li>Since the above code use punycode in node_modules, you’ll need to run <code>npm install punycode --save</code> if you haven’t already.</li>
-</ul>
-</li>
-<li>
-<p>To avoid manually editing it every time, you can automate it using a <code>postinstall</code> script (see <a href="#postinstall-script">below</a>).</p>
-</li>
-</ul>
-</div>
-</details>
-</li>
-</ul>
-<h1 id="How-I-Got-Resolved">How I Got Resolved</h1>
-<p>The conclusion is just a conclusion, and I’m sure that most will get the deprecation issue from the other packages. Therefore, I wrote down the process of how I solved the problem in the stream of consciousness.</p>
-<h2 id="Check-Status">Check Status</h2>
-<p>If I remember correctly, the first thing I did was to check the version of Node.js.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br><span class="line">v21.7.3</span><br></pre></td></tr></table></figure>
-<p>Downgrading might have fixed it, but my pride wouldn’t allow it.<br>
-(Not at all actually. I just thought the latter will be better since I don’t have any knowledge about the difference between v20 and v21 in Node.js)</p>
-<h2 id="punycode-vs-punycode">punycode vs. punycode/</h2>
-<p>Googling “npm punycode deprecation” and so on led me to realize that some packages that use punycode cause the warning due to the old way of importing it.</p>
-<p>So, if you read the punycode GitHub readme<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>, it roughly says:</p>
-<ol>
-<li>Install <code>punycode</code></li>
-<li><emp>Use <code>require('punycode/')</code>, not <code>require('punycode')</code></emp></li>
-</ol>
-<p>to avoid the warning.<br>
-<del>Honestly, the two lines aren’t that different in my eyes. I just thought as they’re similar to a gap between <code>from.utils import *</code> and <code>from.utils import *</code> in python. Then I skipped it. haha</del></p>
-<h2 id="punycode-dependency">punycode dependency</h2>
-<p>Anyway, for that reason, I tried to <emp>find all modules that use punycode</emp> in my project. Let’s go to the root directory and look for the inheritance of the punycode with <code>npm ls punycode</code>.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm <span class="built_in">ls</span> punycode</span></span><br><span class="line">hexo-blog@0.0.1 /root/directory/</span><br><span class="line">├─┬ hexo-generator-searchdb-custom@1.4.1 -&gt; /root/directory/node_modules/hexo-generator-searchdb-custom</span><br><span class="line">│ └─┬ eslint@7.32.0</span><br><span class="line">│   └─┬ ajv@cant.remember.0</span><br><span class="line">│     └─┬ uri-js@cant.remember.0</span><br><span class="line">│       └── punycode@cant.remember.0</span><br></pre></td></tr></table></figure>
-<p>I roughly got those results. (I don’t remember the exact version numbers)</p>
-<p>As you can see, hexo-generator-searchdb-custom that uses eslint that uses uri-js that uses punycode was the problem. lol</p>
-<p>Since I already had found lots of googling results about <code>eslint</code>, <code>ajv</code>, or <code>uri-js</code> packages, I also runned <code>npm ls [package-name]</code> for them to find the punycode dependency.</p>
-<p>In sum, I found the old-versioned eslint dependency in two packages:</p>
-<ul>
-<li><code>hexo-generator-searchdb-custom</code></li>
-<li><code>hexo-generator-sitemap-custom</code></li>
-</ul>
-<h2 id="Fix-1">Fix (1)</h2>
-<p>At first, I opened the <code>package.json</code> of each package because I thought I could update the versions of these packages to the latest. But what I found was that both of them had <code>eslint</code> as a <code>devDependencies</code>, not <code>dependencies</code>.</p>
-<p>As you can imagine from its name, both packages are the <emp>local packages that I customized from the original plugins</emp>. I had to fix almost all of the existing packages overall, so I just replicated them locally, modified them, and used them as below, and that caused the problem.<br>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-searchdb&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-searchdb-custom&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hexo-generator-sitemap&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file:source/js/hexo-generator-sitemap-custom&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>IDK why but when I run <code>npm install</code>, it <emp>also installed the <code>devDependencies</code> of the local package</emp>.</p>
-<ul>
-<li>I guess the <code>--production</code> option of <code>npm install</code> doesn’t work for local packages.</li>
-<li>Gave up on finding the exact reason nor the proper solution</li>
-</ul>
-<p>I didn’t actually need the devDependencies since I just copied the original package for convenience. So I just <emp>deleted <code>devDependencies</code> inside <code>package.json</code> from each local package</emp>.</p>
-<p>Then run below commands to reinstall whole packages:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> package-lock.json</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
-<h2 id="Fix-2">Fix (2)</h2>
-<p>I thought it would be solved then… but Warning appeared again, and I was about to throw my laptop away for real <del>since it took me two days until here…</del></p>
-<p>So I just emptied my mind and decided to <emp>find all js files that use punycode with find command</emp>.<br>
-<del>its quite ignorant, but I didn’t have any other ideas:D</del></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> node_modules</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find . -<span class="built_in">type</span> f -name <span class="string">&quot;*.js&quot;</span> -<span class="built_in">exec</span> grep -H <span class="string">&quot;punycode&quot;</span> &#123;&#125; \;</span></span><br></pre></td></tr></table></figure>
-<p>In the middle of bunch of results, there was a code like this:<br>
-<code style="word-break: break-all">./hexo-renderer-markdown-it/node_modules/markdown-it/lib/index.js: <emp>var punycode = require('punycode');</emp></code><br>
-x<br>
-Since I found one, I opened the file with the intention of modifying it one by one from here.</p>
-<p>The file <code>lib/index.js</code> of <code>markdown-it@13.0.2</code> installed inside <code>hexo-renderer-markdown-it</code> seemed to use punycode the old way.</p>
-<p>So I just add a slash to the end and saved it:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const punycode = require(&#x27;punycode&#x27;);  // Original</span></span><br><span class="line"><span class="keyword">const</span> punycode = <span class="built_in">require</span>(<span class="string">&#x27;punycode/&#x27;</span>);    <span class="comment">// Fixed</span></span><br></pre></td></tr></table></figure>
-<p>Then I ran <code>hexo server -o</code> again, and this time, it said <code>punycode</code> is not installed.<br>
-This is because <code>punycode/</code> implies the punycode in the node_modules, so I installed it with <code>npm i punycode --save</code>.</p>
-<p>Finally, I ran the server again, and the DeprecationWarning didn’t appear anymore.</p>
-<p>Phew! I don’t have to throw my laptop away anymore!</p>
-<h2 id="Postinstall-Script">Postinstall Script</h2>
-<p>By the way, modifying the code in <code>node_modules</code> was a bit annoying, and also was not seem to be a good practice. So I searched a little and soon found the usage of <code>postinstall</code> script.</p>
-<p>It is reallllllly simple.</p>
-<ol>
-<li>
-<p>Install the <code>patch-package</code> package.</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install patch-package --save-dev</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Find the code that you want to fix in <code>node_modules</code> and fix it.</p>
-<ul>
-<li><span style="margin-bottom: 1.1em">Already fixed, so skip</span></li>
-</ul>
-</li>
-<li>
-<p>Add the <code>postinstall</code> script to <code>package.json</code>.</p>
- <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;postinstall&quot;</span><span class="punctuation">:</span> <span class="string">&quot;patch-package&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Save the modified file as a patch</p>
- <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npx patch-package [package-name]</span></span><br></pre></td></tr></table></figure>
-<p><strong>Caution)</strong> Since I modified the package inside the package, if I run <code>npx patch-package hexo-renderer-markdown-it</code>, a message saying that <code>⁉️  There don't appear to be any changes.</code> will appear.<br>
-In this case, you should run something like <emp><code>npx patch-package hexo-renderer-markdown-it/markdown-it</code></emp> instead.</p>
-</li>
-<li>
-<p>Done!</p>
-<ul>
-<li>During the 4, the patch file will be created in <code>patches</code> directory.</li>
-<li>Now you don’t need to manually modify it anymore since the patches in that folder will be applied automatically when you run <code>npm install</code>.</li>
-</ul>
-</li>
-</ol>
-<h2 id="P-S">P.S.</h2>
-<ul>
-<li>Can’t believe to had such a long and hard time just for a single warning message… I really shouldn’t dig up Node.js. No talent.🫠</li>
-<li>I also tried the “overrides” method to update the markdown-it version later, but it didn’t work. It’ll be good to try overriding since the method is really easy<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</li>
-</ul>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Butterfly document - Theme Configuration # Math <a href="https://butterfly.js.org/en/posts/butterfly-docs-en-theme-config/#Math">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>Github - mathiasbynens/punycode.js <a href="https://github.com/mathiasbynens/punycode.js?#installation">(link)</a> <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>npm Docs - package.json <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-json#overrides">(link)</a> <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-        <category>Package Manager</category>
-        <category>npm</category>
-      </categories>
-      <tags>
-        <tag>hexo-renderer-markdown-it</tag>
-        <tag>punycode</tag>
-        <tag>npm update</tag>
-        <tag>patch-package</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <language>en</language>
-    <url>/posts/en-hello-world/</url>
+    <url>/posts/en/hello-world/</url>
     <content><![CDATA[<!-- need a blank line before the content inside note tag, otherwise the footnote will not work -->
 <div class="note info modern">
 <p>This post is the first post generated when you run <code>$ hexo init</code> command.<br>
@@ -2927,7 +2927,7 @@ calc(100% - 5px) 10px, calc(100% - 3px) 11px, calc(100% - 1px) 13px, 100% 15px,
   <entry>
     <title>Hexo에서 `punycode` DeprecationWarning 해결하기</title>
     <language>ko</language>
-    <url>/posts/ko-Solving-DeprecationWarning-in-Hexo/</url>
+    <url>/posts/ko/Solving-DeprecationWarning-in-Hexo/</url>
     <content><![CDATA[<h1 id="Introduction">Introduction</h1>
 <p>언젠가부터 Hexo 블로그를 서빙 또는 배포할 때마다 아래와 같은 DeprecationWarning이 뜨기 시작했다.</p>
 <div class="note warning no-icon modern"><p><span style="font-family: consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif !important; font-size: 0.95em;">(node:39714) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.<br>
@@ -3136,7 +3136,7 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
   <entry>
     <title>Hello World</title>
     <language>ko</language>
-    <url>/posts/ko-hello-world/</url>
+    <url>/posts/ko/hello-world/</url>
     <content><![CDATA[<!-- note 태그 안에 한 줄 띄어쓰기 해야 footnote가 작동함 -->
 <div class="note info modern">
 <p>이 게시물은 <code>$ hexo init</code> 커맨드 실행 시 처음으로 생성되는 게시물입니다.<br>
@@ -3176,9 +3176,398 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
       </tags>
   </entry>
   <entry>
+    <title>Tag Plugins Plus 튜토리얼 - 2</title>
+    <language>ko</language>
+    <url>/posts/ko/tag-plugins-plus-tutorial-2/</url>
+    <content><![CDATA[<div class="language-notice note modern language-kor">
+    <div class="language-logo"></div>
+    <p>This posting is written in Korean. English is not scheduled to be written.</p>
+</div>
+<div class='note info modern'>
+<p>본 게시물은 <code>hexo-butterfly-tag-plugins-plus</code> 개발자가 작성한 튜토리얼<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>에 대한 한글 번역본입니다.<br>
+<del>Hexo가 Jekyll보다 더 마음에 들어 선택했는데, 참고할 만한 글들이 다 중국어로 적혀있어서 매우 곤란…</del></p>
+</div>
+<details class="folding-tag" ><summary> 내용이 너무 길어져서 세 파트로 나누어서 업로드하였습니다. </summary>
+              <div class='content'>
+              <p>참고로 일부 태그들은 별도의 라이브러리 없이 <a href="https://butterfly.js.org/posts/2df239ce/">butterfly 테마만으로도 사용 가능</a>합니다.<br><del>애초에 Butterfly 테마가 이 플러그인을 기반으로 여러 태그를 추가했기 때문ㅎㅎ</del></p><ol><li><a href="/posts/ko/tag-plugins-plus-tutorial-1">Tag Plugins Plus 튜토리얼 - 1</a><br>text / span / p / note / tip / animated / checkbox / radio / timeline</li><li><strong><span class='p blue'>Tag Plugins Plus 튜토리얼 - 2</span></strong><br>link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-3">Tag Plugins Plus 튜토리얼 - 3</a><br>folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel</li></ol>
+              </div>
+            </details>
+<hr>
+<h1 id="링크-삽입-link">링크 삽입 (link)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% link [제목], [링크], [이미지 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이미지의 기본값은 구성 파일(<code>_config.yml</code> 혹은 <code>_config.butterfly.yml</code>)의 <code>tag_plugins</code>-<code>link</code>-<code>placeholder</code> 변수에서 설정합니다.</li>
+<li>기존에 작성되어 있는 <code>/img/link.png</code>라는 파일은 실제로 존재하지 않으니 꼭 수정하시기 바랍니다.</li>
+</ul></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% link 캔디하우스 튜토리얼 포스팅, https://akilar.top/posts/615e2dec/, </span><br><span class="line">  https://cdn.jsdelivr.net/gh/Akilarlxh/akilarlxh.github.io/img/siteicon/favicon.ico %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="tag link"><a class="link-card" title="캔디하우스 튜토리얼 포스팅" href="https://akilar.top/posts/615e2dec/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/Akilarlxh/akilarlxh.github.io/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">캔디하우스 튜토리얼 포스팅</p><p class="url">https://akilar.top/posts/615e2dec/</p></div></a></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="버튼-삽입-btns">버튼 삽입 (btns)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns [스타일 인자] %&#125;</span><br><span class="line">&#123;% cell [제목], [링크], [그림이나 아이콘] %&#125;</span><br><span class="line">&#123;% cell [제목], [링크], [그림이나 아이콘] %&#125;</span><br><span class="line">&#123; % endbtns % &#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>둥근 모서리 스타일 : rounded, circle</li>
+<li>텍스트 스타일 추가 : 컨테이너 내에 <code>&lt;b&gt;제목&lt;/b&gt;</code>또는 <code>&lt;p&gt;설명 텍스트&lt;/p&gt;</code>와 같이 추가할 수 있습니다.</li>
+<li>레이아웃 모드 : 기본값은 자동 너비로, 시야에 한두 개만 있는 상황에 적합합니다.<br>
+<br>
+<table>
+<thead>
+<tr>
+<th>매개변수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wide</td>
+<td>넓은 버튼</td>
+</tr>
+<tr>
+<td>fill</td>
+<td>레이아웃 채우기. 자동으로 하나 이상의 라인을 채우며, 더 있으면 줄 바꿈을 시행합니다.</td>
+</tr>
+<tr>
+<td>center</td>
+<td>가운데 정렬. 버튼 사이의 간격은 고정된 값으로 정해집니다.</td>
+</tr>
+<tr>
+<td>around</td>
+<td>중심과 분산</td>
+</tr>
+<tr>
+<td>grid2</td>
+<td>동일한 너비로 최대 2열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
+</tr>
+<tr>
+<td>grid3</td>
+<td>동일한 너비로 최대 3열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
+</tr>
+<tr>
+<td>grid4</td>
+<td>동일한 너비로 최대 4열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
+</tr>
+<tr>
+<td>grid5</td>
+<td>동일한 너비로 최대 5열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol></div><div class="tab-item-content"><ol>
+<li>
+<p>[팀 구성원]과 같이 아바타가 포함된 링크 그룹을 표시해야 하는 경우</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns circle grid5 %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>또는 아이콘이 있는 버튼</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns rounded grid4 %&#125;</span><br><span class="line">&#123;% cell 소스코드 다운로드, /, fas fa-download %&#125;</span><br><span class="line">&#123;% cell 문서 보기, /, fas fa-book-open %&#125;</span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>원형 아이콘 + 제목 + 설명 + 그림 + 그리드 5열 + 중앙</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns circle center grid5 %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1&#x27;</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fab fa-apple&quot;</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span></span>심박수 스튜어드<span class="language-xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></span><br><span class="line">  &#123;% p red, 프로 버전 %&#125;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1&#x27;</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fab fa-apple&quot;</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span></span>심박수 스튜어드<span class="language-xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></span><br><span class="line">  &#123;% p green, 무료 버전 %&#125;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>[팀 구성원]과 같이 아바타가 포함된 링크 그룹을 표시해야 하는 경우
+<div class="btns circle grid5">
+            <a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
+          </div>
+</li>
+<li>또는 아이콘이 있는 버튼
+<div class="btns rounded grid4">
+            <a class="button" href='/' title='소스코드 다운로드'><i class='fas fa-download'></i>소스코드 다운로드</a>
+<a class="button" href='/' title='문서 보기'><i class='fas fa-book-open'></i>문서 보기</a>
+          </div>
+</li>
+<li>원형 아이콘 + 제목 + 설명 + 그림 + 그리드 5열 + 중앙
+<div class="btns circle center grid5">
+            <a href='https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1'>
+  <i class="fab fa-apple"></i>
+  <b>심박수 스튜어드</b>
+  <p class='p red'>프로 버전</p>
+  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png'>
+</a>
+<a href='https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1'>
+  <i class="fab fa-apple"></i>
+  <b>심박수 스튜어드</b>
+  <p class='p green'>무료 버전</p>
+  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png'>
+</a>
+          </div>
+</li>
+</ol></div><div class="tab-item-content"><ul>
+<li>2번 항목(아이콘이 있는 버튼)은 원문과 다르게 <code>grid4</code>로 설정해보았습니다.</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="GitHub-카드-ghcard">GitHub 카드 (ghcard)</h1>
+<div class="note no-icon flat"><p>ghcard는 <a href="https://github.com/anuraghazra/github-readme-stats"><code>github-readme-stats</code></a>의 API를 사용하여 마크다운 문서에 GitHub 정보를 삽입합니다.</p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard [사용자 이름], [기타 인자 (선택사항)] %&#125;</span><br><span class="line">&#123;% ghcard [사용자 이름/ 저장소], [기타 인자 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>더 많은 매개변수는 <a href="https://github.com/anuraghazra/github-readme-stats"><code>github-readme-stats</code></a>를 참조할 수 있습니다.</li>
+<li><code>(인자명)=(인자값)</code>의 형태로 작성하며, 각 매개변수의 분할은 <code>,</code>를 사용합니다.<br>
+일반적으로 사용되는 몇 가지 매개변수만 아래에 소개하도록 하겠습니다.<br>
+<br>
+<table>
+<thead>
+<tr>
+<th>매개변수</th>
+<th>값</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hide</code></td>
+<td>stars, commits, prs, issues, contribs</td>
+<td>지정된 통계 숨기기</td>
+</tr>
+<tr>
+<td><code>count_private</code></td>
+<td>true</td>
+<td>프로젝트의 총 커밋 수에 비공개 기여 추가</td>
+</tr>
+<tr>
+<td><code>show_icons</code></td>
+<td>true</td>
+<td>아이콘 표시</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td>48가지의 <a href="https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md">사용 가능한 테마</a>를 확인하세요.</td>
+<td>테마 (vim colorscheme과 유사)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul></div><div class="tab-item-content"><ol>
+<li>
+<p>사용자 정보 카드</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard xaoxuu %&#125; &#123;% ghcard xaoxuu, theme=vue %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=buefy %&#125; &#123;% ghcard xaoxuu, theme=solarized-light %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=onedark %&#125; &#123;% ghcard xaoxuu, theme=solarized-dark %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=algolia %&#125; &#123;% ghcard xaoxuu, theme=calm %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>웨어하우스 정보 카드</p>
+ <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=vue %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=buefy %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=solarized-light %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=onedark %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=solarized-dark %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=algolia %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=calm %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>
+<p>사용자 정보 카드<br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=vue&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=buefy&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=solarized-light&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=onedark&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=solarized-dark&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=algolia&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=calm&show_owner=true"/></a></p>
+</li>
+<li>
+<p>웨어하우스 정보 카드<br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=vue&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=buefy&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=solarized-light&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=onedark&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=solarized-dark&show_owner=true"/></a><br>
+<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=algolia&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=calm&show_owner=true"/></a></p>
+</li>
+</ol></div><div class="tab-item-content"><ul>
+<li>본 게시물에서는 2열로 표시하기 위해 아래와 같이 스타일을 임시로 추가했습니다.  <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line">.tab-contents .tab-item-content p a.ghcard &#123;</span><br><span class="line">  width: 49%;</span><br><span class="line">&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="GitHub-로고-bdage">GitHub 로고 (bdage)</h1>
+<div class="note no-icon flat"><p>ghbdage 구체적인 사용법은 <a href="https://akilar.top/posts/e87ad7f8">원 저자의 튜토리얼</a>을 참조하세요 <del>역시나 중국어…</del></p>
+</div>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage [right],[left],[logo]||[color],[link],[title]||[option] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>left</code>: 로고 왼쪽에 있는 정보. 필수 매개변수입니다.</li>
+<li><code>right</code>: 로고 오른쪽에 있는 정보. 필수 매개변수입니다.</li>
+<li><code>logo</code>: 로고 아이콘, 아이콘 이름은 simpleicons. 선택적 매개변수입니다.</li>
+<li><code>color</code>: 로고 오른쪽의 색상. 선택적 매개변수입니다.</li>
+<li><code>link</code>: 가리키는 링크입니다. 선택적 매개변수입니다.</li>
+<li><code>title</code>: 로고에 대한 추가 정보. 선택적 매개변수입니다.<br>
+주로 SEO 최적화에 사용되지만 <code>a</code> 태그처럼 마우스를 가져가면 <code>object</code> 태그에 <code>title</code> 정보가 표시되지 않습니다.</li>
+<li><code>option</code>: 사용자 정의 매개변수로, shields.io의 모든 API 매개변수를 지원합니다.<br>
+특정 매개변수는 위의 확장 작성 예제를 참조하십시오. 형식은 <code>(이름1)=(값1)&amp;(이름2)=(값2)</code>입니다.</li>
+</ol></div><div class="tab-item-content"><ol>
+<li>기본 매개변수, 로고의 왼쪽 및 오른쪽 텍스트 및 아이콘 정의 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage Theme,Butterfly %&#125;</span><br><span class="line">&#123;% bdage Frame,Hexo,hexo %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>정보 매개변수, 로고 오른쪽에 콘텐츠의 배경색 정의, 링크 가리킴 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage CDN,JsDelivr,jsDelivr||abcdef,https://metroui.org.ua/index.html,이 사이트는 JsDelivr를 사용하여 정적 리소스에 대한 CDN 가속을 제공합니다. %&#125;</span><br><span class="line">//선택적 매개변수가 시퀀스 전체에서 생략되더라도 여전히 분할로 사용하려면 쉼표를 작성해야 합니다.</span><br><span class="line">&#123;% bdage Source,GitHub,GitHub||,https://github.com/ %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>확장된 매개변수, 방패 API의 모든 매개변수 내용 지원 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage Hosted,Vercel,Vercel||brightgreen,https://vercel.com/,이 사이트는 2줄 배포를 채택하고 기본 라인은 Vercel에서 호스팅됩니다.||style=social&amp;logoWidth=20 %&#125;</span><br><span class="line">//교차 시퀀스인 경우, 생략 가능 매개변수 그룹을 선택하고 분할을 위해 이중 수직선(||)을 작성해야 합니다.</span><br><span class="line">&#123;% bdage Hosted,Vercel,Vercel||||style=social&amp;logoWidth=20&amp;logoColor=violet %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>
+<p>기본 매개변수. 로고의 왼쪽 및 오른쪽 텍스트 및 아이콘 정의</p>
+ <div>
+<object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Butterfly-Theme-orange?logo=&color=orange&link=&"></object>
+<object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Hexo-Frame-orange?logo=hexo&color=orange&link=&"></object>
+ </div>
+</li>
+<li>
+<p>정보 매개변수. 로고 오른쪽에 콘텐츠의 배경색 정의, 링크 가리킴</p>
+ <div>
+ <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/JsDelivr-CDN-orange?logo=jsDelivr&color=abcdef&link=https://metroui.org.ua/index.html&"></object>
+ <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/GitHub-Source-orange?logo=GitHub&color=orange&link=https://github.com/&"></object>
+ </div>
+</li>
+<li>
+<p>확장된 매개변수. 방패 API의 모든 매개변수 내용 지원</p>
+ <div>
+ <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Vercel-Hosted-orange?logo=Vercel&color=brightgreen&link=https://vercel.com/&style=social&logoWidth=20"></object>
+ <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Vercel-Hosted-orange?logo=Vercel&color=orange&link=&style=social&logoWidth=20&logoColor=violet"></object>
+ </div>
+</li>
+</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="웹사이트-카드-sites">웹사이트 카드 (sites)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% sitegroup % &#125;</span><br><span class="line">&#123;% site [제목], url=[링크], screenshot=[캡쳐 링크], avatar=[프로필 링크 (선택사항)], description=[설명 (선택사항)] %&#125;</span><br><span class="line">&#123;% site [제목], url=[링크], screenshot=[캡쳐 링크], avatar=[프로필 링크 (선택사항)], description=[설명 (선택사항)] %&#125;</span><br><span class="line">&#123;% endsitegroup %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% sitegroup %&#125;</span><br><span class="line">&#123;% site xaoxuu, url=https://xaoxuu.com, screenshot=https://i.loli.net/2020/08/21/VuSwWZ1xAeUHEBC.jpg, avatar=https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% site inkss, url=https://inkss.cn, screenshot=https://i.loli.net/2020/08/21/Vzbu3i8fXs6Nh5Y.jpg, avatar=https://cdn.jsdelivr.net/gh/inkss/common@master/static/web/avatar.jpg, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site MHuiG, url=https://blog.mhuig.top, screenshot=https://i.loli.net/2020/08/22/d24zpPlhLYWX6D1.png, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site Colsrch, url=https://colsrch.top, screenshot=https://i.loli.net/2020/08/22/dFRWXm52OVu8qfK.png, avatar=https://cdn.jsdelivr.net/gh/Colsrch/images/Colsrch/avatar.jpg, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site Linhk1606, url=https://linhk1606.github.io, screenshot=https://i.loli.net/2020/08/21/3PmGLCKicnfow1x.png, avatar=https://i.loli.net/2020/02/09/PN7I5RJfFtA93r2.png, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% endsitegroup %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="site-card-group"><a class="site-card" href="https://xaoxuu.com"><div class="img"><img src="https://i.loli.net/2020/08/21/VuSwWZ1xAeUHEBC.jpg"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png"/><span class="title">xaoxuu</span></div></a>
+<a class="site-card" href="https://inkss.cn"><div class="img"><img src="https://i.loli.net/2020/08/21/Vzbu3i8fXs6Nh5Y.jpg"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/inkss/common@master/static/web/avatar.jpg"/><span class="title">inkss</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
+<a class="site-card" href="https://blog.mhuig.top"><div class="img"><img src="https://i.loli.net/2020/08/22/d24zpPlhLYWX6D1.png"/></div><div class="info"><span class="title">MHuiG</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
+<a class="site-card" href="https://colsrch.top"><div class="img"><img src="https://i.loli.net/2020/08/22/dFRWXm52OVu8qfK.png"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/Colsrch/images/Colsrch/avatar.jpg"/><span class="title">Colsrch</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
+<a class="site-card" href="https://linhk1606.github.io"><div class="img"><img src="https://i.loli.net/2020/08/21/3PmGLCKicnfow1x.png"/></div><div class="info"><img src="https://i.loli.net/2020/02/09/PN7I5RJfFtA93r2.png"/><span class="title">Linhk1606</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a></div></div><div class="tab-item-content"><p>기존에 4열로 표시되던 것을 3열로 변경하였습니다.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.site-card</span> &#123;</span><br><span class="line">  <span class="comment">/* 기존: width: calc(100% / 4 - 16px); */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> / <span class="number">3</span> - <span class="number">16px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="인라인-이미지-inlineimage">인라인 이미지 (inlineimage)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% inlineimage [이미지 링크], height=[높이 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>height</code>: 높이 (ex. <code>height=20px</code>)</li>
+</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">이것은 &#123;% inlineimage https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/0000.gif %&#125; 단락입니다.</span><br><span class="line"></span><br><span class="line">이것은 &#123;% inlineimage https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/5150.gif, height=40px %&#125; 단락입니다.</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><p>이것은 <img no-lazy class="inline" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/0000.gif" style="height:1.5em"/> 단락입니다.</p>
+<p>이것은 <img no-lazy class="inline" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/5150.gif" style="height:40px;"/> 단락입니다.</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="단일-이미지-image">단일 이미지 (image)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image [링크], width=[폭 (선택사항)], height=[높이 (선택사항)], alt=[설명 (선택사항)], bg=[배경색 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>이미지 크기: <code>width=300px, height=32px</code></li>
+<li>이미지 설명: <code>alt=(그림 설명)</code> (butterfly는 테마 구성 파일에서 <code>photofigcaption</code> 혹은 <code>fancybox</code>를 활성화해야 유의미함)</li>
+<li>배경색: <code>bg=#f2f2f2</code></li>
+</ol></div><div class="tab-item-content"><ol>
+<li>설명 추가 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, alt=&quot;매일 방과 후 기숙사로 돌아가는 길<span class="literal">&amp;comma;</span> 별 일 없습니다.&quot; %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>너비 지정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>너비 지정 및 설명 추가 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px, alt=&quot;매일 방과 후 기숙사로 돌아가는 길<span class="literal">&amp;comma;</span> 별 일 없습니다.&quot; %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>자리 표시자의 배경색 설정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px, bg=#162D39, alt=&quot;다양한 너비로 탐색의 모양과 느낌 최적화&quot; %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>설명 추가 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다."/></div><span class="image-caption">매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다.</span></div>
+</li>
+<li>너비 지정 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" style="width:400px;"/></div></div>
+</li>
+<li>너비 지정 및 설명 추가 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다." style="width:400px;"/></div><span class="image-caption">매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다.</span></div>
+</li>
+<li>배경색 설정 <div class="img-wrap"><div class="img-bg" style="background:#162D39"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="다양한 너비로 탐색의 모양과 느낌 최적화" style="width:400px;"/></div><span class="image-caption">다양한 너비로 탐색의 모양과 느낌 최적화</span></div>
+</li>
+</ol></div><div class="tab-item-content"><p><code>_config.butterfly.yml</code>에서 <code>photofigcaption: true</code>로 설정했을 경우 이미지 캡션이 중복으로 나타날 수 있습니다. 이 경우, 아래와 같이 css를 수정하거나 <code>photofigcaption: false</code>로 설정하면 됩니다.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+<p>저는 이미지 캡션을 중앙에 위치시키고, 앞뒤로 아이콘(⊙)을 추가하기 위해 아래와 같이 css를 수정하였습니다.<br>
+(이미지 캡션 앞뒤에 &quot;⊙︎&quot;를 붙이는 방법은 Butterfly 테마 공식 튜토리얼을 참고하여 수정한 것으로 기억하고 있습니다.)</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">margin</span>: -<span class="number">0.4em</span> auto <span class="number">0.4em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot; ⊙&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="오디오-audio">오디오 (audio)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio [오디오(.mp3) 링크] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3 %&#125;</span><br><span class="line">&#123;% audio /sample/tag-plugins-plus/long<span class="emphasis">_sample.mp3 %&#125;</span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div oncontextmenu='return false'>
+<div class="audio"><audio controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
+<div class="audio"><audio controls preload><source src='/sample/tag-plugins-plus/long_sample.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="비디오-video">비디오 (video)</h1>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos [정렬 방향 (선택사항)], [열 수] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>정렬 방향: left, center, right</li>
+<li>열 수: 1~4 (쉼표 바로 뒤에 작성)</li>
+</ol></div><div class="tab-item-content"><ol>
+<li>100% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>50% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos, 2 %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>25% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos center, 4 %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol></div><div class="tab-item-content active"><ol>
+<li>100% 너비
+<div oncontextmenu='return false'>
+<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
+<br></li>
+<li>50% 너비
+<div oncontextmenu='return false'>
+<div class="videos" col='2'><div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
+</div>
+<br></li>
+<li>25% 너비
+<div oncontextmenu='return false'>
+<div class="videos center" col='4'><div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
+<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
+</div>
+<br></li>
+</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h1 id="앨범-gallery">앨범 (gallery)</h1>
+<h2 id="앨범-갤러리-galleryGroup">앨범 갤러리 (galleryGroup)</h2>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span></span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span></span><br><span class="line">&#123;% galleryGroup &#x27;WALLPAPER&#x27; &#x27;일부 월페이퍼 모음&#x27; &#x27;https://butterfly.js.org/Gallery/wallpaper&#x27; https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;MARVEL&#x27; &#x27;마블 관련 사진&#x27; &#x27;https://butterfly.js.org/Gallery/marvel&#x27; https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;OH MY GIRL&#x27; &#x27;OH MY GIRL 사진&#x27; &#x27;https://butterfly.js.org/Gallery/ohmygirl&#x27; https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="gallery-group-main">
+<figure class="gallery-group">
+    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">
+    <figcaption>
+      <div class="gallery-group-name">WALLPAPER</div>
+      <p>일부 월페이퍼 모음</p>
+      <a href='https://butterfly.js.org/Gallery/wallpaper'></a>
+    </figcaption>
+  </figure>
+<figure class="gallery-group">
+    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg' alt="Group Image Gallery">
+    <figcaption>
+      <div class="gallery-group-name">MARVEL</div>
+      <p>마블 관련 사진</p>
+      <a href='https://butterfly.js.org/Gallery/marvel'></a>
+    </figcaption>
+  </figure>
+<figure class="gallery-group">
+    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg' alt="Group Image Gallery">
+    <figcaption>
+      <div class="gallery-group-name">OH MY GIRL</div>
+      <p>OH MY GIRL 사진</p>
+      <a href='https://butterfly.js.org/Gallery/ohmygirl'></a>
+    </figcaption>
+  </figure>
+</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h2 id="일반-갤러리-gallery">일반 갤러리 (gallery)</h2>
+<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![<span class="string">alt text</span>](<span class="link">image url</span>) (markdown 이미지 형식 그대로 사용)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![<span class="string">Bungee</span>](<span class="link">https://i.loli.net/2019/12/25/Fze9jchtnyJXMHN.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/ryLVePaqkYm4TEK.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/gEy5Zc1Ai6VuO4N.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/d6QHbytlSYO4FBG.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/6nepIJ1xTgufatZ.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/E7Jvr4eIPwUNmzq.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/mh19anwBSWIkGlH.jpg</span>)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="gallery-container" data-type="data" data-button="" data-limit="10" data-first="10">
+    <div class="gallery-items">[{"url":"https://i.loli.net/2019/12/25/Fze9jchtnyJXMHN.jpg","alt":"Bungee","title":""},{"url":"https://i.loli.net/2019/12/25/ryLVePaqkYm4TEK.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/gEy5Zc1Ai6VuO4N.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/d6QHbytlSYO4FBG.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/6nepIJ1xTgufatZ.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/E7Jvr4eIPwUNmzq.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/mh19anwBSWIkGlH.jpg","alt":"","title":""}]</div>
+  </div></div><div class="tab-item-content"><ul>
+<li>
+<p>Butterfly 테마 공식 튜토리얼에서는, 아래와 같이 캡션 앞에 아이콘(⊙︎)을 추가하는 방법을 소개하고 있습니다. <del>지금은 해당 튜토리얼이 삭제된 걸로 추정됨</del>.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.img-alt</span><span class="selector-class">.is-center</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙ &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>저는 이 중 <code>img-alt</code>를 제외한 나머지 두 컴포넌트에만 앞뒤로 아이콘을 추가하였습니다.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::after</span>,</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot; ⊙︎&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<style>
+.tab-contents .tab-item-content p a.ghcard {
+  width: 49%;
+}
+.tab-contents .tab-item-content p a.ghcard img{
+  margin: 5px 0 0 0!important;
+}
+
+#video.tabs .hljs-emphasis {
+  color: var(--hl-color) !important;
+  font-style: normal;
+}
+</style><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>Node.js</category>
+        <category>Hexo</category>
+        <category>Hexo Tag Plugins</category>
+      </categories>
+      <tags>
+        <tag>tutorial</tag>
+        <tag>hexo-butterfly-tag-plugins-plus</tag>
+        <tag>hexo-theme-butterfly</tag>
+        <tag>hexo-theme-volantis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tag Plugins Plus 튜토리얼 - 1</title>
     <language>ko</language>
-    <url>/posts/ko-tag-plugins-plus-tutorial-1/</url>
+    <url>/posts/ko/tag-plugins-plus-tutorial-1/</url>
     <content><![CDATA[<div class="language-notice note modern language-kor">
     <div class="language-logo"></div>
     <p>This posting is written in Korean. English is not scheduled to be written.</p>
@@ -3873,398 +4262,9 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
       </tags>
   </entry>
   <entry>
-    <title>Tag Plugins Plus 튜토리얼 - 2</title>
-    <language>ko</language>
-    <url>/posts/ko-tag-plugins-plus-tutorial-2/</url>
-    <content><![CDATA[<div class="language-notice note modern language-kor">
-    <div class="language-logo"></div>
-    <p>This posting is written in Korean. English is not scheduled to be written.</p>
-</div>
-<div class='note info modern'>
-<p>본 게시물은 <code>hexo-butterfly-tag-plugins-plus</code> 개발자가 작성한 튜토리얼<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>에 대한 한글 번역본입니다.<br>
-<del>Hexo가 Jekyll보다 더 마음에 들어 선택했는데, 참고할 만한 글들이 다 중국어로 적혀있어서 매우 곤란…</del></p>
-</div>
-<details class="folding-tag" ><summary> 내용이 너무 길어져서 세 파트로 나누어서 업로드하였습니다. </summary>
-              <div class='content'>
-              <p>참고로 일부 태그들은 별도의 라이브러리 없이 <a href="https://butterfly.js.org/posts/2df239ce/">butterfly 테마만으로도 사용 가능</a>합니다.<br><del>애초에 Butterfly 테마가 이 플러그인을 기반으로 여러 태그를 추가했기 때문ㅎㅎ</del></p><ol><li><a href="/posts/ko/tag-plugins-plus-tutorial-1">Tag Plugins Plus 튜토리얼 - 1</a><br>text / span / p / note / tip / animated / checkbox / radio / timeline</li><li><strong><span class='p blue'>Tag Plugins Plus 튜토리얼 - 2</span></strong><br>link / btns / ghcard / ghbadge / sites / inlineimage / image / audio / video / gallery</li><li><a href="/posts/ko/tag-plugins-plus-tutorial-3">Tag Plugins Plus 튜토리얼 - 3</a><br>folding / tab / issues / poem / icon / wow / progress / notation / bubble / reference / carousel</li></ol>
-              </div>
-            </details>
-<hr>
-<h1 id="링크-삽입-link">링크 삽입 (link)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% link [제목], [링크], [이미지 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>이미지의 기본값은 구성 파일(<code>_config.yml</code> 혹은 <code>_config.butterfly.yml</code>)의 <code>tag_plugins</code>-<code>link</code>-<code>placeholder</code> 변수에서 설정합니다.</li>
-<li>기존에 작성되어 있는 <code>/img/link.png</code>라는 파일은 실제로 존재하지 않으니 꼭 수정하시기 바랍니다.</li>
-</ul></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% link 캔디하우스 튜토리얼 포스팅, https://akilar.top/posts/615e2dec/, </span><br><span class="line">  https://cdn.jsdelivr.net/gh/Akilarlxh/akilarlxh.github.io/img/siteicon/favicon.ico %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="tag link"><a class="link-card" title="캔디하우스 튜토리얼 포스팅" href="https://akilar.top/posts/615e2dec/"><div class="left"><img src="https://cdn.jsdelivr.net/gh/Akilarlxh/akilarlxh.github.io/img/siteicon/favicon.ico"/></div><div class="right"><p class="text">캔디하우스 튜토리얼 포스팅</p><p class="url">https://akilar.top/posts/615e2dec/</p></div></a></div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="버튼-삽입-btns">버튼 삽입 (btns)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns [스타일 인자] %&#125;</span><br><span class="line">&#123;% cell [제목], [링크], [그림이나 아이콘] %&#125;</span><br><span class="line">&#123;% cell [제목], [링크], [그림이나 아이콘] %&#125;</span><br><span class="line">&#123; % endbtns % &#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>둥근 모서리 스타일 : rounded, circle</li>
-<li>텍스트 스타일 추가 : 컨테이너 내에 <code>&lt;b&gt;제목&lt;/b&gt;</code>또는 <code>&lt;p&gt;설명 텍스트&lt;/p&gt;</code>와 같이 추가할 수 있습니다.</li>
-<li>레이아웃 모드 : 기본값은 자동 너비로, 시야에 한두 개만 있는 상황에 적합합니다.<br>
-<br>
-<table>
-<thead>
-<tr>
-<th>매개변수</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>wide</td>
-<td>넓은 버튼</td>
-</tr>
-<tr>
-<td>fill</td>
-<td>레이아웃 채우기. 자동으로 하나 이상의 라인을 채우며, 더 있으면 줄 바꿈을 시행합니다.</td>
-</tr>
-<tr>
-<td>center</td>
-<td>가운데 정렬. 버튼 사이의 간격은 고정된 값으로 정해집니다.</td>
-</tr>
-<tr>
-<td>around</td>
-<td>중심과 분산</td>
-</tr>
-<tr>
-<td>grid2</td>
-<td>동일한 너비로 최대 2열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
-</tr>
-<tr>
-<td>grid3</td>
-<td>동일한 너비로 최대 3열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
-</tr>
-<tr>
-<td>grid4</td>
-<td>동일한 너비로 최대 4열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
-</tr>
-<tr>
-<td>grid5</td>
-<td>동일한 너비로 최대 5열. 화면을 좁히면 열 수가 적절하게 줄어듭니다.</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol></div><div class="tab-item-content"><ol>
-<li>
-<p>[팀 구성원]과 같이 아바타가 포함된 링크 그룹을 표시해야 하는 경우</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns circle grid5 %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% cell xaoxuu, https://xaoxuu.com, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>또는 아이콘이 있는 버튼</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns rounded grid4 %&#125;</span><br><span class="line">&#123;% cell 소스코드 다운로드, /, fas fa-download %&#125;</span><br><span class="line">&#123;% cell 문서 보기, /, fas fa-book-open %&#125;</span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>원형 아이콘 + 제목 + 설명 + 그림 + 그리드 5열 + 중앙</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% btns circle center grid5 %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1&#x27;</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fab fa-apple&quot;</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span></span>심박수 스튜어드<span class="language-xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></span><br><span class="line">  &#123;% p red, 프로 버전 %&#125;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1&#x27;</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fab fa-apple&quot;</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span></span>심박수 스튜어드<span class="language-xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span></span><br><span class="line">  &#123;% p green, 무료 버전 %&#125;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#x27;https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&#123;% endbtns %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>[팀 구성원]과 같이 아바타가 포함된 링크 그룹을 표시해야 하는 경우
-<div class="btns circle grid5">
-            <a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-<a class="button" href='https://xaoxuu.com' title='xaoxuu'><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'>xaoxuu</a>
-          </div>
-</li>
-<li>또는 아이콘이 있는 버튼
-<div class="btns rounded grid4">
-            <a class="button" href='/' title='소스코드 다운로드'><i class='fas fa-download'></i>소스코드 다운로드</a>
-<a class="button" href='/' title='문서 보기'><i class='fas fa-book-open'></i>문서 보기</a>
-          </div>
-</li>
-<li>원형 아이콘 + 제목 + 설명 + 그림 + 그리드 5열 + 중앙
-<div class="btns circle center grid5">
-            <a href='https://apps.apple.com/cn/app/heart-mate-pro-hrm-utility/id1463348922?ls=1'>
-  <i class="fab fa-apple"></i>
-  <b>심박수 스튜어드</b>
-  <p class='p red'>프로 버전</p>
-  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_pro.png'>
-</a>
-<a href='https://apps.apple.com/cn/app/heart-mate-lite-hrm-utility/id1475747930?ls=1'>
-  <i class="fab fa-apple"></i>
-  <b>심박수 스튜어드</b>
-  <p class='p green'>무료 버전</p>
-  <img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/heartmate_lite.png'>
-</a>
-          </div>
-</li>
-</ol></div><div class="tab-item-content"><ul>
-<li>2번 항목(아이콘이 있는 버튼)은 원문과 다르게 <code>grid4</code>로 설정해보았습니다.</li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="GitHub-카드-ghcard">GitHub 카드 (ghcard)</h1>
-<div class="note no-icon flat"><p>ghcard는 <a href="https://github.com/anuraghazra/github-readme-stats"><code>github-readme-stats</code></a>의 API를 사용하여 마크다운 문서에 GitHub 정보를 삽입합니다.</p>
-</div>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard [사용자 이름], [기타 인자 (선택사항)] %&#125;</span><br><span class="line">&#123;% ghcard [사용자 이름/ 저장소], [기타 인자 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>더 많은 매개변수는 <a href="https://github.com/anuraghazra/github-readme-stats"><code>github-readme-stats</code></a>를 참조할 수 있습니다.</li>
-<li><code>(인자명)=(인자값)</code>의 형태로 작성하며, 각 매개변수의 분할은 <code>,</code>를 사용합니다.<br>
-일반적으로 사용되는 몇 가지 매개변수만 아래에 소개하도록 하겠습니다.<br>
-<br>
-<table>
-<thead>
-<tr>
-<th>매개변수</th>
-<th>값</th>
-<th>의미</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>hide</code></td>
-<td>stars, commits, prs, issues, contribs</td>
-<td>지정된 통계 숨기기</td>
-</tr>
-<tr>
-<td><code>count_private</code></td>
-<td>true</td>
-<td>프로젝트의 총 커밋 수에 비공개 기여 추가</td>
-</tr>
-<tr>
-<td><code>show_icons</code></td>
-<td>true</td>
-<td>아이콘 표시</td>
-</tr>
-<tr>
-<td><code>theme</code></td>
-<td>48가지의 <a href="https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md">사용 가능한 테마</a>를 확인하세요.</td>
-<td>테마 (vim colorscheme과 유사)</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul></div><div class="tab-item-content"><ol>
-<li>
-<p>사용자 정보 카드</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard xaoxuu %&#125; &#123;% ghcard xaoxuu, theme=vue %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=buefy %&#125; &#123;% ghcard xaoxuu, theme=solarized-light %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=onedark %&#125; &#123;% ghcard xaoxuu, theme=solarized-dark %&#125;</span><br><span class="line">&#123;% ghcard xaoxuu, theme=algolia %&#125; &#123;% ghcard xaoxuu, theme=calm %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>웨어하우스 정보 카드</p>
- <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=vue %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=buefy %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=solarized-light %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=onedark %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=solarized-dark %&#125;</span><br><span class="line">&#123;% ghcard volantis-x/hexo-theme-volantis, theme=algolia %&#125; &#123;% ghcard volantis-x/hexo-theme-volantis, theme=calm %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>
-<p>사용자 정보 카드<br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=vue&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=buefy&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=solarized-light&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=onedark&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=solarized-dark&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=algolia&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/xaoxuu"><img src="https://github-readme-stats.vercel.app/api/?username=xaoxuu&theme=calm&show_owner=true"/></a></p>
-</li>
-<li>
-<p>웨어하우스 정보 카드<br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=vue&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=buefy&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=solarized-light&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=onedark&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=solarized-dark&show_owner=true"/></a><br>
-<a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=algolia&show_owner=true"/></a> <a class="ghcard" rel="external nofollow noopener noreferrer" href="https://github.com/volantis-x/hexo-theme-volantis"><img src="https://github-readme-stats.vercel.app/api/pin/?username=volantis-x&repo=hexo-theme-volantis&theme=calm&show_owner=true"/></a></p>
-</li>
-</ol></div><div class="tab-item-content"><ul>
-<li>본 게시물에서는 2열로 표시하기 위해 아래와 같이 스타일을 임시로 추가했습니다.  <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span></span><br><span class="line">.tab-contents .tab-item-content p a.ghcard &#123;</span><br><span class="line">  width: 49%;</span><br><span class="line">&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="GitHub-로고-bdage">GitHub 로고 (bdage)</h1>
-<div class="note no-icon flat"><p>ghbdage 구체적인 사용법은 <a href="https://akilar.top/posts/e87ad7f8">원 저자의 튜토리얼</a>을 참조하세요 <del>역시나 중국어…</del></p>
-</div>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage [right],[left],[logo]||[color],[link],[title]||[option] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>left</code>: 로고 왼쪽에 있는 정보. 필수 매개변수입니다.</li>
-<li><code>right</code>: 로고 오른쪽에 있는 정보. 필수 매개변수입니다.</li>
-<li><code>logo</code>: 로고 아이콘, 아이콘 이름은 simpleicons. 선택적 매개변수입니다.</li>
-<li><code>color</code>: 로고 오른쪽의 색상. 선택적 매개변수입니다.</li>
-<li><code>link</code>: 가리키는 링크입니다. 선택적 매개변수입니다.</li>
-<li><code>title</code>: 로고에 대한 추가 정보. 선택적 매개변수입니다.<br>
-주로 SEO 최적화에 사용되지만 <code>a</code> 태그처럼 마우스를 가져가면 <code>object</code> 태그에 <code>title</code> 정보가 표시되지 않습니다.</li>
-<li><code>option</code>: 사용자 정의 매개변수로, shields.io의 모든 API 매개변수를 지원합니다.<br>
-특정 매개변수는 위의 확장 작성 예제를 참조하십시오. 형식은 <code>(이름1)=(값1)&amp;(이름2)=(값2)</code>입니다.</li>
-</ol></div><div class="tab-item-content"><ol>
-<li>기본 매개변수, 로고의 왼쪽 및 오른쪽 텍스트 및 아이콘 정의 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage Theme,Butterfly %&#125;</span><br><span class="line">&#123;% bdage Frame,Hexo,hexo %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>정보 매개변수, 로고 오른쪽에 콘텐츠의 배경색 정의, 링크 가리킴 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage CDN,JsDelivr,jsDelivr||abcdef,https://metroui.org.ua/index.html,이 사이트는 JsDelivr를 사용하여 정적 리소스에 대한 CDN 가속을 제공합니다. %&#125;</span><br><span class="line">//선택적 매개변수가 시퀀스 전체에서 생략되더라도 여전히 분할로 사용하려면 쉼표를 작성해야 합니다.</span><br><span class="line">&#123;% bdage Source,GitHub,GitHub||,https://github.com/ %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>확장된 매개변수, 방패 API의 모든 매개변수 내용 지원 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% bdage Hosted,Vercel,Vercel||brightgreen,https://vercel.com/,이 사이트는 2줄 배포를 채택하고 기본 라인은 Vercel에서 호스팅됩니다.||style=social&amp;logoWidth=20 %&#125;</span><br><span class="line">//교차 시퀀스인 경우, 생략 가능 매개변수 그룹을 선택하고 분할을 위해 이중 수직선(||)을 작성해야 합니다.</span><br><span class="line">&#123;% bdage Hosted,Vercel,Vercel||||style=social&amp;logoWidth=20&amp;logoColor=violet %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>
-<p>기본 매개변수. 로고의 왼쪽 및 오른쪽 텍스트 및 아이콘 정의</p>
- <div>
-<object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Butterfly-Theme-orange?logo=&color=orange&link=&"></object>
-<object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Hexo-Frame-orange?logo=hexo&color=orange&link=&"></object>
- </div>
-</li>
-<li>
-<p>정보 매개변수. 로고 오른쪽에 콘텐츠의 배경색 정의, 링크 가리킴</p>
- <div>
- <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/JsDelivr-CDN-orange?logo=jsDelivr&color=abcdef&link=https://metroui.org.ua/index.html&"></object>
- <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/GitHub-Source-orange?logo=GitHub&color=orange&link=https://github.com/&"></object>
- </div>
-</li>
-<li>
-<p>확장된 매개변수. 방패 API의 모든 매개변수 내용 지원</p>
- <div>
- <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Vercel-Hosted-orange?logo=Vercel&color=brightgreen&link=https://vercel.com/&style=social&logoWidth=20"></object>
- <object class="ghbdage" style="margin-inline:5px" title="" standby="loading..." data="https://img.shields.io/badge/Vercel-Hosted-orange?logo=Vercel&color=orange&link=&style=social&logoWidth=20&logoColor=violet"></object>
- </div>
-</li>
-</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="웹사이트-카드-sites">웹사이트 카드 (sites)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% sitegroup % &#125;</span><br><span class="line">&#123;% site [제목], url=[링크], screenshot=[캡쳐 링크], avatar=[프로필 링크 (선택사항)], description=[설명 (선택사항)] %&#125;</span><br><span class="line">&#123;% site [제목], url=[링크], screenshot=[캡쳐 링크], avatar=[프로필 링크 (선택사항)], description=[설명 (선택사항)] %&#125;</span><br><span class="line">&#123;% endsitegroup %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% sitegroup %&#125;</span><br><span class="line">&#123;% site xaoxuu, url=https://xaoxuu.com, screenshot=https://i.loli.net/2020/08/21/VuSwWZ1xAeUHEBC.jpg, avatar=https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png %&#125;</span><br><span class="line">&#123;% site inkss, url=https://inkss.cn, screenshot=https://i.loli.net/2020/08/21/Vzbu3i8fXs6Nh5Y.jpg, avatar=https://cdn.jsdelivr.net/gh/inkss/common@master/static/web/avatar.jpg, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site MHuiG, url=https://blog.mhuig.top, screenshot=https://i.loli.net/2020/08/22/d24zpPlhLYWX6D1.png, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site Colsrch, url=https://colsrch.top, screenshot=https://i.loli.net/2020/08/22/dFRWXm52OVu8qfK.png, avatar=https://cdn.jsdelivr.net/gh/Colsrch/images/Colsrch/avatar.jpg, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% site Linhk1606, url=https://linhk1606.github.io, screenshot=https://i.loli.net/2020/08/21/3PmGLCKicnfow1x.png, avatar=https://i.loli.net/2020/02/09/PN7I5RJfFtA93r2.png, description=이 웹사이트에 대한 설명 텍스트입니다. %&#125;</span><br><span class="line">&#123;% endsitegroup %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="site-card-group"><a class="site-card" href="https://xaoxuu.com"><div class="img"><img src="https://i.loli.net/2020/08/21/VuSwWZ1xAeUHEBC.jpg"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png"/><span class="title">xaoxuu</span></div></a>
-<a class="site-card" href="https://inkss.cn"><div class="img"><img src="https://i.loli.net/2020/08/21/Vzbu3i8fXs6Nh5Y.jpg"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/inkss/common@master/static/web/avatar.jpg"/><span class="title">inkss</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
-<a class="site-card" href="https://blog.mhuig.top"><div class="img"><img src="https://i.loli.net/2020/08/22/d24zpPlhLYWX6D1.png"/></div><div class="info"><span class="title">MHuiG</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
-<a class="site-card" href="https://colsrch.top"><div class="img"><img src="https://i.loli.net/2020/08/22/dFRWXm52OVu8qfK.png"/></div><div class="info"><img src="https://cdn.jsdelivr.net/gh/Colsrch/images/Colsrch/avatar.jpg"/><span class="title">Colsrch</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a>
-<a class="site-card" href="https://linhk1606.github.io"><div class="img"><img src="https://i.loli.net/2020/08/21/3PmGLCKicnfow1x.png"/></div><div class="info"><img src="https://i.loli.net/2020/02/09/PN7I5RJfFtA93r2.png"/><span class="title">Linhk1606</span><span class="desc">이 웹사이트에 대한 설명 텍스트입니다.</span></div></a></div></div><div class="tab-item-content"><p>기존에 4열로 표시되던 것을 3열로 변경하였습니다.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.site-card</span> &#123;</span><br><span class="line">  <span class="comment">/* 기존: width: calc(100% / 4 - 16px); */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> / <span class="number">3</span> - <span class="number">16px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="인라인-이미지-inlineimage">인라인 이미지 (inlineimage)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% inlineimage [이미지 링크], height=[높이 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><code>height</code>: 높이 (ex. <code>height=20px</code>)</li>
-</ol></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">이것은 &#123;% inlineimage https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/0000.gif %&#125; 단락입니다.</span><br><span class="line"></span><br><span class="line">이것은 &#123;% inlineimage https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/5150.gif, height=40px %&#125; 단락입니다.</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><p>이것은 <img no-lazy class="inline" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/0000.gif" style="height:1.5em"/> 단락입니다.</p>
-<p>이것은 <img no-lazy class="inline" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/aru-l/5150.gif" style="height:40px;"/> 단락입니다.</p></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="단일-이미지-image">단일 이미지 (image)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image [링크], width=[폭 (선택사항)], height=[높이 (선택사항)], alt=[설명 (선택사항)], bg=[배경색 (선택사항)] %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>이미지 크기: <code>width=300px, height=32px</code></li>
-<li>이미지 설명: <code>alt=(그림 설명)</code> (butterfly는 테마 구성 파일에서 <code>photofigcaption</code> 혹은 <code>fancybox</code>를 활성화해야 유의미함)</li>
-<li>배경색: <code>bg=#f2f2f2</code></li>
-</ol></div><div class="tab-item-content"><ol>
-<li>설명 추가 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, alt=&quot;매일 방과 후 기숙사로 돌아가는 길<span class="literal">&amp;comma;</span> 별 일 없습니다.&quot; %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>너비 지정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>너비 지정 및 설명 추가 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px, alt=&quot;매일 방과 후 기숙사로 돌아가는 길<span class="literal">&amp;comma;</span> 별 일 없습니다.&quot; %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>자리 표시자의 배경색 설정 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% image https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg, width=400px, bg=#162D39, alt=&quot;다양한 너비로 탐색의 모양과 느낌 최적화&quot; %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>설명 추가 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다."/></div><span class="image-caption">매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다.</span></div>
-</li>
-<li>너비 지정 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" style="width:400px;"/></div></div>
-</li>
-<li>너비 지정 및 설명 추가 <div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다." style="width:400px;"/></div><span class="image-caption">매일 방과 후 기숙사로 돌아가는 길&comma; 별 일 없습니다.</span></div>
-</li>
-<li>배경색 설정 <div class="img-wrap"><div class="img-bg" style="background:#162D39"><img class="img" src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg" alt="다양한 너비로 탐색의 모양과 느낌 최적화" style="width:400px;"/></div><span class="image-caption">다양한 너비로 탐색의 모양과 느낌 최적화</span></div>
-</li>
-</ol></div><div class="tab-item-content"><p><code>_config.butterfly.yml</code>에서 <code>photofigcaption: true</code>로 설정했을 경우 이미지 캡션이 중복으로 나타날 수 있습니다. 이 경우, 아래와 같이 css를 수정하거나 <code>photofigcaption: false</code>로 설정하면 됩니다.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<br>
-<p>저는 이미지 캡션을 중앙에 위치시키고, 앞뒤로 아이콘(⊙)을 추가하기 위해 아래와 같이 css를 수정하였습니다.<br>
-(이미지 캡션 앞뒤에 &quot;⊙︎&quot;를 붙이는 방법은 Butterfly 테마 공식 튜토리얼을 참고하여 수정한 것으로 기억하고 있습니다.)</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: table;</span><br><span class="line">  <span class="attribute">margin</span>: -<span class="number">0.4em</span> auto <span class="number">0.4em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-class">.image-caption</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot; ⊙&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="오디오-audio">오디오 (audio)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio [오디오(.mp3) 링크] %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% audio https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3 %&#125;</span><br><span class="line">&#123;% audio /sample/tag-plugins-plus/long<span class="emphasis">_sample.mp3 %&#125;</span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div oncontextmenu='return false'>
-<div class="audio"><audio controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/Lumia1020.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
-<div class="audio"><audio controls preload><source src='/sample/tag-plugins-plus/long_sample.mp3' type='audio/mp3'>Your browser does not support the audio tag.</audio></div>
-</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="비디오-video">비디오 (video)</h1>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos [정렬 방향 (선택사항)], [열 수] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% video [비디오 링크] %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>정렬 방향: left, center, right</li>
-<li>열 수: 1~4 (쉼표 바로 뒤에 작성)</li>
-</ol></div><div class="tab-item-content"><ol>
-<li>100% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>50% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos, 2 %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>25% 너비 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% videos center, 4 %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG<span class="emphasis">_0341.mov %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% video https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_</span>0341.mov %&#125;</span><br><span class="line">&#123;% endvideos %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol></div><div class="tab-item-content active"><ol>
-<li>100% 너비
-<div oncontextmenu='return false'>
-<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
-<br></li>
-<li>50% 너비
-<div oncontextmenu='return false'>
-<div class="videos" col='2'><div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
-</div>
-<br></li>
-<li>25% 너비
-<div oncontextmenu='return false'>
-<div class="videos center" col='4'><div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div>
-<div class="video"><video controls preload><source src='https://github.com/volantis-x/volantis-docs/releases/download/assets/IMG_0341.mov' type='video/mp4'>Your browser does not support the video tag.</video></div></div>
-</div>
-<br></li>
-</ol></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h1 id="앨범-gallery">앨범 (gallery)</h1>
-<h2 id="앨범-갤러리-galleryGroup">앨범 갤러리 (galleryGroup)</h2>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span></span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line">&#123;% galleryGroup [name] [description] [link] [img-url] %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span></span><br><span class="line">&#123;% galleryGroup &#x27;WALLPAPER&#x27; &#x27;일부 월페이퍼 모음&#x27; &#x27;https://butterfly.js.org/Gallery/wallpaper&#x27; https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;MARVEL&#x27; &#x27;마블 관련 사진&#x27; &#x27;https://butterfly.js.org/Gallery/marvel&#x27; https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;OH MY GIRL&#x27; &#x27;OH MY GIRL 사진&#x27; &#x27;https://butterfly.js.org/Gallery/ohmygirl&#x27; https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="gallery-group-main">
-<figure class="gallery-group">
-    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">
-    <figcaption>
-      <div class="gallery-group-name">WALLPAPER</div>
-      <p>일부 월페이퍼 모음</p>
-      <a href='https://butterfly.js.org/Gallery/wallpaper'></a>
-    </figcaption>
-  </figure>
-<figure class="gallery-group">
-    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg' alt="Group Image Gallery">
-    <figcaption>
-      <div class="gallery-group-name">MARVEL</div>
-      <p>마블 관련 사진</p>
-      <a href='https://butterfly.js.org/Gallery/marvel'></a>
-    </figcaption>
-  </figure>
-<figure class="gallery-group">
-    <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg' alt="Group Image Gallery">
-    <figcaption>
-      <div class="gallery-group-name">OH MY GIRL</div>
-      <p>OH MY GIRL 사진</p>
-      <a href='https://butterfly.js.org/Gallery/ohmygirl'></a>
-    </figcaption>
-  </figure>
-</div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<h2 id="일반-갤러리-gallery">일반 갤러리 (gallery)</h2>
-<div class="tabs"><div class="nav-tabs"><button type="button" class="tab">parameter</button><button type="button" class="tab">code</button><button type="button" class="tab active">preview</button><button type="button" class="tab">+a</button></div><div class="tab-contents"><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![<span class="string">alt text</span>](<span class="link">image url</span>) (markdown 이미지 형식 그대로 사용)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content"><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![<span class="string">Bungee</span>](<span class="link">https://i.loli.net/2019/12/25/Fze9jchtnyJXMHN.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/ryLVePaqkYm4TEK.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/gEy5Zc1Ai6VuO4N.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/d6QHbytlSYO4FBG.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/6nepIJ1xTgufatZ.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/E7Jvr4eIPwUNmzq.jpg</span>)</span><br><span class="line">![](<span class="link">https://i.loli.net/2019/12/25/mh19anwBSWIkGlH.jpg</span>)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-item-content active"><div class="gallery-container" data-type="data" data-button="" data-limit="10" data-first="10">
-    <div class="gallery-items">[{"url":"https://i.loli.net/2019/12/25/Fze9jchtnyJXMHN.jpg","alt":"Bungee","title":""},{"url":"https://i.loli.net/2019/12/25/ryLVePaqkYm4TEK.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/gEy5Zc1Ai6VuO4N.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/d6QHbytlSYO4FBG.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/6nepIJ1xTgufatZ.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/E7Jvr4eIPwUNmzq.jpg","alt":"","title":""},{"url":"https://i.loli.net/2019/12/25/mh19anwBSWIkGlH.jpg","alt":"","title":""}]</div>
-  </div></div><div class="tab-item-content"><ul>
-<li>
-<p>Butterfly 테마 공식 튜토리얼에서는, 아래와 같이 캡션 앞에 아이콘(⊙︎)을 추가하는 방법을 소개하고 있습니다. <del>지금은 해당 튜토리얼이 삭제된 걸로 추정됨</del>.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.img-alt</span><span class="selector-class">.is-center</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;⊙ &quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>저는 이 중 <code>img-alt</code>를 제외한 나머지 두 컴포넌트에만 앞뒤로 아이콘을 추가하였습니다.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;⊙︎ &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.jg-caption-visible</span><span class="selector-pseudo">::after</span>,</span><br><span class="line"><span class="selector-class">.fancybox__caption</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot; ⊙︎&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
-<style>
-.tab-contents .tab-item-content p a.ghcard {
-  width: 49%;
-}
-.tab-contents .tab-item-content p a.ghcard img{
-  margin: 5px 0 0 0!important;
-}
-
-#video.tabs .hljs-emphasis {
-  color: var(--hl-color) !important;
-  font-style: normal;
-}
-</style><hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Tag Plugins Plus | Akilarの糖果屋 <a href="https://akilar.top/posts/615e2dec/">(link)</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-</ol>
-</section>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>Node.js</category>
-        <category>Hexo</category>
-        <category>Hexo Tag Plugins</category>
-      </categories>
-      <tags>
-        <tag>tutorial</tag>
-        <tag>hexo-butterfly-tag-plugins-plus</tag>
-        <tag>hexo-theme-butterfly</tag>
-        <tag>hexo-theme-volantis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Tag Plugins Plus 튜토리얼 - 3</title>
     <language>ko</language>
-    <url>/posts/ko-tag-plugins-plus-tutorial-3/</url>
+    <url>/posts/ko/tag-plugins-plus-tutorial-3/</url>
     <content><![CDATA[<div class="language-notice note modern language-kor">
     <div class="language-logo"></div>
     <p>This posting is written in Korean. English is not scheduled to be written.</p>
