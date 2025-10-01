@@ -46,7 +46,9 @@ module.exports = function(locals, config) {
   const searchfield = config.search.field;
   const database = [];
   if (searchfield === 'all' || searchfield === 'post') {
-    locals.posts.each(post => {
+    locals.posts.filter(
+      (post) => post.categories.filter((category) => category.name === 'private').length === 0 )
+    .each(post => {
       const data = savedb(post, config, true);
       database.push(data);
     });

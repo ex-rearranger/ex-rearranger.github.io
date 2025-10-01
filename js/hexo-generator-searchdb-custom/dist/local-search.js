@@ -240,8 +240,8 @@ class LocalSearch {
           ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(element => ({
               title: element.querySelector('title').textContent,
               language: element.querySelector('language').textContent,
-              tags: element.querySelector('tags').textContent,
-              categories: element.querySelector('categories').textContent,
+              tags: (element.querySelector('tags') !== null && element.querySelector('tags').textContent) || '',
+              categories: (element.querySelector('categories') !== null && element.querySelector('categories').textContent) || '',
               content: element.querySelector('content').textContent,
               url: element.querySelector('url').textContent
             }))
