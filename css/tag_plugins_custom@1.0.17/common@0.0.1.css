@@ -48,19 +48,25 @@ u, emp, wavy, psw:hover {
 }
 span.image-caption {
   display: table;
-  margin: -0.4em auto 0.4em;
+  margin: -1em auto 1.4em;
+  color: var(--grey);
+  font-size: 0.9em;
 }
 span.image-caption::before,
-.jg-caption-visible::before,
-.fancybox__caption::before {
+/* .fancybox__caption::before,  */
+.jg-caption-visible::before {
   content: "⊙︎ ";
 }
 span.image-caption::after,
-.jg-caption-visible::after,
-.fancybox__caption::after {
+/* .fancybox__caption::after, */
+.jg-caption-visible::after {
   content: " ⊙︎";
 }
-
+span.image-caption,
+.fancybox__caption, 
+.jg-caption-visible {
+  text-align: center;
+}
 
 :root {
   --bubble-text-color: #e9a218;
