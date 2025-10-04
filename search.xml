@@ -235,7 +235,7 @@ M399960 241 V94 h40 V428 h-40 V281 H0 v-40z"/></svg></span></span></span><span s
 </tr>
 </tbody>
 </table>
-<p>See also <a href="#letters">letters</a></p>
+<p>See also <a href="#Letters-and-Unicode">#Letters-and-Unicode</a></p>
 <h2 id="Delimiters">Delimiters</h2>
 <table>
 <thead>
@@ -426,7 +426,7 @@ c-10,0,-16.667,5,-20,15z M410 15 H367 v585 v1200 v585 h43z"/></svg></span></span
 </tbody>
 </table>
 <p>KaTeX also supports <code>darray</code>  and <code>dcases</code>.</p>
-<p>Acceptable line separators include: <code>\\</code>, <code>\cr</code>, <code>\\[distance]</code>, and <code>\cr[distance]</code>. <em>Distance</em> can be written with any of the <a href="#units">KaTeX units</a>.</p>
+<p>Acceptable line separators include: <code>\\</code>, <code>\cr</code>, <code>\\[distance]</code>, and <code>\cr[distance]</code>. <em>Distance</em> can be written with any of the <a href="#Units"><strong>#Units</strong></a>.</p>
 <p>The <code>&#123;array&#125;</code> environment supports <code>|</code> and <code>:</code> vertical separators.</p>
 <p>The <code>&#123;array&#125;</code> environment does not yet support <code>\cline</code> or <code>\multicolumn</code>.</p>
 <h2 id="HTML">HTML</h2>
@@ -960,7 +960,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </tbody>
 </table>
 <p><strong>Notes:</strong></p>
-<p><code>distance</code> will accept any of the <a href="#units">KaTeX units</a>.</p>
+<p><code>distance</code> will accept any of the <a href="#Units"><strong>#Units</strong></a>.</p>
 <p><code>\kern</code>, <code>\mkern</code>, <code>\mskip</code>, and <code>\hspace</code> accept unbraced distances, as in: <code>\kern1em</code>.</p>
 <p><code>\mkern</code> and <code>\mskip</code> will not work in text mode and both will write a console warning for any unit except <code>mu</code>.</p>
 <h2 id="Logic-and-Set-Theory">Logic and Set Theory</h2>
@@ -2641,7 +2641,7 @@ EX) <code>hexo-renderer-markdown-it</code> plugin
 </ul>
 </li>
 <li>
-<p>To avoid manually editing it every time, you can automate it using a <code>postinstall</code> script (see <a href="#postinstall-script">below</a>).</p>
+<p>To avoid manually editing it every time, you can automate it using a <code>postinstall</code> script (see <a href="#Postinstall-Script">below</a>).</p>
 </li>
 </ul>
 </div>
@@ -2995,7 +2995,7 @@ Hexo에서 기본으로 제공하는 <code>hexo-renderer-markdown</code> 플러�
 </ul>
 </li>
 <li>
-<p>매번 수정하기 귀찮다면 <code>postinstall</code> 스크립트를 활용하여 자동화하면 됨 (<a href="#postinstall-script">아래 설명</a> 참고)</p>
+<p>매번 수정하기 귀찮다면 <code>postinstall</code> 스크립트를 활용하여 자동화하면 됨 (<a href="#Postinstall-Script">아래 설명</a> 참고)</p>
 </li>
 </ul>
 </div>
