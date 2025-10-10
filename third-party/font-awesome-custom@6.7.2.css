@@ -360,6 +360,24 @@
 .fa-github::before {    /* GitHub */
     content: "\f09b"
 }
+/* pomodoro */
+.fa-sliders::before, 
+.fa-sliders-h::before {
+    content: "\f1de"
+}
+.fa-play::before {
+    content: "\f04b"
+}
+.fa-pause::before {
+    content: "\f04c"
+}
+.fa-rotate::before,
+.fa-sync-alt::before{
+    content:"\f2f1"
+}
+.fa-stopwatch::before {
+    content: "\f2f2"
+}
 
 /* Related Posts */
 .fa-thumbs-up::before {    /* Like */

@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function changeCardPosition () {
     let is_left = true
-    const displayed_cards = document.querySelectorAll('div.sticky_layout > div.card-widget:not(#card-toc):not(.lang-hidden)')
+    const displayed_cards = document.querySelectorAll('div.sticky_layout > div.card-widget:not(#card-toc):not(#pomodoro-widget):not(.lang-hidden)')
     displayed_cards.forEach(function(card){
       if (is_left){
         card.classList.add('card-left')
