@@ -1749,7 +1749,7 @@ blockquote > :last-child {
   color: var(--text-highlight-color);
   font-size: 1.4em;
 }
-@media screen and (min-width: 901px) {
+@media screen and (min-width: 1025px) {
   html.hide-aside .layout {
     justify-content: center;
   }
@@ -4186,9 +4186,6 @@ blockquote.pullquote.right {
 }
 .read-mode #page-header.post-bg {
   background: none !important;
-}
-.read-mode #page-header.post-bg::before {
-  opacity: 0;
 }
 .read-mode #page-header.post-bg #post-info {
   text-align: center;

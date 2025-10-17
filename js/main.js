@@ -562,8 +562,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
 
-      // 處理 hexo-blog-encrypt 事件
-      $cardToc.style.display = 'block'
+      // // 處理 hexo-blog-encrypt 事件
+      // $cardToc.style.display = 'block'
     }
 
     // find head position & add active class
@@ -649,227 +649,233 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Pomodoro
    */
-  // Init Timer consts
-  const circumference = 722.56;
-  const minutesDisplay = document.getElementById('pomo-minutes');
-  const secondsDisplay = document.getElementById('pomo-seconds');
-  const progressCircle = document.getElementById('pomo-progress-circle');
-  const startBtn = document.getElementById('pomo-start-btn');
-  const pauseBtn = document.getElementById('pomo-pause-btn');
-  const resetBtn = document.getElementById('pomo-reset-btn');
-  const modeButtons = document.querySelectorAll('.mode-buttons button');
-  const customBtn = document.getElementById('pomo-custom-btn');
-  const customModal = document.getElementById('pomo-custom-timer-modal');
-  const hoursSlider = document.getElementById('pomo-hours-slider');
-  const minutesSlider = document.getElementById('pomo-minutes-slider');
-  const secondsSlider = document.getElementById('pomo-seconds-slider');
-  const hoursValue = document.getElementById('pomo-hours-value');
-  const minutesValue = document.getElementById('pomo-minutes-value');
-  const secondsValue = document.getElementById('pomo-seconds-value');
-  const setCustomBtn = document.getElementById('pomo-set-custom-btn');
-  const cancelCustomBtn = document.getElementById('pomo-cancel-custom-btn');
-  
-  // Init Toggle consts
-  const pomoTitle = document.querySelector('#pomodoro-widget .item-headline');
-  const pomoToggleBtn = document.querySelector('.pomo-toggle-btn');
-  const pomoContentWrapper = document.querySelector('.pomo-content-wrapper');
-  
-  
-  // Set Timer functions
-  let totalSeconds;
-  let timeRemaining;
-  let timerInterval;
-  let isPaused = true;
-  let currentMode = 'pomodoro';
-  
-  const modes = {
-    pomodoro: 25 * 60,
-    'short-break': 5 * 60,
-    'long-break': 15 * 60
-  };
-  
-  function handleButtonState() {
-    if (!isPaused) { // 타이머가 실행 중일 때
-      startBtn.disabled = true;
-      pauseBtn.disabled = false;
-      resetBtn.disabled = false;
-      modeButtons.forEach(btn => btn.disabled = true);
-    } else { // 타이머가 일시정지 또는 초기 상태일 때
-      startBtn.disabled = false;
-      pauseBtn.disabled = true;
-      resetBtn.disabled = false;
-      modeButtons.forEach(btn => btn.disabled = false);
-    }
-  }
-  
-  function setMode(mode) {
-    currentMode = mode;
-    if (modes[mode]) {
-      totalSeconds = modes[mode];
-    }
-    resetTimer();
-    updateActiveButton();
-    handleButtonState();
-  }
-  
-  function updateActiveButton() {
-    modeButtons.forEach(button => {
-      button.classList.remove('active');
-    });
-    const activeBtn = document.querySelector(`[data-mode="${currentMode}"]`);
-    if (activeBtn) {
-      activeBtn.classList.add('active');
-    }
-  }
-  
-  function updateDisplay() {
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = Math.floor(timeRemaining % 60);
-    minutesDisplay.textContent = String(minutes).padStart(2, '0');
-    secondsDisplay.textContent = String(seconds).padStart(2, '0');
-    updateProgressBar();
-  }
-  
-  function updateProgressBar() {
-    const dashOffset = (timeRemaining / totalSeconds) * circumference;
-    progressCircle.style.strokeDashoffset = dashOffset;
-  }
-  
-  function startTimer() {
-    if (!isPaused) return;
-    isPaused = false;
-    const startTime = Date.now();
-    const endTime = startTime + timeRemaining * 1000;
+  const pomodoroFn = () => {
+    const $article = document.getElementById('pomodoro-widget')
+
+    if (!$article) return
+
+    // Init Timer consts
+    const circumference = 722.56;
+    const minutesDisplay = document.getElementById('pomo-minutes');
+    const secondsDisplay = document.getElementById('pomo-seconds');
+    const progressCircle = document.getElementById('pomo-progress-circle');
+    const startBtn = document.getElementById('pomo-start-btn');
+    const pauseBtn = document.getElementById('pomo-pause-btn');
+    const resetBtn = document.getElementById('pomo-reset-btn');
+    const modeButtons = document.querySelectorAll('.mode-buttons button');
+    const customBtn = document.getElementById('pomo-custom-btn');
+    const customModal = document.getElementById('pomo-custom-timer-modal');
+    const hoursSlider = document.getElementById('pomo-hours-slider');
+    const minutesSlider = document.getElementById('pomo-minutes-slider');
+    const secondsSlider = document.getElementById('pomo-seconds-slider');
+    const hoursValue = document.getElementById('pomo-hours-value');
+    const minutesValue = document.getElementById('pomo-minutes-value');
+    const secondsValue = document.getElementById('pomo-seconds-value');
+    const setCustomBtn = document.getElementById('pomo-set-custom-btn');
+    const cancelCustomBtn = document.getElementById('pomo-cancel-custom-btn');
     
-    handleButtonState();
+    // Init Toggle consts
+    const pomoTitle = document.querySelector('#pomodoro-widget .item-headline');
+    const pomoToggleBtn = document.querySelector('.pomo-toggle-btn');
+    const pomoContentWrapper = document.querySelector('.pomo-content-wrapper');
     
-    function tick() {
-      const now = Date.now();
-      const elapsedTime = (now - startTime) / 1000;
-      timeRemaining = Math.max(0, totalSeconds - elapsedTime);
-      
-      if (timeRemaining > 0) {
-        updateDisplay();
-        timerInterval = requestAnimationFrame(tick);
-      } else {
-        timeRemaining = 0;
-        updateDisplay();
-        isPaused = true;
-        alert('Time\'s Up!');
-        handleButtonState();
+    
+    // Set Timer functions
+    let totalSeconds;
+    let timeRemaining;
+    let timerInterval;
+    let isPaused = true;
+    let currentMode = 'pomodoro';
+    
+    const modes = {
+      pomodoro: 25 * 60,
+      'short-break': 5 * 60,
+      'long-break': 15 * 60
+    };
+    
+    function handleButtonState() {
+      if (!isPaused) { // 타이머가 실행 중일 때
+        startBtn.disabled = true;
+        pauseBtn.disabled = false;
+        resetBtn.disabled = false;
+        modeButtons.forEach(btn => btn.disabled = true);
+      } else { // 타이머가 일시정지 또는 초기 상태일 때
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+        resetBtn.disabled = false;
+        modeButtons.forEach(btn => btn.disabled = false);
       }
     }
-    timerInterval = requestAnimationFrame(tick);
-  }
-  
-  function pauseTimer() {
-    if (isPaused) return;
-    isPaused = true;
-    cancelAnimationFrame(timerInterval);
-    handleButtonState();
-  }
-  
-  function resetTimer() {
-    cancelAnimationFrame(timerInterval);
-    isPaused = true;
     
-    if (currentMode in modes) {
-      timeRemaining = modes[currentMode];
-      totalSeconds = modes[currentMode];
-    } else { // Custom mode
+    function setMode(mode) {
+      currentMode = mode;
+      if (modes[mode]) {
+        totalSeconds = modes[mode];
+      }
+      resetTimer();
+      updateActiveButton();
+      handleButtonState();
+    }
+    
+    function updateActiveButton() {
+      modeButtons.forEach(button => {
+        button.classList.remove('active');
+      });
+      const activeBtn = document.querySelector(`[data-mode="${currentMode}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+    }
+    
+    function updateDisplay() {
+      const minutes = Math.floor(timeRemaining / 60);
+      const seconds = Math.floor(timeRemaining % 60);
+      minutesDisplay.textContent = String(minutes).padStart(2, '0');
+      secondsDisplay.textContent = String(seconds).padStart(2, '0');
+      updateProgressBar();
+    }
+    
+    function updateProgressBar() {
+      const dashOffset = (timeRemaining / totalSeconds) * circumference;
+      progressCircle.style.strokeDashoffset = dashOffset;
+    }
+    
+    function startTimer() {
+      if (!isPaused) return;
+      isPaused = false;
+      const startTime = Date.now();
+      const endTime = startTime + timeRemaining * 1000;
+      
+      handleButtonState();
+      
+      function tick() {
+        const now = Date.now();
+        const elapsedTime = (now - startTime) / 1000;
+        timeRemaining = Math.max(0, totalSeconds - elapsedTime);
+        
+        if (timeRemaining > 0) {
+          updateDisplay();
+          timerInterval = requestAnimationFrame(tick);
+        } else {
+          timeRemaining = 0;
+          updateDisplay();
+          isPaused = true;
+          alert('Time\'s Up!');
+          handleButtonState();
+        }
+      }
+      timerInterval = requestAnimationFrame(tick);
+    }
+    
+    function pauseTimer() {
+      if (isPaused) return;
+      isPaused = true;
+      cancelAnimationFrame(timerInterval);
+      handleButtonState();
+    }
+    
+    function resetTimer() {
+      cancelAnimationFrame(timerInterval);
+      isPaused = true;
+      
+      if (currentMode in modes) {
+        timeRemaining = modes[currentMode];
+        totalSeconds = modes[currentMode];
+      } else { // Custom mode
+        const customSeconds = parseInt(secondsSlider.value, 10);
+        const customMinutes = parseInt(minutesSlider.value, 10);
+        const customHours = parseInt(hoursSlider.value, 10);
+        const customTotal = (customHours * 60 * 60) + (customMinutes * 60) + customSeconds;
+        
+        if (customTotal > 0) {
+          timeRemaining = customTotal;
+          totalSeconds = customTotal;
+        } else {
+          setMode('pomodoro');
+          return;
+        }
+      }
+      updateDisplay();
+      handleButtonState();
+    }
+    
+    // Event listner : Timer
+    modeButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const mode = e.target.dataset.mode;
+        if (mode !== 'custom') {
+          setMode(mode);
+        }
+      });
+    });
+    
+    startBtn.addEventListener('click', startTimer);
+    pauseBtn.addEventListener('click', pauseTimer);
+    resetBtn.addEventListener('click', resetTimer);
+    
+    // Custom modal for Timer
+    customBtn.addEventListener('click', () => {
+      customModal.classList.remove('hidden');
+    });
+    
+    hoursSlider.addEventListener('input', (e) => {
+      hoursValue.textContent = e.target.value;
+    });
+    
+    minutesSlider.addEventListener('input', (e) => {
+      minutesValue.textContent = e.target.value;
+    });
+    
+    secondsSlider.addEventListener('input', (e) => {
+      secondsValue.textContent = e.target.value;
+    });
+    
+    setCustomBtn.addEventListener('click', () => {
       const customSeconds = parseInt(secondsSlider.value, 10);
       const customMinutes = parseInt(minutesSlider.value, 10);
       const customHours = parseInt(hoursSlider.value, 10);
       const customTotal = (customHours * 60 * 60) + (customMinutes * 60) + customSeconds;
       
       if (customTotal > 0) {
-        timeRemaining = customTotal;
+        currentMode = 'custom';
         totalSeconds = customTotal;
+        timeRemaining = customTotal;
+        updateDisplay();
+        customModal.classList.add('hidden');
+        updateActiveButton();
+        handleButtonState();
       } else {
-        setMode('pomodoro');
-        return;
-      }
-    }
-    updateDisplay();
-    handleButtonState();
-  }
-  
-  // Event listner : Timer
-  modeButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const mode = e.target.dataset.mode;
-      if (mode !== 'custom') {
-        setMode(mode);
+        alert('Set valid time.');
       }
     });
-  });
-  
-  startBtn.addEventListener('click', startTimer);
-  pauseBtn.addEventListener('click', pauseTimer);
-  resetBtn.addEventListener('click', resetTimer);
-  
-  // Custom modal for Timer
-  customBtn.addEventListener('click', () => {
-    customModal.classList.remove('hidden');
-  });
-  
-  hoursSlider.addEventListener('input', (e) => {
-    hoursValue.textContent = e.target.value;
-  });
-  
-  minutesSlider.addEventListener('input', (e) => {
-    minutesValue.textContent = e.target.value;
-  });
-  
-  secondsSlider.addEventListener('input', (e) => {
-    secondsValue.textContent = e.target.value;
-  });
-  
-  setCustomBtn.addEventListener('click', () => {
-    const customSeconds = parseInt(secondsSlider.value, 10);
-    const customMinutes = parseInt(minutesSlider.value, 10);
-    const customHours = parseInt(hoursSlider.value, 10);
-    const customTotal = (customHours * 60 * 60) + (customMinutes * 60) + customSeconds;
     
-    if (customTotal > 0) {
-      currentMode = 'custom';
-      totalSeconds = customTotal;
-      timeRemaining = customTotal;
-      updateDisplay();
+    cancelCustomBtn.addEventListener('click', () => {
       customModal.classList.add('hidden');
       updateActiveButton();
-      handleButtonState();
-    } else {
-      alert('Set valid time.');
-    }
-  });
-  
-  cancelCustomBtn.addEventListener('click', () => {
-    customModal.classList.add('hidden');
-    updateActiveButton();
-  });
-  
-  
-  // Event lister : Toggle btn
-  pomoTitle.addEventListener('click', () => {
-    pomoContentWrapper.classList.toggle('hidden');
+    });
     
-    // 아이콘 변경
-    if (pomoContentWrapper.classList.contains('hidden')) {
-      pomoToggleBtn.classList.remove('expand');
-    } else {
+    
+    // Event lister : Toggle btn
+    pomoTitle.addEventListener('click', () => {
+      pomoContentWrapper.classList.toggle('hidden');
+      
+      // 아이콘 변경
+      if (pomoContentWrapper.classList.contains('hidden')) {
+        pomoToggleBtn.classList.remove('expand');
+      } else {
+        pomoToggleBtn.classList.add('expand');
+      }
+    });
+    
+    // Initial setting : Timer
+    setMode('pomodoro');
+    handleButtonState();
+    
+    
+    // Set the icon to expand if the widget is not hidden when it starts.
+    if (!pomoContentWrapper.classList.contains('hidden')) {
       pomoToggleBtn.classList.add('expand');
     }
-  });
-  
-  // Initial setting : Timer
-  setMode('pomodoro');
-  handleButtonState();
-  
-  
-  // Set the icon to expand if the widget is not hidden when it starts.
-  if (!pomoContentWrapper.classList.contains('hidden')) {
-    pomoToggleBtn.classList.add('expand');
   }
 
 
@@ -1264,6 +1270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     GLOBAL_CONFIG_SITE.pageType === 'home' && scrollDownInIndex()
     scrollFn()
+    pomodoroFn()
     GLOBAL_CONFIG_SITE.pageType === 'post' && forPostFn()
     GLOBAL_CONFIG_SITE.pageSubType === 'gallery' && forGalleryFn()
     GLOBAL_CONFIG_SITE.pageSubType === 'carousel' && forCarouselFn()

@@ -59,7 +59,7 @@ body.read-mode #page > .card-widget {
   /* --progress-color: var(--sub-theme-color); */
   --progress-bg-color: var(--font-link15);
   --mode-button-hover: var(--theme-color-light85);
-  --disable-color: var(--white); /* 비활성화된 버튼의 글자색 */
+  --disable-color: var(--card-bg); /* 비활성화된 버튼의 글자색 */
   --disable-bg-color: var(--font-link15); /* 비활성화된 버튼의 배경색 */
 }
 [data-theme='dark'] {
